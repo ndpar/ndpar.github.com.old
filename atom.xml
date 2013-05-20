@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Side Notes]]></title>
+  <link href="http://ndpar.github.io/atom.xml" rel="self"/>
+  <link href="http://ndpar.github.io/"/>
+  <updated>2013-05-20T16:58:14-04:00</updated>
+  <id>http://ndpar.github.io/</id>
+  <author>
+    <name><![CDATA[Andrey Paramonov]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+</feed>
