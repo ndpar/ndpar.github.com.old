@@ -4,7 +4,7 @@
   <title><![CDATA[Side Notes]]></title>
   <link href="http://ndpar.github.io/atom.xml" rel="self"/>
   <link href="http://ndpar.github.io/"/>
-  <updated>2013-05-21T20:38:42-04:00</updated>
+  <updated>2013-05-21T21:03:06-04:00</updated>
   <id>http://ndpar.github.io/</id>
   <author>
     <name><![CDATA[Andrey Paramonov]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Stuck with your first programming language]]></title>
-    <link href="http://ndpar.github.io/blog/2013/05/09/liskov-programming-abstraction/"/>
+    <link href="http://ndpar.github.io/2013/05/09/liskov-programming-abstraction/"/>
     <updated>2013-05-09T19:39:00-04:00</updated>
-    <id>http://ndpar.github.io/blog/2013/05/09/liskov-programming-abstraction</id>
+    <id>http://ndpar.github.io/2013/05/09/liskov-programming-abstraction</id>
     <content type="html"><![CDATA[<p><a href="http://en.wikipedia.org/wiki/Barbara_Liskov">Barbara Liskov</a> in her <a href="http://www.infoq.com/presentations/programming-abstraction-liskov">keynote</a> presentation:</p>
 
 <blockquote><p>I&rsquo;m a little dismayed what&rsquo;s happened in programming languages. And the reason I&rsquo;m dismayed is because on the one hand we have the programming languages that experts use — I&rsquo;m thinking of Java and C# but you can name bunch of others. And the problem with these languages is — they are powerful, you can build big systems in them — but they aren&rsquo;t very good for beginners. And what happens in MIT, and I think this is happening across the US anyway, is the people are no longer using those languages in their introductory programming language courses, because the amount of craft you have to go through in order to write the little print-loop is just too much, and the students just get lost in the process. So they&rsquo;ve been switching to languages like Python.</p>
@@ -28,9 +28,9 @@
   
   <entry>
     <title type="html"><![CDATA[Code Retreat 2012]]></title>
-    <link href="http://ndpar.github.io/blog/2012/12/09/code-retreat-2012/"/>
+    <link href="http://ndpar.github.io/2012/12/09/code-retreat-2012/"/>
     <updated>2012-12-09T07:00:00-05:00</updated>
-    <id>http://ndpar.github.io/blog/2012/12/09/code-retreat-2012</id>
+    <id>http://ndpar.github.io/2012/12/09/code-retreat-2012</id>
     <content type="html"><![CDATA[<p>Yesterday was the Global Day of Code Retreat. Software engineers around the globe met together to learn from each other.</p>
 
 <p><a href="https://twitter.com/mdibernardo/status/277439446381625345/photo/1"><img src="https://pbs.twimg.com/media/A9mptOCCAAE0d7z.jpg" alt="CR2012 1" /></a></p>
