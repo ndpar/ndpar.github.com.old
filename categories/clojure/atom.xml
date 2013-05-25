@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Clojure | Side Notes]]></title>
-  <link href="http://ndpar.github.io/categories/clojure/atom.xml" rel="self"/>
-  <link href="http://ndpar.github.io/"/>
-  <updated>2013-05-24T22:07:08-04:00</updated>
-  <id>http://ndpar.github.io/</id>
+  <link href="http://blog.ndpar.io/categories/clojure/atom.xml" rel="self"/>
+  <link href="http://blog.ndpar.io/"/>
+  <updated>2013-05-25T18:43:02-04:00</updated>
+  <id>http://blog.ndpar.io/</id>
   <author>
     <name><![CDATA[Andrey Paramonov]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Code Retreat 2012]]></title>
-    <link href="http://ndpar.github.io/2012/12/09/code-retreat-2012/"/>
+    <link href="http://blog.ndpar.io/2012/12/09/code-retreat-2012/"/>
     <updated>2012-12-09T07:00:00-05:00</updated>
-    <id>http://ndpar.github.io/2012/12/09/code-retreat-2012</id>
+    <id>http://blog.ndpar.io/2012/12/09/code-retreat-2012</id>
     <content type="html"><![CDATA[<p>Yesterday was the Global Day of Code Retreat. Software engineers around the globe met together to learn from each other.</p>
 
 <p><img class="center <a" src="href="https://pbs.twimg.com/media/A9mptOCCAAE0d7z.jpg">https://pbs.twimg.com/media/A9mptOCCAAE0d7z.jpg</a>" title="CR2012 1" ></p>

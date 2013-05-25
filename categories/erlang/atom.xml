@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Erlang | Side Notes]]></title>
-  <link href="http://ndpar.github.io/categories/erlang/atom.xml" rel="self"/>
-  <link href="http://ndpar.github.io/"/>
-  <updated>2013-05-24T22:07:08-04:00</updated>
-  <id>http://ndpar.github.io/</id>
+  <link href="http://blog.ndpar.io/categories/erlang/atom.xml" rel="self"/>
+  <link href="http://blog.ndpar.io/"/>
+  <updated>2013-05-25T18:43:02-04:00</updated>
+  <id>http://blog.ndpar.io/</id>
   <author>
     <name><![CDATA[Andrey Paramonov]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Joe Armstrong at MostlyErlang]]></title>
-    <link href="http://ndpar.github.io/2013/05/21/joe-armstrong-mostlyerlang/"/>
+    <link href="http://blog.ndpar.io/2013/05/21/joe-armstrong-mostlyerlang/"/>
     <updated>2013-05-21T15:13:01-04:00</updated>
-    <id>http://ndpar.github.io/2013/05/21/joe-armstrong-mostlyerlang</id>
+    <id>http://blog.ndpar.io/2013/05/21/joe-armstrong-mostlyerlang</id>
     <content type="html"><![CDATA[<p>The main guest at today&rsquo;s <a href="http://mostlyerlang.wordpress.com/2013/05/21/43/">MostlyErlang</a> podcast is Joe Armstrong, the co-inventor of Erlang, a wise man, and a brilliant speaker. I listened to the podcast few times, and every time enjoyed it. I highly recommend it to all programmers regardless whether they are using Erlang or not.</p>
 
 <p>While we are waiting for the oficial transcript, this post provides some highlights. I put here the quotes I found particularly interesting or funny.</p>
@@ -93,9 +93,9 @@
   
   <entry>
     <title type="html"><![CDATA[Code Retreat 2012]]></title>
-    <link href="http://ndpar.github.io/2012/12/09/code-retreat-2012/"/>
+    <link href="http://blog.ndpar.io/2012/12/09/code-retreat-2012/"/>
     <updated>2012-12-09T07:00:00-05:00</updated>
-    <id>http://ndpar.github.io/2012/12/09/code-retreat-2012</id>
+    <id>http://blog.ndpar.io/2012/12/09/code-retreat-2012</id>
     <content type="html"><![CDATA[<p>Yesterday was the Global Day of Code Retreat. Software engineers around the globe met together to learn from each other.</p>
 
 <p><img class="center <a" src="href="https://pbs.twimg.com/media/A9mptOCCAAE0d7z.jpg">https://pbs.twimg.com/media/A9mptOCCAAE0d7z.jpg</a>" title="CR2012 1" ></p>
