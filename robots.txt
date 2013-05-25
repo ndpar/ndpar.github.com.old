@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://blog.ndpar.io/sitemap.xml 
+Sitemap: http://blog.ndpar.com/sitemap.xml 

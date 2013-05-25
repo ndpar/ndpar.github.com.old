@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: MongoDB | Side Notes]]></title>
-  <link href="http://blog.ndpar.io/categories/mongodb/atom.xml" rel="self"/>
-  <link href="http://blog.ndpar.io/"/>
-  <updated>2013-05-25T18:43:02-04:00</updated>
-  <id>http://blog.ndpar.io/</id>
+  <link href="http://blog.ndpar.com/categories/mongodb/atom.xml" rel="self"/>
+  <link href="http://blog.ndpar.com/"/>
+  <updated>2013-05-25T18:55:44-04:00</updated>
+  <id>http://blog.ndpar.com/</id>
   <author>
     <name><![CDATA[Andrey Paramonov]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[RabbitMQ, ActiveMQ, ZeroMQ, HornetQ]]></title>
-    <link href="http://blog.ndpar.io/2012/12/15/rabbitmq-activemq-zeromq-hornetq/"/>
+    <link href="http://blog.ndpar.com/2012/12/15/rabbitmq-activemq-zeromq-hornetq/"/>
     <updated>2012-12-15T07:00:00-05:00</updated>
-    <id>http://blog.ndpar.io/2012/12/15/rabbitmq-activemq-zeromq-hornetq</id>
+    <id>http://blog.ndpar.com/2012/12/15/rabbitmq-activemq-zeromq-hornetq</id>
     <content type="html"><![CDATA[<p><em>Warning</em>: In this post I&rsquo;m going to compare <a href="http://www.rabbitmq.com/">RabbitMQ</a>, <a href="http://www.zeromq.org/">ZeroMQ</a>, <a href="http://activemq.apache.org/">ActiveMQ</a>, and <a href="http://www.jboss.org/hornetq">HornetQ</a>. The basis of the comparison is not the performance, or the scalability, or any other serious feature. The comparison is done <em>purely</em> based on the popularity of those systems. Therefore, if you came here to see some performance metrics, you will be disappointed — there is none in this post.</p>
 
 <p><em>Note</em>: To calculate popularity, I&rsquo;m going to use MongoDB and Python, so if you don&rsquo;t care about message brokers, but you want to see some examples of MongoDB scripts, this post might be interesting to you.</p>
@@ -31,7 +31,7 @@
 
 <p>Here is the Google trend graph for the last five years. It turns out, my personal preferences coincide with the public interest.</p>
 
-<div class="separator" style="clear: both; text-align: center;"><script type="text/javascript" src="http://blog.ndpar.io//www.google.ca/trends/embed.js?hl=en-US&q=activemq,+rabbitmq,+zeromq,+hornetq&date=1/2008+60m&cmpt=q&content=1&cid=TIMESERIES_GRAPH_AVERAGES_CHART&export=5&w=800&h=330"></script></div>
+<div class="separator" style="clear: both; text-align: center;"><script type="text/javascript" src="http://blog.ndpar.com//www.google.ca/trends/embed.js?hl=en-US&q=activemq,+rabbitmq,+zeromq,+hornetq&date=1/2008+60m&cmpt=q&content=1&cid=TIMESERIES_GRAPH_AVERAGES_CHART&export=5&w=800&h=330"></script></div>
 
 
 <p>At this point I can stop and say &ldquo;Well, you see who&rsquo;s the winner&rdquo;. There are 5 times more people interested in RabbitMQ than HornetQ, so if you bet on Rabbit you have more chances to get the help from your fellow programmers, if you need to.</p>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Clustering | Side Notes]]></title>
-  <link href="http://blog.ndpar.io/categories/clustering/atom.xml" rel="self"/>
-  <link href="http://blog.ndpar.io/"/>
-  <updated>2013-05-25T18:43:02-04:00</updated>
-  <id>http://blog.ndpar.io/</id>
+  <link href="http://blog.ndpar.com/categories/clustering/atom.xml" rel="self"/>
+  <link href="http://blog.ndpar.com/"/>
+  <updated>2013-05-25T18:55:44-04:00</updated>
+  <id>http://blog.ndpar.com/</id>
   <author>
     <name><![CDATA[Andrey Paramonov]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Simple Zookeeper cluster]]></title>
-    <link href="http://blog.ndpar.io/2013/03/09/simple-zookeeper-cluster/"/>
+    <link href="http://blog.ndpar.com/2013/03/09/simple-zookeeper-cluster/"/>
     <updated>2013-03-09T07:00:00-05:00</updated>
-    <id>http://blog.ndpar.io/2013/03/09/simple-zookeeper-cluster</id>
+    <id>http://blog.ndpar.com/2013/03/09/simple-zookeeper-cluster</id>
     <content type="html"><![CDATA[<p>Sometimes I need to run <a href="http://zookeeper.apache.org">ZooKeeper</a> ensemble on my development box to test my application on the production-like environment. I found that recreating the whole ensemble from scratch is much faster than cleaning it up using ZooKeeper CLI tool. To automate this process I created a bash script which I want to share in this blog post. I hard-coded all the paths in the script using my regular conventions. You might need to change them to yours — it should be fairly straightforward.</p>
 
 <p>Before you can use the script, you need to install ZooKeeper on your box. That&rsquo;s what I did on my machine</p>

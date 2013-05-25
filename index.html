@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://blog.ndpar.io">
+  <link rel="canonical" href="http://blog.ndpar.com">
   <link href="/favicon.ico" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Side Notes" type="application/atom+xml">
@@ -52,7 +52,7 @@
   
 <form action="http://google.com/search" method="get">
   <fieldset role="search">
-    <input type="hidden" name="q" value="site:blog.ndpar.io" />
+    <input type="hidden" name="q" value="site:blog.ndpar.com" />
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
   </fieldset>
 </form>
@@ -572,6 +572,85 @@ $ ps -ef | grep java
 
     </article>
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/10/01/exporting-solr-documents/">Exporting Solr Documents</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-01T08:00:00-04:00" pubdate data-updated="true">Oct 1<span>st</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Recently I had to copy some documents from one <a href="http://lucene.apache.org/solr/">Solr</a> server to another. I expected Solr already had an interface that allowed me to extract documents in the same format they were inserted. In that case I would pipe an output of one curl command to another, and consider the job done. As it turned out, the format of Solr input document is different than the output format. Here is how input document looks like:</p>
+
+<pre><code>&lt;add&gt;
+    &lt;doc&gt;
+        &lt;field name="id"&gt;12345&lt;/field&gt;
+        &lt;field name="articlestate"&gt;published&lt;/field&gt;
+        &lt;field name="articletype"&gt;news&lt;/field&gt;
+        &lt;field name="body"&gt;Lorem ipsum dolor...&lt;/field&gt;
+        &lt;field name="referenceid"&gt;175820&lt;/field&gt;
+        &lt;field name="referenceid"&gt;163786&lt;/field&gt;
+        &lt;field name="created"&gt;2011-02-15T14:57:54.766Z&lt;/field&gt;
+    &lt;/doc&gt;
+&lt;/add&gt;
+</code></pre>
+
+<p>Notice the flat structure of this document: all element names are the same regardless of the filed type, and arrays (referenceid) are not grouped. Now compare it to the output format. Here is what you get when you execute a query against a Solr server:</p>
+
+<pre><code>&lt;response&gt;
+    &lt;lst name="responseHeader"&gt;
+        &lt;int name="status"&gt;0&lt;/int&gt;
+        &lt;int name="QTime"&gt;1&lt;/int&gt;
+        &lt;lst name="params"&gt;
+            &lt;str name="q"&gt;id:12345&lt;/str&gt;
+        &lt;/lst&gt;
+    &lt;/lst&gt;
+    &lt;result name="response" numFound="1" start="0"&gt;
+        &lt;doc&gt;
+            &lt;str name="id"&gt;12345&lt;/str&gt;
+            &lt;str name="articlestate"&gt;published&lt;/str&gt;
+            &lt;str name="articletype"&gt;news&lt;/str&gt;
+            &lt;str name="body"&gt;Lorem ipsum dolor...&lt;/str&gt;
+            &lt;arr name="referenceid"&gt;
+                &lt;str&gt;175820&lt;/str&gt;
+                &lt;str&gt;163786&lt;/str&gt;
+            &lt;/arr&gt;
+            &lt;date name="created"&gt;2011-02-15T14:57:54.766Z&lt;/date&gt;
+        &lt;/doc&gt;
+    &lt;/result&gt;
+&lt;/response&gt;
+</code></pre>
+
+<p>Even if we ignore the response header, the structure of the response/result/doc is not the same as of input document: the element names reflect the types, the arrays are grouped. If you try to add this document to a Solr server, you will get an error &ldquo;unexpected XML tag&rdquo;, obviously. I googled for couple hours on how to convert an output document to an input, and, to my surprise, didn&rsquo;t find any solution. Therefore I implemented my own converter in Groovy, which solved the problem. I post it <a href="http://gist.github.com/3813775">here</a> in case somebody needs it.</p>
+
+<p>Note: You can also use this script to re-index Solr.</p>
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
     
     <a href="/archives">Blog Archives</a>
@@ -662,11 +741,13 @@ $ ps -ef | grep java
 <li class='category'><a href='/categories/craftsmanship/'>Craftsmanship (1)</a></li>
 <li class='category'><a href='/categories/education/'>Education (1)</a></li>
 <li class='category'><a href='/categories/erlang/'>Erlang (2)</a></li>
+<li class='category'><a href='/categories/groovy/'>Groovy (1)</a></li>
 <li class='category'><a href='/categories/humor/'>Humor (1)</a></li>
 <li class='category'><a href='/categories/mongodb/'>MongoDB (1)</a></li>
 <li class='category'><a href='/categories/programming/'>Programming (3)</a></li>
 <li class='category'><a href='/categories/python/'>Python (2)</a></li>
 <li class='category'><a href='/categories/rabbitmq/'>RabbitMQ (1)</a></li>
+<li class='category'><a href='/categories/solr/'>Solr (1)</a></li>
 <li class='category'><a href='/categories/zeromq/'>ZeroMQ (1)</a></li>
 <li class='category'><a href='/categories/zookeeper/'>ZooKeeper (1)</a></li>
 

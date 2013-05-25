@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Humor | Side Notes]]></title>
-  <link href="http://blog.ndpar.io/categories/humor/atom.xml" rel="self"/>
-  <link href="http://blog.ndpar.io/"/>
-  <updated>2013-05-25T18:43:02-04:00</updated>
-  <id>http://blog.ndpar.io/</id>
+  <link href="http://blog.ndpar.com/categories/humor/atom.xml" rel="self"/>
+  <link href="http://blog.ndpar.com/"/>
+  <updated>2013-05-25T18:55:44-04:00</updated>
+  <id>http://blog.ndpar.com/</id>
   <author>
     <name><![CDATA[Andrey Paramonov]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Embrace Big Data]]></title>
-    <link href="http://blog.ndpar.io/2013/01/15/embrace-big-data/"/>
+    <link href="http://blog.ndpar.com/2013/01/15/embrace-big-data/"/>
     <updated>2013-01-15T07:00:00-05:00</updated>
-    <id>http://blog.ndpar.io/2013/01/15/embrace-big-data</id>
+    <id>http://blog.ndpar.com/2013/01/15/embrace-big-data</id>
     <content type="html"><![CDATA[<p><img class="center" src="/images/posts/BigData.jpg"></p>
 ]]></content>
   </entry>

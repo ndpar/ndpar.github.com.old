@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Conference | Side Notes]]></title>
-  <link href="http://blog.ndpar.io/categories/conference/atom.xml" rel="self"/>
-  <link href="http://blog.ndpar.io/"/>
-  <updated>2013-05-25T18:43:02-04:00</updated>
-  <id>http://blog.ndpar.io/</id>
+  <link href="http://blog.ndpar.com/categories/conference/atom.xml" rel="self"/>
+  <link href="http://blog.ndpar.com/"/>
+  <updated>2013-05-25T18:55:44-04:00</updated>
+  <id>http://blog.ndpar.com/</id>
   <author>
     <name><![CDATA[Andrey Paramonov]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[PyCon Canada 2012]]></title>
-    <link href="http://blog.ndpar.io/2012/11/12/pycon-canada-2012/"/>
+    <link href="http://blog.ndpar.com/2012/11/12/pycon-canada-2012/"/>
     <updated>2012-11-12T15:40:01-05:00</updated>
-    <id>http://blog.ndpar.io/2012/11/12/pycon-canada-2012</id>
+    <id>http://blog.ndpar.com/2012/11/12/pycon-canada-2012</id>
     <content type="html"><![CDATA[<p>This weekend I attended <a href="http://pycon.ca/">PyCon Canada</a>, the first conference in Canada dedicated to Python ecosystem. As you might find from my blog, I&rsquo;m not a Python guy. I&rsquo;ve been using Python mostly as a scripting language. I went to this conference for fresh ideas, or, as Michael Feathers said, for cross-polination from Python community. This blog post is not a detailed review of the conference — I just want to share my impression in general.</p>
 
 <h2>Organization</h2>
