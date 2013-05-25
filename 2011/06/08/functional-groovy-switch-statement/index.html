@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: Python - Side Notes</title>
+  <title>Functional Groovy switch statement - Side Notes</title>
   <meta name="author" content="Andrey Paramonov">
 
   
-  <meta name="description" content="Category: Python">
+  <meta name="description" content="In the previous post I showed how to replace chained if-else statements in Groovy with one concise switch. It was done for the special case of if- &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://blog.ndpar.comcategories/python">
+  <link rel="canonical" href="http://blog.ndpar.com/2011/06/08/functional-groovy-switch-statement">
   <link href="/favicon.ico" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Side Notes" type="application/atom+xml">
@@ -67,49 +67,145 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Python</h1>
+    
+      <h1 class="entry-title">Functional Groovy Switch Statement</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-08T08:00:00-04:00" pubdate data-updated="true">Jun 8<span>th</span>, 2011</time>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><p>In the previous <a href="/2011/06/01/reversing-groovy-switch-statement">post</a> I showed how to replace chained if-else statements in Groovy with one concise switch. It was done for the special case of if-stement where every branch was evaluated using the same condition function. Today I want to make a generalization of that technique by allowing to use different conditionals.</p>
 
-  
-  <h2>2012</h2>
+<p>Suppose your code looks like this:</p>
 
-<article>
-  
-<h1><a href="/2012/12/15/rabbitmq-activemq-zeromq-hornetq/">RabbitMQ, ActiveMQ, ZeroMQ, HornetQ</a></h1>
-<time datetime="2012-12-15T07:00:00-05:00" pubdate><span class='month'>Dec</span> <span class='day'>15</span> <span class='year'>2012</span></time>
+<pre><code>if (param % 2 == 0) {
+    'even'
+} else if (param % 3 == 0) {
+    'threeven'
+} else if (0 &lt; param) {
+    'positive'
+} else {
+    'negative'
+}
+</code></pre>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/categories/activemq/'>ActiveMQ</a>, <a class='category' href='/categories/mongodb/'>MongoDB</a>, <a class='category' href='/categories/python/'>Python</a>, <a class='category' href='/categories/rabbitmq/'>RabbitMQ</a>, <a class='category' href='/categories/zeromq/'>ZeroMQ</a></span>
-</footer>
+<p>As long as every condition operates on the same parameter, you can replace the entire chain with a switch. In this scenario <code>param</code> becomes a switch parameter and conditions become <code>case</code> parameters of Closure type. The only thing we need to do is to override <code>Closure.isCase()</code> method as I described in the previous post. The safest way to do it is to create a category class:</p>
 
+<pre><code>class CaseCategory {
+    static boolean isCase(Closure casePredicate, Object switchParameter) {
+        casePredicate.call switchParameter
+    }
+}
+</code></pre>
 
-</article>
+<p>Now we can replace if-statement with the following switch:</p>
 
+<pre><code>use (CaseCategory) {
+    switch (param) {
+        case { it % 2 == 0 } : return 'even'
+        case { it % 3 == 0 } : return 'threeven'
+        case { 0 &lt; it }      : return 'positive'
+        default              : return 'negative'
+    }
+}
+</code></pre>
 
+<p>We can actually go further and extract in-line closures:</p>
 
-<article>
-  
-<h1><a href="/2012/11/12/pycon-canada-2012/">PyCon Canada 2012</a></h1>
-<time datetime="2012-11-12T15:40:01-05:00" pubdate><span class='month'>Nov</span> <span class='day'>12</span> <span class='year'>2012</span></time>
+<pre><code>def even = {
+    it % 2 == 0
+}
+def threeven = {
+    it % 3 == 0
+}
+def positive = {
+    0 &lt; it
+}
+</code></pre>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/categories/conference/'>Conference</a>, <a class='category' href='/categories/python/'>Python</a></span>
-</footer>
+<p>After which the code becomes even more readable:</p>
 
-
-</article>
-
+<pre><code>use (CaseCategory) {
+    switch (param) {
+        case even     : return 'even'
+        case threeven : return 'threeven'
+        case positive : return 'positive'
+        default       : return 'negative'
+    }
+}
+</code></pre>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Andrey Paramonov</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-08T08:00:00-04:00" pubdate data-updated="true">Jun 8<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/categories/groovy/'>Groovy</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://blog.ndpar.com/2011/06/08/functional-groovy-switch-statement/" data-via="ndpar" data-counturl="http://blog.ndpar.com/2011/06/08/functional-groovy-switch-statement/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2011/06/01/reversing-groovy-switch-statement/" title="Previous Post: Reversing Groovy switch statement">&laquo; Reversing Groovy switch statement</a>
+      
+      
+        <a class="basic-alignment right" href="/2012/10/01/exporting-solr-documents/" title="Next Post: Exporting Solr documents">Exporting Solr documents &raquo;</a>
+      
+    </p>
+  </footer>
 </article>
 
 </div>

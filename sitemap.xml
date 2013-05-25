@@ -1,6 +1,14 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
+        <loc>http://blog.ndpar.com/2011/06/01/reversing-groovy-switch-statement/</loc>
+        <lastmod>2013-05-25T19:28:36-04:00</lastmod>
+    </url>
+    <url>
+        <loc>http://blog.ndpar.com/2011/06/08/functional-groovy-switch-statement/</loc>
+        <lastmod>2013-05-25T19:20:35-04:00</lastmod>
+    </url>
+    <url>
         <loc>http://blog.ndpar.com/2012/10/01/exporting-solr-documents/</loc>
         <lastmod>2013-05-25T18:52:52-04:00</lastmod>
     </url>
@@ -34,15 +42,15 @@
     </url>
     <url>
         <loc>http://blog.ndpar.com/about/</loc>
-        <lastmod>2013-05-25T18:52:52-04:00</lastmod>
+        <lastmod>2013-05-25T19:28:36-04:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ndpar.com/archives/</loc>
-        <lastmod>2013-05-25T18:52:52-04:00</lastmod>
+        <lastmod>2013-05-25T19:28:36-04:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ndpar.com/</loc>
-        <lastmod>2013-05-25T18:52:52-04:00</lastmod>
+        <lastmod>2013-05-25T19:28:36-04:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ndpar.com/robots.txt</loc>

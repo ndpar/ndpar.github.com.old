@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: Python - Side Notes</title>
+  <title>Reversing Groovy switch statement - Side Notes</title>
   <meta name="author" content="Andrey Paramonov">
 
   
-  <meta name="description" content="Category: Python">
+  <meta name="description" content="Recently I&rsquo;ve been working on a Groovy code that had many methods with long multibranch conditionals like this: def parse(message, options) { &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://blog.ndpar.comcategories/python">
+  <link rel="canonical" href="http://blog.ndpar.com/2011/06/01/reversing-groovy-switch-statement">
   <link href="/favicon.ico" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Side Notes" type="application/atom+xml">
@@ -67,49 +67,157 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Python</h1>
+    
+      <h1 class="entry-title">Reversing Groovy Switch Statement</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-01T08:00:00-04:00" pubdate data-updated="true">Jun 1<span>st</span>, 2011</time>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><p>Recently I&rsquo;ve been working on a Groovy code that had many methods with long multibranch conditionals like this:</p>
 
-  
-  <h2>2012</h2>
+<pre><code>def parse(message, options) {
+    if (options.contains('A')) {
+        parseARule message
+    } else if (options.contains(2)) {
+        parseSmallDigitRule message
+    ...
+    } else if (options.contains(something)) {
+        parseSomeRule message
+    } else {
+        parseSomeOtherRule message
+    }
+}
+</code></pre>
 
-<article>
-  
-<h1><a href="/2012/12/15/rabbitmq-activemq-zeromq-hornetq/">RabbitMQ, ActiveMQ, ZeroMQ, HornetQ</a></h1>
-<time datetime="2012-12-15T07:00:00-05:00" pubdate><span class='month'>Dec</span> <span class='day'>15</span> <span class='year'>2012</span></time>
+<p>Although this code is working, it is hard to see which branch is called under which condition. It would be much better if we could replace this code with something like Lisp <code>cond</code> macro. The best candidate for such a task in Groovy would be a <code>switch</code> statement. If we could only refactor the code above to something like following, it would significantly improve readability:</p>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/categories/activemq/'>ActiveMQ</a>, <a class='category' href='/categories/mongodb/'>MongoDB</a>, <a class='category' href='/categories/python/'>Python</a>, <a class='category' href='/categories/rabbitmq/'>RabbitMQ</a>, <a class='category' href='/categories/zeromq/'>ZeroMQ</a></span>
-</footer>
+<pre><code>def parse(message, options) {
+    switch (options) {
+        case 'A' : return parseARule(message)
+        case 2   : return parseSmallDigitRule(message)
+        ...
+        case ... : return parseSomeRule(message)
+        default  : return parseSomeOtherRule(message)
+    }
+}
+</code></pre>
 
+<p>Unfortunately, this code doesn&rsquo;t work out of the box in Groovy, but it works if we do some metaprogramming.</p>
 
-</article>
+<p>The way <code>switch</code> statement works in Groovy is a bit <a href="http://docs.codehaus.org/display/GROOVY/Logical+Branching#LogicalBranching-switchstatement">different</a> than in Java. Instead of equals() it uses isCase() method to match case-value and switch-value. The default implementation of isCase() method falls back to equals() method, but some classes, including <a href="http://groovy.codehaus.org/groovy-jdk/java/util/Collection.html#isCase(java.lang.Object)">Collection</a>, override this behaviour. That&rsquo;s why in Groovy you can do things like this:</p>
 
+<pre><code>switch (value) {
+    case ['A','E','I','O','U'] : return 'vowel'
+    case 0..9                  : return 'digit'
+    case Date                  : return 'date'
+    default                    : return 'something else'
+}
+</code></pre>
 
+<p>For our purposes we need some sort of reverse <code>switch</code>, where collection is used as a switch-value, and String and Integer are used as a case-value. To do this we need to override default implementation of isCase() method on String and Integer classes. It&rsquo;s not possible in Java, but is very easy in Groovy. You can change method implementation globally by replacing it in corresponding meta class, or locally with the help of categories. Let&rsquo;s create a category that swaps object and subject of isCase() method:</p>
 
-<article>
-  
-<h1><a href="/2012/11/12/pycon-canada-2012/">PyCon Canada 2012</a></h1>
-<time datetime="2012-11-12T15:40:01-05:00" pubdate><span class='month'>Nov</span> <span class='day'>12</span> <span class='year'>2012</span></time>
+<pre><code>class CaseCategory {
+    static boolean isCase(String string, Collection col) {
+        reverseCase(string, col)
+    }
+    static boolean isCase(Integer integer, Collection col) {
+        reverseCase(integer, col)
+    }
+    // Add more overloaded methods here if needed
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/categories/conference/'>Conference</a>, <a class='category' href='/categories/python/'>Python</a></span>
-</footer>
+    private static boolean reverseCase(left, right) {
+        right.isCase(left)
+    }
+}
+</code></pre>
 
+<p>Now we can use this category to achieve the goal we stated at the beginning of this post:</p>
 
-</article>
+<pre><code>def parse(message, options) {
+    use (CaseCategory) {
+        switch (options) {
+            case 'A' : return parseARule(message)
+            case 2   : return parseSmallDigitRule(message)
+            ...
+            case ... : return parseSomeRule(message)
+            default  : return parseSomeOtherRule(message)
+        }
+    }
+}
+</code></pre>
 
+<p>If you are comfortable with global method replacement, you can amend String and Integer meta classes. In this case you don&rsquo;t need to wrap <code>switch</code> statement with <code>use</code> keyword.</p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Andrey Paramonov</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-01T08:00:00-04:00" pubdate data-updated="true">Jun 1<span>st</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/categories/groovy/'>Groovy</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://blog.ndpar.com/2011/06/01/reversing-groovy-switch-statement/" data-via="ndpar" data-counturl="http://blog.ndpar.com/2011/06/01/reversing-groovy-switch-statement/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+      
+        <a class="basic-alignment right" href="/2011/06/08/functional-groovy-switch-statement/" title="Next Post: Functional Groovy switch statement">Functional Groovy switch statement &raquo;</a>
+      
+    </p>
+  </footer>
 </article>
 
 </div>

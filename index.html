@@ -651,6 +651,210 @@ $ ps -ef | grep java
 
     </article>
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/06/08/functional-groovy-switch-statement/">Functional Groovy Switch Statement</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-08T08:00:00-04:00" pubdate data-updated="true">Jun 8<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In the previous <a href="/2011/06/01/reversing-groovy-switch-statement">post</a> I showed how to replace chained if-else statements in Groovy with one concise switch. It was done for the special case of if-stement where every branch was evaluated using the same condition function. Today I want to make a generalization of that technique by allowing to use different conditionals.</p>
+
+<p>Suppose your code looks like this:</p>
+
+<pre><code>if (param % 2 == 0) {
+    'even'
+} else if (param % 3 == 0) {
+    'threeven'
+} else if (0 &lt; param) {
+    'positive'
+} else {
+    'negative'
+}
+</code></pre>
+
+<p>As long as every condition operates on the same parameter, you can replace the entire chain with a switch. In this scenario <code>param</code> becomes a switch parameter and conditions become <code>case</code> parameters of Closure type. The only thing we need to do is to override <code>Closure.isCase()</code> method as I described in the previous post. The safest way to do it is to create a category class:</p>
+
+<pre><code>class CaseCategory {
+    static boolean isCase(Closure casePredicate, Object switchParameter) {
+        casePredicate.call switchParameter
+    }
+}
+</code></pre>
+
+<p>Now we can replace if-statement with the following switch:</p>
+
+<pre><code>use (CaseCategory) {
+    switch (param) {
+        case { it % 2 == 0 } : return 'even'
+        case { it % 3 == 0 } : return 'threeven'
+        case { 0 &lt; it }      : return 'positive'
+        default              : return 'negative'
+    }
+}
+</code></pre>
+
+<p>We can actually go further and extract in-line closures:</p>
+
+<pre><code>def even = {
+    it % 2 == 0
+}
+def threeven = {
+    it % 3 == 0
+}
+def positive = {
+    0 &lt; it
+}
+</code></pre>
+
+<p>After which the code becomes even more readable:</p>
+
+<pre><code>use (CaseCategory) {
+    switch (param) {
+        case even     : return 'even'
+        case threeven : return 'threeven'
+        case positive : return 'positive'
+        default       : return 'negative'
+    }
+}
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/06/01/reversing-groovy-switch-statement/">Reversing Groovy Switch Statement</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-01T08:00:00-04:00" pubdate data-updated="true">Jun 1<span>st</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Recently I&rsquo;ve been working on a Groovy code that had many methods with long multibranch conditionals like this:</p>
+
+<pre><code>def parse(message, options) {
+    if (options.contains('A')) {
+        parseARule message
+    } else if (options.contains(2)) {
+        parseSmallDigitRule message
+    ...
+    } else if (options.contains(something)) {
+        parseSomeRule message
+    } else {
+        parseSomeOtherRule message
+    }
+}
+</code></pre>
+
+<p>Although this code is working, it is hard to see which branch is called under which condition. It would be much better if we could replace this code with something like Lisp <code>cond</code> macro. The best candidate for such a task in Groovy would be a <code>switch</code> statement. If we could only refactor the code above to something like following, it would significantly improve readability:</p>
+
+<pre><code>def parse(message, options) {
+    switch (options) {
+        case 'A' : return parseARule(message)
+        case 2   : return parseSmallDigitRule(message)
+        ...
+        case ... : return parseSomeRule(message)
+        default  : return parseSomeOtherRule(message)
+    }
+}
+</code></pre>
+
+<p>Unfortunately, this code doesn&rsquo;t work out of the box in Groovy, but it works if we do some metaprogramming.</p>
+
+<p>The way <code>switch</code> statement works in Groovy is a bit <a href="http://docs.codehaus.org/display/GROOVY/Logical+Branching#LogicalBranching-switchstatement">different</a> than in Java. Instead of equals() it uses isCase() method to match case-value and switch-value. The default implementation of isCase() method falls back to equals() method, but some classes, including <a href="http://groovy.codehaus.org/groovy-jdk/java/util/Collection.html#isCase(java.lang.Object)">Collection</a>, override this behaviour. That&rsquo;s why in Groovy you can do things like this:</p>
+
+<pre><code>switch (value) {
+    case ['A','E','I','O','U'] : return 'vowel'
+    case 0..9                  : return 'digit'
+    case Date                  : return 'date'
+    default                    : return 'something else'
+}
+</code></pre>
+
+<p>For our purposes we need some sort of reverse <code>switch</code>, where collection is used as a switch-value, and String and Integer are used as a case-value. To do this we need to override default implementation of isCase() method on String and Integer classes. It&rsquo;s not possible in Java, but is very easy in Groovy. You can change method implementation globally by replacing it in corresponding meta class, or locally with the help of categories. Let&rsquo;s create a category that swaps object and subject of isCase() method:</p>
+
+<pre><code>class CaseCategory {
+    static boolean isCase(String string, Collection col) {
+        reverseCase(string, col)
+    }
+    static boolean isCase(Integer integer, Collection col) {
+        reverseCase(integer, col)
+    }
+    // Add more overloaded methods here if needed
+
+    private static boolean reverseCase(left, right) {
+        right.isCase(left)
+    }
+}
+</code></pre>
+
+<p>Now we can use this category to achieve the goal we stated at the beginning of this post:</p>
+
+<pre><code>def parse(message, options) {
+    use (CaseCategory) {
+        switch (options) {
+            case 'A' : return parseARule(message)
+            case 2   : return parseSmallDigitRule(message)
+            ...
+            case ... : return parseSomeRule(message)
+            default  : return parseSomeOtherRule(message)
+        }
+    }
+}
+</code></pre>
+
+<p>If you are comfortable with global method replacement, you can amend String and Integer meta classes. In this case you don&rsquo;t need to wrap <code>switch</code> statement with <code>use</code> keyword.</p>
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
     
     <a href="/archives">Blog Archives</a>
@@ -741,7 +945,7 @@ $ ps -ef | grep java
 <li class='category'><a href='/categories/craftsmanship/'>Craftsmanship (1)</a></li>
 <li class='category'><a href='/categories/education/'>Education (1)</a></li>
 <li class='category'><a href='/categories/erlang/'>Erlang (2)</a></li>
-<li class='category'><a href='/categories/groovy/'>Groovy (1)</a></li>
+<li class='category'><a href='/categories/groovy/'>Groovy (3)</a></li>
 <li class='category'><a href='/categories/humor/'>Humor (1)</a></li>
 <li class='category'><a href='/categories/mongodb/'>MongoDB (1)</a></li>
 <li class='category'><a href='/categories/programming/'>Programming (3)</a></li>
@@ -760,7 +964,7 @@ $ ps -ef | grep java
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012–2013 - Andrey Paramonov -
+  Copyright &copy; 2011–2013 - Andrey Paramonov -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> -
   <span class="credit">Hosted by <a href="http://github.com">GitHub</a></span>
 </p>
