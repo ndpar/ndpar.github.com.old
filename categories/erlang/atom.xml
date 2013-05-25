@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Erlang | Side Notes]]></title>
   <link href="http://ndpar.github.io/categories/erlang/atom.xml" rel="self"/>
   <link href="http://ndpar.github.io/"/>
-  <updated>2013-05-23T23:39:50-04:00</updated>
+  <updated>2013-05-24T22:07:08-04:00</updated>
   <id>http://ndpar.github.io/</id>
   <author>
     <name><![CDATA[Andrey Paramonov]]></name>
@@ -12,6 +12,84 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Joe Armstrong at MostlyErlang]]></title>
+    <link href="http://ndpar.github.io/2013/05/21/joe-armstrong-mostlyerlang/"/>
+    <updated>2013-05-21T15:13:01-04:00</updated>
+    <id>http://ndpar.github.io/2013/05/21/joe-armstrong-mostlyerlang</id>
+    <content type="html"><![CDATA[<p>The main guest at today&rsquo;s <a href="http://mostlyerlang.wordpress.com/2013/05/21/43/">MostlyErlang</a> podcast is Joe Armstrong, the co-inventor of Erlang, a wise man, and a brilliant speaker. I listened to the podcast few times, and every time enjoyed it. I highly recommend it to all programmers regardless whether they are using Erlang or not.</p>
+
+<p>While we are waiting for the oficial transcript, this post provides some highlights. I put here the quotes I found particularly interesting or funny.</p>
+
+<h2>Concurrency</h2>
+
+<blockquote><p>I&rsquo;ve got a blog on my GitHub, and I thouhgt I&rsquo;d put two different types of articles there and see what the response is. One theme I&rsquo;m pursuing is &ldquo;explaining to 5-year-old&rdquo; theme, and the other is &ldquo;technically complicated&rdquo; theme.</p></blockquote>
+
+<p>Then he describes the &ldquo;<a href="http://joearms.github.io/2013/04/05/concurrent-and-parallel-programming.html">concurrency vs parallelism</a>&rdquo; picture for 5 y.o.</p>
+
+<blockquote><p>That blog entry got 25,000 people read it, and they got 10 responses and quite a lot of criticism actually from people who know what concurrency and parallelism is. And then I compare it to some other articles I&rsquo;ve written that technically deeper. There you got only few hundred people read it.</p></blockquote>
+
+<p>I noticed it too. All those people, who responded with <a href="http://www.yosefk.com/blog/parallelism-and-concurrency-need-different-tools.html">long blogs</a> about concurrency, missed the point: This picture was for kids, and for kids it&rsquo;s a pretty good picture. Adults should go and read the technical papers, but they didn&rsquo;t.</p>
+
+<!-- more -->
+
+
+<h2>Let it crash</h2>
+
+<blockquote><p>Once upon a time we had a Leadership Election algorithm in Erlang. We got some theoreticians involved, and they proved the algorithm to be correct. It&rsquo;s been in practice for some time when we sent them a bug report, which showed that the thing elected two leaders, and we can reproduce it. And then they looked at this bug and went back at the code, and said the code is correct, but we had to make certain assumptions that this failure couldn&rsquo;t happen.</p></blockquote>
+
+<p>I like it. We should always keep it in mind: Before you prove anything, make sure, your assumptions are valid.</p>
+
+<h2>Favourite bad idea</h2>
+
+<blockquote><p>The first bad idea we put in Erlang is the process priorities. I don&rsquo;t think it&rsquo;s documented anywhere. It&rsquo;s definitely not in my book. It&rsquo;s not supposed to be documented — that&rsquo;s deliberate.</p></blockquote>
+
+<p><a href="http://www.erlangprogramming.org/">Erlang Programming</a> mentions the process priorities on page 113, but they wrote the whole paragraph explaining why it&rsquo;s a bad idea.</p>
+
+<blockquote><p>I was forced into position where I had to put them in [the language]. So I waited a few weeks and I put in an Erlang code that sets process priorities some integer, and this code didn&rsquo;t do anything at all. It was commented out. I shipped the system, and then I asked &ldquo;How do you like it with priorities?&rdquo; And they said &ldquo;Now it&rsquo;s much better!&rdquo;</p></blockquote>
+
+<p>Brilliant! Although, it pisses them off when people eventually find what&rsquo;s going on in the code.</p>
+
+<h2>Performance</h2>
+
+<blockquote><p>One thing I like about Erlang is it&rsquo;s got pretty predictible performance model.</p>
+
+<p>There was some guy on the mailing list that said &ldquo;I wrote a code that finds line breaks in the large file, and the result surprised me. I expected it to take this long, and it took a heck of a lot longer.&rdquo; I wrote a little benchmark and I couldn&rsquo;t see that effect. I mailed back &ldquo;mine didn&rsquo;t behave like that.&rdquo; Then he said &ldquo;There is another funny thing: the distribution of my file is not uniformed. I&rsquo;ve got extremly long lines in it, and the rest are the same.&rdquo; And from then it took Patrik five minutes to find a bug in the system. But if he hadn&rsquo;t made an observation &ldquo;this thing surprises me&rdquo; and didn&rsquo;t give this clue that it happened under these circumstances, that bug could be in the system for years. But people find performance thing and they don&rsquo;t tell us the fact they are surprised, so we can&rsquo;t debug it.</p></blockquote>
+
+<p>Lesson learned: If you <a href="http://code.mixpanel.com/2011/08/05/how-and-why-we-switched-from-erlang-to-python/">don&rsquo;t like</a> the performance of your Erlang code, don&rsquo;t be shy to speak up about it. Either you are doing something wrong or there is a bug in Erlang. Both things are fixable.</p>
+
+<h2>Scalability</h2>
+
+<blockquote><p><a href="http://www.ericsson.com/ourportfolio/products/sgsn-mme">MME</a> is a thing in the backbone of mobile telephony network, it makes all mobile data work. And it&rsquo;s written in Erlang. Smartphones wouldn&rsquo;t be able to connect to the network at all without MME. Now, Ericsson&rsquo;s got the biggest market share in the world for mobile base stations, for we do 40% of the total world market of 3G and CDMA and 60% of the world market for LTE and 4G. This gives us about 50% of the world market. That means Erlang&rsquo;s controlling 50% of all smartphones world wide.</p></blockquote>
+
+<p>That&rsquo;s impressive, and at the same time it&rsquo;s sad because people don&rsquo;t know about it. People are talking about Twitter scale, Google scale, or other sorts of &ldquo;web-scale&rdquo;, but they don&rsquo;t realize that most of the data Twitter and Google receive nowadays is comming through mobile network, which means most of Twitter and Google data is coming throug Erlang. Think about it.</p>
+
+<p>On the other hand, those who see the power of Erlang get big competitive advantage.</p>
+
+<blockquote><p>At Erlang user conference somebody from gaming company came to me and said &ldquo;Erlang&rsquo;s great! We have it on our server, and we managed to get 3 million connections on it!&rdquo; And he was overjoyed. It&rsquo;s fantastic. I said &ldquo;Great! You got to tell everybody…&rdquo; And he said &ldquo;No, no.&rdquo; — &ldquo;Why not?&rdquo; — &ldquo;Because we tell our competitiors we use Jigsaw.&rdquo;</p>
+
+<p>There is no commercial advantage from using Ruby on Rails or Java or anything else. You might go to the conferences and swap battle stories and swap tips. But if you actually found something which is bloody better, you are not going to tell anybody, are you?</p></blockquote>
+
+<p>Hm, maybe that&rsquo;s why I cannot find any software company in Toronto that&rsquo;s doing Erlang. Hey Toronto programmers, if you are programming in Erlang, please let me know — I won&rsquo;t tell your competitors, I promise.</p>
+
+<h2>Broken software</h2>
+
+<blockquote><p>Most of my time as a programmer is spent fixing broken stuff that shouldn&rsquo;t be broken. Whenever I&rsquo;m trying to do something, it doesn&rsquo;t work. I used to spend more than 50% of my time fixing trivial things, and the percentage of my time is increasing by year. If I look back 20 years ago, I din&rsquo;t spend 50% of my time fixing broken software. The software that was available was a lot lot simpler, and it was written by engineers and teams and by small group of people, and it didn&rsquo;t have errors in it. If we extrapolate this in 20 years time, it&rsquo;s going to be even more software, and 90% of it will be completely broken, unless we find better ways of structuring it and gluing things together.</p></blockquote>
+
+<p>So true. I have the same statistics. One third of my time I&rsquo;m shaving software yaks, and another third I&rsquo;m debugging protocols trying to figure out why my code is not working with another code.</p>
+
+<h2>Conference driven development</h2>
+
+<blockquote><p>I&rsquo;m giving a keynote at LambdaJam. I&rsquo;ve written a <a href="http://lambdajam.com/sessions#armstrong">flushing title</a> but I haven&rsquo;t written the talk yet.</p></blockquote>
+
+<p>Lesson learned: Next time you want to give a talk at a conference, come up with a catchy title, and think about the talk itself later.</p>
+
+<blockquote><p>I deliberately give myself titles for stuff I know nothing about, and I implement it all. You know, Robert did that for Lua. You know why Lua got developed in Erlang? Robert was going to give a talk on writing DSL in Erlang. I remember him talking to me &ldquo;I&rsquo;m giving a talk on implementing DSL in Erlang.&rdquo; I said &ldquo;Oh, yeah.&rdquo; And he said &ldquo;I don&rsquo;t know anything about it. I better implement Lua.&rdquo;</p></blockquote>
+
+<p>It&rsquo;s a really good idea to submit a conference proposal for the stuff you want to learn. When the proposal is accepted, you don&rsquo;t have a choice but go and study the thing. Otherwise you would procrastinate forever. I notice actually many people do that. Maybe I&rsquo;ll do the same with Erlang, at some point.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Code Retreat 2012]]></title>
