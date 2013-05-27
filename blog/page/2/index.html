@@ -9,7 +9,7 @@
   <meta name="author" content="Andrey Paramonov">
 
   
-  <meta name="description" content="I found these marvelous renderings of Ford circles on flickr. I can&rsquo;t help but share them here. ">
+  <meta name="description" content="Recently I had to copy some documents from one Solr server to another. I expected Solr already had an interface that allowed me to extract documents &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,85 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/10/01/exporting-solr-documents/">Exporting Solr Documents</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-01T08:00:00-04:00" pubdate data-updated="true">Oct 1<span>st</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Recently I had to copy some documents from one <a href="http://lucene.apache.org/solr/">Solr</a> server to another. I expected Solr already had an interface that allowed me to extract documents in the same format they were inserted. In that case I would pipe an output of one curl command to another, and consider the job done. As it turned out, the format of Solr input document is different than the output format. Here is how input document looks like:</p>
+
+<pre><code>&lt;add&gt;
+    &lt;doc&gt;
+        &lt;field name="id"&gt;12345&lt;/field&gt;
+        &lt;field name="articlestate"&gt;published&lt;/field&gt;
+        &lt;field name="articletype"&gt;news&lt;/field&gt;
+        &lt;field name="body"&gt;Lorem ipsum dolor...&lt;/field&gt;
+        &lt;field name="referenceid"&gt;175820&lt;/field&gt;
+        &lt;field name="referenceid"&gt;163786&lt;/field&gt;
+        &lt;field name="created"&gt;2011-02-15T14:57:54.766Z&lt;/field&gt;
+    &lt;/doc&gt;
+&lt;/add&gt;
+</code></pre>
+
+<p>Notice the flat structure of this document: all element names are the same regardless of the filed type, and arrays (referenceid) are not grouped. Now compare it to the output format. Here is what you get when you execute a query against a Solr server:</p>
+
+<pre><code>&lt;response&gt;
+    &lt;lst name="responseHeader"&gt;
+        &lt;int name="status"&gt;0&lt;/int&gt;
+        &lt;int name="QTime"&gt;1&lt;/int&gt;
+        &lt;lst name="params"&gt;
+            &lt;str name="q"&gt;id:12345&lt;/str&gt;
+        &lt;/lst&gt;
+    &lt;/lst&gt;
+    &lt;result name="response" numFound="1" start="0"&gt;
+        &lt;doc&gt;
+            &lt;str name="id"&gt;12345&lt;/str&gt;
+            &lt;str name="articlestate"&gt;published&lt;/str&gt;
+            &lt;str name="articletype"&gt;news&lt;/str&gt;
+            &lt;str name="body"&gt;Lorem ipsum dolor...&lt;/str&gt;
+            &lt;arr name="referenceid"&gt;
+                &lt;str&gt;175820&lt;/str&gt;
+                &lt;str&gt;163786&lt;/str&gt;
+            &lt;/arr&gt;
+            &lt;date name="created"&gt;2011-02-15T14:57:54.766Z&lt;/date&gt;
+        &lt;/doc&gt;
+    &lt;/result&gt;
+&lt;/response&gt;
+</code></pre>
+
+<p>Even if we ignore the response header, the structure of the response/result/doc is not the same as of input document: the element names reflect the types, the arrays are grouped. If you try to add this document to a Solr server, you will get an error &ldquo;unexpected XML tag&rdquo;, obviously. I googled for couple hours on how to convert an output document to an input, and, to my surprise, didn&rsquo;t find any solution. Therefore I implemented my own converter in Groovy, which solved the problem. I post it <a href="http://gist.github.com/3813775">here</a> in case somebody needs it.</p>
+
+<p>Note: You can also use this script to re-index Solr.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -538,6 +617,10 @@ B/B
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/05/26/entrepreneur/">To Be or Not to Be… Entrepreneur</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/05/21/joe-armstrong-mostlyerlang/">Joe Armstrong at MostlyErlang</a>
       </li>
     
@@ -551,10 +634,6 @@ B/B
     
       <li class="post">
         <a href="/2013/01/15/embrace-big-data/">Embrace Big Data</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/12/15/rabbitmq-activemq-zeromq-hornetq/">RabbitMQ, ActiveMQ, ZeroMQ, HornetQ</a>
       </li>
     
   </ul>
@@ -615,6 +694,7 @@ B/B
 <li class='category'><a href='/categories/conference/'>Conference (1)</a></li>
 <li class='category'><a href='/categories/craftsmanship/'>Craftsmanship (1)</a></li>
 <li class='category'><a href='/categories/education/'>Education (1)</a></li>
+<li class='category'><a href='/categories/entrepreneurship/'>Entrepreneurship (1)</a></li>
 <li class='category'><a href='/categories/erlang/'>Erlang (2)</a></li>
 <li class='category'><a href='/categories/groovy/'>Groovy (4)</a></li>
 <li class='category'><a href='/categories/humor/'>Humor (1)</a></li>
@@ -622,7 +702,7 @@ B/B
 <li class='category'><a href='/categories/lisp/'>Lisp (2)</a></li>
 <li class='category'><a href='/categories/math/'>Math (3)</a></li>
 <li class='category'><a href='/categories/mongodb/'>MongoDB (1)</a></li>
-<li class='category'><a href='/categories/programming/'>Programming (4)</a></li>
+<li class='category'><a href='/categories/programming/'>Programming (5)</a></li>
 <li class='category'><a href='/categories/python/'>Python (2)</a></li>
 <li class='category'><a href='/categories/rabbitmq/'>RabbitMQ (1)</a></li>
 <li class='category'><a href='/categories/solr/'>Solr (1)</a></li>
