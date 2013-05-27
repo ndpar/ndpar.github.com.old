@@ -4,7 +4,7 @@
   <title><![CDATA[Side Notes]]></title>
   <link href="http://blog.ndpar.com/atom.xml" rel="self"/>
   <link href="http://blog.ndpar.com/"/>
-  <updated>2013-05-26T17:31:20-04:00</updated>
+  <updated>2013-05-26T20:28:03-04:00</updated>
   <id>http://blog.ndpar.com/</id>
   <author>
     <name><![CDATA[Andrey Paramonov]]></name>
@@ -2324,6 +2324,105 @@ resources/public/js/jquery.tablesorter.js
 <p>Even if we ignore the response header, the structure of the response/result/doc is not the same as of input document: the element names reflect the types, the arrays are grouped. If you try to add this document to a Solr server, you will get an error &ldquo;unexpected XML tag&rdquo;, obviously. I googled for couple hours on how to convert an output document to an input, and, to my surprise, didn&rsquo;t find any solution. Therefore I implemented my own converter in Groovy, which solved the problem. I post it <a href="http://gist.github.com/3813775">here</a> in case somebody needs it.</p>
 
 <p>Note: You can also use this script to re-index Solr.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ford marbles]]></title>
+    <link href="http://blog.ndpar.com/2011/11/05/ford-marbles/"/>
+    <updated>2011-11-05T08:00:00-04:00</updated>
+    <id>http://blog.ndpar.com/2011/11/05/ford-marbles</id>
+    <content type="html"><![CDATA[<p>I found these marvelous renderings of Ford circles on <a href="http://www.flickr.com/photos/fdecomite/2564742912/in/photostream">flickr</a>. I can&rsquo;t help but share them here.</p>
+
+<p><img class="center" src="http://farm4.static.flickr.com/3189/2564742912_d0faf59e38_z.jpg"></p>
+
+<!-- more -->
+
+
+<p><img class="center" src="http://farm4.static.flickr.com/3076/2563846663_6d0f428f08_z.jpg"></p>
+
+<p><img class="center" src="http://farm4.static.flickr.com/3165/2564630336_d35c4ccf04_z.jpg"></p>
+
+<p>As <a href="http://blog.ndpar.com/2011/08/06/thomaes-function/">Thomae&rsquo;s function</a>, <a href="http://en.wikipedia.org/wiki/Ford_circle">Ford circles</a> is another visual representation of rational numbers. You can investigate them <a href="http://demonstrations.wolfram.com/FordCircles/">here</a> with interactive Wolfram demo.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Modulo who?]]></title>
+    <link href="http://blog.ndpar.com/2011/09/16/modulo-who/"/>
+    <updated>2011-09-16T08:00:00-04:00</updated>
+    <id>http://blog.ndpar.com/2011/09/16/modulo-who</id>
+    <content type="html"><![CDATA[<p>When programmer and mathematician are talking about modulus or modulo, there is often a confusion what this term means. For programmer <a href="http://en.wikipedia.org/wiki/Modulo_operator">modulo</a> means an operator that finds the <em>remainder</em> of division of one number by another, e.g. 5&nbsp;mod&nbsp;2 = 1. For mathematician <a href="http://en.wikipedia.org/wiki/Modular_arithmetic">modulo</a> is a <em>congruence</em> relation between two numbers: <em>a</em> and <em>b</em> are said to be congruent modulo <em>n</em>, written <em>a</em>&nbsp;&#8801;&nbsp;<em>b</em>&nbsp;(mod&nbsp;<em>n</em>), if their difference <em>a</em>&nbsp;&#8722;&nbsp;<em>b</em> is an integer multiple of <em>n</em>.</p>
+
+<p>These two definitions are not equivalent. The former is a special case of the latter: if <em>b</em>&nbsp;mod&nbsp;<em>n</em> = <em>a</em> then <em>a</em>&nbsp;&#8801;&nbsp;<em>b</em>&nbsp;(mod&nbsp;<em>n</em>). The inverse is not true in general case. 5&nbsp;mod&nbsp;2 = 1, and 1&nbsp;&#8801;&nbsp;5&nbsp;(mod&nbsp;2) because 1&nbsp;&ndash;&nbsp;5&nbsp;=&nbsp;–4 is integer multiple of 2. Now 5&nbsp;&#8801;&nbsp;1&nbsp;(mod&nbsp;2), because 5&nbsp;&ndash;&nbsp;1&nbsp;=&nbsp;4 is evenly divisible by 2, but 1&nbsp;mod&nbsp;2 = 1, not 5.</p>
+
+<p>The biggest confusion happens when programmer and mathematician start arguing about Gauss&#8217; famous <a href="http://mathworld.wolfram.com/QuadraticReciprocityTheorem.html">Golden Theorem</a> where both definitions of modulus can be used.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Thomae's function]]></title>
+    <link href="http://blog.ndpar.com/2011/08/06/thomaes-function/"/>
+    <updated>2011-08-06T08:00:00-04:00</updated>
+    <id>http://blog.ndpar.com/2011/08/06/thomaes-function</id>
+    <content type="html"><![CDATA[<p><a href="http://en.wikipedia.org/wiki/Thomae%27s_function">Thomae&rsquo;s function</a> (a.k.a. Riemann function) is defined on the interval (0, 1) as follows</p>
+
+<p><img class="center" src="http://blog.ndpar.com/images/posts/thomae-def.png"></p>
+
+<p>Here is the graph of this function with some points highlighted as plus symbols for better view.</p>
+
+<p><img class="center" src="http://blog.ndpar.com/images/posts/thomae.jpg"></p>
+
+<p>This function has interesting property: it&rsquo;s continuous at all irrational numbers. It&rsquo;s easy to see this if you notice that for any positive <em>ε</em> there is finite number of points above the line <em>y</em> = <em>ε</em>. That means for any irrational number <em>x</em><sub>0</sub> you can always construct a <em>δ</em>-neighbourhood that doesn&rsquo;t contain any point from the area above the line <em>y</em> = <em>ε</em>.</p>
+
+<p><img class="center" src="http://blog.ndpar.com/images/posts/thomae-e-d.jpg"></p>
+
+<p>To generate the data file with point coordinates I wrote Common Lisp program:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='common-lisp'><span class='line'><span class="p">(</span><span class="nb">defun</span> <span class="nv">rational-numbers</span> <span class="p">(</span><span class="nv">max-denominator</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">result</span> <span class="p">(</span><span class="nb">list</span><span class="p">)))</span>
+</span><span class='line'>    <span class="p">(</span><span class="nb">loop</span> <span class="nv">for</span> <span class="nv">q</span> <span class="nv">from</span> <span class="mi">2</span> <span class="nv">to</span> <span class="nv">max-denominator</span> <span class="nb">do</span>
+</span><span class='line'>      <span class="p">(</span><span class="nb">loop</span> <span class="nv">for</span> <span class="nv">p</span> <span class="nv">from</span> <span class="mi">1</span> <span class="nv">to</span> <span class="p">(</span><span class="nb">1-</span> <span class="nv">q</span><span class="p">)</span> <span class="nb">do</span>
+</span><span class='line'>        <span class="p">(</span><span class="nb">pushnew</span> <span class="p">(</span><span class="nb">/</span> <span class="nv">p</span> <span class="nv">q</span><span class="p">)</span> <span class="nv">result</span><span class="p">)))</span>
+</span><span class='line'>    <span class="nv">result</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">(</span><span class="nb">defun</span> <span class="nv">thomae-rational-points</span> <span class="p">(</span><span class="nv">abscissae</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">(</span><span class="nb">mapcar</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="nv">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">list</span> <span class="nv">x</span> <span class="p">(</span><span class="nb">/</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">denominator</span> <span class="nv">x</span><span class="p">))))</span> <span class="nv">abscissae</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">(</span><span class="nb">defun</span> <span class="nv">thomae</span> <span class="p">(</span><span class="nv">max-denominator</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">points</span> <span class="p">(</span><span class="nv">thomae-rational-points</span> <span class="p">(</span><span class="nv">rational-numbers</span> <span class="nv">max-denominator</span><span class="p">))))</span>
+</span><span class='line'>    <span class="p">(</span><span class="nb">with-open-file</span> <span class="p">(</span><span class="nc">stream</span> <span class="s">&quot;thomae.dat&quot;</span> <span class="ss">:direction</span> <span class="ss">:output</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">(</span><span class="nb">loop</span> <span class="nv">for</span> <span class="nv">point</span> <span class="nv">in</span> <span class="nv">points</span> <span class="nb">do</span>
+</span><span class='line'>        <span class="p">(</span><span class="nb">format</span> <span class="nc">stream</span> <span class="s">&quot;~4$ ~4$~%&quot;</span> <span class="p">(</span><span class="nb">first</span> <span class="nv">point</span><span class="p">)</span> <span class="p">(</span><span class="nb">second</span> <span class="nv">point</span><span class="p">))))))</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">(</span><span class="nv">thomae</span> <span class="mi">500</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>To create the images I used <a href="http://www.gnuplot.info/">gnuplot</a> commands:</p>
+
+<pre><code>plot "thomae.dat" using 1:2 with dots
+plot "thomae.dat" using 1:2 with points
+</code></pre>
+
+<p>and Photoshop.</p>
 ]]></content>
   </entry>
   
