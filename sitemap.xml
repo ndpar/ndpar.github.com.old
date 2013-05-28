@@ -1,6 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
+        <loc>http://blog.ndpar.com/2011/02/03/lazy-lists-in-groovy/</loc>
+        <lastmod>2013-05-28T19:13:09-04:00</lastmod>
+    </url>
+    <url>
         <loc>http://blog.ndpar.com/2011/06/01/reversing-groovy-switch-statement/</loc>
         <lastmod>2013-05-25T19:28:36-04:00</lastmod>
     </url>
@@ -78,15 +82,15 @@
     </url>
     <url>
         <loc>http://blog.ndpar.com/about/</loc>
-        <lastmod>2013-05-27T19:54:50-04:00</lastmod>
+        <lastmod>2013-05-28T19:13:09-04:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ndpar.com/archives/</loc>
-        <lastmod>2013-05-27T19:54:50-04:00</lastmod>
+        <lastmod>2013-05-28T19:13:09-04:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ndpar.com/</loc>
-        <lastmod>2013-05-27T19:54:50-04:00</lastmod>
+        <lastmod>2013-05-28T19:13:09-04:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ndpar.com/robots.txt</loc>
