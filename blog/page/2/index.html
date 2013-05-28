@@ -341,6 +341,62 @@ plot "thomae.dat" using 1:2 with points
       
   <header>
     
+      <h1 class="entry-title"><a href="/2011/06/27/math-and-physics-of-benderama/">Math and Physics of Benderama</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-27T08:00:00-04:00" pubdate data-updated="true">Jun 27<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The last episode of <a href="http://theinfosphere.org/Benderama">Futurama</a> has interesting formula involved. The entire plot is based on the Professor&rsquo;s latest invention &mdash; <a href="http://en.wikipedia.org/wiki/Banach&amp;#8211;Tarski_paradox">Banach-Tarski</a> Dupla-Shrinker &mdash; the machine that produces two copies of any object at a 60% scale. It was just a matter of time when Bender found a proper usage of this machine: to replicate himself. Then two small copies of Bender replicated themselves making four smaller copies, and so forth. At some point the Professor horrified the crew that if they don&rsquo;t stop this unlimited growth, the total mass of all Benders will eventually be so big that the entire Earth will be consumed during the process of replication. As a proof he demonstrated this formula of the mass of all generations of Bender</p>
+
+<p><img class="center" src="http://pool.theinfosphere.org/images/thumb/0/04/Benderama_Maths.png/800px-Benderama_Maths.png"></p>
+
+<p>This is a perfect toy for a science geek. The first obvious question it brings: is this formula mathematically correct? As it turns out, it is not. Considering the scale of 60%, the cubic dependency of volume on linear dimension, and the constant density of all copies, the formula should be the following</p>
+
+<p><img class="center" src="/images/posts/benderama-mass.png"></p>
+
+<p>As you can see the total mass of infinite number of Benders actually converges to approximately 1.76 <em>M</em><sub>0</sub>. So from Math perspective there is nothing to worry about. But what if our assumption of constant density is invalid. Would it be a problem from Physics perspective? Let&rsquo;s see.</p>
+
+<p>Knowing that every new copy has a size of 0.6 of the original it was made from, we have the following formula for the size of Bender in the <em>n</em><sup>th</sup> generation</p>
+
+<p><img class="center" src="/images/posts/benderama-length.png"></p>
+
+<p>This exponential function becomes very small pretty soon. In the <a href="http://www.wolframalpha.com/input/?i=0.6%5E154">154</a><sup>th</sup> generation it already reaches the <a href="http://en.wikipedia.org/wiki/Planck_length">Planck length</a>, after which the further replication is physically impossible. If we calculate the total mass of 154 Bender&rsquo;s generations using the Professor&rsquo;s formula, we get <a href="http://www.wolframalpha.com/input/?i=H%28154%29">H(154)</a> &#215; <a href="http://www.peelified.com/Futurama-Forum-1/Topic-4095-0-Benders_Weight.html">238</a> kg &#8776; 1,337.56 kg, which is nothing comparing to the Earth mass.</p>
+
+<p>So we have to admit that from both Math and Physics perspective the Professor was wrong, and there was no real threat to the Earth.</p>
+
+<p>Although the Professor&rsquo;s formula doesn&rsquo;t describe the replication process adequately, it&rsquo;s still a beautiful piece of Math because it&rsquo;s a formula of <a href="http://en.wikipedia.org/wiki/Harmonic_series_(mathematics)">harmonic series</a>. If you want to know why harmonic series is beautiful and which real processes it describes, read this nice <a href="http://plus.maths.org/content/perfect-harmony">article</a> of John H. Webb.</p>
+
+<p>And don&rsquo;t miss the next <a href="http://theinfosphere.org/Ghost_in_the_Machines">episode</a> of Futurama this Thursday :&ndash;)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/2011/06/08/functional-groovy-switch-statement/">Functional Groovy Switch Statement</a></h1>
     
     
@@ -424,6 +480,44 @@ def positive = {
     }
 }
 </code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/06/07/nothing-new-under-sun/">Nothing New Under the Sun</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-07T08:00:00-04:00" pubdate data-updated="true">Jun 7<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Every generation of software developers needs its own fad. For my generation it was Agile, for generation before it was OOP, and before that it was another big thing. Gerald Weinberg, one of the most influential people in our industry, blogged yesterday about this issue. With over 50 years of experience in software development he knows what he is talking about. Read his <a href="http://secretsofconsulting.blogspot.com/2011/06/beyond-agile-programming.html">blog post</a> — he has a very good point.</p>
+
+<p>P.S. I&rsquo;m wondering what will be the next big thing. Will it be Cloud or <a href="/2013/01/15/embrace-big-data/">Big Data</a>?</p>
 </div>
   
   
@@ -687,8 +781,9 @@ B/B
   <h1>Categories</h1>
   <ul id="categories">
     <li class='category'><a href='/categories/activemq/'>ActiveMQ (1)</a></li>
+<li class='category'><a href='/categories/agile/'>Agile (1)</a></li>
 <li class='category'><a href='/categories/art/'>Art (1)</a></li>
-<li class='category'><a href='/categories/buzz/'>Buzz (1)</a></li>
+<li class='category'><a href='/categories/buzz/'>Buzz (2)</a></li>
 <li class='category'><a href='/categories/clojure/'>Clojure (3)</a></li>
 <li class='category'><a href='/categories/clustering/'>Clustering (1)</a></li>
 <li class='category'><a href='/categories/conference/'>Conference (1)</a></li>
@@ -697,10 +792,10 @@ B/B
 <li class='category'><a href='/categories/entrepreneurship/'>Entrepreneurship (1)</a></li>
 <li class='category'><a href='/categories/erlang/'>Erlang (2)</a></li>
 <li class='category'><a href='/categories/groovy/'>Groovy (4)</a></li>
-<li class='category'><a href='/categories/humor/'>Humor (1)</a></li>
+<li class='category'><a href='/categories/humor/'>Humor (2)</a></li>
 <li class='category'><a href='/categories/java/'>Java (2)</a></li>
 <li class='category'><a href='/categories/lisp/'>Lisp (2)</a></li>
-<li class='category'><a href='/categories/math/'>Math (3)</a></li>
+<li class='category'><a href='/categories/math/'>Math (4)</a></li>
 <li class='category'><a href='/categories/mongodb/'>MongoDB (1)</a></li>
 <li class='category'><a href='/categories/programming/'>Programming (5)</a></li>
 <li class='category'><a href='/categories/python/'>Python (2)</a></li>

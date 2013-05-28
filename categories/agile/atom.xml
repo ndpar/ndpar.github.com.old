@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Buzz | Side Notes]]></title>
-  <link href="http://blog.ndpar.com/categories/buzz/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Agile | Side Notes]]></title>
+  <link href="http://blog.ndpar.com/categories/agile/atom.xml" rel="self"/>
   <link href="http://blog.ndpar.com/"/>
   <updated>2013-05-27T21:41:15-04:00</updated>
   <id>http://blog.ndpar.com/</id>
@@ -12,15 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[Embrace Big Data]]></title>
-    <link href="http://blog.ndpar.com/2013/01/15/embrace-big-data/"/>
-    <updated>2013-01-15T07:00:00-05:00</updated>
-    <id>http://blog.ndpar.com/2013/01/15/embrace-big-data</id>
-    <content type="html"><![CDATA[<p><img class="center" src="/images/posts/BigData.jpg"></p>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[Nothing new under the Sun]]></title>
