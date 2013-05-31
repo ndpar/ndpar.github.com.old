@@ -4,7 +4,7 @@
   <title><![CDATA[Category: RabbitMQ | Side Notes]]></title>
   <link href="http://blog.ndpar.com/categories/rabbitmq/atom.xml" rel="self"/>
   <link href="http://blog.ndpar.com/"/>
-  <updated>2013-05-28T19:16:21-04:00</updated>
+  <updated>2013-05-30T20:21:32-04:00</updated>
   <id>http://blog.ndpar.com/</id>
   <author>
     <name><![CDATA[Andrey Paramonov]]></name>
@@ -673,6 +673,224 @@
 <li><p>MongoDB is really nice! Its aggregation framework is powerful and easy to use. It was fun playing with it.</p></li>
 </ol>
 
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Get started with RabbitMQ]]></title>
+    <link href="http://blog.ndpar.com/2010/03/14/get-started-with-rabbitmq/"/>
+    <updated>2010-03-14T08:00:00-04:00</updated>
+    <id>http://blog.ndpar.com/2010/03/14/get-started-with-rabbitmq</id>
+    <content type="html"><![CDATA[<p><a href="http://www.rabbitmq.com">RabbitMQ</a> is an open-source implementation of <a href="http://en.wikipedia.org/wiki/AMQP">AMQP</a>. If you don&rsquo;t know what AMQP is, I encourage you to read about it on the official web site or the reference <a href="http://www.rabbitmq.com/how.html">page</a>. What <em>I</em> personally like in RabbitMQ/AMQP is</p>
+
+<ul>
+<li>AMQP is a free alternative to expensive TIBCO Randezvous.</li>
+<li>Functionality-wise AMQP is a superset of JMS.</li>
+<li>RabbitMQ is written in Erlang, which means fault-tolerance and reliability.</li>
+</ul>
+
+
+<p>In this short blog entry I show how to install RabbitMQ on a *nix box, and verify that it&rsquo;s working with a simple Groovy client.</p>
+
+<!-- more -->
+
+
+<h2>Installing RabbitMQ server</h2>
+
+<p>Before installing RabbitMQ make sure you have Erlang environment set up. Run the following command and verify the output</p>
+
+<pre><code>$ erl -version
+Erlang (ASYNC_THREADS,HIPE) (BEAM) emulator version 5.10.1
+</code></pre>
+
+<p>I used to install RabbitMQ using apt-get command, which is convenient but always several versions behind. That&rsquo;s why I switched to <a href="http://www.rabbitmq.com/install-generic-unix.html">binary distribution</a> installation. So here are the installation steps</p>
+
+<pre><code>$ sudo mkdir /opt/rabbitmq
+$ sudo chown -R rabbitmq /opt/rabbitmq
+$ cd /opt/rabbitmq
+$ wget http://www.rabbitmq.com/releases/rabbitmq-server/v3.1.1/rabbitmq-server-generic-unix-3.1.1.tar.gz
+$ tar xf rabbitmq-server-generic-unix-3.1.1.tar.gz
+$ rm rabbitmq-server-generic-unix-3.1.1.tar.gz
+$ ln -s rabbitmq_server-3.1.1 rabbitmq
+</code></pre>
+
+<p>Append the following lines to <em>~/.bashrc</em></p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>~/.bashrc </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">RABBITMQ_HOME</span><span class="o">=</span>/opt/rabbitmq/rabbitmq
+</span><span class='line'><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$RABBITMQ_HOME</span>/sbin
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Enable web admin plugin</p>
+
+<pre><code>$ rabbitmq-plugins enable rabbitmq_management
+</code></pre>
+
+<p>Run the following command to verify server is starting</p>
+
+<pre><code>$ rabbitmq-server
+
+              RabbitMQ 3.1.1. Copyright (C) 2007-2013 VMware, Inc.
+  ##  ##      Licensed under the MPL.  See http://www.rabbitmq.com/
+  ##  ##
+  ##########  Logs: /opt/rabbitmq/rabbitmq/sbin/../var/log/rabbitmq/rabbit@beta.log
+  ######  ##        /opt/rabbitmq/rabbitmq/sbin/../var/log/rabbitmq/rabbit@beta-sasl.log
+  ##########
+              Starting broker... completed with 6 plugins.
+</code></pre>
+
+<p>Go to <a href="http://localhost:15672">localhost:15672</a> in the browser. You should be able to login as guest/guest.</p>
+
+<h2>Groovy client</h2>
+
+<p>Groovy client is essentially Java client written in Groovy language. Here are the scripts for consumer and publisher in Groovy</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>consumer.groovy </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="o">&lt;</span><span class="s">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s">&lt;h1&gt;!/</span><span class="n">usr</span><span class="s">/bin/</span><span class="n">env</span> <span class="n">groovy</span><span class="o">&lt;</span><span class="s">/h1&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s">&lt;p&gt;import com.rabbitmq.client.*&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="nd">@Grab</span><span class="o">(</span><span class="n">group</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="o">;</span><span class="n">com</span><span class="o">.</span><span class="na">rabbitmq</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="o">;,</span> <span class="n">module</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="o">;</span><span class="n">amqp</span><span class="o">-</span><span class="n">client</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="o">;,</span> <span class="n">version</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="o">;</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">0</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="o">;)</span>
+</span><span class='line'><span class="n">factory</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ConnectionFactory</span><span class="o">([&lt;</span><span class="s">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s">&lt;pre&gt;&lt;code&gt;username: &#39;guest&#39;,</span>
+</span><span class='line'><span class="s">password: &#39;guest&#39;,</span>
+</span><span class='line'><span class="s">virtualHost: &#39;/</span><span class="err">&#39;</span><span class="o">,</span>
+</span><span class='line'><span class="nl">requestedHeartbeat:</span> <span class="mi">0</span>
+</span><span class='line'><span class="o">&lt;</span><span class="s">/code&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;])</span>
+</span><span class='line'><span class="n">conn</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="na">newConnection</span><span class="o">(</span><span class="k">new</span> <span class="n">Address</span><span class="o">(&amp;</span><span class="n">lsquo</span><span class="o">;</span><span class="n">localhost</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="o">;,</span> <span class="mi">5672</span><span class="o">))</span>
+</span><span class='line'><span class="n">channel</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="na">createChannel</span><span class="o">()&lt;</span><span class="s">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s">&lt;p&gt;queueName = &amp;lsquo;myQueue&amp;rsquo;&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">channel</span><span class="o">.</span><span class="na">queueDeclare</span> <span class="n">queueName</span><span class="o">,</span> <span class="kc">false</span><span class="o">,</span> <span class="kc">true</span><span class="o">,</span> <span class="kc">true</span><span class="o">,</span> <span class="o">[:]</span>
+</span><span class='line'><span class="n">channel</span><span class="o">.</span><span class="na">queueBind</span> <span class="n">queueName</span><span class="o">,</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="o">;</span><span class="n">amq</span><span class="o">.</span><span class="na">fanout</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="o">;,</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="o">;</span><span class="n">myRoutingKey</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="o">;&lt;</span><span class="s">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s">&lt;p&gt;def consumer = new QueueingConsumer(channel)</span>
+</span><span class='line'><span class="s">channel.basicConsume queueName, false, consumer&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">while</span> <span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{&lt;</span><span class="s">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s">&lt;pre&gt;&lt;code&gt;delivery = consumer.nextDelivery()</span>
+</span><span class='line'><span class="s">println &quot;Received message: ${new String(delivery.body)}&quot;</span>
+</span><span class='line'><span class="s">channel.basicAck delivery.envelope.deliveryTag, false</span>
+</span><span class='line'><span class="s">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;}</span>
+</span><span class='line'><span class="n">channel</span><span class="o">.</span><span class="na">close</span><span class="o">()</span>
+</span><span class='line'><span class="n">conn</span><span class="o">.</span><span class="na">close</span><span class="o">()</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>publisher.groovy </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="o">&lt;</span><span class="s">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s">&lt;h1&gt;!/</span><span class="n">usr</span><span class="s">/bin/</span><span class="n">env</span> <span class="n">groovy</span><span class="o">&lt;</span><span class="s">/h1&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s">&lt;p&gt;import com.rabbitmq.client.*&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="nd">@Grab</span><span class="o">(</span><span class="n">group</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="o">;</span><span class="n">com</span><span class="o">.</span><span class="na">rabbitmq</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="o">;,</span> <span class="n">module</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="o">;</span><span class="n">amqp</span><span class="o">-</span><span class="n">client</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="o">;,</span> <span class="n">version</span><span class="o">=&amp;</span><span class="n">lsquo</span><span class="o">;</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">0</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="o">;)</span>
+</span><span class='line'><span class="n">factory</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ConnectionFactory</span><span class="o">([&lt;</span><span class="s">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s">&lt;pre&gt;&lt;code&gt;username: &#39;guest&#39;,</span>
+</span><span class='line'><span class="s">password: &#39;guest&#39;,</span>
+</span><span class='line'><span class="s">virtualHost: &#39;/</span><span class="err">&#39;</span><span class="o">,</span>
+</span><span class='line'><span class="nl">requestedHeartbeat:</span> <span class="mi">0</span>
+</span><span class='line'><span class="o">&lt;</span><span class="s">/code&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;])</span>
+</span><span class='line'><span class="n">conn</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="na">newConnection</span><span class="o">(</span><span class="k">new</span> <span class="n">Address</span><span class="o">(&amp;</span><span class="n">lsquo</span><span class="o">;</span><span class="n">localhost</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="o">;,</span> <span class="mi">5672</span><span class="o">))</span>
+</span><span class='line'><span class="n">channel</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="na">createChannel</span><span class="o">()&lt;</span><span class="s">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s">&lt;p&gt;channel.basicPublish &amp;lsquo;amq.fanout&amp;rsquo;, &amp;lsquo;myRoutingKey&amp;rsquo;, null, &amp;ldquo;Hello, world!&amp;rdquo;.bytes&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">channel</span><span class="o">.</span><span class="na">close</span><span class="o">()</span>
+</span><span class='line'><span class="n">conn</span><span class="o">.</span><span class="na">close</span><span class="o">()</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Run consumer script in one terminal window</p>
+
+<pre><code>$ chmod 755 consumer.groovy
+$ ./consumer.groovy
+</code></pre>
+
+<p>and publisher script in another</p>
+
+<pre><code>$ chmod 755 publisher.groovy
+$ ./publisher.groovy
+</code></pre>
+
+<p>On the consumer window you should see <em>Received message: Hello, world!</em> text.</p>
+
+<p>Now you just need to stop RabbitMQ server, and restart it in detached mode</p>
+
+<pre><code>$ sudo -u rabbitmq rabbitmq-server -detached
+</code></pre>
 ]]></content>
   </entry>
   
