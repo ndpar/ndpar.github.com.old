@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Git | Side Notes]]></title>
+  <link href="http://blog.ndpar.com/categories/git/atom.xml" rel="self"/>
+  <link href="http://blog.ndpar.com/"/>
+  <updated>2013-06-03T21:50:29-04:00</updated>
+  <id>http://blog.ndpar.com/</id>
+  <author>
+    <name><![CDATA[Andrey Paramonov]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Counting modifications in Git repository]]></title>
+    <link href="http://blog.ndpar.com/2011/01/29/counting-modifications-in-git/"/>
+    <updated>2011-01-29T07:00:00-05:00</updated>
+    <id>http://blog.ndpar.com/2011/01/29/counting-modifications-in-git</id>
+    <content type="html"><![CDATA[<p>Michael Feathers wrote a <a href="http://michaelfeathers.typepad.com/michael_feathers_blog/2011/01/measuring-the-closure-of-code.html">blog</a> about Open-Closed Principle, where he described simple technique that measures the closure of the code. I created a Groovy <a href="https://github.com/ndpar/utilities/blob/master/git-files-modified.groovy">script</a> which implements this algorithm for Git repositories. If you run it from the root of your Git project, it produces a CSV file with the statistics of how many times the files have been modified.</p>
+
+<p>As an example, here is the top 10 files from <a href="https://github.com/rabbitmq/rabbitmq-server">rabbitmq-server</a> repository</p>
+
+<pre><code>845  src/rabbit_amqqueue_process.erl
+711  src/rabbit_channel.erl
+650  src/rabbit_tests.erl
+588  src/rabbit_variable_queue.erl
+457  src/rabbit_amqqueue.erl
+448  src/rabbit_mnesia.erl
+405  src/rabbit.erl
+395  src/rabbit_reader.erl
+360  src/rabbit_msg_store.erl
+356  src/rabbit_exchange.erl
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

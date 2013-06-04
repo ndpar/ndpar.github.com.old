@@ -2,11 +2,19 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://blog.ndpar.com/2010/02/23/get-started-with-ejabberd/</loc>
-        <lastmod>2013-06-02T10:28:31-04:00</lastmod>
+        <lastmod>2013-06-03T17:22:49-04:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ndpar.com/2010/03/14/get-started-with-rabbitmq/</loc>
         <lastmod>2013-05-30T20:19:15-04:00</lastmod>
+    </url>
+    <url>
+        <loc>http://blog.ndpar.com/2010/03/31/integrating-rabbitmq-with-ejabberd/</loc>
+        <lastmod>2013-06-03T21:47:57-04:00</lastmod>
+    </url>
+    <url>
+        <loc>http://blog.ndpar.com/2011/01/29/counting-modifications-in-git/</loc>
+        <lastmod>2013-06-02T22:16:55-04:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ndpar.com/2011/02/03/lazy-lists-in-groovy/</loc>
@@ -90,15 +98,15 @@
     </url>
     <url>
         <loc>http://blog.ndpar.com/about/</loc>
-        <lastmod>2013-06-02T10:28:31-04:00</lastmod>
+        <lastmod>2013-06-03T21:47:57-04:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ndpar.com/archives/</loc>
-        <lastmod>2013-06-02T10:28:31-04:00</lastmod>
+        <lastmod>2013-06-03T21:47:57-04:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ndpar.com/</loc>
-        <lastmod>2013-06-02T10:28:31-04:00</lastmod>
+        <lastmod>2013-06-03T21:47:57-04:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ndpar.com/robots.txt</loc>
