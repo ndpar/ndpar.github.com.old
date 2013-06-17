@@ -1,6 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
+        <loc>http://blog.ndpar.com/2009/11/12/state-machine-in-erlang/</loc>
+        <lastmod>2013-06-16T10:39:05-04:00</lastmod>
+    </url>
+    <url>
         <loc>http://blog.ndpar.com/2010/02/23/get-started-with-ejabberd/</loc>
         <lastmod>2013-06-03T17:22:49-04:00</lastmod>
     </url>
@@ -117,16 +121,20 @@
         <lastmod>2013-05-26T22:48:10-04:00</lastmod>
     </url>
     <url>
+        <loc>http://blog.ndpar.com/2013/06/11/sleeping-barber-in-erlang/</loc>
+        <lastmod>2013-06-16T20:27:58-04:00</lastmod>
+    </url>
+    <url>
         <loc>http://blog.ndpar.com/about/</loc>
-        <lastmod>2013-06-09T09:56:30-04:00</lastmod>
+        <lastmod>2013-06-16T20:27:58-04:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ndpar.com/archives/</loc>
-        <lastmod>2013-06-09T09:56:30-04:00</lastmod>
+        <lastmod>2013-06-16T20:27:58-04:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ndpar.com/</loc>
-        <lastmod>2013-06-09T09:56:30-04:00</lastmod>
+        <lastmod>2013-06-16T20:27:58-04:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ndpar.com/robots.txt</loc>

@@ -1,0 +1,368 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>State Machine in Erlang - Side Notes</title>
+  <meta name="author" content="Andrey Paramonov">
+
+  
+  <meta name="description" content="There is some sort of confusion in the object-oriented community about functional languages. How is it possible to implement stateful application if &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.ndpar.com/2009/11/12/state-machine-in-erlang">
+  <link href="/favicon.ico" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Side Notes" type="application/atom+xml">
+
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Side Notes</a></h1>
+  
+    <h2>never finished…</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:blog.ndpar.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">State Machine in Erlang</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-12T10:43:00-05:00" pubdate data-updated="true">Nov 12<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>There is some sort of confusion in the object-oriented community about functional languages. How is it possible to implement stateful application if the language has no concept of state? It turns out that it&rsquo;s actually quite possible, although the solution is completely deferent from what we see in the OO realm. In Erlang, for example, state can be implemented by using <em>process message passing</em> and <em>tail recursion</em>. This approach is so elegant that after you&rsquo;ve learned it, the OO way of doing this looks unnatural. The code below is the Erlang implementation of Uncle Bob&rsquo;s <a href="http://www.objectmentor.com/resources/articles/umlfsm.pdf">FSM example</a>. Look at it. Isn&rsquo;t that code clean and expressive? It looks almost like DSL but it&rsquo;s actually regular Erlang syntax.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+</pre></td><td class='code'><pre><code class='erlang'><span class='line'><span class="p">-</span><span class="ni">module</span><span class="p">(</span><span class="n">turnstile</span><span class="p">).</span>
+</span><span class='line'><span class="p">-</span><span class="ni">export</span><span class="p">([</span><span class="n">start</span><span class="o">/</span><span class="mi">0</span><span class="p">]).</span>
+</span><span class='line'><span class="p">-</span><span class="ni">export</span><span class="p">([</span><span class="n">coin</span><span class="o">/</span><span class="mi">0</span><span class="p">,</span> <span class="n">pass</span><span class="o">/</span><span class="mi">0</span><span class="p">]).</span>
+</span><span class='line'><span class="p">-</span><span class="ni">export</span><span class="p">([</span><span class="n">init</span><span class="o">/</span><span class="mi">0</span><span class="p">]).</span>
+</span><span class='line'>
+</span><span class='line'><span class="nf">start</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">register</span><span class="p">(</span><span class="n">turnstile</span><span class="p">,</span> <span class="nb">spawn</span><span class="p">(</span><span class="o">?</span><span class="nv">MODULE</span><span class="p">,</span> <span class="n">init</span><span class="p">,</span> <span class="p">[])).</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">% Initial state</span>
+</span><span class='line'>
+</span><span class='line'><span class="nf">init</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">locked</span><span class="p">().</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">% Events</span>
+</span><span class='line'>
+</span><span class='line'><span class="nf">coin</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">turnstile</span> <span class="o">!</span> <span class="n">coin</span><span class="p">.</span>
+</span><span class='line'><span class="nf">pass</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">turnstile</span> <span class="o">!</span> <span class="n">pass</span><span class="p">.</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">% States and transitions</span>
+</span><span class='line'>
+</span><span class='line'><span class="nf">locked</span><span class="p">()</span> <span class="o">-&gt;</span>
+</span><span class='line'>    <span class="k">receive</span>
+</span><span class='line'>        <span class="n">pass</span> <span class="o">-&gt;</span>
+</span><span class='line'>            <span class="n">alarm</span><span class="p">(),</span>
+</span><span class='line'>            <span class="n">locked</span><span class="p">();</span>
+</span><span class='line'>        <span class="n">coin</span> <span class="o">-&gt;</span>
+</span><span class='line'>            <span class="n">unlock</span><span class="p">(),</span>
+</span><span class='line'>            <span class="n">unlocked</span><span class="p">()</span>
+</span><span class='line'>    <span class="k">end</span><span class="p">.</span>
+</span><span class='line'>
+</span><span class='line'><span class="nf">unlocked</span><span class="p">()</span> <span class="o">-&gt;</span>
+</span><span class='line'>    <span class="k">receive</span>
+</span><span class='line'>        <span class="n">pass</span> <span class="o">-&gt;</span>
+</span><span class='line'>            <span class="n">lock</span><span class="p">(),</span>
+</span><span class='line'>            <span class="n">locked</span><span class="p">();</span>
+</span><span class='line'>        <span class="n">coin</span> <span class="o">-&gt;</span>
+</span><span class='line'>            <span class="n">thankyou</span><span class="p">(),</span>
+</span><span class='line'>            <span class="n">unlocked</span><span class="p">()</span>
+</span><span class='line'>    <span class="k">end</span><span class="p">.</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">% Actions</span>
+</span><span class='line'>
+</span><span class='line'><span class="nf">alarm</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nn">io</span><span class="p">:</span><span class="nf">format</span><span class="p">(</span><span class="s">&quot;You shall not pass!</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">).</span>
+</span><span class='line'><span class="nf">unlock</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nn">io</span><span class="p">:</span><span class="nf">format</span><span class="p">(</span><span class="s">&quot;Unlocking...</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">).</span>
+</span><span class='line'><span class="nf">lock</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nn">io</span><span class="p">:</span><span class="nf">format</span><span class="p">(</span><span class="s">&quot;Locking...</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">).</span>
+</span><span class='line'><span class="nf">thankyou</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nn">io</span><span class="p">:</span><span class="nf">format</span><span class="p">(</span><span class="s">&quot;Thank you for donation</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">).</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The idea behind this code is simple. Every state is implemented as a function that does two things: it listens for messages sent by other processes; when message is received the appropriate action is taken and one of the <em>state-functions called recursively</em>. Simple.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Andrey Paramonov</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-12T10:43:00-05:00" pubdate data-updated="true">Nov 12<span>th</span>, 2009</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/categories/erlang/'>Erlang</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+      
+        <a class="basic-alignment right" href="/2010/02/23/get-started-with-ejabberd/" title="Next Post: Get started with ejabberd">Get started with ejabberd &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/06/11/sleeping-barber-in-erlang/">Sleeping Barber in Erlang</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/05/26/entrepreneur/">To Be or Not to Be… Entrepreneur</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/05/21/joe-armstrong-mostlyerlang/">Joe Armstrong at MostlyErlang</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/05/09/liskov-programming-abstraction/">Stuck With Your First Programming Language</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/03/09/simple-zookeeper-cluster/">Simple Zookeeper Cluster</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+<section>
+  <h1>Recent GitHub Updates</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'ndpar',
+            count: 4,
+            skip_forks: false,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+<section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    <li class='category'><a href='/categories/activemq/'>ActiveMQ (1)</a></li>
+<li class='category'><a href='/categories/agile/'>Agile (1)</a></li>
+<li class='category'><a href='/categories/art/'>Art (1)</a></li>
+<li class='category'><a href='/categories/book-review/'>Book Review (1)</a></li>
+<li class='category'><a href='/categories/buzz/'>Buzz (2)</a></li>
+<li class='category'><a href='/categories/clojure/'>Clojure (3)</a></li>
+<li class='category'><a href='/categories/clustering/'>Clustering (1)</a></li>
+<li class='category'><a href='/categories/conference/'>Conference (2)</a></li>
+<li class='category'><a href='/categories/craftsmanship/'>Craftsmanship (1)</a></li>
+<li class='category'><a href='/categories/education/'>Education (1)</a></li>
+<li class='category'><a href='/categories/ejabberd/'>Ejabberd (2)</a></li>
+<li class='category'><a href='/categories/entrepreneurship/'>Entrepreneurship (1)</a></li>
+<li class='category'><a href='/categories/erlang/'>Erlang (6)</a></li>
+<li class='category'><a href='/categories/functional-programming/'>Functional Programming (1)</a></li>
+<li class='category'><a href='/categories/git/'>Git (2)</a></li>
+<li class='category'><a href='/categories/grails/'>Grails (1)</a></li>
+<li class='category'><a href='/categories/groovy/'>Groovy (8)</a></li>
+<li class='category'><a href='/categories/humor/'>Humor (2)</a></li>
+<li class='category'><a href='/categories/java/'>Java (3)</a></li>
+<li class='category'><a href='/categories/lisp/'>Lisp (2)</a></li>
+<li class='category'><a href='/categories/math/'>Math (4)</a></li>
+<li class='category'><a href='/categories/maven/'>Maven (1)</a></li>
+<li class='category'><a href='/categories/mongodb/'>MongoDB (1)</a></li>
+<li class='category'><a href='/categories/nosql/'>NoSQL (1)</a></li>
+<li class='category'><a href='/categories/programming/'>Programming (6)</a></li>
+<li class='category'><a href='/categories/python/'>Python (2)</a></li>
+<li class='category'><a href='/categories/rabbitmq/'>RabbitMQ (4)</a></li>
+<li class='category'><a href='/categories/solr/'>Solr (1)</a></li>
+<li class='category'><a href='/categories/spring/'>Spring (1)</a></li>
+<li class='category'><a href='/categories/tutorial/'>Tutorial (1)</a></li>
+<li class='category'><a href='/categories/zeromq/'>ZeroMQ (1)</a></li>
+<li class='category'><a href='/categories/zookeeper/'>ZooKeeper (1)</a></li>
+
+  </ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2009–2013 - Andrey Paramonov -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> -
+  <span class="credit">Hosted by <a href="http://github.com">GitHub</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
