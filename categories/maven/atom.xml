@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Maven | Side Notes]]></title>
   <link href="http://blog.ndpar.com/categories/maven/atom.xml" rel="self"/>
   <link href="http://blog.ndpar.com/"/>
-  <updated>2013-06-16T20:37:58-04:00</updated>
+  <updated>2013-06-22T10:10:09-04:00</updated>
   <id>http://blog.ndpar.com/</id>
   <author>
     <name><![CDATA[Andrey Paramonov]]></name>
@@ -27,18 +27,16 @@
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;scm&gt;&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;pre&gt;&lt;code&gt;</span><span class="ni">&amp;lt;</span>url<span class="ni">&amp;gt;</span>http://github.com/SpringSource/spring-batch<span class="ni">&amp;lt;</span>/url<span class="ni">&amp;gt;</span>
-</span><span class='line'><span class="ni">&amp;lt;</span>connection<span class="ni">&amp;gt;</span>scm:git:git://github.com/SpringSource/spring-batch.git<span class="ni">&amp;lt;</span>/connection<span class="ni">&amp;gt;</span>
-</span><span class='line'><span class="ni">&amp;lt;</span>developerConnection<span class="ni">&amp;gt;</span>scm:git:ssh://git@github.com/SpringSource/spring-batch.git<span class="ni">&amp;lt;</span>/developerConnection<span class="ni">&amp;gt;</span>
-</span><span class='line'><span class="nt">&lt;/code&gt;&lt;/pre&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;p&gt;&lt;/scm&gt;</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;/p&gt;</span>
+</span><span class='line'><span class="nt">&lt;scm&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;url&gt;</span>http://github.com/SpringSource/spring-batch<span class="nt">&lt;/url&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;connection&gt;</span>scm:git:git://github.com/SpringSource/spring-batch.git<span class="nt">&lt;/connection&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;developerconnection&gt;</span>scm:git:ssh://git@github.com/SpringSource/spring-batch.git<span class="nt">&lt;/developerconnection&gt;</span>
+</span><span class='line'><span class="nt">&lt;/scm&gt;</span>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
-<p>By doing this they lose the main benefit of Git. They become dependent on the remote machine. And when their release depends on the remote machine, that&rsquo;s what happens: They need to release the project but the remote machine is down</p>
+<p>By doing this they lose the main benefit of Git. They become dependent on the remote machine. And when their release depends on the remote machine, that’s what happens: They need to release the project but the remote machine is down</p>
 
 <p><img class="center" src="/images/posts/github-down.jpg"></p>
 
@@ -51,23 +49,21 @@
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;scm&gt;&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;pre&gt;&lt;code&gt;</span><span class="ni">&amp;lt;</span>url<span class="ni">&amp;gt;</span>scm:git:file://.<span class="ni">&amp;lt;</span>/url<span class="ni">&amp;gt;</span>
-</span><span class='line'><span class="ni">&amp;lt;</span>connection<span class="ni">&amp;gt;</span>scm:git:file://.<span class="ni">&amp;lt;</span>/connection<span class="ni">&amp;gt;</span>
-</span><span class='line'><span class="ni">&amp;lt;</span>developerConnection<span class="ni">&amp;gt;</span>scm:git:file://.<span class="ni">&amp;lt;</span>/developerConnection<span class="ni">&amp;gt;</span>
-</span><span class='line'><span class="nt">&lt;/code&gt;&lt;/pre&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;p&gt;&lt;/scm&gt;</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;/p&gt;</span>
+</span><span class='line'><span class="nt">&lt;scm&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;url&gt;</span>scm:git:file://.<span class="nt">&lt;/url&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;connection&gt;</span>scm:git:file://.<span class="nt">&lt;/connection&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;developerconnection&gt;</span>scm:git:file://.<span class="nt">&lt;/developerconnection&gt;</span>
+</span><span class='line'><span class="nt">&lt;/scm&gt;</span>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>This configuration is universal, and it separates two orthogonal concerns: releases and remote copies.</p>
 
-<h3>Resources</h3>
+<h3 id="resources">Resources</h3>
 
 <ul>
-<li><a href="http://ascii.io/a/3459">Screencast</a> that shows how to work with Git in Maven projects.</li>
+  <li><a href="http://ascii.io/a/3459">Screencast</a> that shows how to work with Git in Maven projects.</li>
 </ul>
 
 ]]></content>

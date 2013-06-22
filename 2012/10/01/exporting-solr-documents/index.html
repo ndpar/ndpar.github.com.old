@@ -32,6 +32,37 @@
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
   
 
 </head>
@@ -135,9 +166,10 @@
 &lt;/response&gt;
 </code></pre>
 
-<p>Even if we ignore the response header, the structure of the response/result/doc is not the same as of input document: the element names reflect the types, the arrays are grouped. If you try to add this document to a Solr server, you will get an error &ldquo;unexpected XML tag&rdquo;, obviously. I googled for couple hours on how to convert an output document to an input, and, to my surprise, didn&rsquo;t find any solution. Therefore I implemented my own converter in Groovy, which solved the problem. I post it <a href="http://gist.github.com/3813775">here</a> in case somebody needs it.</p>
+<p>Even if we ignore the response header, the structure of the response/result/doc is not the same as of input document: the element names reflect the types, the arrays are grouped. If you try to add this document to a Solr server, you will get an error “unexpected XML tag”, obviously. I googled for couple hours on how to convert an output document to an input, and, to my surprise, didn’t find any solution. Therefore I implemented my own converter in Groovy, which solved the problem. I post it <a href="http://gist.github.com/3813775">here</a> in case somebody needs it.</p>
 
 <p>Note: You can also use this script to re-index Solr.</p>
+
 </div>
 
 

@@ -9,7 +9,7 @@
   <meta name="author" content="Andrey Paramonov">
 
   
-  <meta name="description" content="Every time I switch from Groovy to Java I have to remind myself that some things that seem so natural and work as expected in Groovy, don&rsquo;t &hellip;">
+  <meta name="description" content="Every time I switch from Groovy to Java I have to remind myself that some things that seem so natural and work as expected in Groovy, don’t work in &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -31,6 +31,37 @@
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
   
 
@@ -94,7 +125,7 @@
   </header>
 
 
-<div class="entry-content"><p>Every time I switch from Groovy to Java I have to remind myself that some things that seem so natural and work as expected in Groovy, don&rsquo;t work in Java. One of such differences is method dispatching. Groovy supports <a href="http://en.wikipedia.org/wiki/Multiple_dispatch">multiple dispatch</a>, while Java does not. Therefore the following <a href="http://www.gigamonkeys.com/book/object-reorientation-generic-functions.html#multimethods">code</a> works differently in Groovy and Java:</p>
+<div class="entry-content"><p>Every time I switch from Groovy to Java I have to remind myself that some things that seem so natural and work as expected in Groovy, don’t work in Java. One of such differences is method dispatching. Groovy supports <a href="http://en.wikipedia.org/wiki/Multiple_dispatch">multiple dispatch</a>, while Java does not. Therefore the following <a href="http://www.gigamonkeys.com/book/object-reorientation-generic-functions.html#multimethods">code</a> works differently in Groovy and Java:</p>
 
 <pre><code>public class A {
     public void foo(A a) { System.out.println("A/A"); }
@@ -121,6 +152,7 @@ $ groovy Main.groovy
 A/A
 B/B
 </code></pre>
+
 </div>
 
 

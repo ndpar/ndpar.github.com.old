@@ -32,6 +32,37 @@
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
   
 
 </head>
@@ -96,25 +127,24 @@
 
 <div class="entry-content"><p>ejabberd is integrated with RabbitMQ by means of <a href="http://tonyg.github.io/rabbitmq-xmpp/">mod_rabbitmq</a> gateway. If you followed my ejabberd installation <a href="/2010/02/23/get-started-with-ejabberd/">instructions</a>, you should already have mod_rabbitmq installed.</p>
 
-<h2>Configure mod_rabbitmq</h2>
+<h2 id="configure-modrabbitmq">Configure mod_rabbitmq</h2>
 
 <p>Open <em>/opt/ejabberd/ejabberd/etc/ejabberd/ejabberd.cfg</em> file, find <em>modules</em> section, and add mod_rabbitmq stanza to the list</p>
 
-<figure class='code'><figcaption><span>/opt/ejabberd/ejabberd/etc/ejabberd/ejabberd.cfg </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='erlang'><span class='line'><span class="p">{</span><span class="n">modules</span><span class="p">,</span>
-</span><span class='line'> <span class="p">[</span>
-</span><span class='line'>  <span class="p">...</span>
-</span><span class='line'>  <span class="p">{</span><span class="n">mod_rabbitmq</span><span class="p">,</span>  <span class="p">[{</span><span class="n">rabbitmq_node</span><span class="p">,</span> <span class="nv">RABBIT_NODE</span><span class="p">}]},</span>
-</span><span class='line'>  <span class="p">...</span>
-</span><span class='line'> <span class="p">]}.</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>/opt/ejabberd/ejabberd/etc/ejabberd/ejabberd.cfg </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="erlang"><span class="line"><span class="p">{</span><span class="n">modules</span><span class="p">,</span>
+</span><span class="line"> <span class="p">[</span>
+</span><span class="line">  <span class="p">...</span>
+</span><span class="line">  <span class="p">{</span><span class="n">mod_rabbitmq</span><span class="p">,</span>  <span class="p">[{</span><span class="n">rabbitmq_node</span><span class="p">,</span> <span class="nv">RABBIT_NODE</span><span class="p">}]},</span>
+</span><span class="line">  <span class="p">...</span>
+</span><span class="line"> <span class="p">]}.</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>You need to replace <em>RABBIT_NODE</em> with the real value, which you can find from the RabbitMQ process information</p>
 
@@ -124,9 +154,9 @@ rabbitmq  8525  8142  0 16:37 pts/0    ... -sname rabbit@ubuntu ...
 
 <p>You can see my RabbitMQ node name is <em>rabbit@ubuntu</em>.</p>
 
-<h2>Set up cookie</h2>
+<h2 id="set-up-cookie">Set up cookie</h2>
 
-<p>To make RabbitMQ and ejabberd work together, they have to run in the same Erlang cluster. That means they have to use the same cookie file. If you <a href="/2010/03/14/get-started-with-rabbitmq/">installed</a> RabbitMQ from binary distribution, it uses the user&rsquo;s cookie <em>~/.erlang.cookie</em>. ejabberd, on the other hand, uses its own cookie. Let&rsquo;s replace it with the user&rsquo;s</p>
+<p>To make RabbitMQ and ejabberd work together, they have to run in the same Erlang cluster. That means they have to use the same cookie file. If you <a href="/2010/03/14/get-started-with-rabbitmq/">installed</a> RabbitMQ from binary distribution, it uses the user’s cookie <em>~/.erlang.cookie</em>. ejabberd, on the other hand, uses its own cookie. Let’s replace it with the user’s</p>
 
 <pre><code>$ cd /opt/ejabberd/ejabberd/var/lib/ejabberd
 $ rm -f .erlang.cookie
@@ -138,25 +168,25 @@ $ ln -s ~/.erlang.cookie
 <pre><code>$ /opt/ejabberd/ejabberd/sbin/ejabberdctl restart
 </code></pre>
 
-<h2>Add rabbit buddy to roster</h2>
+<h2 id="add-rabbit-buddy-to-roster">Add rabbit buddy to roster</h2>
 
-<p>The rabbit&rsquo;s JID consists of two parts: exchange name and routing domain. The routing domain is a string <code>rabbitmq.EJABBERD_HOST</code> where <em>EJABBERD_HOST</em> is the host you registered in <em>ejabberd.cfg</em>. In my case the routing domain is <code>rabbitmq.jabber.ndpar.com</code>.</p>
+<p>The rabbit’s JID consists of two parts: exchange name and routing domain. The routing domain is a string <code>rabbitmq.EJABBERD_HOST</code> where <em>EJABBERD_HOST</em> is the host you registered in <em>ejabberd.cfg</em>. In my case the routing domain is <code>rabbitmq.jabber.ndpar.com</code>.</p>
 
 <p>For the name you can use any exchange name available in the RabbitMQ server. I use <code>amq.fanout</code> exchange which exists in every RabbitMQ server. So I go to my IM client (Adium) and add this user to the buddies list <code>amq.fanout@rabbitmq.jabber.ndpar.com</code>.</p>
 
-<h2>Rabbit&rsquo;s greetings</h2>
+<h2 id="rabbits-greetings">Rabbit’s greetings</h2>
 
 <p>To publish a message to RabbitMQ I use the same Groovy script as in the previous <a href="/2010/03/14/get-started-with-rabbitmq/">post</a></p>
 
 <pre><code>$ ./publisher.groovy
 </code></pre>
 
-<p><img class="center" src="/images/posts/mod_rabbitmq.png"></p>
+<p><img class="center" src="/images/posts/mod_rabbitmq.png" /></p>
 
-<h3>Resources</h3>
+<h3 id="resources">Resources</h3>
 
 <ul>
-<li>Tony Garnock-Jones&#8217; <a href="http://www.erlang-factory.com/upload/presentations/229/ErlangFactorySFBay2010-TonyGarnock-Jones.pdf">presentation slides</a> about RabbitMQ and its extensions.</li>
+  <li>Tony Garnock-Jones’ <a href="http://www.erlang-factory.com/upload/presentations/229/ErlangFactorySFBay2010-TonyGarnock-Jones.pdf">presentation slides</a> about RabbitMQ and its extensions.</li>
 </ul>
 
 </div>

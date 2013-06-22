@@ -9,7 +9,8 @@
   <meta name="author" content="Andrey Paramonov">
 
   
-  <meta name="description" content="Thomae&rsquo;s function (a.k.a. Riemann function) is defined on the interval (0, 1) as follows Here is the graph of this function with some points &hellip;">
+  <meta name="description" content="Thomae’s function (a.k.a. Riemann function) is defined on the interval (0, 1) as follows % <![CDATA[ f(x) = \left\{
+\begin{array}{l l} 1/q & \quad \ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -31,6 +32,37 @@
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
   
 
@@ -94,56 +126,62 @@
   </header>
 
 
-<div class="entry-content"><p><a href="http://en.wikipedia.org/wiki/Thomae%27s_function">Thomae&rsquo;s function</a> (a.k.a. Riemann function) is defined on the interval (0, 1) as follows</p>
+<div class="entry-content"><p><a href="http://en.wikipedia.org/wiki/Thomae%27s_function">Thomae’s function</a> (a.k.a. Riemann function) is defined on the interval (0, 1) as follows</p>
 
-<p><img class="center" src="/images/posts/thomae-def.png"></p>
+<script type="math/tex; mode=display">% <![CDATA[
+
+f(x) = \left\{
+\begin{array}{l l}
+  1/q & \quad \text{if $x = p/q$ is rational and $gcd(p, q) = 1$}\\
+  0 & \quad \text{if $x$ is irrational}\\
+\end{array} \right.
+ %]]></script>
 
 <p>Here is the graph of this function with some points highlighted as plus symbols for better view.</p>
 
-<p><img class="center" src="/images/posts/thomae.jpg"></p>
+<p><img class="center" src="/images/posts/thomae.jpg" /></p>
 
-<p>This function has interesting property: it&rsquo;s continuous at all irrational numbers. It&rsquo;s easy to see this if you notice that for any positive <em>ε</em> there is finite number of points above the line <em>y</em> = <em>ε</em>. That means for any irrational number <em>x</em><sub>0</sub> you can always construct a <em>δ</em>-neighbourhood that doesn&rsquo;t contain any point from the area above the line <em>y</em> = <em>ε</em>.</p>
+<p>This function has interesting property: it’s continuous at all irrational numbers. It’s easy to see this if you notice that for any positive <em>ε</em> there is finite number of points above the line <em>y</em> = <em>ε</em>. That means for any irrational number <em>x</em><sub>0</sub> you can always construct a <em>δ</em>-neighbourhood that doesn’t contain any point from the area above the line <em>y</em> = <em>ε</em>.</p>
 
-<p><img class="center" src="/images/posts/thomae-e-d.jpg"></p>
+<p><img class="center" src="/images/posts/thomae-e-d.jpg" /></p>
 
 <p>To generate the data file with point coordinates I wrote Common Lisp program:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class='common-lisp'><span class='line'><span class="p">(</span><span class="nb">defun</span> <span class="nv">rational-numbers</span> <span class="p">(</span><span class="nv">max-denominator</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">result</span> <span class="p">(</span><span class="nb">list</span><span class="p">)))</span>
-</span><span class='line'>    <span class="p">(</span><span class="nb">loop</span> <span class="nv">for</span> <span class="nv">q</span> <span class="nv">from</span> <span class="mi">2</span> <span class="nv">to</span> <span class="nv">max-denominator</span> <span class="nb">do</span>
-</span><span class='line'>      <span class="p">(</span><span class="nb">loop</span> <span class="nv">for</span> <span class="nv">p</span> <span class="nv">from</span> <span class="mi">1</span> <span class="nv">to</span> <span class="p">(</span><span class="nb">1-</span> <span class="nv">q</span><span class="p">)</span> <span class="nb">do</span>
-</span><span class='line'>        <span class="p">(</span><span class="nb">pushnew</span> <span class="p">(</span><span class="nb">/</span> <span class="nv">p</span> <span class="nv">q</span><span class="p">)</span> <span class="nv">result</span><span class="p">)))</span>
-</span><span class='line'>    <span class="nv">result</span><span class="p">))</span>
-</span><span class='line'>
-</span><span class='line'><span class="p">(</span><span class="nb">defun</span> <span class="nv">thomae-rational-points</span> <span class="p">(</span><span class="nv">abscissae</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">(</span><span class="nb">mapcar</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="nv">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">list</span> <span class="nv">x</span> <span class="p">(</span><span class="nb">/</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">denominator</span> <span class="nv">x</span><span class="p">))))</span> <span class="nv">abscissae</span><span class="p">))</span>
-</span><span class='line'>
-</span><span class='line'><span class="p">(</span><span class="nb">defun</span> <span class="nv">thomae</span> <span class="p">(</span><span class="nv">max-denominator</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">points</span> <span class="p">(</span><span class="nv">thomae-rational-points</span> <span class="p">(</span><span class="nv">rational-numbers</span> <span class="nv">max-denominator</span><span class="p">))))</span>
-</span><span class='line'>    <span class="p">(</span><span class="nb">with-open-file</span> <span class="p">(</span><span class="nc">stream</span> <span class="s">&quot;thomae.dat&quot;</span> <span class="ss">:direction</span> <span class="ss">:output</span><span class="p">)</span>
-</span><span class='line'>      <span class="p">(</span><span class="nb">loop</span> <span class="nv">for</span> <span class="nv">point</span> <span class="nv">in</span> <span class="nv">points</span> <span class="nb">do</span>
-</span><span class='line'>        <span class="p">(</span><span class="nb">format</span> <span class="nc">stream</span> <span class="s">&quot;~4$ ~4$~%&quot;</span> <span class="p">(</span><span class="nb">first</span> <span class="nv">point</span><span class="p">)</span> <span class="p">(</span><span class="nb">second</span> <span class="nv">point</span><span class="p">))))))</span>
-</span><span class='line'>
-</span><span class='line'><span class="p">(</span><span class="nv">thomae</span> <span class="mi">500</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+</pre></td><td class="code"><pre><code class="common-lisp"><span class="line"><span class="p">(</span><span class="nb">defun</span> <span class="nv">rational-numbers</span> <span class="p">(</span><span class="nv">max-denominator</span><span class="p">)</span>
+</span><span class="line">  <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">result</span> <span class="p">(</span><span class="nb">list</span><span class="p">)))</span>
+</span><span class="line">    <span class="p">(</span><span class="nb">loop</span> <span class="nv">for</span> <span class="nv">q</span> <span class="nv">from</span> <span class="mi">2</span> <span class="nv">to</span> <span class="nv">max-denominator</span> <span class="nb">do</span>
+</span><span class="line">      <span class="p">(</span><span class="nb">loop</span> <span class="nv">for</span> <span class="nv">p</span> <span class="nv">from</span> <span class="mi">1</span> <span class="nv">to</span> <span class="p">(</span><span class="nb">1-</span> <span class="nv">q</span><span class="p">)</span> <span class="nb">do</span>
+</span><span class="line">        <span class="p">(</span><span class="nb">pushnew</span> <span class="p">(</span><span class="nb">/</span> <span class="nv">p</span> <span class="nv">q</span><span class="p">)</span> <span class="nv">result</span><span class="p">)))</span>
+</span><span class="line">    <span class="nv">result</span><span class="p">))</span>
+</span><span class="line">
+</span><span class="line"><span class="p">(</span><span class="nb">defun</span> <span class="nv">thomae-rational-points</span> <span class="p">(</span><span class="nv">abscissae</span><span class="p">)</span>
+</span><span class="line">  <span class="p">(</span><span class="nb">mapcar</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="nv">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">list</span> <span class="nv">x</span> <span class="p">(</span><span class="nb">/</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">denominator</span> <span class="nv">x</span><span class="p">))))</span> <span class="nv">abscissae</span><span class="p">))</span>
+</span><span class="line">
+</span><span class="line"><span class="p">(</span><span class="nb">defun</span> <span class="nv">thomae</span> <span class="p">(</span><span class="nv">max-denominator</span><span class="p">)</span>
+</span><span class="line">  <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">points</span> <span class="p">(</span><span class="nv">thomae-rational-points</span> <span class="p">(</span><span class="nv">rational-numbers</span> <span class="nv">max-denominator</span><span class="p">))))</span>
+</span><span class="line">    <span class="p">(</span><span class="nb">with-open-file</span> <span class="p">(</span><span class="nc">stream</span> <span class="s">&quot;thomae.dat&quot;</span> <span class="ss">:direction</span> <span class="ss">:output</span><span class="p">)</span>
+</span><span class="line">      <span class="p">(</span><span class="nb">loop</span> <span class="nv">for</span> <span class="nv">point</span> <span class="nv">in</span> <span class="nv">points</span> <span class="nb">do</span>
+</span><span class="line">        <span class="p">(</span><span class="nb">format</span> <span class="nc">stream</span> <span class="s">&quot;~4$ ~4$~%&quot;</span> <span class="p">(</span><span class="nb">first</span> <span class="nv">point</span><span class="p">)</span> <span class="p">(</span><span class="nb">second</span> <span class="nv">point</span><span class="p">))))))</span>
+</span><span class="line">
+</span><span class="line"><span class="p">(</span><span class="nv">thomae</span> <span class="mi">500</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>To create the images I used <a href="http://www.gnuplot.info/">gnuplot</a> commands:</p>
 
@@ -152,6 +190,7 @@ plot "thomae.dat" using 1:2 with points
 </code></pre>
 
 <p>and Photoshop.</p>
+
 </div>
 
 

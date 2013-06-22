@@ -32,6 +32,37 @@
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
   
 
 </head>
@@ -94,11 +125,12 @@
   </header>
 
 
-<div class="entry-content"><p>When programmer and mathematician are talking about modulus or modulo, there is often a confusion what this term means. For programmer <a href="http://en.wikipedia.org/wiki/Modulo_operator">modulo</a> means an operator that finds the <em>remainder</em> of division of one number by another, e.g. 5&nbsp;mod&nbsp;2 = 1. For mathematician <a href="http://en.wikipedia.org/wiki/Modular_arithmetic">modulo</a> is a <em>congruence</em> relation between two numbers: <em>a</em> and <em>b</em> are said to be congruent modulo <em>n</em>, written <em>a</em>&nbsp;&#8801;&nbsp;<em>b</em>&nbsp;(mod&nbsp;<em>n</em>), if their difference <em>a</em>&nbsp;&#8722;&nbsp;<em>b</em> is an integer multiple of <em>n</em>.</p>
+<div class="entry-content"><p>When programmer and mathematician are talking about modulus or modulo, there is often a confusion what this term means. For programmer <a href="http://en.wikipedia.org/wiki/Modulo_operator">modulo</a> means an operator that finds the <em>remainder</em> of division of one number by another, e.g. 5 mod 2 = 1. For mathematician <a href="http://en.wikipedia.org/wiki/Modular_arithmetic">modulo</a> is a <em>congruence</em> relation between two numbers: <em>a</em> and <em>b</em> are said to be congruent modulo <em>n</em>, written <em>a</em> ≡ <em>b</em> (mod <em>n</em>), if their difference <em>a</em> − <em>b</em> is an integer multiple of <em>n</em>.</p>
 
-<p>These two definitions are not equivalent. The former is a special case of the latter: if <em>b</em>&nbsp;mod&nbsp;<em>n</em> = <em>a</em> then <em>a</em>&nbsp;&#8801;&nbsp;<em>b</em>&nbsp;(mod&nbsp;<em>n</em>). The inverse is not true in general case. 5&nbsp;mod&nbsp;2 = 1, and 1&nbsp;&#8801;&nbsp;5&nbsp;(mod&nbsp;2) because 1&nbsp;&ndash;&nbsp;5&nbsp;=&nbsp;–4 is integer multiple of 2. Now 5&nbsp;&#8801;&nbsp;1&nbsp;(mod&nbsp;2), because 5&nbsp;&ndash;&nbsp;1&nbsp;=&nbsp;4 is evenly divisible by 2, but 1&nbsp;mod&nbsp;2 = 1, not 5.</p>
+<p>These two definitions are not equivalent. The former is a special case of the latter: if <em>b</em> mod <em>n</em> = <em>a</em> then <em>a</em> ≡ <em>b</em> (mod <em>n</em>). The inverse is not true in general case. 5 mod 2 = 1, and 1 ≡ 5 (mod 2) because 1 - 5 = –4 is integer multiple of 2. Now 5 ≡ 1 (mod 2), because 5 - 1 = 4 is evenly divisible by 2, but 1 mod 2 = 1, not 5.</p>
 
-<p>The biggest confusion happens when programmer and mathematician start arguing about Gauss&#8217; famous <a href="http://mathworld.wolfram.com/QuadraticReciprocityTheorem.html">Golden Theorem</a> where both definitions of modulus can be used.</p>
+<p>The biggest confusion happens when programmer and mathematician start arguing about Gauss’ famous <a href="http://mathworld.wolfram.com/QuadraticReciprocityTheorem.html">Golden Theorem</a> where both definitions of modulus can be used.</p>
+
 </div>
 
 

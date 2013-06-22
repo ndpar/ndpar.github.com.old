@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Conference | Side Notes]]></title>
   <link href="http://blog.ndpar.com/categories/conference/atom.xml" rel="self"/>
   <link href="http://blog.ndpar.com/"/>
-  <updated>2013-06-16T20:37:58-04:00</updated>
+  <updated>2013-06-22T10:10:09-04:00</updated>
   <id>http://blog.ndpar.com/</id>
   <author>
     <name><![CDATA[Andrey Paramonov]]></name>
@@ -18,67 +18,67 @@
     <link href="http://blog.ndpar.com/2012/11/12/pycon-canada-2012/"/>
     <updated>2012-11-12T15:40:01-05:00</updated>
     <id>http://blog.ndpar.com/2012/11/12/pycon-canada-2012</id>
-    <content type="html"><![CDATA[<p>This weekend I attended <a href="http://pycon.ca/">PyCon Canada</a>, the first conference in Canada dedicated to Python ecosystem. As you might find from my blog, I&rsquo;m not a Python guy. I&rsquo;ve been using Python mostly as a scripting language. I went to this conference for fresh ideas, or, as Michael Feathers said, for cross-polination from Python community. This blog post is not a detailed review of the conference — I just want to share my impression in general.</p>
+    <content type="html"><![CDATA[<p>This weekend I attended <a href="http://pycon.ca/">PyCon Canada</a>, the first conference in Canada dedicated to Python ecosystem. As you might find from my blog, I’m not a Python guy. I’ve been using Python mostly as a scripting language. I went to this conference for fresh ideas, or, as Michael Feathers said, for cross-polination from Python community. This blog post is not a detailed review of the conference — I just want to share my impression in general.</p>
 
-<h2>Organization</h2>
+<h2 id="organization">Organization</h2>
 
 <p>Considering how little time the organizers had for preparing this conference, 5 months I believe, they did amazing job. They invited great speakers. They kept people well informed using mailing list and Twitter. The official web site was clear and easy to navigate. The location was good. The food was decent. The only complaint I had is about the temperature in the rooms on the first day. It was so freezing cold inside that I had to wear my jacket all the time. But on the second day the problem was fixed.</p>
 
-<h2>Keynotes</h2>
+<h2 id="keynotes">Keynotes</h2>
 
 <p>Keynotes were absolutely fantastic. There were three of them. Jessica McKellar was talking about Python community. How they foster it, how they attract new people to programming in general and to Python in particular. She shared her experience from organizing Boston Python user group, the biggest Python user group in the world. The takeaway from her talk: Python community is big, welcoming, and well supported by Python Foundation.</p>
 
-<p>Second keynote was Michael Feathers' <em>Why You Should(n&rsquo;t) be Using a Functional Programming Language Instead</em>. The main idea of his talk is: Don&rsquo;t lock yourself inside one language. Go outside of your community to see what other languages exist out there, how they solved the problems. Study those languages, learn their idioms and techniques, and then go back to your language and start using the ideas you&rsquo;ve learnt. I completely agree with that, and that&rsquo;s why I went to this conference in the first place. He gave bunch of examples of functional programming in Haskell. Then he showed his Ruby code written in functional style, where you could see the influence of Haskell. I liked his presentation because he verbalized the ideas I myself have been thinking about for a while. When I started programming in Groovy my Groovy code was basically a Java code without semicolons. Now my Java code looks more like Groovy.</p>
+<p>Second keynote was Michael Feathers’ <em>Why You Should(n’t) be Using a Functional Programming Language Instead</em>. The main idea of his talk is: Don’t lock yourself inside one language. Go outside of your community to see what other languages exist out there, how they solved the problems. Study those languages, learn their idioms and techniques, and then go back to your language and start using the ideas you’ve learnt. I completely agree with that, and that’s why I went to this conference in the first place. He gave bunch of examples of functional programming in Haskell. Then he showed his Ruby code written in functional style, where you could see the influence of Haskell. I liked his presentation because he verbalized the ideas I myself have been thinking about for a while. When I started programming in Groovy my Groovy code was basically a Java code without semicolons. Now my Java code looks more like Groovy.</p>
 
-<p>The closing keynote was by Fernando Pérez, the scientist from University of California, Berkeley, and the creator of IPython. The talk, titled <a href="https://speakerdeck.com/fperez/science-and-python-a-interactively-biased-retrospective-of-a-mostly-successful-decade"><em>Science and Python</em></a>,  was really mind blowing. When I was a student I did all my computations using mainly Fortran and some proprietary software I don&rsquo;t even remember the name of. Later, I played with Mathematica and Octave a little bit. But I didn&rsquo;t know that you can do very sophisticated scientific calculations using Python. Fernando gave some examples from neuroscience, astrophysics and biology, and it&rsquo;s really impressive. The discovery of Supernova PTF11kyl is especially astonishing. From now on, if I need to do some math, I&rsquo;ll be using Python libraries; no more proprietary expensive software. Another theme of the presentation was IPython. Initially I thought it&rsquo;s just a shell on top of the standard Python, but it&rsquo;s actually the whole ecosystem. I cannot explain in a few words how amazing it is. Just google for &ldquo;ipython notebook&rdquo; or read Fernando&rsquo;s <a href="http://blog.fperez.org/2012/09/blogging-with-ipython-notebook.html">blog</a>.</p>
+<p>The closing keynote was by Fernando Pérez, the scientist from University of California, Berkeley, and the creator of IPython. The talk, titled <a href="https://speakerdeck.com/fperez/science-and-python-a-interactively-biased-retrospective-of-a-mostly-successful-decade"><em>Science and Python</em></a>,  was really mind blowing. When I was a student I did all my computations using mainly Fortran and some proprietary software I don’t even remember the name of. Later, I played with Mathematica and Octave a little bit. But I didn’t know that you can do very sophisticated scientific calculations using Python. Fernando gave some examples from neuroscience, astrophysics and biology, and it’s really impressive. The discovery of Supernova PTF11kyl is especially astonishing. From now on, if I need to do some math, I’ll be using Python libraries; no more proprietary expensive software. Another theme of the presentation was IPython. Initially I thought it’s just a shell on top of the standard Python, but it’s actually the whole ecosystem. I cannot explain in a few words how amazing it is. Just google for “ipython notebook” or read Fernando’s <a href="http://blog.fperez.org/2012/09/blogging-with-ipython-notebook.html">blog</a>.</p>
 
-<h2>Talks</h2>
+<h2 id="talks">Talks</h2>
 
-<p>As it happens on every conference, there were some great talks and some lousy talks, interesting talks and boring talks, geeky talks and academic talks. It&rsquo;s all normal and fine. The good thing about this conference though is that signal-noise ratio was pretty high; congratulations to the organizers for choosing talks. Another thing I like is the diversity of formats. There were 45-min presentation, 20-min talks, 5-min lightning talks, 90-min tutorials, and 3-hour workshop (there are also two full day coding sessions but I&rsquo;m not attending them). This is a really good approach. Switching between different formats during the day helps your brain functioning more productive, in my opinion.</p>
+<p>As it happens on every conference, there were some great talks and some lousy talks, interesting talks and boring talks, geeky talks and academic talks. It’s all normal and fine. The good thing about this conference though is that signal-noise ratio was pretty high; congratulations to the organizers for choosing talks. Another thing I like is the diversity of formats. There were 45-min presentation, 20-min talks, 5-min lightning talks, 90-min tutorials, and 3-hour workshop (there are also two full day coding sessions but I’m not attending them). This is a really good approach. Switching between different formats during the day helps your brain functioning more productive, in my opinion.</p>
 
-<h2>Pleasant discoveries</h2>
+<h2 id="pleasant-discoveries">Pleasant discoveries</h2>
 
-<p>I found many projects presented at the conference are using RabbitMQ, and that&rsquo;s great. I wish in Java world people would use AMQP more frequently instead of blindly choosing JMS for every new project.</p>
+<p>I found many projects presented at the conference are using RabbitMQ, and that’s great. I wish in Java world people would use AMQP more frequently instead of blindly choosing JMS for every new project.</p>
 
-<p>Many people are using MongoDB properly. Nowadays NoSQL is a very popular buzzword, and many projects are using various NoSQL databases just because it&rsquo;s cool, even if it makes no sense for the project at all. It was nice to see that there are developers out there who do their homework and adopt NoSQL because it fits their domain.</p>
+<p>Many people are using MongoDB properly. Nowadays NoSQL is a very popular buzzword, and many projects are using various NoSQL databases just because it’s cool, even if it makes no sense for the project at all. It was nice to see that there are developers out there who do their homework and adopt NoSQL because it fits their domain.</p>
 
-<h2>Unpleasant discoveries</h2>
+<h2 id="unpleasant-discoveries">Unpleasant discoveries</h2>
 
-<p>There seems to be a trend in Python community to despise Java. I actually see this trend in many communities outside of Java, so it&rsquo;s not Python specific, but at this conference I&rsquo;ve heard too many jokes about Java so it&rsquo;s not funny anymore, especially hearing them from the people who don&rsquo;t write a line of code in Java.</p>
+<p>There seems to be a trend in Python community to despise Java. I actually see this trend in many communities outside of Java, so it’s not Python specific, but at this conference I’ve heard too many jokes about Java so it’s not funny anymore, especially hearing them from the people who don’t write a line of code in Java.</p>
 
 <p>Another thing surprised me is the fanatic admiration of Mercurial and hate of Git from some Python programmers. I know lots of people who hate Git, mainly because they are confused and scared by Git. But dislike it for the reason not being written in Python is something new to me.</p>
 
-<h2>Problems in Python</h2>
+<h2 id="problems-in-python">Problems in Python</h2>
 
-<p>Package and distribution management in Python is in pretty bad shape. Every person I talked to admitted that it&rsquo;s complete mess at the moment. I myself feel that pain every time I need to install a new library. Which tool should I use: pip, easy_install, pysetup? Some libraries installed using those tools don&rsquo;t work, or work partially. Many programmers use rpm or deb packages instead of Python tools, because OS packages usually work. I came to the same conclusion on my Mac OS. The only flawlessly working Python environment I have is that installed via mac ports. In Java we don&rsquo;t have those problems. Maven solved it once and for all long time ago. Now every JVM language benefits from it. Python community should clean up this mess and standardize their tools. I was told that with introducing PyPi and PEPs the situation is getting better, well, let&rsquo;s see if it resolves all the issues.</p>
+<p>Package and distribution management in Python is in pretty bad shape. Every person I talked to admitted that it’s complete mess at the moment. I myself feel that pain every time I need to install a new library. Which tool should I use: pip, easy_install, pysetup? Some libraries installed using those tools don’t work, or work partially. Many programmers use rpm or deb packages instead of Python tools, because OS packages usually work. I came to the same conclusion on my Mac OS. The only flawlessly working Python environment I have is that installed via mac ports. In Java we don’t have those problems. Maven solved it once and for all long time ago. Now every JVM language benefits from it. Python community should clean up this mess and standardize their tools. I was told that with introducing PyPi and PEPs the situation is getting better, well, let’s see if it resolves all the issues.</p>
 
-<h2>What I&rsquo;ve learnt</h2>
+<h2 id="what-ive-learnt">What I’ve learnt</h2>
 
 <p>Here is the list of things I found pretty interesting, in no particular order.</p>
 
-<h3>Python libraries to use</h3>
+<h3 id="python-libraries-to-use">Python libraries to use</h3>
 
 <p>numpy, matplotlib, pandas, scipy, sympy, quantities, collections. Thanks to the people who told me about these libraries.</p>
 
-<h3>Cool Python stuff</h3>
+<h3 id="cool-python-stuff">Cool Python stuff</h3>
 
-<p>RunSnakeRun &#8212; GUI for Python profiler. Check out the screenshots on their <a href="http://www.vrplumber.com/programming/runsnakerun/">web site</a>. I wish Java profilers could draw such nice graphs.</p>
+<p>RunSnakeRun — GUI for Python profiler. Check out the screenshots on their <a href="http://www.vrplumber.com/programming/runsnakerun/">web site</a>. I wish Java profilers could draw such nice graphs.</p>
 
-<p><a href="http://bpython-interpreter.org/screenshots/">bpython</a> &#8212; Python REPL for geeks written in <a href="http://excess.org/urwid/examples.html">Urwid</a>. Thanks to Ian Ward for the really nice <a href="http://pyvideo.org/video/1568/console-applications-with-urwid">presentation</a>.</p>
+<p><a href="http://bpython-interpreter.org/screenshots/">bpython</a> — Python REPL for geeks written in <a href="http://excess.org/urwid/examples.html">Urwid</a>. Thanks to Ian Ward for the really nice <a href="http://pyvideo.org/video/1568/console-applications-with-urwid">presentation</a>.</p>
 
-<h3>Interesting ideas</h3>
+<h3 id="interesting-ideas">Interesting ideas</h3>
 
 <p>Print log statements in JSON format so that you can analyze them using powerful tools. You can also save logs in MongoDB, either offline or asynchronously, and do statistic analysis using aggregation framework.</p>
 
 <p>Write stored procedures in PostgreSQL in Python (and some other languages). They look much better in Python than plSQL.</p>
 
-<h2>Things to learn<a name="learn">&nbsp;</a></h2>
+<h2 id="things-to-learna-namelearnnbspa">Things to learn<a name="learn"> </a></h2>
 
 <p>Here are some technology and tools that have a great potential, in my opinion, and worthy of learning: ZeroMQ, IPython, OpenStack. Those were mentioned multiple times during the conference, and I need to check them out in more details.</p>
 
-<h2>Summary</h2>
+<h2 id="summary">Summary</h2>
 
-<p>The conference was great. I&rsquo;m glad I attended it. The organizers did a great job. The conference was beneficial not only to Python community but to Toronto programming community in general. Thanks to all who made it happen.</p>
+<p>The conference was great. I’m glad I attended it. The organizers did a great job. The conference was beneficial not only to Python community but to Toronto programming community in general. Thanks to all who made it happen.</p>
 
 <p>P.S. Videos from the conference are available <a href="http://pyvideo.org/category/25/pycon-ca-2012">here</a>.</p>
 ]]></content>
@@ -91,112 +91,131 @@
     <id>http://blog.ndpar.com/2010/10/31/springone2gx-2010</id>
     <content type="html"><![CDATA[<p>Last week I attended SpringOne2GX conference in Chicago, the main event in Spring/Groovy/Grails community. Here I want to post my brief review of this conference.</p>
 
-<h3>First impressions</h3>
+<h3 id="first-impressions">First impressions</h3>
 
 <p>The hotel (Westin Lombard) was nice and clean. Internet: there were 2 wireless networks and one cable — everything was free and worked pretty well, signal was good in almost all rooms. The conference reception was well organized — every participant received bunch of souvenirs and special edition of NFJS magazine. I saw hundreds of smiling and happy people of different ages and different outfits. Most of them with Macs. Most of them know each other. The food was fantastic, especially dinner with wine and beer.</p>
 
-<h2>Day 1</h2>
+<h2 id="day-1">Day 1</h2>
 
 <p>The first day was mostly introduction and orientation. There was only one talk on the schedule.</p>
 
-<h3>Rod Johnson — Keynote (<a href="http://www.infoq.com/presentations/SpringOne-2GX-2010-Keynote">video</a>)</h3>
+<h3 id="rod-johnson--keynote-videohttpwwwinfoqcompresentationsspringone-2gx-2010-keynote">Rod Johnson — Keynote (<a href="http://www.infoq.com/presentations/SpringOne-2GX-2010-Keynote">video</a>)</h3>
 
 <p>I thought Spring was initially created 7 years ago but the oldest class in the source tree is dated by January 17, 2001, so Spring is actually almost 10 years old. Because of the anniversary the main theme of the presentation was: <em>Where Spring goes in the next decade</em>.</p>
 
 <p>Since the core framework is well crafted already, the focus will be on the integration and making Spring portfolio as a platform for applications. There are three key values in Spring — <em>portability</em>, <em>productivity</em>, and <em>innovation</em> — and the platform will be built along those dimensions.</p>
 
-<h4>Portability</h4>
+<h4 id="portability">Portability</h4>
 
 <p>In the past SpringSource made a good job by providing a framework that makes Java applications easily portable across different application servers. The goal for the next decade is to expand the same portability to the cloud — Google AppEngine, vFabric, vmforce, etc.</p>
 
-<h4>Productivity</h4>
+<h4 id="productivity">Productivity</h4>
 
 <p>As we all know the ultimate reason of the Spring existence is to make the life of application developer easier, our work is more productive. The framework hides the low-level boilerplate, and provides well defined abstractions. In the next year there will be several features added to the Spring portfolio. Rod mentioned some of them:</p>
 
 <ul>
-<li>Seamless GWT integration</li>
-<li>Database reverse engineering with roundtripping support in Spring Roo 1.1. You will be able to generate the domain object tree based on your database schema, and it will be updated every time you change the database.</li>
-<li>Spring Payment Services project with Visa integration.</li>
+  <li>Seamless GWT integration</li>
+  <li>Database reverse engineering with roundtripping support in Spring Roo 1.1. You will be able to generate the domain object tree based on your database schema, and it will be updated every time you change the database.</li>
+  <li>Spring Payment Services project with Visa integration.</li>
 </ul>
-
 
 <p>Another aspect of productivity is a tool suite, where Spring provides STS. Rod invited Christian Dupuis on the stage, where he demoed how to developed Grails applications in STS. If you are a Grails developer you should definitely take a look at the latest version of STS — it will increase your productivity significantly.</p>
 
-<h4>Innovation</h4>
+<h4 id="innovation">Innovation</h4>
 
 <p>There will be several new projects released in the Spring portfolio soon:</p>
 
 <ul>
-<li>Spring Social — application abstraction for social networks.</li>
-<li>Spring Mobile — platform for multi-device applications.</li>
-<li>Spring-AMQP — API for integration with RabbitMQ.</li>
-<li>Spring Data — API to work with NoSQL databases, in particular Neo4J support in Spring Roo.</li>
+  <li>Spring Social — application abstraction for social networks.</li>
+  <li>Spring Mobile — platform for multi-device applications.</li>
+  <li>Spring-AMQP — API for integration with RabbitMQ.</li>
+  <li>Spring Data — API to work with NoSQL databases, in particular Neo4J support in Spring Roo.</li>
 </ul>
-
 
 <p>Keith Donald demoed <a href="http://greenhouse.springsource.org">GreenHouse</a> project and corresponding <a href="http://itunes.apple.com/us/app/greenhouse/id395862873">iPhone app</a>. This is a reference implementation of Spring Mobile and Spring Social, and this app was really really useful during the conference when I needed to check the schedule and find the room.</p>
 
-<p>At the end of the presentation Rod introduced, and Mik Kersten demoed, the next big thing — <em>Code2Cloud</em>. It&rsquo;s basically a tool that allows you to keep and manage your entire development environment in the cloud: the running app, the source code, the issue tracker, and the build server. Everything is in the cloud and configured by mouse click. It looks cool, and it definitely will be a buzz word in the next year, but I&rsquo;m not sure if many people will use it. We&rsquo;ll see.</p>
+<p>At the end of the presentation Rod introduced, and Mik Kersten demoed, the next big thing — <em>Code2Cloud</em>. It’s basically a tool that allows you to keep and manage your entire development environment in the cloud: the running app, the source code, the issue tracker, and the build server. Everything is in the cloud and configured by mouse click. It looks cool, and it definitely will be a buzz word in the next year, but I’m not sure if many people will use it. We’ll see.</p>
 
-<h2>Day 2</h2>
+<h2 id="day-2">Day 2</h2>
 
-<p>I&rsquo;m going to write only about technical sessions I attended.</p>
+<p>I’m going to write only about technical sessions I attended.</p>
 
-<h3>J&uuml;rgen H&ouml;ller — What&rsquo;s new in Spring Framework 3.1? (<a href="http://www.infoq.com/presentations/Spring-3.0-3.1-3.2">video</a>)</h3>
+<h3 id="juumlrgen-houmlller--whats-new-in-spring-framework-31-videohttpwwwinfoqcompresentationsspring-30-31-32">Jürgen Höller — What’s new in Spring Framework 3.1? (<a href="http://www.infoq.com/presentations/Spring-3.0-3.1-3.2">video</a>)</h3>
 
-<p>That was one of the best talks of this conference: technical, right to the point, with well-wrtten slides, and personal charm of the presenter. Despite the number 3.1 in the title, J&uuml;rgen actually covered three versions of Spring framework: 3.0, 3.1, and 3.2. I&rsquo;m going to briefly mention the interesting features, and if you want more details you can check the excellent on-line documentation.</p>
+<p>That was one of the best talks of this conference: technical, right to the point, with well-wrtten slides, and personal charm of the presenter. Despite the number 3.1 in the title, Jürgen actually covered three versions of Spring framework: 3.0, 3.1, and 3.2. I’m going to briefly mention the interesting features, and if you want more details you can check the excellent on-line documentation.</p>
 
-<h4>Spring 3.0</h4>
-
-<ul>
-<li><p>Custom annotations. You can create your own annotation by combining multiple existing annotations in one group. Spring automatically detects your annotation during the application context startup, and no special configuration is required. This is a very handy feature, especially when you copy-paste the same annotation group over and over again.</p></li>
-<li><p>Configuration classes and annotated factory methods. If you annotate a method with @Bean annotation Spring framework will make the output of the method a Spring bean. There are some other annotations supported, e.g. @Lazy.</p></li>
-<li><p>Standardized annotations. Spring now supports JSR-330 @Inject, JSR-250 @ManagedBean, and EJB 3.x @TransactionAnnotation.</p></li>
-<li><p>EL++. Expression language can be used now in bean definitions inside appcontext XML, and also in component annotations. Very powerful feature.</p></li>
-<li><p>REST support. Spring provides RestTemplate for client code, @PathVariable annotation, and special view resolvers on the server side. It&rsquo;s very interesting topic — check the documentation for details.</p></li>
-<li><p>Declarative model validation. You can specify data constraints right in your code by using annotations — very similar to what you have in GORM.</p></li>
-<li><p>Improved scheduling. New namespace, and @Scheduled and @Async annotations makes your appcontext smaller and more readable.</p></li>
-</ul>
-
-
-<p>If you follow Spring releases, you probably use some or most of these features already. Now let&rsquo;s see what Spring 3.1 brings to us.</p>
-
-<h4>Spring 3.1</h4>
+<h4 id="spring-30">Spring 3.0</h4>
 
 <ul>
-<li><p>Environment profiles for beans. Similar to Maven profiles but works in runtime. The idea here is to create a single deployment unit for all environments and enable certain Spring beans for specific environment. I can&rsquo;t wait to try this feature in our enterprise project.</p></li>
-<li><p>Cache abstraction. After 5 years of hibernation this feature is finally implemented. Spring provides an API to work with distributed cache, in particular in cloud environments. There will be adapters for most popular cache implementations, such as EhCache, GemFire, Coherence.</p></li>
-<li><p>Conversation management, or how J&uuml;rgen calls it HttpSession++. It&rsquo;s basically an extension of HttpSession shared across multiple browsers and window tabs. Looks very interesting.</p></li>
-<li><p>Enhanced Groovy support.</p></li>
-<li><p><code>c:</code> namespace, which is a shortcut for <code>&lt;constructor-arg&gt;</code>, analogous to <code>p:</code> namespace for properties. Small feature that makes your appcontext consistent and more readable.</p></li>
+  <li>
+    <p>Custom annotations. You can create your own annotation by combining multiple existing annotations in one group. Spring automatically detects your annotation during the application context startup, and no special configuration is required. This is a very handy feature, especially when you copy-paste the same annotation group over and over again.</p>
+  </li>
+  <li>
+    <p>Configuration classes and annotated factory methods. If you annotate a method with @Bean annotation Spring framework will make the output of the method a Spring bean. There are some other annotations supported, e.g. @Lazy.</p>
+  </li>
+  <li>
+    <p>Standardized annotations. Spring now supports JSR-330 @Inject, JSR-250 @ManagedBean, and EJB 3.x @TransactionAnnotation.</p>
+  </li>
+  <li>
+    <p>EL++. Expression language can be used now in bean definitions inside appcontext XML, and also in component annotations. Very powerful feature.</p>
+  </li>
+  <li>
+    <p>REST support. Spring provides RestTemplate for client code, @PathVariable annotation, and special view resolvers on the server side. It’s very interesting topic — check the documentation for details.</p>
+  </li>
+  <li>
+    <p>Declarative model validation. You can specify data constraints right in your code by using annotations — very similar to what you have in GORM.</p>
+  </li>
+  <li>
+    <p>Improved scheduling. New namespace, and @Scheduled and @Async annotations makes your appcontext smaller and more readable.</p>
+  </li>
 </ul>
 
+<p>If you follow Spring releases, you probably use some or most of these features already. Now let’s see what Spring 3.1 brings to us.</p>
 
-<h4>Spring 3.2</h4>
+<h4 id="spring-31">Spring 3.1</h4>
+
+<ul>
+  <li>
+    <p>Environment profiles for beans. Similar to Maven profiles but works in runtime. The idea here is to create a single deployment unit for all environments and enable certain Spring beans for specific environment. I can’t wait to try this feature in our enterprise project.</p>
+  </li>
+  <li>
+    <p>Cache abstraction. After 5 years of hibernation this feature is finally implemented. Spring provides an API to work with distributed cache, in particular in cloud environments. There will be adapters for most popular cache implementations, such as EhCache, GemFire, Coherence.</p>
+  </li>
+  <li>
+    <p>Conversation management, or how Jürgen calls it HttpSession++. It’s basically an extension of HttpSession shared across multiple browsers and window tabs. Looks very interesting.</p>
+  </li>
+  <li>
+    <p>Enhanced Groovy support.</p>
+  </li>
+  <li>
+    <p><code>c:</code> namespace, which is a shortcut for <code>&lt;constructor-arg&gt;</code>, analogous to <code>p:</code> namespace for properties. Small feature that makes your appcontext consistent and more readable.</p>
+  </li>
+</ul>
+
+<h4 id="spring-32">Spring 3.2</h4>
 
 <p>Java SE 7 support, JDBC 4.1, support for fork-join framework, general focus on concurrent programming.</p>
 
-<h3>Jeff Brown — GORM inside and out</h3>
+<h3 id="jeff-brown--gorm-inside-and-out">Jeff Brown — GORM inside and out</h3>
 
-<p>This talk was also good. I worked a bit with GORM before, and had an idea how it&rsquo;s implemented, but it was useful to hear more details from one of its developers.</p>
+<p>This talk was also good. I worked a bit with GORM before, and had an idea how it’s implemented, but it was useful to hear more details from one of its developers.</p>
 
 <p>Jeff started with the background of GORM, the complexity of Hibernate and JPA, and how GORM solves this problem following convention-over-configuration and sensible defaults strategies. He showed how to model the domain objects, what happens behind the scene when you link objects together, how to specify uni- and bi-directional relationships, and how to change default collection implementation in case of one-to-many relationship.</p>
 
-<p>During the presentation he was switching back and forth between sides and terminal, so it was easy to follow and understand the evolution of the sample application. He explained how to introduce various constraints into the model and how Grails would validate them. One of the interesting features I didn&rsquo;t know about was how to test internationalized error messages. You don&rsquo;t need to change your locale for that, simply add <code>lang=your_language</code> parameter to the URL, and Grails will switch to that language for all subsequent requests. Pretty handy.</p>
+<p>During the presentation he was switching back and forth between sides and terminal, so it was easy to follow and understand the evolution of the sample application. He explained how to introduce various constraints into the model and how Grails would validate them. One of the interesting features I didn’t know about was how to test internationalized error messages. You don’t need to change your locale for that, simply add <code>lang=your_language</code> parameter to the URL, and Grails will switch to that language for all subsequent requests. Pretty handy.</p>
 
 <p>He concluded the talk by showing how dynamic finders are implemented in GORM using Groovy metaprogramming feature. Interesting part here is that you can implement similar things in your Groovy code using the same technique, basically having custom mini-GORM in your Groovy project!</p>
 
-<h3>Venkat Subramaniam — Improving your Groovy code quality</h3>
+<h3 id="venkat-subramaniam--improving-your-groovy-code-quality">Venkat Subramaniam — Improving your Groovy code quality</h3>
 
-<p>The title of this presentation was little bit misleading for me. I expected Venkat to show some Groovy specific mistakes and how to avoid them. Instead, he was talking about the errors that in most cases are equally applied to any programming language. He mentioned various code smells and explained how to fix them. If you are interested, you can download the slides from Venkat&rsquo;s <a href="http://www.agiledeveloper.com/presentations/improving_your_groovy_code_quality.zip">web site</a>.</p>
+<p>The title of this presentation was little bit misleading for me. I expected Venkat to show some Groovy specific mistakes and how to avoid them. Instead, he was talking about the errors that in most cases are equally applied to any programming language. He mentioned various code smells and explained how to fix them. If you are interested, you can download the slides from Venkat’s <a href="http://www.agiledeveloper.com/presentations/improving_your_groovy_code_quality.zip">web site</a>.</p>
 
 <p>He also gave an advise how to maintain the high code quality:</p>
 
 <ul>
-<li>Have a respectable colleague review your code.</li>
-<li>Use code analysis tools like CodeNarc and Sonar Groovy plugin.</li>
+  <li>Have a respectable colleague review your code.</li>
+  <li>Use code analysis tools like CodeNarc and Sonar Groovy plugin.</li>
 </ul>
-
 
 <p>One of the topics he covered was the usage of the <code>return</code> keyword in Groovy. That was interesting. Compare the following two functions, guess what they return, and check your answer in the console</p>
 
@@ -207,19 +226,13 @@
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="kt">def</span> <span class="nf">func1</span><span class="o">()</span> <span class="o">{&lt;</span><span class="s">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="s">&lt;pre&gt;&lt;code&gt;try {</span>
-</span><span class='line'><span class="s">    5</span>
-</span><span class='line'><span class="s">} finally {</span>
-</span><span class='line'><span class="s">    return 22</span>
-</span><span class='line'><span class="s">}</span>
-</span><span class='line'><span class="s">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;}</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="kt">def</span> <span class="nf">func1</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>    <span class="k">try</span> <span class="o">{</span>
+</span><span class='line'>        <span class="mi">5</span>
+</span><span class='line'>    <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="mi">22</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -229,94 +242,85 @@
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="kt">def</span> <span class="nf">func2</span><span class="o">()</span> <span class="o">{&lt;</span><span class="s">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="s">&lt;pre&gt;&lt;code&gt;try {</span>
-</span><span class='line'><span class="s">    5</span>
-</span><span class='line'><span class="s">} finally {</span>
-</span><span class='line'><span class="s">    22</span>
-</span><span class='line'><span class="s">}</span>
-</span><span class='line'><span class="s">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;}</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="kt">def</span> <span class="nf">func2</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>    <span class="k">try</span> <span class="o">{</span>
+</span><span class='line'>        <span class="mi">5</span>
+</span><span class='line'>    <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+</span><span class='line'>        <span class="mi">22</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
-<h3>Paul King, Guillaume Laforge — Groovy.DSLs (from: beginner, to: expert) (<a href="http://www.infoq.com/presentations/Groovy-DSLs">video</a>)</h3>
+<h3 id="paul-king-guillaume-laforge--groovydsls-from-beginner-to-expert-videohttpwwwinfoqcompresentationsgroovy-dsls">Paul King, Guillaume Laforge — Groovy.DSLs (from: beginner, to: expert) (<a href="http://www.infoq.com/presentations/Groovy-DSLs">video</a>)</h3>
 
-<p>This would be very nice presentation if the speakers didn&rsquo;t try to cover too much. This talk could be easily split into two: one is an overview of Groovy language and another one is DSL. Unfortunately they spent lot of time on theoretical DSL part and Groovy overview, so the practical DSL part was too short from my perspective. The good thing though is that I have slides now, so I can dig deeper into this subject at my spare time.</p>
+<p>This would be very nice presentation if the speakers didn’t try to cover too much. This talk could be easily split into two: one is an overview of Groovy language and another one is DSL. Unfortunately they spent lot of time on theoretical DSL part and Groovy overview, so the practical DSL part was too short from my perspective. The good thing though is that I have slides now, so I can dig deeper into this subject at my spare time.</p>
 
 <p>In the second part of the talk Paul and Guillaume explained which features of Groovy language make it so simple to create DSLs. Here are some of them:</p>
 
 <ul>
-<li>Static imports and import aliases.</li>
-<li>Simplified collection syntax.</li>
-<li>Small or no language noise.</li>
-<li>Aggregating multiple method calls using &lsquo;with&rsquo; construct.</li>
-<li>Closures.</li>
-<li>Operator overloading.</li>
-<li>Metaprogramming.</li>
+  <li>Static imports and import aliases.</li>
+  <li>Simplified collection syntax.</li>
+  <li>Small or no language noise.</li>
+  <li>Aggregating multiple method calls using ‘with’ construct.</li>
+  <li>Closures.</li>
+  <li>Operator overloading.</li>
+  <li>Metaprogramming.</li>
 </ul>
-
 
 <p>In the last part speakers talked about different patterns and techniques of DSL implementations. They provided a comprehensive list of books you might want to read if you are interested in building DSLs.</p>
 
-<h3>Adrian Colyer — Technical keynote (<a href="http://www.infoq.com/presentations/Spring-2010-Technology">video</a>)</h3>
+<h3 id="adrian-colyer--technical-keynote-videohttpwwwinfoqcompresentationsspring-2010-technology">Adrian Colyer — Technical keynote (<a href="http://www.infoq.com/presentations/Spring-2010-Technology">video</a>)</h3>
 
-<p>Adrian&rsquo;s talk was mostly a reiteration of Rod&rsquo;s keynote from the previous day with some technical details. He mentioned Spring Payment and Spring Data projects, bean profiles and cache support in the Spring core. He showed Spring portability in action by providing links to Spring applications deployed on <a href="http://springtravelsql.appspot.com/login">Google AppEngine</a> and <a href="http://booking-mvc.internal.vmforce.com/spring/intro">vmForce</a>.</p>
+<p>Adrian’s talk was mostly a reiteration of Rod’s keynote from the previous day with some technical details. He mentioned Spring Payment and Spring Data projects, bean profiles and cache support in the Spring core. He showed Spring portability in action by providing links to Spring applications deployed on <a href="http://springtravelsql.appspot.com/login">Google AppEngine</a> and <a href="http://booking-mvc.internal.vmforce.com/spring/intro">vmForce</a>.</p>
 
 <p>Another interesting part was 20 minutes dedicated to RabbitMQ and Spring-AMQP. He even mentioned <em>Spring-Erlang</em> project which is supposed to be a convenient abstraction on top of standard Jinterface library.</p>
 
-<p>As a continuation of innovation theme Graeme Rocher demoed GORM support for NoSQL databases. That was cool. He simply uninstalled Hibernate plugin and installed Redis plugin, without touching data model. Everything worked perfect. Right now Spring works with Redis and GemFire, but soon they are going to add support for CouchDB, Cassandra, Riak, Neo4j, and MongoDB. Another interesting thing Graeme showed was <em>grails-console</em>. It&rsquo;s a pretty nice tool, you should check it out. It allows you to interact with the Grails data storage using GORM features. Very handy.</p>
+<p>As a continuation of innovation theme Graeme Rocher demoed GORM support for NoSQL databases. That was cool. He simply uninstalled Hibernate plugin and installed Redis plugin, without touching data model. Everything worked perfect. Right now Spring works with Redis and GemFire, but soon they are going to add support for CouchDB, Cassandra, Riak, Neo4j, and MongoDB. Another interesting thing Graeme showed was <em>grails-console</em>. It’s a pretty nice tool, you should check it out. It allows you to interact with the Grails data storage using GORM features. Very handy.</p>
 
 <p>Another co-presenter was Keith Donald who demoed Spring Social and Spring Mobile. He explained how OAuth works, and how interoperability with social networks was implemented in GreenHouse.</p>
 
 <p>The keynote was concluded by Jon Travis who demoed <em>SpringInsight</em>.</p>
 
-<h2>Day 3</h2>
+<h2 id="day-3">Day 3</h2>
 
-<h3>Venkat Subramaniam — Functional programming in Groovy</h3>
+<h3 id="venkat-subramaniam--functional-programming-in-groovy">Venkat Subramaniam — Functional programming in Groovy</h3>
 
 <p>That was an excellent talk and nice start of the new conference day. Venkat explained main concepts and values of functional programming, and illustrated the theory with comprehensible examples.</p>
 
-<p>He compared imperative and functional style of programming by showing how to implement for-loop using <code>inject</code> function in Groovy. I think it was one of the best explanations of functional folding I&rsquo;ve ever heard. He also demonstrated map and filter operations using <code>collect</code> and <code>findAll</code> methods.</p>
+<p>He compared imperative and functional style of programming by showing how to implement for-loop using <code>inject</code> function in Groovy. I think it was one of the best explanations of functional folding I’ve ever heard. He also demonstrated map and filter operations using <code>collect</code> and <code>findAll</code> methods.</p>
 
-<p>He clarified the difference between function value and closure, and between iterative procedure and iterative process. He gave an example on how to pass closure as a parameter to simulate function object in Groovy. He also showed how to replace tail-recursion, which Groovy doesn&rsquo;t support, with <code>inject</code> method call.</p>
+<p>He clarified the difference between function value and closure, and between iterative procedure and iterative process. He gave an example on how to pass closure as a parameter to simulate function object in Groovy. He also showed how to replace tail-recursion, which Groovy doesn’t support, with <code>inject</code> method call.</p>
 
 <p>The presentation was concluded with an example of how to use functional techniques to build DSLs in Groovy.</p>
 
-<h3>Matthias Radestock, Mark Pollack, Mark Fisher — RabbitMQ and Spring-AMQP (<a href="http://www.infoq.com/presentations/Spring-AMQP">video</a>)</h3>
+<h3 id="matthias-radestock-mark-pollack-mark-fisher--rabbitmq-and-spring-amqp-videohttpwwwinfoqcompresentationsspring-amqp">Matthias Radestock, Mark Pollack, Mark Fisher — RabbitMQ and Spring-AMQP (<a href="http://www.infoq.com/presentations/Spring-AMQP">video</a>)</h3>
 
 <p>If you read my blog, you know that RabbitMQ is one of my latest interests. I decided to go to this talk just to see how the creators would present their projects. It turned out to be a nice introduction to both RabbitMQ and <a href="http://www.springsource.org/spring-amqp">Spring-AMQP</a>. They explained main concepts of AMQP and how it is different from JMS. Here I want to give you some ideas which were not obvious for me when I started working with RabbitMQ.</p>
 
 <ul>
-<li>Messaging is all about decoupling, and AMQP is much more flexible than JMS in terms of publisher-consumer decomposition.</li>
-<li>All resources are dynamically created and destroyed by clients — the static pre-configuration is optional.</li>
-<li>Exchanges are stateless, they don&rsquo;t keep messages, they only copy and dispatch them. Queues hold the messages and deliver one message to a single client. They neither do routing nor message copying.</li>
-<li>Queue never receives the same message twice.</li>
-<li>If the message doesn&rsquo;t match routing key it&rsquo;s dropped.</li>
-<li>Because of the open protocol, you can use all available TCP tools to monitor your message traffic.</li>
+  <li>Messaging is all about decoupling, and AMQP is much more flexible than JMS in terms of publisher-consumer decomposition.</li>
+  <li>All resources are dynamically created and destroyed by clients — the static pre-configuration is optional.</li>
+  <li>Exchanges are stateless, they don’t keep messages, they only copy and dispatch them. Queues hold the messages and deliver one message to a single client. They neither do routing nor message copying.</li>
+  <li>Queue never receives the same message twice.</li>
+  <li>If the message doesn’t match routing key it’s dropped.</li>
+  <li>Because of the open protocol, you can use all available TCP tools to monitor your message traffic.</li>
 </ul>
-
 
 <p>Besides AMQP implementation RabbitMQ also provides some other useful features like custom exchanges, exchange-to-exchange routing, different protocol adaptors, etc. Spring, as usual, gives you a consistent API on top of the RabbitMQ client which hides all low-level boilerplate and makes your application code more readable.</p>
 
-<h3>Craig Walls — Developing social-ready web applications (<a href="http://www.infoq.com/presentations/Developing-Social-Ready-Web-Apps">video</a>)</h3>
+<h3 id="craig-walls--developing-social-ready-web-applications-videohttpwwwinfoqcompresentationsdeveloping-social-ready-web-apps">Craig Walls — Developing social-ready web applications (<a href="http://www.infoq.com/presentations/Developing-Social-Ready-Web-Apps">video</a>)</h3>
 
 <p>This presentation was about integrating your Java code with different social networks. There are three types of such integration: widgets, embedded code, REST API. Craig briefly explained first two, and then dived into REST.</p>
 
 <p>All popular social networks provide REST API which allows you to communicate with them. For simple operations, like search, you can just use standard Spring RestTemplate class to retrieve the data. Try for example the following URLs:</p>
 
 <ul>
-<li><a href="http://api.twitter.com/1/friends/ids.xml?screen_name=ndpar">http://api.twitter.com/1/friends/ids.xml?screen_name=ndpar</a></li>
-<li><a href="http://search.twitter.com/search.json?q=s2gx">http://search.twitter.com/search.json?q=s2gx</a></li>
-<li><a href="https://graph.facebook.com/ndpar">https://graph.facebook.com/ndpar</a></li>
+  <li><a href="http://api.twitter.com/1/friends/ids.xml?screen_name=ndpar">http://api.twitter.com/1/friends/ids.xml?screen_name=ndpar</a></li>
+  <li><a href="http://search.twitter.com/search.json?q=s2gx">http://search.twitter.com/search.json?q=s2gx</a></li>
+  <li><a href="https://graph.facebook.com/ndpar">https://graph.facebook.com/ndpar</a></li>
 </ul>
 
-
-<p>This basic approach fails though if you try to post a new message, because you have to be authorized for update operations. That&rsquo;s where OAuth comes in. The idea behind OAuth is pretty simple: instead of sharing your user-password with different clients, it uses generated tokens. This model is more flexible because if you want to revoke the permission from particular client you don&rsquo;t need to change your password and notify rest of the clients — you just remove that client&rsquo;s token from the list of authorized clients and that&rsquo;s it. The only problem with OAuth and social networks is that they support different versions of OAuth. This problem is solved by Spring Social project.</p>
+<p>This basic approach fails though if you try to post a new message, because you have to be authorized for update operations. That’s where OAuth comes in. The idea behind OAuth is pretty simple: instead of sharing your user-password with different clients, it uses generated tokens. This model is more flexible because if you want to revoke the permission from particular client you don’t need to change your password and notify rest of the clients — you just remove that client’s token from the list of authorized clients and that’s it. The only problem with OAuth and social networks is that they support different versions of OAuth. This problem is solved by Spring Social project.</p>
 
 <p>Spring Social offers consistent template-based API across different social providers. It basically gives you an OAuth aware RestTemplate, so you can do something like this:</p>
 
@@ -324,74 +328,71 @@
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 </pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">TwitterTemplate</span> <span class="n">twitter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TwitterTemplate</span><span class="o">(</span><span class="n">API_KEY</span><span class="o">,</span> <span class="n">API_SECRET</span><span class="o">,</span> <span class="n">ACCESS_TOKEN</span><span class="o">,</span> <span class="n">ACCESS_TOKEN_SECRET</span><span class="o">);</span>
-</span><span class='line'><span class="n">twitter</span><span class="o">.</span><span class="na">updateStatus</span><span class="o">(&amp;</span><span class="n">ldquo</span><span class="o">;</span><span class="n">Hello</span> <span class="err">#</span><span class="n">s2gx</span> <span class="o">!&amp;</span><span class="n">rdquo</span><span class="o">;);</span>
+</span><span class='line'><span class="n">twitter</span><span class="o">.</span><span class="na">updateStatus</span><span class="o">(</span><span class="err">“</span><span class="n">Hello</span> <span class="err">#</span><span class="n">s2gx</span> <span class="o">!</span><span class="err">”</span><span class="o">);</span>
 </span><span class='line'><span class="n">twitter</span><span class="o">.</span><span class="na">retweet</span><span class="o">(</span><span class="mi">26887414177L</span><span class="o">);</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>If you are in a social network business, definitely take a look at <a href="http://www.springsource.org/spring-social">Spring Social</a>.</p>
 
-<h3>Mark Pollack, Chris Richardson — Using Spring with non-relational databases (<a href="http://www.infoq.com/presentations/Using-Spring-with-NoSQL-Databases">video</a>)</h3>
+<h3 id="mark-pollack-chris-richardson--using-spring-with-non-relational-databases-videohttpwwwinfoqcompresentationsusing-spring-with-nosql-databases">Mark Pollack, Chris Richardson — Using Spring with non-relational databases (<a href="http://www.infoq.com/presentations/Using-Spring-with-NoSQL-Databases">video</a>)</h3>
 
-<p>Relational databases are great, right? They&rsquo;ve been with us for ages. Everybody knows how to work with them, how to build SQL statements. Every language provides ODBC library. There are bunch of frameworks that make developer&rsquo;s life easier. So why is so much buzz around NoSQL?</p>
+<p>Relational databases are great, right? They’ve been with us for ages. Everybody knows how to work with them, how to build SQL statements. Every language provides ODBC library. There are bunch of frameworks that make developer’s life easier. So why is so much buzz around NoSQL?</p>
 
 <p>Mark and Chris started their talk highlighting some problems that exist in relational database world:</p>
 
 <ul>
-<li>Object-relational impedance mismatch. Complicated mapping of rich domain model to relational schema. Relational schema rigidity.</li>
-<li>Extremely difficult/impossible to scale write operations.</li>
-<li>Suboptimal performance in some cases.</li>
+  <li>Object-relational impedance mismatch. Complicated mapping of rich domain model to relational schema. Relational schema rigidity.</li>
+  <li>Extremely difficult/impossible to scale write operations.</li>
+  <li>Suboptimal performance in some cases.</li>
 </ul>
 
-
-<p>All these issues are addressed in NoSQL databases. Although keep in mind that it&rsquo;s not coming for free — you have to trade off ACID semantics, transactions and some other features of RDBMS. But if scalability is more important for you than consistency then NoSQL is your way to go.</p>
+<p>All these issues are addressed in NoSQL databases. Although keep in mind that it’s not coming for free — you have to trade off ACID semantics, transactions and some other features of RDBMS. But if scalability is more important for you than consistency then NoSQL is your way to go.</p>
 
 <p>There are tons of NoSQL databases available for you, but they all can be split into 4 categories based on their data model:</p>
 
 <ul>
-<li>Key-Value: Amazon Dynamo, Redis, Riak, Voldemort.</li>
-<li>Column: Google Bigtable, HBase, Cassandra.</li>
-<li>Document: CouchDB, MongoDB.</li>
-<li>Graph: Neo4j, Sones, InfiniteGraph.</li>
+  <li>Key-Value: Amazon Dynamo, Redis, Riak, Voldemort.</li>
+  <li>Column: Google Bigtable, HBase, Cassandra.</li>
+  <li>Document: CouchDB, MongoDB.</li>
+  <li>Graph: Neo4j, Sones, InfiniteGraph.</li>
 </ul>
-
 
 <p>Mark and Chris talked about each type, what their typical use cases are, and how their APIs look like. They showed examples for Redis, Cassandra, MongoDB, CouchDB and Neo4j. Then they introduced <a href="http://www.springsource.org/spring-data">Spring Data</a> project which, as everything from SpringSource, simplifies the application development and hides low-level code. Right now they support most of the popular NoSQL databases, and they plan to add more in the future.</p>
 
 <p>The project is in active development phase, and the new contributors are welcome. So if it sounds interesting for you, go and check it out.</p>
 
-<h2>Day 4</h2>
+<h2 id="day-4">Day 4</h2>
 
-<h3>Hans Dockter — Gradle — a better way to build</h3>
+<h3 id="hans-dockter--gradle--a-better-way-to-build">Hans Dockter — Gradle — a better way to build</h3>
 
-<p>I never played with Gradle, so I was very curious to see how it looks like. According to Hans, who is the creator of this tool, Gradle is a general purpose build system with Groovy DSL interface. It&rsquo;s written in Java and provides build-in support for Java, Groovy, Scala, web and OSGi projects. It&rsquo;s a build language, so you can extend it for your own purposes if needed.</p>
+<p>I never played with Gradle, so I was very curious to see how it looks like. According to Hans, who is the creator of this tool, Gradle is a general purpose build system with Groovy DSL interface. It’s written in Java and provides build-in support for Java, Groovy, Scala, web and OSGi projects. It’s a build language, so you can extend it for your own purposes if needed.</p>
 
-<p>If you compare it with Ant, Gradle is definitely much better because it&rsquo;s more compact and flexible. It offers dependency resolution with integration with Maven and Ivy repositories. It also has some advanced features like incremental builds for custom tasks and parallel testing.</p>
+<p>If you compare it with Ant, Gradle is definitely much better because it’s more compact and flexible. It offers dependency resolution with integration with Maven and Ivy repositories. It also has some advanced features like incremental builds for custom tasks and parallel testing.</p>
 
-<p>The only problem I had with this presentation was that Hans kept comparing Gradle with Maven. In my opinion they are not comparable. They have different philosophy if you want. All Maven &ldquo;constraints&rdquo; are imposed by design, so it makes no sense to blame Maven for them. I think Ant-Gradle comparison is more appropriate and that&rsquo;s what Hans should have emphasized.</p>
+<p>The only problem I had with this presentation was that Hans kept comparing Gradle with Maven. In my opinion they are not comparable. They have different philosophy if you want. All Maven “constraints” are imposed by design, so it makes no sense to blame Maven for them. I think Ant-Gradle comparison is more appropriate and that’s what Hans should have emphasized.</p>
 
 <p>Other than that the session was pretty informative, and I have a better picture of Gradle now.</p>
 
-<h3>Brian Sletten — Groovy + The Semantic Web</h3>
+<h3 id="brian-sletten--groovy--the-semantic-web">Brian Sletten — Groovy + The Semantic Web</h3>
 
-<p>I had no idea what Semantic Web was. I saw this term first time on the conference schedule, so I decided to go to this talk just to educate myself. I cannot even briefly describe all the discoveries I made during this presentation because I still feel little bit overwhelmed. I just want to provide some links from Brian&rsquo;s slides that can guide you if you want to learn this concept.</p>
+<p>I had no idea what Semantic Web was. I saw this term first time on the conference schedule, so I decided to go to this talk just to educate myself. I cannot even briefly describe all the discoveries I made during this presentation because I still feel little bit overwhelmed. I just want to provide some links from Brian’s slides that can guide you if you want to learn this concept.</p>
 
 <ul>
-<li><a href="http://en.wikipedia.org/wiki/Semantic_Web">Semantic Web</a> — article from wikipedia.</li>
-<li>Formal W3C specs: <a href="http://www.w3.org/RDF/">RDF</a>, <a href="http://www.w3.org/TR/rdfa-syntax/">RDFa</a>, <a href="http://www.w3.org/2004/02/skos/">SKOS</a>, <a href="http://www.w3.org/TR/rdf-sparql-query/">SPARQL</a>, <a href="http://www.w3.org/TR/owl2-overview/">OWL</a>.</li>
-<li>SPARQL <a href="http://librdf.org/query">demo</a>.</li>
-<li><a href="http://www.w3.org/2007/08/pyRdfa">RDFa distiller and parser</a>. Try to feed Brian&rsquo;s test page URL (<a href="http://bosatsu.net/nfjs/test.html">http://bosatsu.net/nfjs/test.html</a>) to the distiller and see what it returns.</li>
-<li><a href="http://opengraphprotocol.org">OG</a> — open graph protocol.</li>
-<li><a href="http://jena.sourceforge.net">Jena</a> — Java API to work with Semantic Web.</li>
-<li><a href="http://github.com/shellac/java-rdfa">Java-RDFa</a> parser.</li>
-<li><a href="http://clarkparsia.com/pellet/">Pellet</a> — Java API for OWL.</li>
+  <li><a href="http://en.wikipedia.org/wiki/Semantic_Web">Semantic Web</a> — article from wikipedia.</li>
+  <li>Formal W3C specs: <a href="http://www.w3.org/RDF/">RDF</a>, <a href="http://www.w3.org/TR/rdfa-syntax/">RDFa</a>, <a href="http://www.w3.org/2004/02/skos/">SKOS</a>, <a href="http://www.w3.org/TR/rdf-sparql-query/">SPARQL</a>, <a href="http://www.w3.org/TR/owl2-overview/">OWL</a>.</li>
+  <li>SPARQL <a href="http://librdf.org/query">demo</a>.</li>
+  <li><a href="http://www.w3.org/2007/08/pyRdfa">RDFa distiller and parser</a>. Try to feed Brian’s test page URL (http://bosatsu.net/nfjs/test.html) to the distiller and see what it returns.</li>
+  <li><a href="http://opengraphprotocol.org">OG</a> — open graph protocol.</li>
+  <li><a href="http://jena.sourceforge.net">Jena</a> — Java API to work with Semantic Web.</li>
+  <li><a href="http://github.com/shellac/java-rdfa">Java-RDFa</a> parser.</li>
+  <li><a href="http://clarkparsia.com/pellet/">Pellet</a> — Java API for OWL.</li>
 </ul>
 
-
-<h3>Conclusion</h3>
+<h3 id="conclusion">Conclusion</h3>
 
 <p>Whew! This happened to be longer review than I planned initially. If you are still with me, congratulations!</p>
 
-<p>There were much more presentations at this conference but because of the tight schedule I had to sacrifice 80% of them. My overall impression from this conference is very positive. If you are a Spring/Groovy/Grails developer I encourage you to go to this event next year. The biggest benefit of it: <em>You start seeing the Spring as a universe</em>, not as a bunch of separate projects. You cannot get this feeling from the documentation, even if it&rsquo;s perfect as the Spring one.</p>
+<p>There were much more presentations at this conference but because of the tight schedule I had to sacrifice 80% of them. My overall impression from this conference is very positive. If you are a Spring/Groovy/Grails developer I encourage you to go to this event next year. The biggest benefit of it: <em>You start seeing the Spring as a universe</em>, not as a bunch of separate projects. You cannot get this feeling from the documentation, even if it’s perfect as the Spring one.</p>
 ]]></content>
   </entry>
   

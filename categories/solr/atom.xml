@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Solr | Side Notes]]></title>
   <link href="http://blog.ndpar.com/categories/solr/atom.xml" rel="self"/>
   <link href="http://blog.ndpar.com/"/>
-  <updated>2013-06-16T20:37:58-04:00</updated>
+  <updated>2013-06-22T10:10:09-04:00</updated>
   <id>http://blog.ndpar.com/</id>
   <author>
     <name><![CDATA[Andrey Paramonov]]></name>
@@ -59,9 +59,10 @@
 &lt;/response&gt;
 </code></pre>
 
-<p>Even if we ignore the response header, the structure of the response/result/doc is not the same as of input document: the element names reflect the types, the arrays are grouped. If you try to add this document to a Solr server, you will get an error &ldquo;unexpected XML tag&rdquo;, obviously. I googled for couple hours on how to convert an output document to an input, and, to my surprise, didn&rsquo;t find any solution. Therefore I implemented my own converter in Groovy, which solved the problem. I post it <a href="http://gist.github.com/3813775">here</a> in case somebody needs it.</p>
+<p>Even if we ignore the response header, the structure of the response/result/doc is not the same as of input document: the element names reflect the types, the arrays are grouped. If you try to add this document to a Solr server, you will get an error “unexpected XML tag”, obviously. I googled for couple hours on how to convert an output document to an input, and, to my surprise, didn’t find any solution. Therefore I implemented my own converter in Groovy, which solved the problem. I post it <a href="http://gist.github.com/3813775">here</a> in case somebody needs it.</p>
 
 <p>Note: You can also use this script to re-index Solr.</p>
+
 ]]></content>
   </entry>
   

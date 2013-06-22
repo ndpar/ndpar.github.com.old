@@ -32,6 +32,37 @@
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
   
 
 </head>
@@ -99,7 +130,7 @@
 
   <div class="entry-content"><p>After working on <a href="http://en.wikipedia.org/wiki/Sleeping_barber_problem">Sleeping Barber</a> problem at <a href="http://www.meetup.com/Toronto-Coding-Dojo/events/120577762/">Coding Dojo</a> I decided to implement it in Erlang. Because Erlang is the perfect language for these sorts of problems, many people have alredy solved it in many different ways. I found at least three groups of solutions: 1) direct implementation using message passing between processes, 2) OTP solution using <em>gen_server</em>, and 3) something resembling object-oriented approach.</p>
 
-<p>Strangely enough, I didn&rsquo;t see any solution based on <a href="https://en.wikipedia.org/wiki/Finite-state_machine">FSM</a>. That is odd because this is the first thing coming to my mind when I hear this problem. To fill the gap, I&rsquo;m going to solve it using <em>gen_fsm</em>, which is a standard OTP behaviour for FSM.</p>
+<p>Strangely enough, I didn’t see any solution based on <a href="https://en.wikipedia.org/wiki/Finite-state_machine">FSM</a>. That is odd because this is the first thing coming to my mind when I hear this problem. To fill the gap, I’m going to solve it using <em>gen_fsm</em>, which is a standard OTP behaviour for FSM.</p>
 
 </div>
   
@@ -142,13 +173,20 @@
 
   <div class="entry-content"><p><a href="http://www.infoq.com/interviews/rod-johnson-entrepreneurialism">Rod Johnson</a>, creator of Spring, programmer that became entrepreneur:</p>
 
-<blockquote><p>One thing I think that you really need to be careful of as well, particularly if you, like me, are a programmer, is don’t get carried away writing code. Typically in my experience anyone who is a good programmer is pretty passionate about it, love writing code, get addicted to the process of writing code, fell pretty good about their code basis. As soon as you get down that path you are not thinking straight anymore and now you are increasing your emotional investment, you are having lots of fun writing interesting code and you are no longer in a place mentally where you are going to be trying to find some reason that you shouldn’t write that code. That has been a big lesson for me that the quicker I get to coding, the longer it takes me to ask the kind of questions I should ask upfront.</p></blockquote>
+<blockquote>
+  <p>One thing I think that you really need to be careful of as well, particularly if you, like me, are a programmer, is don’t get carried away writing code. Typically in my experience anyone who is a good programmer is pretty passionate about it, love writing code, get addicted to the process of writing code, fell pretty good about their code basis. As soon as you get down that path you are not thinking straight anymore and now you are increasing your emotional investment, you are having lots of fun writing interesting code and you are no longer in a place mentally where you are going to be trying to find some reason that you shouldn’t write that code. That has been a big lesson for me that the quicker I get to coding, the longer it takes me to ask the kind of questions I should ask upfront.</p>
+</blockquote>
 
 <p><a href="http://www.youtube.com/watch?v=MShbP3OpASA">Linus Torvalds</a>, creator of Linux, programmer that still programs:</p>
 
-<blockquote><p>I&rsquo;m interested in programming. When business started happening, I didn&rsquo;t get into this for the business side. I wanted to do programming. When other people started selling Linux, I said &ldquo;Yes! Now I can avoid caring about that side too.&rdquo;</p>
+<blockquote>
+  <p>I’m interested in programming. When business started happening, I didn’t get into this for the business side. I wanted to do programming. When other people started selling Linux, I said “Yes! Now I can avoid caring about that side too.”</p>
+</blockquote>
 
-<p>I never had to deal with single business related thing in Linux ever. Seriously, I had to deal with lot of other things but business related things… I got queries and I just said &ldquo;I don&rsquo;t care.&rdquo;</p></blockquote>
+<blockquote>
+  <p>I never had to deal with single business related thing in Linux ever. Seriously, I had to deal with lot of other things but business related things… I got queries and I just said “I don’t care.”</p>
+</blockquote>
+
 </div>
   
   
@@ -184,19 +222,23 @@
   </header>
 
 
-  <div class="entry-content"><p>The main guest at today&rsquo;s <a href="http://mostlyerlang.wordpress.com/2013/05/21/43/">MostlyErlang</a> podcast is Joe Armstrong, the co-inventor of Erlang, a wise man, and a brilliant speaker. I listened to the podcast few times, and every time enjoyed it. I highly recommend it to all programmers regardless whether they are using Erlang or not.</p>
+  <div class="entry-content"><p>The main guest at today’s <a href="http://mostlyerlang.wordpress.com/2013/05/21/43/">MostlyErlang</a> podcast is Joe Armstrong, the co-inventor of Erlang, a wise man, and a brilliant speaker. I listened to the podcast few times, and every time enjoyed it. I highly recommend it to all programmers regardless whether they are using Erlang or not.</p>
 
 <p>While we are waiting for the oficial transcript, this post provides some highlights. I put here the quotes I found particularly interesting or funny.</p>
 
-<h2>Concurrency</h2>
+<h2 id="concurrency">Concurrency</h2>
 
-<blockquote><p>I&rsquo;ve got a blog on my GitHub, and I thouhgt I&rsquo;d put two different types of articles there and see what the response is. One theme I&rsquo;m pursuing is &ldquo;explaining to 5-year-old&rdquo; theme, and the other is &ldquo;technically complicated&rdquo; theme.</p></blockquote>
+<blockquote>
+  <p>I’ve got a blog on my GitHub, and I thouhgt I’d put two different types of articles there and see what the response is. One theme I’m pursuing is “explaining to 5-year-old” theme, and the other is “technically complicated” theme.</p>
+</blockquote>
 
-<p>Then he describes the &ldquo;<a href="http://joearms.github.io/2013/04/05/concurrent-and-parallel-programming.html">concurrency vs parallelism</a>&rdquo; picture for 5 y.o.</p>
+<p>Then he describes the “<a href="http://joearms.github.io/2013/04/05/concurrent-and-parallel-programming.html">concurrency vs parallelism</a>” picture for 5 y.o. </p>
 
-<blockquote><p>That blog entry got 25,000 people read it, and they got 10 responses and quite a lot of criticism actually from people who know what concurrency and parallelism is. And then I compare it to some other articles I&rsquo;ve written that technically deeper. There you got only few hundred people read it.</p></blockquote>
+<blockquote>
+  <p>That blog entry got 25,000 people read it, and they got 10 responses and quite a lot of criticism actually from people who know what concurrency and parallelism is. And then I compare it to some other articles I’ve written that technically deeper. There you got only few hundred people read it.</p>
+</blockquote>
 
-<p>I noticed it too. All those people, who responded with <a href="http://www.yosefk.com/blog/parallelism-and-concurrency-need-different-tools.html">long blogs</a> about concurrency, missed the point: This picture was for kids, and for kids it&rsquo;s a pretty good picture. Adults should go and read the technical papers, but they didn&rsquo;t.</p>
+<p>I noticed it too. All those people, who responded with <a href="http://www.yosefk.com/blog/parallelism-and-concurrency-need-different-tools.html">long blogs</a> about concurrency, missed the point: This picture was for kids, and for kids it’s a pretty good picture. Adults should go and read the technical papers, but they didn’t.</p>
 
 </div>
   
@@ -239,9 +281,14 @@
 
   <div class="entry-content"><p><a href="http://en.wikipedia.org/wiki/Barbara_Liskov">Barbara Liskov</a> in her <a href="http://www.infoq.com/presentations/programming-abstraction-liskov">keynote</a> presentation:</p>
 
-<blockquote><p>I&rsquo;m a little dismayed what&rsquo;s happened in programming languages. And the reason I&rsquo;m dismayed is because on the one hand we have the programming languages that experts use — I&rsquo;m thinking of Java and C# but you can name bunch of others. And the problem with these languages is — they are powerful, you can build big systems in them — but they aren&rsquo;t very good for beginners. And what happens in MIT, and I think this is happening across the US anyway, is the people are no longer using those languages in their introductory programming language courses, because the amount of craft you have to go through in order to write the little print-loop is just too much, and the students just get lost in the process. So they&rsquo;ve been switching to languages like Python.</p>
+<blockquote>
+  <p>I’m a little dismayed what’s happened in programming languages. And the reason I’m dismayed is because on the one hand we have the programming languages that experts use — I’m thinking of Java and C# but you can name bunch of others. And the problem with these languages is — they are powerful, you can build big systems in them — but they aren’t very good for beginners. And what happens in MIT, and I think this is happening across the US anyway, is the people are no longer using those languages in their introductory programming language courses, because the amount of craft you have to go through in order to write the little print-loop is just too much, and the students just get lost in the process. So they’ve been switching to languages like Python.</p>
+</blockquote>
 
-<p>Python is very simple and nice when you start to use it. But you don&rsquo;t get too far down the road, if you me, before you discover it has no data abstraction at all. That&rsquo;s not good because big programs require modularity and encapsulation, and you&rsquo;d like the language that supports that. So my question is: Can we find a language that will work for both communities? And the reason it matters is because a lot of kids start off programming in their first programming language and that&rsquo;s it. They may have to change eventually, but they are building huge systems in languages that are really ill-suited for this. So it would be good if the language they started off with is the one they can grow with, and would be good for building big programs as well as small ones.</p></blockquote>
+<blockquote>
+  <p>Python is very simple and nice when you start to use it. But you don’t get too far down the road, if you me, before you discover it has no data abstraction at all. That’s not good because big programs require modularity and encapsulation, and you’d like the language that supports that. So my question is: Can we find a language that will work for both communities? And the reason it matters is because a lot of kids start off programming in their first programming language and that’s it. They may have to change eventually, but they are building huge systems in languages that are really ill-suited for this. So it would be good if the language they started off with is the one they can grow with, and would be good for building big programs as well as small ones.</p>
+</blockquote>
+
 </div>
   
   
@@ -279,7 +326,7 @@
 
   <div class="entry-content"><p>Sometimes I need to run <a href="http://zookeeper.apache.org">ZooKeeper</a> ensemble on my development box to test my application on the production-like environment. I found that recreating the whole ensemble from scratch is much faster than cleaning it up using ZooKeeper CLI tool. To automate this process I created a bash script which I want to share in this blog post. I hard-coded all the paths in the script using my regular conventions. You might need to change them to yours — it should be fairly straightforward.</p>
 
-<p>Before you can use the script, you need to install ZooKeeper on your box. That&rsquo;s what I did on my machine</p>
+<p>Before you can use the script, you need to install ZooKeeper on your box. That’s what I did on my machine</p>
 
 <pre><code>$ cd /opt
 $ sudo mkdir zookeeper
@@ -342,6 +389,7 @@ $ ps -ef | grep java
 
 <pre><code>$ ./zookeeper-init-ensemble.sh
 </code></pre>
+
 </div>
   
   
@@ -377,7 +425,7 @@ $ ps -ef | grep java
   </header>
 
 
-  <div class="entry-content"><p><img class="center" src="/images/posts/BigData.jpg"></p>
+  <div class="entry-content"><p><img class="center" src="/images/posts/BigData.jpg" /></p>
 </div>
   
   
@@ -413,9 +461,9 @@ $ ps -ef | grep java
   </header>
 
 
-  <div class="entry-content"><p><em>Warning</em>: In this post I&rsquo;m going to compare <a href="http://www.rabbitmq.com/">RabbitMQ</a>, <a href="http://www.zeromq.org/">ZeroMQ</a>, <a href="http://activemq.apache.org/">ActiveMQ</a>, and <a href="http://www.jboss.org/hornetq">HornetQ</a>. The basis of the comparison is not the performance, or the scalability, or any other serious feature. The comparison is done <em>purely</em> based on the popularity of those systems. Therefore, if you came here to see some performance metrics, you will be disappointed — there is none in this post.</p>
+  <div class="entry-content"><p><em>Warning</em>: In this post I’m going to compare <a href="http://www.rabbitmq.com/">RabbitMQ</a>, <a href="http://www.zeromq.org/">ZeroMQ</a>, <a href="http://activemq.apache.org/">ActiveMQ</a>, and <a href="http://www.jboss.org/hornetq">HornetQ</a>. The basis of the comparison is not the performance, or the scalability, or any other serious feature. The comparison is done <em>purely</em> based on the popularity of those systems. Therefore, if you came here to see some performance metrics, you will be disappointed — there is none in this post.</p>
 
-<p><em>Note</em>: To calculate popularity, I&rsquo;m going to use MongoDB and Python, so if you don&rsquo;t care about message brokers, but you want to see some examples of MongoDB scripts, this post might be interesting to you.</p>
+<p><em>Note</em>: To calculate popularity, I’m going to use MongoDB and Python, so if you don’t care about message brokers, but you want to see some examples of MongoDB scripts, this post might be interesting to you.</p>
 
 </div>
   
@@ -458,100 +506,98 @@ $ ps -ef | grep java
 
   <div class="entry-content"><p>Yesterday was the Global Day of Code Retreat. Software engineers around the globe met together to learn from each other.</p>
 
-<p><img class="center" src="https://pbs.twimg.com/media/A9mptOCCAAE0d7z.jpg" title="CR2012 1" ></p>
+<p><img class="center" src="https://pbs.twimg.com/media/A9mptOCCAAE0d7z.jpg" title="CR2012 1" /></p>
 
-<p>There were several sessions where people were pair-programming <a href="http://en.wikipedia.org/wiki/Conway's_Game_of_Life">Conway&rsquo;s Game of Life</a>.</p>
+<p>There were several sessions where people were pair-programming <a href="http://en.wikipedia.org/wiki/Conway's_Game_of_Life">Conway’s Game of Life</a>.</p>
 
-<p><img class="center" src="https://pbs.twimg.com/media/A9nZYcTCQAEVtkP.jpg" title="CR2012 2" ></p>
+<p><img class="center" src="https://pbs.twimg.com/media/A9nZYcTCQAEVtkP.jpg" title="CR2012 2" /></p>
 
 <p>Each session you had to choose a new partner, so that both of you can learn something new.</p>
 
-<p><img class="center" src="https://pbs.twimg.com/media/A9n_aHzCcAARnkJ.jpg" title="CR2012 3" ></p>
+<p><img class="center" src="https://pbs.twimg.com/media/A9n_aHzCcAARnkJ.jpg" title="CR2012 3" /></p>
 
 <p>During the first session my partner and I decided to implement the Game in Java, mainly because it was the language she was most comfortable with. We implemented the procedural solution using two-dimensional array and nested loops. At that moment that was the only solution I could think of. The main challenge was to cover all edge cases and fix all <code>ArrayIndexOutOfBoundsException</code>s. Java is fairly verbose language, and with nested loops and if-else statements the final solution was pretty hard to read. You can see <a href="http://rosettacode.org/wiki/Conway's_Game_of_Life#Java">here</a> how it might look like.</p>
 
 <p>First session was a warmup, during which most people realized that programming arrays is a tedious work. For the second session my new partner suggested an object-oriented approach, where you would operate on Cell objects that would encapsulate coordinates on the grid. In this case you move the game logic from the grid to the cell, making it easier to calculate a new state. This was my first acquaintance with C#. Interesting language — basically, Java with lambdas. Here is an <a href="http://rosettacode.org/wiki/Conway's_Game_of_Life#C.23">example</a> of C# implementation. Our solution was very similar.</p>
 
-<p>While the first session&rsquo;s data structure was array of booleans, on the second session it was replaced by a list of objects. The next step would be to relax the data structure even further. We decided to experiment with un-ordered set of coordinate pairs. For language we chose Clojure. Although we didn&rsquo;t finish the implementation, by the end of the session we had a clear picture how to solve the problem in functional style.</p>
+<p>While the first session’s data structure was array of booleans, on the second session it was replaced by a list of objects. The next step would be to relax the data structure even further. We decided to experiment with un-ordered set of coordinate pairs. For language we chose Clojure. Although we didn’t finish the implementation, by the end of the session we had a clear picture how to solve the problem in functional style.</p>
 
-<p>On the fourth session the facilitators put an interesting constraint: the coding must be done in absolute silence. That was the most amazing experience of the day. Before we started I thought we couldn&rsquo;t accomplish much without talking. As it turned out, we could. The key of effective silent coding is to use the tools which both partners are familiar with. In our case we both were advanced users of Vim, and we knew Lisp languages. Our Clojure implementation was based on map/filter/reduce approach and spanned 20 lines of code. After the session <a href="http://langnostic.blogspot.com">Leo</a> showed me Christophe Grand&rsquo;s <a href="http://clj-me.cgrand.net/2011/08/19/conways-game-of-life/">7-line solution</a> based on list comprehensions. It is so wonderful that I want to post it here</p>
+<p>On the fourth session the facilitators put an interesting constraint: the coding must be done in absolute silence. That was the most amazing experience of the day. Before we started I thought we couldn’t accomplish much without talking. As it turned out, we could. The key of effective silent coding is to use the tools which both partners are familiar with. In our case we both were advanced users of Vim, and we knew Lisp languages. Our Clojure implementation was based on map/filter/reduce approach and spanned 20 lines of code. After the session <a href="http://langnostic.blogspot.com">Leo</a> showed me Christophe Grand’s <a href="http://clj-me.cgrand.net/2011/08/19/conways-game-of-life/">7-line solution</a> based on list comprehensions. It is so wonderful that I want to post it here</p>
 
-<figure class='code'><figcaption><span>life.clj </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="kd">defn </span><span class="nv">neighbours</span> <span class="p">[[</span><span class="nv">x</span> <span class="nv">y</span><span class="p">]]</span>
-</span><span class='line'>  <span class="p">(</span><span class="nb">for </span><span class="p">[</span><span class="nv">dx</span> <span class="p">[</span><span class="mi">-1</span> <span class="mi">0</span> <span class="mi">1</span><span class="p">]</span> <span class="nv">dy</span> <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">zero? </span><span class="nv">dx</span><span class="p">)</span> <span class="p">[</span><span class="mi">-1</span> <span class="mi">1</span><span class="p">]</span> <span class="p">[</span><span class="mi">-1</span> <span class="mi">0</span> <span class="mi">1</span><span class="p">])]</span>
-</span><span class='line'>    <span class="p">[(</span><span class="nb">+ </span><span class="nv">dx</span> <span class="nv">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">dy</span> <span class="nv">y</span><span class="p">)]))</span>
-</span><span class='line'>
-</span><span class='line'><span class="p">(</span><span class="kd">defn </span><span class="nv">step</span> <span class="p">[</span><span class="nv">cells</span><span class="p">]</span>
-</span><span class='line'>  <span class="p">(</span><span class="nb">set </span><span class="p">(</span><span class="nb">for </span><span class="p">[[</span><span class="nv">loc</span> <span class="nv">n</span><span class="p">]</span> <span class="p">(</span><span class="nf">frequencies</span> <span class="p">(</span><span class="nb">mapcat </span><span class="nv">neighbours</span> <span class="nv">cells</span><span class="p">))</span>
-</span><span class='line'>             <span class="ss">:when</span> <span class="p">(</span><span class="nb">or </span><span class="p">(</span><span class="nb">= </span><span class="nv">n</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">and </span><span class="p">(</span><span class="nb">= </span><span class="nv">n</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="nf">cells</span> <span class="nv">loc</span><span class="p">)))]</span>
-</span><span class='line'>         <span class="nv">loc</span><span class="p">)))</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>life.clj </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="clojure"><span class="line"><span class="p">(</span><span class="kd">defn </span><span class="nv">neighbours</span> <span class="p">[[</span><span class="nv">x</span> <span class="nv">y</span><span class="p">]]</span>
+</span><span class="line">  <span class="p">(</span><span class="nb">for </span><span class="p">[</span><span class="nv">dx</span> <span class="p">[</span><span class="mi">-1</span> <span class="mi">0</span> <span class="mi">1</span><span class="p">]</span> <span class="nv">dy</span> <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">zero? </span><span class="nv">dx</span><span class="p">)</span> <span class="p">[</span><span class="mi">-1</span> <span class="mi">1</span><span class="p">]</span> <span class="p">[</span><span class="mi">-1</span> <span class="mi">0</span> <span class="mi">1</span><span class="p">])]</span>
+</span><span class="line">    <span class="p">[(</span><span class="nb">+ </span><span class="nv">dx</span> <span class="nv">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">dy</span> <span class="nv">y</span><span class="p">)]))</span>
+</span><span class="line">
+</span><span class="line"><span class="p">(</span><span class="kd">defn </span><span class="nv">step</span> <span class="p">[</span><span class="nv">cells</span><span class="p">]</span>
+</span><span class="line">  <span class="p">(</span><span class="nb">set </span><span class="p">(</span><span class="nb">for </span><span class="p">[[</span><span class="nv">loc</span> <span class="nv">n</span><span class="p">]</span> <span class="p">(</span><span class="nf">frequencies</span> <span class="p">(</span><span class="nb">mapcat </span><span class="nv">neighbours</span> <span class="nv">cells</span><span class="p">))</span>
+</span><span class="line">             <span class="ss">:when</span> <span class="p">(</span><span class="nb">or </span><span class="p">(</span><span class="nb">= </span><span class="nv">n</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">and </span><span class="p">(</span><span class="nb">= </span><span class="nv">n</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="nf">cells</span> <span class="nv">loc</span><span class="p">)))]</span>
+</span><span class="line">         <span class="nv">loc</span><span class="p">)))</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
+<p>For the last session we chose Erlang. Because we already knew how to implement the functional solution, that was just an exercise of translating Clojure code into Erlang. Unfortunately we didn’t find an equivalent of <code>frequencies</code> function in the standard library, so we implemented it ourselves. Other than that, the Erlang code is almost identical to Clojure.</p>
 
-<p>For the last session we chose Erlang. Because we already knew how to implement the functional solution, that was just an exercise of translating Clojure code into Erlang. Unfortunately we didn&rsquo;t find an equivalent of <code>frequencies</code> function in the standard library, so we implemented it ourselves. Other than that, the Erlang code is almost identical to Clojure.</p>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>life.erl </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+</pre></td><td class="code"><pre><code class="erlang"><span class="line"><span class="p">-</span><span class="ni">import</span><span class="p">(</span><span class="n">sets</span><span class="p">,</span> <span class="p">[</span><span class="n">from_list</span><span class="o">/</span><span class="mi">1</span><span class="p">,</span> <span class="n">to_list</span><span class="o">/</span><span class="mi">1</span><span class="p">,</span> <span class="n">is_element</span><span class="o">/</span><span class="mi">2</span><span class="p">]).</span>
+</span><span class="line">
+</span><span class="line"><span class="nf">neighbours</span><span class="p">({</span><span class="nv">X</span><span class="p">,</span> <span class="nv">Y</span><span class="p">})</span> <span class="o">-&gt;</span>
+</span><span class="line">    <span class="p">[{</span><span class="nv">X</span> <span class="o">+</span> <span class="nv">DX</span><span class="p">,</span> <span class="nv">Y</span> <span class="o">+</span> <span class="nv">DY</span><span class="p">}</span> <span class="p">||</span> <span class="nv">DX</span> <span class="o">&lt;-</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="nv">DY</span> <span class="o">&lt;-</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">{</span><span class="nv">DX</span><span class="p">,</span> <span class="nv">DY</span><span class="p">}</span> <span class="o">=/=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">}].</span>
+</span><span class="line">
+</span><span class="line"><span class="nf">step</span><span class="p">(</span><span class="nv">Cells</span><span class="p">)</span> <span class="o">-&gt;</span>
+</span><span class="line">    <span class="nv">Nbs</span> <span class="o">=</span> <span class="nn">lists</span><span class="p">:</span><span class="nf">flatmap</span><span class="p">(</span><span class="k">fun</span> <span class="n">neighbours</span><span class="o">/</span><span class="mi">1</span><span class="p">,</span> <span class="n">to_list</span><span class="p">(</span><span class="nv">Cells</span><span class="p">)),</span>
+</span><span class="line">    <span class="nv">NewCells</span> <span class="o">=</span> <span class="p">[</span><span class="nv">C</span> <span class="p">||</span> <span class="p">{</span><span class="nv">C</span><span class="p">,</span> <span class="nv">N</span><span class="p">}</span> <span class="o">&lt;-</span> <span class="n">frequencies</span><span class="p">(</span><span class="nv">Nbs</span><span class="p">),</span>
+</span><span class="line">                     <span class="p">(</span><span class="nv">N</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="ow">orelse</span> <span class="p">((</span><span class="nv">N</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="ow">andalso</span> <span class="n">is_element</span><span class="p">(</span><span class="nv">C</span><span class="p">,</span> <span class="nv">Cells</span><span class="p">))],</span>
+</span><span class="line">    <span class="n">from_list</span><span class="p">(</span><span class="nv">NewCells</span><span class="p">).</span>
+</span><span class="line">
+</span><span class="line"><span class="nf">frequencies</span><span class="p">(</span><span class="nv">List</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">frequencies</span><span class="p">(</span><span class="nv">List</span><span class="p">,</span> <span class="p">[]).</span>
+</span><span class="line"><span class="nf">frequencies</span><span class="p">([],</span> <span class="nv">Acc</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nv">Acc</span><span class="p">;</span>
+</span><span class="line"><span class="nf">frequencies</span><span class="p">([</span><span class="nv">X</span><span class="p">|</span><span class="nv">Xs</span><span class="p">],</span> <span class="nv">Acc</span><span class="p">)</span> <span class="o">-&gt;</span>
+</span><span class="line">    <span class="k">case</span> <span class="nn">lists</span><span class="p">:</span><span class="nf">keyfind</span><span class="p">(</span><span class="nv">X</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">Acc</span><span class="p">)</span> <span class="k">of</span>
+</span><span class="line">        <span class="p">{</span><span class="nv">X</span><span class="p">,</span> <span class="nv">F</span><span class="p">}</span> <span class="o">-&gt;</span> <span class="n">frequencies</span><span class="p">(</span><span class="nv">Xs</span><span class="p">,</span> <span class="nn">lists</span><span class="p">:</span><span class="nf">keyreplace</span><span class="p">(</span><span class="nv">X</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">Acc</span><span class="p">,</span> <span class="p">{</span><span class="nv">X</span><span class="p">,</span> <span class="nv">F</span><span class="o">+</span><span class="mi">1</span><span class="p">}));</span>
+</span><span class="line">        <span class="n">false</span>  <span class="o">-&gt;</span> <span class="n">frequencies</span><span class="p">(</span><span class="nv">Xs</span><span class="p">,</span> <span class="nn">lists</span><span class="p">:</span><span class="nf">keystore</span><span class="p">(</span><span class="nv">X</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">Acc</span><span class="p">,</span> <span class="p">{</span><span class="nv">X</span><span class="p">,</span> <span class="mi">1</span><span class="p">}))</span>
+</span><span class="line">    <span class="k">end</span><span class="p">.</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<figure class='code'><figcaption><span>life.erl </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class='erlang'><span class='line'><span class="p">-</span><span class="ni">import</span><span class="p">(</span><span class="n">sets</span><span class="p">,</span> <span class="p">[</span><span class="n">from_list</span><span class="o">/</span><span class="mi">1</span><span class="p">,</span> <span class="n">to_list</span><span class="o">/</span><span class="mi">1</span><span class="p">,</span> <span class="n">is_element</span><span class="o">/</span><span class="mi">2</span><span class="p">]).</span>
-</span><span class='line'>
-</span><span class='line'><span class="nf">neighbours</span><span class="p">({</span><span class="nv">X</span><span class="p">,</span> <span class="nv">Y</span><span class="p">})</span> <span class="o">-&gt;</span>
-</span><span class='line'>    <span class="p">[{</span><span class="nv">X</span> <span class="o">+</span> <span class="nv">DX</span><span class="p">,</span> <span class="nv">Y</span> <span class="o">+</span> <span class="nv">DY</span><span class="p">}</span> <span class="p">||</span> <span class="nv">DX</span> <span class="o">&lt;-</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="nv">DY</span> <span class="o">&lt;-</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">{</span><span class="nv">DX</span><span class="p">,</span> <span class="nv">DY</span><span class="p">}</span> <span class="o">=/=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">}].</span>
-</span><span class='line'>
-</span><span class='line'><span class="nf">step</span><span class="p">(</span><span class="nv">Cells</span><span class="p">)</span> <span class="o">-&gt;</span>
-</span><span class='line'>    <span class="nv">Nbs</span> <span class="o">=</span> <span class="nn">lists</span><span class="p">:</span><span class="nf">flatmap</span><span class="p">(</span><span class="k">fun</span> <span class="n">neighbours</span><span class="o">/</span><span class="mi">1</span><span class="p">,</span> <span class="n">to_list</span><span class="p">(</span><span class="nv">Cells</span><span class="p">)),</span>
-</span><span class='line'>    <span class="nv">NewCells</span> <span class="o">=</span> <span class="p">[</span><span class="nv">C</span> <span class="p">||</span> <span class="p">{</span><span class="nv">C</span><span class="p">,</span> <span class="nv">N</span><span class="p">}</span> <span class="o">&lt;-</span> <span class="n">frequencies</span><span class="p">(</span><span class="nv">Nbs</span><span class="p">),</span>
-</span><span class='line'>                     <span class="p">(</span><span class="nv">N</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="ow">orelse</span> <span class="p">((</span><span class="nv">N</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="ow">andalso</span> <span class="n">is_element</span><span class="p">(</span><span class="nv">C</span><span class="p">,</span> <span class="nv">Cells</span><span class="p">))],</span>
-</span><span class='line'>    <span class="n">from_list</span><span class="p">(</span><span class="nv">NewCells</span><span class="p">).</span>
-</span><span class='line'>
-</span><span class='line'><span class="nf">frequencies</span><span class="p">(</span><span class="nv">List</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">frequencies</span><span class="p">(</span><span class="nv">List</span><span class="p">,</span> <span class="p">[]).</span>
-</span><span class='line'><span class="nf">frequencies</span><span class="p">([],</span> <span class="nv">Acc</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nv">Acc</span><span class="p">;</span>
-</span><span class='line'><span class="nf">frequencies</span><span class="p">([</span><span class="nv">X</span><span class="p">|</span><span class="nv">Xs</span><span class="p">],</span> <span class="nv">Acc</span><span class="p">)</span> <span class="o">-&gt;</span>
-</span><span class='line'>    <span class="k">case</span> <span class="nn">lists</span><span class="p">:</span><span class="nf">keyfind</span><span class="p">(</span><span class="nv">X</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">Acc</span><span class="p">)</span> <span class="k">of</span>
-</span><span class='line'>        <span class="p">{</span><span class="nv">X</span><span class="p">,</span> <span class="nv">F</span><span class="p">}</span> <span class="o">-&gt;</span> <span class="n">frequencies</span><span class="p">(</span><span class="nv">Xs</span><span class="p">,</span> <span class="nn">lists</span><span class="p">:</span><span class="nf">keyreplace</span><span class="p">(</span><span class="nv">X</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">Acc</span><span class="p">,</span> <span class="p">{</span><span class="nv">X</span><span class="p">,</span> <span class="nv">F</span><span class="o">+</span><span class="mi">1</span><span class="p">}));</span>
-</span><span class='line'>        <span class="n">false</span>  <span class="o">-&gt;</span> <span class="n">frequencies</span><span class="p">(</span><span class="nv">Xs</span><span class="p">,</span> <span class="nn">lists</span><span class="p">:</span><span class="nf">keystore</span><span class="p">(</span><span class="nv">X</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">Acc</span><span class="p">,</span> <span class="p">{</span><span class="nv">X</span><span class="p">,</span> <span class="mi">1</span><span class="p">}))</span>
-</span><span class='line'>    <span class="k">end</span><span class="p">.</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Summary</h2>
+<h2 id="summary">Summary</h2>
 
 <p>During this day I learnt a lot: new language, new abstractions, new techniques, new ways of communication, new ideas. I met bunch of smart people. I was so overwhelmed with all this cool stuff that I had to write this blog post to offload it from my head.</p>
 
-<p>If you are a programmer and you&rsquo;ve never been to Code Retreat, I strongly encourage you to do it next year. It&rsquo;s an exciting experience.</p>
+<p>If you are a programmer and you’ve never been to Code Retreat, I strongly encourage you to do it next year. It’s an exciting experience.</p>
 
 <p>I want to thank all the people who organized and participated in this event.</p>
 
-<h3>Photo Credits</h3>
+<h3 id="photo-credits">Photo Credits</h3>
 
 <ul>
-<li>Michael DiBernardo <a href="https://twitter.com/mdibernardo/status/277439446381625345/photo/1">[1]</a></li>
-<li>Kunal Gupta <a href="https://twitter.com/kunalfrompolar/status/277491865991921664/photo/1">[2]</a></li>
-<li>Carlo Barrettara <a href="https://twitter.com/barrettara/status/277533676273823746/photo/1">[3]</a></li>
+  <li>Michael DiBernardo <a href="https://twitter.com/mdibernardo/status/277439446381625345/photo/1">[1]</a></li>
+  <li>Kunal Gupta <a href="https://twitter.com/kunalfrompolar/status/277491865991921664/photo/1">[2]</a></li>
+  <li>Carlo Barrettara <a href="https://twitter.com/barrettara/status/277533676273823746/photo/1">[3]</a></li>
 </ul>
 
 </div>
@@ -589,11 +635,11 @@ $ ps -ef | grep java
   </header>
 
 
-  <div class="entry-content"><p>I&rsquo;ve been learning Lisp for few years now, and every Lisp book I read keeps saying that Lisp is a flexible language that you can extend to the degree when it fits naturally to your domain. It&rsquo;s easy to say, but what exactly does this phrase mean? After all, when you program in your non-Lisp language, don&rsquo;t you modify it for your domain problem? I&rsquo;ve been thinking about it for a long time, and only recently I started to understand what flexibility really means. There is a difference between <em>using</em> the language and <em>changing</em> the language to solve a problem. In this post I will try to show the difference based on a simple example.</p>
+  <div class="entry-content"><p>I’ve been learning Lisp for few years now, and every Lisp book I read keeps saying that Lisp is a flexible language that you can extend to the degree when it fits naturally to your domain. It’s easy to say, but what exactly does this phrase mean? After all, when you program in your non-Lisp language, don’t you modify it for your domain problem? I’ve been thinking about it for a long time, and only recently I started to understand what flexibility really means. There is a difference between <em>using</em> the language and <em>changing</em> the language to solve a problem. In this post I will try to show the difference based on a simple example.</p>
 
-<h2>Problem</h2>
+<h2 id="problem">Problem</h2>
 
-<p><img class="right" src="/images/posts/handlers.png"></p>
+<p><img class="right" src="/images/posts/handlers.png" /></p>
 
 <p>Suppose you have a process that listens to a message queue. The messages are just ordinary maps. If the map contains certain keys, one or more handlers must be invoked. Here is a matrix that shows which handler is invoked for which key.</p>
 
@@ -638,67 +684,67 @@ $ ps -ef | grep java
   </header>
 
 
-  <div class="entry-content"><p>This weekend I attended <a href="http://pycon.ca/">PyCon Canada</a>, the first conference in Canada dedicated to Python ecosystem. As you might find from my blog, I&rsquo;m not a Python guy. I&rsquo;ve been using Python mostly as a scripting language. I went to this conference for fresh ideas, or, as Michael Feathers said, for cross-polination from Python community. This blog post is not a detailed review of the conference — I just want to share my impression in general.</p>
+  <div class="entry-content"><p>This weekend I attended <a href="http://pycon.ca/">PyCon Canada</a>, the first conference in Canada dedicated to Python ecosystem. As you might find from my blog, I’m not a Python guy. I’ve been using Python mostly as a scripting language. I went to this conference for fresh ideas, or, as Michael Feathers said, for cross-polination from Python community. This blog post is not a detailed review of the conference — I just want to share my impression in general.</p>
 
-<h2>Organization</h2>
+<h2 id="organization">Organization</h2>
 
 <p>Considering how little time the organizers had for preparing this conference, 5 months I believe, they did amazing job. They invited great speakers. They kept people well informed using mailing list and Twitter. The official web site was clear and easy to navigate. The location was good. The food was decent. The only complaint I had is about the temperature in the rooms on the first day. It was so freezing cold inside that I had to wear my jacket all the time. But on the second day the problem was fixed.</p>
 
-<h2>Keynotes</h2>
+<h2 id="keynotes">Keynotes</h2>
 
 <p>Keynotes were absolutely fantastic. There were three of them. Jessica McKellar was talking about Python community. How they foster it, how they attract new people to programming in general and to Python in particular. She shared her experience from organizing Boston Python user group, the biggest Python user group in the world. The takeaway from her talk: Python community is big, welcoming, and well supported by Python Foundation.</p>
 
-<p>Second keynote was Michael Feathers&#8217; <em>Why You Should(n&rsquo;t) be Using a Functional Programming Language Instead</em>. The main idea of his talk is: Don&rsquo;t lock yourself inside one language. Go outside of your community to see what other languages exist out there, how they solved the problems. Study those languages, learn their idioms and techniques, and then go back to your language and start using the ideas you&rsquo;ve learnt. I completely agree with that, and that&rsquo;s why I went to this conference in the first place. He gave bunch of examples of functional programming in Haskell. Then he showed his Ruby code written in functional style, where you could see the influence of Haskell. I liked his presentation because he verbalized the ideas I myself have been thinking about for a while. When I started programming in Groovy my Groovy code was basically a Java code without semicolons. Now my Java code looks more like Groovy.</p>
+<p>Second keynote was Michael Feathers’ <em>Why You Should(n’t) be Using a Functional Programming Language Instead</em>. The main idea of his talk is: Don’t lock yourself inside one language. Go outside of your community to see what other languages exist out there, how they solved the problems. Study those languages, learn their idioms and techniques, and then go back to your language and start using the ideas you’ve learnt. I completely agree with that, and that’s why I went to this conference in the first place. He gave bunch of examples of functional programming in Haskell. Then he showed his Ruby code written in functional style, where you could see the influence of Haskell. I liked his presentation because he verbalized the ideas I myself have been thinking about for a while. When I started programming in Groovy my Groovy code was basically a Java code without semicolons. Now my Java code looks more like Groovy.</p>
 
-<p>The closing keynote was by Fernando Pérez, the scientist from University of California, Berkeley, and the creator of IPython. The talk, titled <a href="https://speakerdeck.com/fperez/science-and-python-a-interactively-biased-retrospective-of-a-mostly-successful-decade"><em>Science and Python</em></a>,  was really mind blowing. When I was a student I did all my computations using mainly Fortran and some proprietary software I don&rsquo;t even remember the name of. Later, I played with Mathematica and Octave a little bit. But I didn&rsquo;t know that you can do very sophisticated scientific calculations using Python. Fernando gave some examples from neuroscience, astrophysics and biology, and it&rsquo;s really impressive. The discovery of Supernova PTF11kyl is especially astonishing. From now on, if I need to do some math, I&rsquo;ll be using Python libraries; no more proprietary expensive software. Another theme of the presentation was IPython. Initially I thought it&rsquo;s just a shell on top of the standard Python, but it&rsquo;s actually the whole ecosystem. I cannot explain in a few words how amazing it is. Just google for &ldquo;ipython notebook&rdquo; or read Fernando&rsquo;s <a href="http://blog.fperez.org/2012/09/blogging-with-ipython-notebook.html">blog</a>.</p>
+<p>The closing keynote was by Fernando Pérez, the scientist from University of California, Berkeley, and the creator of IPython. The talk, titled <a href="https://speakerdeck.com/fperez/science-and-python-a-interactively-biased-retrospective-of-a-mostly-successful-decade"><em>Science and Python</em></a>,  was really mind blowing. When I was a student I did all my computations using mainly Fortran and some proprietary software I don’t even remember the name of. Later, I played with Mathematica and Octave a little bit. But I didn’t know that you can do very sophisticated scientific calculations using Python. Fernando gave some examples from neuroscience, astrophysics and biology, and it’s really impressive. The discovery of Supernova PTF11kyl is especially astonishing. From now on, if I need to do some math, I’ll be using Python libraries; no more proprietary expensive software. Another theme of the presentation was IPython. Initially I thought it’s just a shell on top of the standard Python, but it’s actually the whole ecosystem. I cannot explain in a few words how amazing it is. Just google for “ipython notebook” or read Fernando’s <a href="http://blog.fperez.org/2012/09/blogging-with-ipython-notebook.html">blog</a>.</p>
 
-<h2>Talks</h2>
+<h2 id="talks">Talks</h2>
 
-<p>As it happens on every conference, there were some great talks and some lousy talks, interesting talks and boring talks, geeky talks and academic talks. It&rsquo;s all normal and fine. The good thing about this conference though is that signal-noise ratio was pretty high; congratulations to the organizers for choosing talks. Another thing I like is the diversity of formats. There were 45-min presentation, 20-min talks, 5-min lightning talks, 90-min tutorials, and 3-hour workshop (there are also two full day coding sessions but I&rsquo;m not attending them). This is a really good approach. Switching between different formats during the day helps your brain functioning more productive, in my opinion.</p>
+<p>As it happens on every conference, there were some great talks and some lousy talks, interesting talks and boring talks, geeky talks and academic talks. It’s all normal and fine. The good thing about this conference though is that signal-noise ratio was pretty high; congratulations to the organizers for choosing talks. Another thing I like is the diversity of formats. There were 45-min presentation, 20-min talks, 5-min lightning talks, 90-min tutorials, and 3-hour workshop (there are also two full day coding sessions but I’m not attending them). This is a really good approach. Switching between different formats during the day helps your brain functioning more productive, in my opinion.</p>
 
-<h2>Pleasant discoveries</h2>
+<h2 id="pleasant-discoveries">Pleasant discoveries</h2>
 
-<p>I found many projects presented at the conference are using RabbitMQ, and that&rsquo;s great. I wish in Java world people would use AMQP more frequently instead of blindly choosing JMS for every new project.</p>
+<p>I found many projects presented at the conference are using RabbitMQ, and that’s great. I wish in Java world people would use AMQP more frequently instead of blindly choosing JMS for every new project.</p>
 
-<p>Many people are using MongoDB properly. Nowadays NoSQL is a very popular buzzword, and many projects are using various NoSQL databases just because it&rsquo;s cool, even if it makes no sense for the project at all. It was nice to see that there are developers out there who do their homework and adopt NoSQL because it fits their domain.</p>
+<p>Many people are using MongoDB properly. Nowadays NoSQL is a very popular buzzword, and many projects are using various NoSQL databases just because it’s cool, even if it makes no sense for the project at all. It was nice to see that there are developers out there who do their homework and adopt NoSQL because it fits their domain.</p>
 
-<h2>Unpleasant discoveries</h2>
+<h2 id="unpleasant-discoveries">Unpleasant discoveries</h2>
 
-<p>There seems to be a trend in Python community to despise Java. I actually see this trend in many communities outside of Java, so it&rsquo;s not Python specific, but at this conference I&rsquo;ve heard too many jokes about Java so it&rsquo;s not funny anymore, especially hearing them from the people who don&rsquo;t write a line of code in Java.</p>
+<p>There seems to be a trend in Python community to despise Java. I actually see this trend in many communities outside of Java, so it’s not Python specific, but at this conference I’ve heard too many jokes about Java so it’s not funny anymore, especially hearing them from the people who don’t write a line of code in Java.</p>
 
 <p>Another thing surprised me is the fanatic admiration of Mercurial and hate of Git from some Python programmers. I know lots of people who hate Git, mainly because they are confused and scared by Git. But dislike it for the reason not being written in Python is something new to me.</p>
 
-<h2>Problems in Python</h2>
+<h2 id="problems-in-python">Problems in Python</h2>
 
-<p>Package and distribution management in Python is in pretty bad shape. Every person I talked to admitted that it&rsquo;s complete mess at the moment. I myself feel that pain every time I need to install a new library. Which tool should I use: pip, easy_install, pysetup? Some libraries installed using those tools don&rsquo;t work, or work partially. Many programmers use rpm or deb packages instead of Python tools, because OS packages usually work. I came to the same conclusion on my Mac OS. The only flawlessly working Python environment I have is that installed via mac ports. In Java we don&rsquo;t have those problems. Maven solved it once and for all long time ago. Now every JVM language benefits from it. Python community should clean up this mess and standardize their tools. I was told that with introducing PyPi and PEPs the situation is getting better, well, let&rsquo;s see if it resolves all the issues.</p>
+<p>Package and distribution management in Python is in pretty bad shape. Every person I talked to admitted that it’s complete mess at the moment. I myself feel that pain every time I need to install a new library. Which tool should I use: pip, easy_install, pysetup? Some libraries installed using those tools don’t work, or work partially. Many programmers use rpm or deb packages instead of Python tools, because OS packages usually work. I came to the same conclusion on my Mac OS. The only flawlessly working Python environment I have is that installed via mac ports. In Java we don’t have those problems. Maven solved it once and for all long time ago. Now every JVM language benefits from it. Python community should clean up this mess and standardize their tools. I was told that with introducing PyPi and PEPs the situation is getting better, well, let’s see if it resolves all the issues.</p>
 
-<h2>What I&rsquo;ve learnt</h2>
+<h2 id="what-ive-learnt">What I’ve learnt</h2>
 
 <p>Here is the list of things I found pretty interesting, in no particular order.</p>
 
-<h3>Python libraries to use</h3>
+<h3 id="python-libraries-to-use">Python libraries to use</h3>
 
 <p>numpy, matplotlib, pandas, scipy, sympy, quantities, collections. Thanks to the people who told me about these libraries.</p>
 
-<h3>Cool Python stuff</h3>
+<h3 id="cool-python-stuff">Cool Python stuff</h3>
 
-<p>RunSnakeRun &#8212; GUI for Python profiler. Check out the screenshots on their <a href="http://www.vrplumber.com/programming/runsnakerun/">web site</a>. I wish Java profilers could draw such nice graphs.</p>
+<p>RunSnakeRun — GUI for Python profiler. Check out the screenshots on their <a href="http://www.vrplumber.com/programming/runsnakerun/">web site</a>. I wish Java profilers could draw such nice graphs.</p>
 
-<p><a href="http://bpython-interpreter.org/screenshots/">bpython</a> &#8212; Python REPL for geeks written in <a href="http://excess.org/urwid/examples.html">Urwid</a>. Thanks to Ian Ward for the really nice <a href="http://pyvideo.org/video/1568/console-applications-with-urwid">presentation</a>.</p>
+<p><a href="http://bpython-interpreter.org/screenshots/">bpython</a> — Python REPL for geeks written in <a href="http://excess.org/urwid/examples.html">Urwid</a>. Thanks to Ian Ward for the really nice <a href="http://pyvideo.org/video/1568/console-applications-with-urwid">presentation</a>.</p>
 
-<h3>Interesting ideas</h3>
+<h3 id="interesting-ideas">Interesting ideas</h3>
 
 <p>Print log statements in JSON format so that you can analyze them using powerful tools. You can also save logs in MongoDB, either offline or asynchronously, and do statistic analysis using aggregation framework.</p>
 
 <p>Write stored procedures in PostgreSQL in Python (and some other languages). They look much better in Python than plSQL.</p>
 
-<h2>Things to learn<a name="learn">&nbsp;</a></h2>
+<h2 id="things-to-learna-namelearnnbspa">Things to learn<a name="learn"> </a></h2>
 
 <p>Here are some technology and tools that have a great potential, in my opinion, and worthy of learning: ZeroMQ, IPython, OpenStack. Those were mentioned multiple times during the conference, and I need to check them out in more details.</p>
 
-<h2>Summary</h2>
+<h2 id="summary">Summary</h2>
 
-<p>The conference was great. I&rsquo;m glad I attended it. The organizers did a great job. The conference was beneficial not only to Python community but to Toronto programming community in general. Thanks to all who made it happen.</p>
+<p>The conference was great. I’m glad I attended it. The organizers did a great job. The conference was beneficial not only to Python community but to Toronto programming community in general. Thanks to all who made it happen.</p>
 
 <p>P.S. Videos from the conference are available <a href="http://pyvideo.org/category/25/pycon-ca-2012">here</a>.</p>
 </div>

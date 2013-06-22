@@ -32,6 +32,37 @@
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
   
 
 </head>
@@ -96,7 +127,7 @@
 
 <div class="entry-content"><p>Sometimes I need to run <a href="http://zookeeper.apache.org">ZooKeeper</a> ensemble on my development box to test my application on the production-like environment. I found that recreating the whole ensemble from scratch is much faster than cleaning it up using ZooKeeper CLI tool. To automate this process I created a bash script which I want to share in this blog post. I hard-coded all the paths in the script using my regular conventions. You might need to change them to yours — it should be fairly straightforward.</p>
 
-<p>Before you can use the script, you need to install ZooKeeper on your box. That&rsquo;s what I did on my machine</p>
+<p>Before you can use the script, you need to install ZooKeeper on your box. That’s what I did on my machine</p>
 
 <pre><code>$ cd /opt
 $ sudo mkdir zookeeper
@@ -159,6 +190,7 @@ $ ps -ef | grep java
 
 <pre><code>$ ./zookeeper-init-ensemble.sh
 </code></pre>
+
 </div>
 
 

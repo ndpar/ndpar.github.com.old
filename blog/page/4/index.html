@@ -32,6 +32,37 @@
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
   
 
 </head>
@@ -97,100 +128,100 @@
   </header>
 
 
-  <div class="entry-content"><p>There is some sort of confusion in the object-oriented community about functional languages. How is it possible to implement stateful application if the language has no concept of state? It turns out that it&rsquo;s actually quite possible, although the solution is completely deferent from what we see in the OO realm. In Erlang, for example, state can be implemented by using <em>process message passing</em> and <em>tail recursion</em>. This approach is so elegant that after you&rsquo;ve learned it, the OO way of doing this looks unnatural. The code below is the Erlang implementation of Uncle Bob&rsquo;s <a href="http://www.objectmentor.com/resources/articles/umlfsm.pdf">FSM example</a>. Look at it. Isn&rsquo;t that code clean and expressive? It looks almost like DSL but it&rsquo;s actually regular Erlang syntax.</p>
+  <div class="entry-content"><p>There is some sort of confusion in the object-oriented community about functional languages. How is it possible to implement stateful application if the language has no concept of state? It turns out that it’s actually quite possible, although the solution is completely deferent from what we see in the OO realm. In Erlang, for example, state can be implemented by using <em>process message passing</em> and <em>tail recursion</em>. This approach is so elegant that after you’ve learned it, the OO way of doing this looks unnatural. The code below is the Erlang implementation of Uncle Bob’s <a href="http://www.objectmentor.com/resources/articles/umlfsm.pdf">FSM example</a>. Look at it. Isn’t that code clean and expressive? It looks almost like DSL but it’s actually regular Erlang syntax.</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-</pre></td><td class='code'><pre><code class='erlang'><span class='line'><span class="p">-</span><span class="ni">module</span><span class="p">(</span><span class="n">turnstile</span><span class="p">).</span>
-</span><span class='line'><span class="p">-</span><span class="ni">export</span><span class="p">([</span><span class="n">start</span><span class="o">/</span><span class="mi">0</span><span class="p">]).</span>
-</span><span class='line'><span class="p">-</span><span class="ni">export</span><span class="p">([</span><span class="n">coin</span><span class="o">/</span><span class="mi">0</span><span class="p">,</span> <span class="n">pass</span><span class="o">/</span><span class="mi">0</span><span class="p">]).</span>
-</span><span class='line'><span class="p">-</span><span class="ni">export</span><span class="p">([</span><span class="n">init</span><span class="o">/</span><span class="mi">0</span><span class="p">]).</span>
-</span><span class='line'>
-</span><span class='line'><span class="nf">start</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">register</span><span class="p">(</span><span class="n">turnstile</span><span class="p">,</span> <span class="nb">spawn</span><span class="p">(</span><span class="o">?</span><span class="nv">MODULE</span><span class="p">,</span> <span class="n">init</span><span class="p">,</span> <span class="p">[])).</span>
-</span><span class='line'>
-</span><span class='line'><span class="c">% Initial state</span>
-</span><span class='line'>
-</span><span class='line'><span class="nf">init</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">locked</span><span class="p">().</span>
-</span><span class='line'>
-</span><span class='line'><span class="c">% Events</span>
-</span><span class='line'>
-</span><span class='line'><span class="nf">coin</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">turnstile</span> <span class="o">!</span> <span class="n">coin</span><span class="p">.</span>
-</span><span class='line'><span class="nf">pass</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">turnstile</span> <span class="o">!</span> <span class="n">pass</span><span class="p">.</span>
-</span><span class='line'>
-</span><span class='line'><span class="c">% States and transitions</span>
-</span><span class='line'>
-</span><span class='line'><span class="nf">locked</span><span class="p">()</span> <span class="o">-&gt;</span>
-</span><span class='line'>    <span class="k">receive</span>
-</span><span class='line'>        <span class="n">pass</span> <span class="o">-&gt;</span>
-</span><span class='line'>            <span class="n">alarm</span><span class="p">(),</span>
-</span><span class='line'>            <span class="n">locked</span><span class="p">();</span>
-</span><span class='line'>        <span class="n">coin</span> <span class="o">-&gt;</span>
-</span><span class='line'>            <span class="n">unlock</span><span class="p">(),</span>
-</span><span class='line'>            <span class="n">unlocked</span><span class="p">()</span>
-</span><span class='line'>    <span class="k">end</span><span class="p">.</span>
-</span><span class='line'>
-</span><span class='line'><span class="nf">unlocked</span><span class="p">()</span> <span class="o">-&gt;</span>
-</span><span class='line'>    <span class="k">receive</span>
-</span><span class='line'>        <span class="n">pass</span> <span class="o">-&gt;</span>
-</span><span class='line'>            <span class="n">lock</span><span class="p">(),</span>
-</span><span class='line'>            <span class="n">locked</span><span class="p">();</span>
-</span><span class='line'>        <span class="n">coin</span> <span class="o">-&gt;</span>
-</span><span class='line'>            <span class="n">thankyou</span><span class="p">(),</span>
-</span><span class='line'>            <span class="n">unlocked</span><span class="p">()</span>
-</span><span class='line'>    <span class="k">end</span><span class="p">.</span>
-</span><span class='line'>
-</span><span class='line'><span class="c">% Actions</span>
-</span><span class='line'>
-</span><span class='line'><span class="nf">alarm</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nn">io</span><span class="p">:</span><span class="nf">format</span><span class="p">(</span><span class="s">&quot;You shall not pass!</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">).</span>
-</span><span class='line'><span class="nf">unlock</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nn">io</span><span class="p">:</span><span class="nf">format</span><span class="p">(</span><span class="s">&quot;Unlocking...</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">).</span>
-</span><span class='line'><span class="nf">lock</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nn">io</span><span class="p">:</span><span class="nf">format</span><span class="p">(</span><span class="s">&quot;Locking...</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">).</span>
-</span><span class='line'><span class="nf">thankyou</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nn">io</span><span class="p">:</span><span class="nf">format</span><span class="p">(</span><span class="s">&quot;Thank you for donation</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">).</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+<span class="line-number">43</span>
+<span class="line-number">44</span>
+</pre></td><td class="code"><pre><code class="erlang"><span class="line"><span class="p">-</span><span class="ni">module</span><span class="p">(</span><span class="n">turnstile</span><span class="p">).</span>
+</span><span class="line"><span class="p">-</span><span class="ni">export</span><span class="p">([</span><span class="n">start</span><span class="o">/</span><span class="mi">0</span><span class="p">]).</span>
+</span><span class="line"><span class="p">-</span><span class="ni">export</span><span class="p">([</span><span class="n">coin</span><span class="o">/</span><span class="mi">0</span><span class="p">,</span> <span class="n">pass</span><span class="o">/</span><span class="mi">0</span><span class="p">]).</span>
+</span><span class="line"><span class="p">-</span><span class="ni">export</span><span class="p">([</span><span class="n">init</span><span class="o">/</span><span class="mi">0</span><span class="p">]).</span>
+</span><span class="line">
+</span><span class="line"><span class="nf">start</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">register</span><span class="p">(</span><span class="n">turnstile</span><span class="p">,</span> <span class="nb">spawn</span><span class="p">(</span><span class="o">?</span><span class="nv">MODULE</span><span class="p">,</span> <span class="n">init</span><span class="p">,</span> <span class="p">[])).</span>
+</span><span class="line">
+</span><span class="line"><span class="c">% Initial state</span>
+</span><span class="line">
+</span><span class="line"><span class="nf">init</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">locked</span><span class="p">().</span>
+</span><span class="line">
+</span><span class="line"><span class="c">% Events</span>
+</span><span class="line">
+</span><span class="line"><span class="nf">coin</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">turnstile</span> <span class="o">!</span> <span class="n">coin</span><span class="p">.</span>
+</span><span class="line"><span class="nf">pass</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">turnstile</span> <span class="o">!</span> <span class="n">pass</span><span class="p">.</span>
+</span><span class="line">
+</span><span class="line"><span class="c">% States and transitions</span>
+</span><span class="line">
+</span><span class="line"><span class="nf">locked</span><span class="p">()</span> <span class="o">-&gt;</span>
+</span><span class="line">    <span class="k">receive</span>
+</span><span class="line">        <span class="n">pass</span> <span class="o">-&gt;</span>
+</span><span class="line">            <span class="n">alarm</span><span class="p">(),</span>
+</span><span class="line">            <span class="n">locked</span><span class="p">();</span>
+</span><span class="line">        <span class="n">coin</span> <span class="o">-&gt;</span>
+</span><span class="line">            <span class="n">unlock</span><span class="p">(),</span>
+</span><span class="line">            <span class="n">unlocked</span><span class="p">()</span>
+</span><span class="line">    <span class="k">end</span><span class="p">.</span>
+</span><span class="line">
+</span><span class="line"><span class="nf">unlocked</span><span class="p">()</span> <span class="o">-&gt;</span>
+</span><span class="line">    <span class="k">receive</span>
+</span><span class="line">        <span class="n">pass</span> <span class="o">-&gt;</span>
+</span><span class="line">            <span class="n">lock</span><span class="p">(),</span>
+</span><span class="line">            <span class="n">locked</span><span class="p">();</span>
+</span><span class="line">        <span class="n">coin</span> <span class="o">-&gt;</span>
+</span><span class="line">            <span class="n">thankyou</span><span class="p">(),</span>
+</span><span class="line">            <span class="n">unlocked</span><span class="p">()</span>
+</span><span class="line">    <span class="k">end</span><span class="p">.</span>
+</span><span class="line">
+</span><span class="line"><span class="c">% Actions</span>
+</span><span class="line">
+</span><span class="line"><span class="nf">alarm</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nn">io</span><span class="p">:</span><span class="nf">format</span><span class="p">(</span><span class="s">&quot;You shall not pass!</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">).</span>
+</span><span class="line"><span class="nf">unlock</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nn">io</span><span class="p">:</span><span class="nf">format</span><span class="p">(</span><span class="s">&quot;Unlocking...</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">).</span>
+</span><span class="line"><span class="nf">lock</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nn">io</span><span class="p">:</span><span class="nf">format</span><span class="p">(</span><span class="s">&quot;Locking...</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">).</span>
+</span><span class="line"><span class="nf">thankyou</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nn">io</span><span class="p">:</span><span class="nf">format</span><span class="p">(</span><span class="s">&quot;Thank you for donation</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">).</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>The idea behind this code is simple. Every state is implemented as a function that does two things: it listens for messages sent by other processes; when message is received the appropriate action is taken and one of the <em>state-functions called recursively</em>. Simple.</p>
+
 </div>
   
   

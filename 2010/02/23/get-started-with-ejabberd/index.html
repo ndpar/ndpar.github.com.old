@@ -32,6 +32,37 @@
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
   
 
 </head>
@@ -94,7 +125,7 @@
   </header>
 
 
-<div class="entry-content"><h2>Installation</h2>
+<div class="entry-content"><h2 id="installation">Installation</h2>
 
 <p>Before installing ejabberd make sure you have Erlang environment set up. Run the following command and verify the output</p>
 
@@ -102,7 +133,7 @@
 Erlang (ASYNC_THREADS,HIPE) (BEAM) emulator version 5.10.1
 </code></pre>
 
-<p>I used to install ejabberd with apt-get command, which is convenient but always several versions behind. That&rsquo;s why I switched to building from sources. All scripts below are assumed to be run under <em>ejabberd</em> user.</p>
+<p>I used to install ejabberd with apt-get command, which is convenient but always several versions behind. That’s why I switched to building from sources. All scripts below are assumed to be run under <em>ejabberd</em> user.</p>
 
 <p>First, create a directory where all ejabberd versions will be installed, if it does not exist yet</p>
 
@@ -138,29 +169,27 @@ $ cd /opt/ejabberd
 $ ln -s ejabberd-2.1.12 ejabberd
 </code></pre>
 
-<h2>Configuration</h2>
+<h2 id="configuration">Configuration</h2>
 
 <p>Ejabberd comes with reasonable default configuration. Only two lines need to be changed to make it work in your environment.</p>
 
-<p>Open <em>/opt/ejabberd/ejabberd/etc/ejabberd/ejabberd.cfg</em> file and find <em>SERVED HOSTNAMES</em> section. By default Ejabberd is configured for localhost only. Change it to your machine&rsquo;s DNS name. Here is what I have in my config</p>
+<p>Open <em>/opt/ejabberd/ejabberd/etc/ejabberd/ejabberd.cfg</em> file and find <em>SERVED HOSTNAMES</em> section. By default Ejabberd is configured for localhost only. Change it to your machine’s DNS name. Here is what I have in my config</p>
 
-<figure class='code'><figcaption><span>/opt/ejabberd/ejabberd/etc/ejabberd/ejabberd.cfg </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='erlang'><span class='line'><span class="c">%%%&#39;   SERVED HOSTNAMES</span>
-</span><span class='line'><span class="p">{</span><span class="n">hosts</span><span class="p">,</span> <span class="p">[</span><span class="s">&quot;jabber.ndpar.com&quot;</span><span class="p">]}.</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>/opt/ejabberd/ejabberd/etc/ejabberd/ejabberd.cfg </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="erlang"><span class="line"><span class="c">%%%&#39;   SERVED HOSTNAMES</span>
+</span><span class="line"><span class="p">{</span><span class="n">hosts</span><span class="p">,</span> <span class="p">[</span><span class="s">&quot;jabber.ndpar.com&quot;</span><span class="p">]}.</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>The second thing we need to do is to configure admin user. Here is mine, registered for the host I just defined</p>
 
-<figure class='code'><figcaption><span>/opt/ejabberd/ejabberd/etc/ejabberd/ejabberd.cfg </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='erlang'><span class='line'><span class="c">%%%&#39;   ACCESS CONTROL LISTS</span>
-</span><span class='line'><span class="p">{</span><span class="n">acl</span><span class="p">,</span> <span class="n">admin</span><span class="p">,</span> <span class="p">{</span><span class="n">user</span><span class="p">,</span> <span class="s">&quot;andrey&quot;</span><span class="p">,</span> <span class="s">&quot;jabber.ndpar.com&quot;</span><span class="p">}}.</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>/opt/ejabberd/ejabberd/etc/ejabberd/ejabberd.cfg </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="erlang"><span class="line"><span class="c">%%%&#39;   ACCESS CONTROL LISTS</span>
+</span><span class="line"><span class="p">{</span><span class="n">acl</span><span class="p">,</span> <span class="n">admin</span><span class="p">,</span> <span class="p">{</span><span class="n">user</span><span class="p">,</span> <span class="s">&quot;andrey&quot;</span><span class="p">,</span> <span class="s">&quot;jabber.ndpar.com&quot;</span><span class="p">}}.</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Save the config file and start the server</p>
 
@@ -172,22 +201,21 @@ $ ln -s ejabberd-2.1.12 ejabberd
 <pre><code>$ less /opt/ejabberd/ejabberd/var/log/ejabberd/ejabberd.log
 </code></pre>
 
-<p>If it wasn&rsquo;t, you might want to enable debug logs</p>
+<p>If it wasn’t, you might want to enable debug logs</p>
 
-<figure class='code'><figcaption><span>/opt/ejabberd/ejabberd/etc/ejabberd/ejabberd.cfg </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='erlang'><span class='line'><span class="c">%%%&#39;   DEBUGGING</span>
-</span><span class='line'><span class="p">{</span><span class="n">loglevel</span><span class="p">,</span> <span class="mi">5</span><span class="p">}.</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>/opt/ejabberd/ejabberd/etc/ejabberd/ejabberd.cfg </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="erlang"><span class="line"><span class="c">%%%&#39;   DEBUGGING</span>
+</span><span class="line"><span class="p">{</span><span class="n">loglevel</span><span class="p">,</span> <span class="mi">5</span><span class="p">}.</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>and restart the server to see more details</p>
 
 <pre><code>$ /opt/ejabberd/ejabberd/sbin/ejabberdctl restart
 </code></pre>
 
-<h2>Registering users</h2>
+<h2 id="registering-users">Registering users</h2>
 
 <p>The first (admin) user has to be registered in command line</p>
 
@@ -197,19 +225,20 @@ $ ./ejabberdctl register andrey jabber.ndpar.com ******
 
 <p>This user is the same as admin you configured in the previous section. If you go to <a href="http://localhost:5280/admin">localhost:5280/admin</a> in the browser, you should be able to login with the same password you registered the user</p>
 
-<p><img class="center" src="/images/posts/ejabberd-web.png"></p>
+<p><img class="center" src="/images/posts/ejabberd-web.png" /></p>
 
-<p>Now you are ready to add newly created account to your Jabber client. In Adium, for example, go to <em>File</em> &ndash;> <em>Add Acount</em> &ndash;> <em>Jabber</em> and provide server hostname/IP, JID and password.</p>
+<p>Now you are ready to add newly created account to your Jabber client. In Adium, for example, go to <em>File</em> -&gt; <em>Add Acount</em> -&gt; <em>Jabber</em> and provide server hostname/IP, JID and password.</p>
 
-<p><img class="center" src="/images/posts/ejabberd-adium-1.png"></p>
+<p><img class="center" src="/images/posts/ejabberd-adium-1.png" /></p>
 
-<p><img class="center" src="/images/posts/ejabberd-adium-2.png"></p>
+<p><img class="center" src="/images/posts/ejabberd-adium-2.png" /></p>
 
-<p>To really enjoy IM you need more users on your server. The best part here is that you can create new users just from your Jabber client. Simply go to <em>File</em> &ndash;> <em>your ejabberd account</em> &ndash;> <em>Add User</em></p>
+<p>To really enjoy IM you need more users on your server. The best part here is that you can create new users just from your Jabber client. Simply go to <em>File</em> -&gt; <em>your ejabberd account</em> -&gt; <em>Add User</em></p>
 
-<p><img class="center" src="/images/posts/ejabberd-admin-client.png"></p>
+<p><img class="center" src="/images/posts/ejabberd-admin-client.png" /></p>
 
 <p>For other available options please consult <a href="http://www.ejabberd.im">official documentation</a>.</p>
+
 </div>
 
 

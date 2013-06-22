@@ -32,6 +32,37 @@
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
   
 
 </head>
@@ -96,44 +127,42 @@
 
 <div class="entry-content"><p>More and more Maven projects are switching from Subversion to Git, and the majority of those projects make the same mistake: They configure <em>scm</em> section of POM to point to remote repository, the same way they did it in Subversion</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;scm&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;url&gt;</span>http://github.com/SpringSource/spring-batch<span class="nt">&lt;/url&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;connection&gt;</span>scm:git:git://github.com/SpringSource/spring-batch.git<span class="nt">&lt;/connection&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;developerConnection&gt;</span>scm:git:ssh://git@github.com/SpringSource/spring-batch.git<span class="nt">&lt;/developerConnection&gt;</span>
-</span><span class='line'><span class="nt">&lt;/scm&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="xml"><span class="line"><span class="nt">&lt;scm&gt;</span>
+</span><span class="line">    <span class="nt">&lt;url&gt;</span>http://github.com/SpringSource/spring-batch<span class="nt">&lt;/url&gt;</span>
+</span><span class="line">    <span class="nt">&lt;connection&gt;</span>scm:git:git://github.com/SpringSource/spring-batch.git<span class="nt">&lt;/connection&gt;</span>
+</span><span class="line">    <span class="nt">&lt;developerConnection&gt;</span>scm:git:ssh://git@github.com/SpringSource/spring-batch.git<span class="nt">&lt;/developerConnection&gt;</span>
+</span><span class="line"><span class="nt">&lt;/scm&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
+<p>By doing this they lose the main benefit of Git. They become dependent on the remote machine. And when their release depends on the remote machine, that’s what happens: They need to release the project but the remote machine is down</p>
 
-<p>By doing this they lose the main benefit of Git. They become dependent on the remote machine. And when their release depends on the remote machine, that&rsquo;s what happens: They need to release the project but the remote machine is down</p>
-
-<p><img class="center" src="/images/posts/github-down.jpg"></p>
+<p><img class="center" src="/images/posts/github-down.jpg" /></p>
 
 <p>The right way of configuring Git in Maven is following</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;scm&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;url&gt;</span>scm:git:file://.<span class="nt">&lt;/url&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;connection&gt;</span>scm:git:file://.<span class="nt">&lt;/connection&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;developerConnection&gt;</span>scm:git:file://.<span class="nt">&lt;/developerConnection&gt;</span>
-</span><span class='line'><span class="nt">&lt;/scm&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="xml"><span class="line"><span class="nt">&lt;scm&gt;</span>
+</span><span class="line">    <span class="nt">&lt;url&gt;</span>scm:git:file://.<span class="nt">&lt;/url&gt;</span>
+</span><span class="line">    <span class="nt">&lt;connection&gt;</span>scm:git:file://.<span class="nt">&lt;/connection&gt;</span>
+</span><span class="line">    <span class="nt">&lt;developerConnection&gt;</span>scm:git:file://.<span class="nt">&lt;/developerConnection&gt;</span>
+</span><span class="line"><span class="nt">&lt;/scm&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>This configuration is universal, and it separates two orthogonal concerns: releases and remote copies.</p>
 
-<h3>Resources</h3>
+<h3 id="resources">Resources</h3>
 
 <ul>
-<li><a href="http://ascii.io/a/3459">Screencast</a> that shows how to work with Git in Maven projects.</li>
+  <li><a href="http://ascii.io/a/3459">Screencast</a> that shows how to work with Git in Maven projects.</li>
 </ul>
 
 </div>

@@ -9,7 +9,7 @@
   <meta name="author" content="Andrey Paramonov">
 
   
-  <meta name="description" content="Recently I&rsquo;ve been working on a Groovy code that had many methods with long multibranch conditionals like this: def parse(message, options) { &hellip;">
+  <meta name="description" content="Recently I’ve been working on a Groovy code that had many methods with long multibranch conditionals like this: def parse(message, options) { if ( &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -31,6 +31,37 @@
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
   
 
@@ -94,7 +125,7 @@
   </header>
 
 
-<div class="entry-content"><p>Recently I&rsquo;ve been working on a Groovy code that had many methods with long multibranch conditionals like this:</p>
+<div class="entry-content"><p>Recently I’ve been working on a Groovy code that had many methods with long multibranch conditionals like this:</p>
 
 <pre><code>def parse(message, options) {
     if (options.contains('A')) {
@@ -123,9 +154,9 @@
 }
 </code></pre>
 
-<p>Unfortunately, this code doesn&rsquo;t work out of the box in Groovy, but it works if we do some metaprogramming.</p>
+<p>Unfortunately, this code doesn’t work out of the box in Groovy, but it works if we do some metaprogramming.</p>
 
-<p>The way <code>switch</code> statement works in Groovy is a bit <a href="http://docs.codehaus.org/display/GROOVY/Logical+Branching#LogicalBranching-switchstatement">different</a> than in Java. Instead of equals() it uses isCase() method to match case-value and switch-value. The default implementation of isCase() method falls back to equals() method, but some classes, including <a href="http://groovy.codehaus.org/groovy-jdk/java/util/Collection.html#isCase(java.lang.Object)">Collection</a>, override this behaviour. That&rsquo;s why in Groovy you can do things like this:</p>
+<p>The way <code>switch</code> statement works in Groovy is a bit <a href="http://docs.codehaus.org/display/GROOVY/Logical+Branching#LogicalBranching-switchstatement">different</a> than in Java. Instead of equals() it uses isCase() method to match case-value and switch-value. The default implementation of isCase() method falls back to equals() method, but some classes, including <a href="http://groovy.codehaus.org/groovy-jdk/java/util/Collection.html#isCase(java.lang.Object)">Collection</a>, override this behaviour. That’s why in Groovy you can do things like this:</p>
 
 <pre><code>switch (value) {
     case ['A','E','I','O','U'] : return 'vowel'
@@ -135,7 +166,7 @@
 }
 </code></pre>
 
-<p>For our purposes we need some sort of reverse <code>switch</code>, where collection is used as a switch-value, and String and Integer are used as a case-value. To do this we need to override default implementation of isCase() method on String and Integer classes. It&rsquo;s not possible in Java, but is very easy in Groovy. You can change method implementation globally by replacing it in corresponding meta class, or locally with the help of categories. Let&rsquo;s create a category that swaps object and subject of isCase() method:</p>
+<p>For our purposes we need some sort of reverse <code>switch</code>, where collection is used as a switch-value, and String and Integer are used as a case-value. To do this we need to override default implementation of isCase() method on String and Integer classes. It’s not possible in Java, but is very easy in Groovy. You can change method implementation globally by replacing it in corresponding meta class, or locally with the help of categories. Let’s create a category that swaps object and subject of isCase() method:</p>
 
 <pre><code>class CaseCategory {
     static boolean isCase(String string, Collection col) {
@@ -167,7 +198,8 @@
 }
 </code></pre>
 
-<p>If you are comfortable with global method replacement, you can amend String and Integer meta classes. In this case you don&rsquo;t need to wrap <code>switch</code> statement with <code>use</code> keyword.</p>
+<p>If you are comfortable with global method replacement, you can amend String and Integer meta classes. In this case you don’t need to wrap <code>switch</code> statement with <code>use</code> keyword.</p>
+
 </div>
 
 

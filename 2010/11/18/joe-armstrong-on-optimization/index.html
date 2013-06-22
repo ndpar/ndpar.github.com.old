@@ -32,6 +32,37 @@
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
   
 
 </head>
@@ -96,11 +127,16 @@
 
 <div class="entry-content"><p>A quote from <em>Erlang and OTP in Action</em> <a href="http://www.manning.com/logan/">book</a></p>
 
-<blockquote><p>Make it work, then make it beautiful, then if you really, really have to, make it fast. 90 percent of the time, if you make it beautiful, it will already be fast. So really, just make it beautiful!</p></blockquote>
+<blockquote>
+  <p>Make it work, then make it beautiful, then if you really, really have to, make it fast. 90 percent of the time, if you make it beautiful, it will already be fast. So really, just make it beautiful!</p>
+</blockquote>
 
 <p>A quote from InfoQ <a href="http://www.infoq.com/interviews/functional-langs">interview</a></p>
 
-<blockquote><p>I think that people first of all write a problem, they solve the problem and then they sort of optimize this code, work on it and the code becomes very efficient but unreadable. What I think they should doing is specifying it with a domain specific language or some higher thing and then writing a compiler and then changing the compiler because it’s not efficient. Because then they would have the benefits of a clear specification and a fast implementation. What they do is they don’t keep these things separated and the language doesn’t support them separating it like that.</p></blockquote>
+<blockquote>
+  <p>I think that people first of all write a problem, they solve the problem and then they sort of optimize this code, work on it and the code becomes very efficient but unreadable. What I think they should doing is specifying it with a domain specific language or some higher thing and then writing a compiler and then changing the compiler because it’s not efficient. Because then they would have the benefits of a clear specification and a fast implementation. What they do is they don’t keep these things separated and the language doesn’t support them separating it like that.</p>
+</blockquote>
+
 </div>
 
 
