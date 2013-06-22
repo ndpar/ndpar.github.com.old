@@ -9,7 +9,13 @@ published:  true
 
 [Thomae's function][1] (a.k.a. Riemann function) is defined on the interval (0, 1) as follows
 
-{% img center /images/posts/thomae-def.png %}
+$$
+f(x) = \left\{
+\begin{array}{l l}
+  1/q & \quad \text{if $x = p/q$ is rational and $gcd(p, q) = 1$}\\
+  0 & \quad \text{if $x$ is irrational}\\
+\end{array} \right.
+$$
 
 Here is the graph of this function with some points highlighted as plus symbols for better view.
 

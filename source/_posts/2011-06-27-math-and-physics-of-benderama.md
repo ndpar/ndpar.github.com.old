@@ -13,13 +13,17 @@ The last episode of [Futurama][1] has interesting formula involved. The entire p
 
 This is a perfect toy for a science geek. The first obvious question it brings: is this formula mathematically correct? As it turns out, it is not. Considering the scale of 60%, the cubic dependency of volume on linear dimension, and the constant density of all copies, the formula should be the following
 
-{% img center /images/posts/benderama-mass.png %}
+$$
+M = \displaystyle\sum\limits_{n=0}^\infty 2^n\left[\left(\frac{3}{5}\right)^{3n} M_0\right] = \displaystyle\sum\limits_{n=0}^\infty 2^n\left[\left(\frac{27}{125}\right)^n M_0\right] = \displaystyle\sum\limits_{n=0}^\infty\left(\frac{54}{125}\right)^n M_0 = \frac{125}{71} M_0
+$$
 
 As you can see the total mass of infinite number of Benders actually converges to approximately 1.76 *M*<sub>0</sub>. So from Math perspective there is nothing to worry about. But what if our assumption of constant density is invalid. Would it be a problem from Physics perspective? Let's see.
 
 Knowing that every new copy has a size of 0.6 of the original it was made from, we have the following formula for the size of Bender in the *n*<sup>th</sup> generation
 
-{% img center /images/posts/benderama-length.png %}
+$$
+L_n = 0.6^n L_0
+$$
 
 This exponential function becomes very small pretty soon. In the [154][3]<sup>th</sup> generation it already reaches the [Planck length][4], after which the further replication is physically impossible. If we calculate the total mass of 154 Bender's generations using the Professor's formula, we get [H(154)][5] &#215; [238][6] kg &#8776; 1,337.56 kg, which is nothing comparing to the Earth mass.
 
