@@ -21,7 +21,7 @@ Here is the graph of this function with some points highlighted as plus symbols 
 
 {% img center /images/posts/thomae.jpg %}
 
-This function has interesting property: it's continuous at all irrational numbers. It's easy to see this if you notice that for any positive *ε* there is finite number of points above the line *y* = *ε*. That means for any irrational number *x*<sub>0</sub> you can always construct a *δ*-neighbourhood that doesn't contain any point from the area above the line *y* = *ε*.
+This function has interesting property: it's continuous at all irrational points. It's easy to see this if you notice that for any positive *ε* there is a finite number of dots above the line *y* = *ε*. That means for any irrational number *x*<sub>0</sub> you can always construct a *δ*-neighbourhood that doesn't contain any dot from the area above the line *y* = *ε*.
 
 {% img center /images/posts/thomae-e-d.jpg %}
 

@@ -7,7 +7,7 @@ tags:       [erlang,gen_fsm]
 published:  true
 ---
 
-After working on [Sleeping Barber][1] problem at [Coding Dojo][2] I decided to implement it in Erlang. Because Erlang is the perfect language for these sorts of problems, many people have alredy solved it in many different ways. I found at least three groups of solutions: 1) direct implementation using message passing between processes, 2) OTP solution using *gen_server*, and 3) something resembling object-oriented approach.
+After working on [*Sleeping Barber*][1] problem at [Coding Dojo][2] I decided to implement it in Erlang. Because Erlang is the perfect language for these sorts of problems, many people have alredy solved it in many different ways. I found at least three groups of solutions: 1) direct implementation using message passing between processes, 2) OTP solution using *gen_server*, and 3) something resembling object-oriented approach.
 
 Strangely enough, I didn't see any solution based on [FSM][3]. That is odd because this is the first thing coming to my mind when I hear this problem. To fill the gap, I'm going to solve it using *gen_fsm*, which is a standard OTP behaviour for FSM.
 
