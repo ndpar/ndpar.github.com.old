@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Regex | Side Notes]]></title>
+  <link href="http://blog.ndpar.com/categories/regex/atom.xml" rel="self"/>
+  <link href="http://blog.ndpar.com/"/>
+  <updated>2013-06-23T22:10:49-04:00</updated>
+  <id>http://blog.ndpar.com/</id>
+  <author>
+    <name><![CDATA[Andrey Paramonov]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Parsing files using Groovy regex]]></title>
+    <link href="http://blog.ndpar.com/2009/10/22/parsing-files-using-groovy-regex/"/>
+    <updated>2009-10-22T08:00:00-04:00</updated>
+    <id>http://blog.ndpar.com/2009/10/22/parsing-files-using-groovy-regex</id>
+    <content type="html"><![CDATA[<p>In my previous <a href="/2009/09/25/groovy-regular-expressions/">post</a> I mentioned several ways of defining regular expressions in Groovy. Here I want to show how we can use Groovy regex to find the data in the files.</p>
+
+<h2 id="parsing-properties-file-simplifiedsup1sup">Parsing properties file (simplified)<sup>1</sup></h2>
+
+<p><em>Data:</em> each line in the file has the same structure; the entire line can be matched by single regex.</p>
+
+<p><em>Task:</em> transform each line to the object.</p>
+
+<p><em>Solution:</em> construct regex with capturing parentheses, apply it to each line, extract captured data.</p>
+
+<p><em>Demonstrates:</em> <code>File.eachLine</code> method, matrix syntax of <em>Matcher</em> object.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="kt">def</span> <span class="n">properties</span> <span class="o">=</span> <span class="o">[:]</span>
+</span><span class='line'><span class="k">new</span> <span class="nf">File</span><span class="o">(</span><span class="err">‘</span><span class="n">path</span><span class="s">/to/</span><span class="n">some</span><span class="o">.</span><span class="na">properties</span><span class="err">’</span><span class="o">).</span><span class="na">eachLine</span> <span class="o">{</span> <span class="n">line</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="o">;</span>
+</span><span class='line'>    <span class="k">if</span> <span class="o">((</span><span class="n">matcher</span> <span class="o">=</span> <span class="n">line</span> <span class="o">=~</span> <span class="s">/^([^#=].*?)=(.+)$/</span><span class="o">))</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">properties</span><span class="o">[</span><span class="n">matcher</span><span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;/2009/09/25/groovy-regular-expressions/&quot;</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">&lt;</span><span class="s">/a&gt;] = matcher&lt;a href=&quot;http://groovy.codehaus.org/</span><span class="n">Regular</span><span class="o">+</span><span class="n">Expressions</span><span class="err">&quot;</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'><span class="n">println</span> <span class="n">properties</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2 id="parsing-csv-files-simplifiedsup2sup">Parsing CSV files (simplified)<sup>2</sup></h2>
+
+<p><em>Data:</em> each line in the file has the same structure; the line consists of the blocks separated by some character sequence.</p>
+
+<p><em>Task:</em> transform each line to the list of objects.</p>
+
+<p><em>Solution:</em> construct regex with capturing parentheses, parse each line with the regex in a loop extracting captured data.</p>
+
+<p><em>Demonstrates:</em> <code>~//</code> <em>Pattern</em> defenition, <code>Matcher.group</code> method, <code>\G</code> regex meta-sequence.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="kt">def</span> <span class="n">regex</span> <span class="o">=</span> <span class="o">~</span><span class="s">/\G(?:^|,)(?:”([^”]&lt;em&gt;+)”|([^”,]&lt;/</span><span class="n">em</span><span class="o">&gt;+))</span><span class="s">/</span>
+</span><span class='line'><span class="s">new File(‘path/</span><span class="n">to</span><span class="o">/</span><span class="n">file</span><span class="o">.</span><span class="na">csv</span><span class="err">’</span><span class="o">).</span><span class="na">eachLine</span> <span class="o">{</span> <span class="n">line</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="o">;</span>
+</span><span class='line'>    <span class="kt">def</span> <span class="n">fields</span> <span class="o">=</span> <span class="o">[]</span>
+</span><span class='line'>    <span class="kt">def</span> <span class="n">matcher</span> <span class="o">=</span> <span class="n">regex</span><span class="o">.</span><span class="na">matcher</span><span class="o">(</span><span class="n">line</span><span class="o">)</span>
+</span><span class='line'>    <span class="k">while</span> <span class="o">(</span><span class="n">matcher</span><span class="o">.</span><span class="na">find</span><span class="o">())</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">fields</span> <span class="err">« </span><span class="o">(</span><span class="n">matcher</span><span class="o">.</span><span class="na">group</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> <span class="o">?:</span> <span class="n">matcher</span><span class="o">.</span><span class="na">group</span><span class="o">(</span><span class="mi">2</span><span class="o">))</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>    <span class="n">println</span> <span class="n">fields</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2 id="finding-snapshot-dependencies-in-the-pom-simplifiedsup3sup">Finding snapshot dependencies in the POM (simplified)<sup>3</sup></h2>
+
+<p><em>Data:</em> file contains blocks with known boundaries (possibly spanning multiple lines).</p>
+
+<p><em>Task:</em> extract the blocks satisfying some criteria.</p>
+
+<p><em>Solution:</em> read the entire file into the string, construct regex with capturing parentheses, apply the regex to the string in a loop.</p>
+
+<p><em>Demonstrates:</em> <code>File.text</code> property, list syntaxt of <em>Matcher</em> object, named capture, global <code>\x</code> regex modifier, local <code>\s</code> regex modifier.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="kt">def</span> <span class="n">pom</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="err">‘</span><span class="n">path</span><span class="s">/to/</span><span class="n">pom</span><span class="o">.</span><span class="na">xml</span><span class="err">’</span><span class="o">).</span><span class="na">text</span>
+</span><span class='line'><span class="kt">def</span> <span class="n">matcher</span> <span class="o">=</span> <span class="n">pom</span> <span class="o">=~</span> <span class="s">$/(?x)</span>
+</span><span class='line'><span class="s">    &lt;dependency&gt;                          \s*</span>
+</span><span class='line'><span class="s">      &lt;groupid&gt;([^&amp;lt;]+)&lt;/groupid&gt;          \s*</span>
+</span><span class='line'><span class="s">      &lt;artifactid&gt;([^&amp;lt;]+)&lt;/artifactid&gt;    \s*</span>
+</span><span class='line'><span class="s">      &lt;version&gt;(.+?-SNAPSHOT)&lt;/version&gt;   (?s:.*?)</span>
+</span><span class='line'><span class="s">    &lt;/dependency&gt;</span>
+</span><span class='line'><span class="s">/$</span>
+</span><span class='line'><span class="n">matcher</span><span class="o">.</span><span class="na">each</span> <span class="o">{</span> <span class="n">matched</span><span class="o">,</span> <span class="n">groupId</span><span class="o">,</span> <span class="n">artifactId</span><span class="o">,</span> <span class="n">version</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="o">;</span>
+</span><span class='line'>    <span class="n">println</span> <span class="err">“</span><span class="n">$groupId</span><span class="o">:</span><span class="n">$artifactId</span><span class="o">:</span><span class="n">$version</span><span class="err">”</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2 id="finding-stacktraces-in-the-log">Finding stacktraces in the log</h2>
+
+<p><em>Data:</em> file contains entries each of which starts with the same pattern and can span multiple lines. Typical example is log4j log files:</p>
+
+<pre><code>2009-10-16 15:32:12,157 DEBUG [com.ndpar.web.RequestProcessor] Loading user
+2009-10-16 15:32:13,258 ERROR [com.ndpar.web.UserController] id to load is required for loading
+java.lang.IllegalArgumentException: id to load is required for loading
+     at org.hibernate.event.LoadEvent.(LoadEvent.java:74)
+     at org.hibernate.event.LoadEvent.(LoadEvent.java:56)
+     at org.hibernate.impl.SessionImpl.get(SessionImpl.java:839)
+     at org.hibernate.impl.SessionImpl.get(SessionImpl.java:835)
+     at org.springframework.orm.hibernate3.HibernateTemplate$1.doInHibernate(HibernateTemplate.java:531)
+     at org.springframework.orm.hibernate3.HibernateTemplate.doExecute(HibernateTemplate.java:419)
+     at org.springframework.orm.hibernate3.HibernateTemplate.executeWithNativeSession(HibernateTemplate.java:374)
+     at org.springframework.orm.hibernate3.HibernateTemplate.get(HibernateTemplate.java:525)
+     at org.springframework.orm.hibernate3.HibernateTemplate.get(HibernateTemplate.java:519)
+     at com.ndpar.dao.UserManager.getUser(UserManager.java:90)
+     ... 62 more
+2009-10-16 15:32:14,659 DEBUG [com.ndpar.jms.MessageListener] Received message:
+     ... multi-line message ...
+2009-10-16 15:32:15,169 INFO  [com.ndpar.dao.UserManager] User: ...
+</code></pre>
+
+<p><em>Task:</em> find entries satisfying some criteria.</p>
+
+<p><em>Solution:</em> read the entire file into the string<sup>4</sup>, construct regex with capturing parentheses and lookahead, split the string into entries, loop through the result and apply criteria to each entry.</p>
+
+<p><em>Demonstrates:</em> regex interpolation, combined global regex modifiers <code>\s</code> and <code>\m</code>.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="kt">def</span> <span class="n">log</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="err">‘</span><span class="n">path</span><span class="s">/to/</span><span class="n">your</span><span class="o">.</span><span class="na">log</span><span class="err">’</span><span class="o">).</span><span class="na">text</span>
+</span><span class='line'><span class="kt">def</span> <span class="n">logLineStart</span> <span class="o">=</span> <span class="s">/^\d{4}-\d{2}-\d{2}/</span>
+</span><span class='line'><span class="kt">def</span> <span class="n">splitter</span> <span class="o">=</span> <span class="n">log</span> <span class="o">=~</span> <span class="s">$/(?xms)</span>
+</span><span class='line'><span class="s">    (    ${logLineStart}   .*?)</span>
+</span><span class='line'><span class="s">    (?=  ${logLineStart} | \Z)</span>
+</span><span class='line'><span class="s">/$</span>
+</span><span class='line'><span class="n">splitter</span><span class="o">.</span><span class="na">each</span> <span class="o">{</span> <span class="n">matched</span><span class="o">,</span> <span class="n">entry</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="o">;</span>
+</span><span class='line'>    <span class="k">if</span> <span class="o">(</span><span class="n">entry</span> <span class="o">=~</span> <span class="s">/(?m)^(?:\t| {8})at/</span><span class="o">)</span> <span class="n">println</span> <span class="n">entry</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h3 id="resources">Resources</h3>
+
+<ul>
+  <li>Groovy <a href="http://groovy.codehaus.org/Regular+Expressions">regexes</a></li>
+  <li>Groovy <a href="http://groovy.codehaus.org/Groovy+CLI">one-liners</a></li>
+  <li>Using <a href="http://mrhaki.blogspot.com/2009/10/groovy-goodness-using-replaceall.html">String.replaceAll</a> method</li>
+</ul>
+
+<h3 id="footnotes">Footnotes</h3>
+
+<ol>
+  <li>This example is for demonstration purposes only. In real program you would just use <code>Properties.load</code> method.</li>
+  <li>The regex is simplified. If you want the real one, take a look at Jeffrey Friedl’s <a href="http://regex.info/listing.cgi?ed=3&amp;p=401">example</a>.</li>
+  <li>Again, in reality you would find snapshots using <code>mvn dependency:resolve | grep SNAPSHOT</code> command.</li>
+  <li>This approach won’t work for big files. Take a look at this <a href="http://github.com/ndpar/utilities/blob/master/stacktraces.groovy">script</a> for practical solution.</li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Groovy regular expressions]]></title>
+    <link href="http://blog.ndpar.com/2009/09/25/groovy-regular-expressions/"/>
+    <updated>2009-09-25T08:00:00-04:00</updated>
+    <id>http://blog.ndpar.com/2009/09/25/groovy-regular-expressions</id>
+    <content type="html"><![CDATA[<p>Because of the compact syntax regular expressions in Groovy are more readable than in Java. Here is how Jeffrey Friedl’s <a href="http://regex.info/listing.cgi?ed=3&amp;p=208">example</a> looks in Groovy:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="kt">def</span> <span class="n">subDomain</span>  <span class="o">=</span> <span class="err">‘</span><span class="o">(?</span><span class="nl">i:</span><span class="o">[</span><span class="n">a</span><span class="o">-</span><span class="n">z0</span><span class="o">-</span><span class="mi">9</span><span class="o">]|[</span><span class="n">a</span><span class="o">-</span><span class="n">z0</span><span class="o">-</span><span class="mi">9</span><span class="o">][-</span><span class="n">a</span><span class="o">-</span><span class="n">z0</span><span class="o">-</span><span class="mi">9</span><span class="o">]*[</span><span class="n">a</span><span class="o">-</span><span class="n">z0</span><span class="o">-</span><span class="mi">9</span><span class="o">])</span><span class="err">’</span> <span class="c1">// simple regex in single quotes</span>
+</span><span class='line'><span class="kt">def</span> <span class="n">topDomains</span> <span class="o">=</span> <span class="s">$/</span>
+</span><span class='line'><span class="s">    (?x-i : com         \b     # you can put whitespaces and comments</span>
+</span><span class='line'><span class="s">          | edu         \b     # inside regex in eXtended mode</span>
+</span><span class='line'><span class="s">          | biz         \b</span>
+</span><span class='line'><span class="s">          | in(?:t|fo)  \b     # backslash is not escaped</span>
+</span><span class='line'><span class="s">          | mil         \b     # in dollar-slash strings</span>
+</span><span class='line'><span class="s">          | net         \b</span>
+</span><span class='line'><span class="s">          | org         \b</span>
+</span><span class='line'><span class="s">          | [a-z][a-z]  \b</span>
+</span><span class='line'><span class="s">    )/$</span><span class="o">&lt;</span><span class="s">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s">&lt;p&gt;def hostname = /</span><span class="o">(?:</span><span class="n">$</span><span class="o">{</span><span class="n">subDomain</span><span class="o">}.)+</span><span class="n">$</span><span class="o">{</span><span class="n">topDomains</span><span class="o">}</span><span class="s">/  // variable substitution in slashy string&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kt">def</span> <span class="n">NOT_IN</span>   <span class="o">=</span> <span class="s">/;&quot;’&amp;lt;&amp;gt;()[]{}\s\x7F-\xFF/</span>     <span class="c1">// backslash is not escaped in slashy strings</span>
+</span><span class='line'><span class="kt">def</span> <span class="n">NOT_END</span>  <span class="o">=</span> <span class="s">/!.,?/</span>
+</span><span class='line'><span class="kt">def</span> <span class="n">ANYWHERE</span> <span class="o">=</span> <span class="s">/[^${NOT_IN}${NOT_END}]/</span>
+</span><span class='line'><span class="kt">def</span> <span class="n">EMBEDDED</span> <span class="o">=</span> <span class="s">/[$NOT_END]/</span>                        <span class="c1">// you can ommit {} around var name&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kt">def</span> <span class="n">urlPath</span>  <span class="o">=</span> <span class="err">“</span><span class="s">/$ANYWHERE&lt;em&gt;($EMBEDDED+$ANYWHERE+)&lt;/</span><span class="n">em</span><span class="o">&gt;</span><span class="err">”</span><span class="o">&lt;</span><span class="s">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s">&lt;p&gt;def url =</span>
+</span><span class='line'><span class="s">    “””(?x:</span>
+</span><span class='line'><span class="s">             # you have to escape backslash in multi-line double quotes</span>
+</span><span class='line'><span class="s">             \b&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span>         <span class="err">#</span> <span class="n">match</span> <span class="n">the</span> <span class="n">hostname</span> <span class="n">part</span>
+</span><span class='line'>         <span class="o">(</span>
+</span><span class='line'>           <span class="o">(?:</span> <span class="n">ftp</span> <span class="o">|</span> <span class="n">http</span> <span class="n">s</span><span class="o">?</span> <span class="o">):</span> <span class="c1">// [-\\w]+(\\.\\w[-\\w]*)+</span>
+</span><span class='line'>         <span class="o">|</span>
+</span><span class='line'>           <span class="n">$hostname</span>
+</span><span class='line'>         <span class="o">)</span>
+</span><span class='line'>
+</span><span class='line'>         <span class="err">#</span> <span class="n">allow</span> <span class="n">optional</span> <span class="n">port</span>
+</span><span class='line'>         <span class="o">(?:</span> <span class="o">:</span><span class="err">\\</span><span class="n">d</span><span class="o">+</span> <span class="o">)?</span>
+</span><span class='line'>
+</span><span class='line'>         <span class="err">#</span> <span class="n">rest</span> <span class="n">of</span> <span class="n">url</span> <span class="n">is</span> <span class="n">optional</span><span class="o">,</span> <span class="n">and</span> <span class="n">begins</span> <span class="n">with</span> <span class="s">/</span>
+</span><span class='line'><span class="s">         (?: $urlPath )?</span>
+</span><span class='line'><span class="s">   )&quot;&quot;&quot;</span>
+</span><span class='line'><span class="s">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="s">/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s">&lt;p&gt;assert ‘http://www.google.com/</span><span class="n">search</span><span class="o">?</span><span class="n">rls</span><span class="o">=</span><span class="n">en</span><span class="o">&amp;</span><span class="n">amp</span><span class="o">;</span><span class="n">q</span><span class="o">=</span><span class="n">regex</span><span class="o">&amp;</span><span class="n">amp</span><span class="o">;</span><span class="n">ie</span><span class="o">=</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span><span class="o">&amp;</span><span class="n">amp</span><span class="o">;</span><span class="n">oe</span><span class="o">=</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span><span class="err">’</span> <span class="o">==~</span> <span class="n">url</span>
+</span><span class='line'><span class="k">assert</span> <span class="err">‘</span><span class="n">pages</span><span class="o">.</span><span class="na">github</span><span class="o">.</span><span class="na">io</span><span class="err">’</span> <span class="o">==~</span> <span class="n">url</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>As you can see, there are several notations, and for every subexpression you can choose the one that is most expressive.</p>
+
+<h3 id="resources">Resources</h3>
+
+<ul>
+  <li>Martin Fowler on <a href="http://martinfowler.com/bliki/ComposedRegex.html">composed regexes</a></li>
+  <li><a href="http://jira.codehaus.org/browse/GROOVY-2701">Introducing dollar-slash</a> notation into Groovy</li>
+  <li><a href="http://regex.info/">Mastering Regular Expressions</a> — the best regex book</li>
+  <li>Groovy <a href="http://mrhaki.blogspot.com/2009/09/groovy-goodness-using-regular.html">Pattern</a> and <a href="http://mrhaki.blogspot.com/2009/09/groovy-goodness-matchers-for-regular.html">Matcher</a> classes</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

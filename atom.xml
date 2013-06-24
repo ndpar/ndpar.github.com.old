@@ -4,7 +4,7 @@
   <title><![CDATA[Side Notes]]></title>
   <link href="http://blog.ndpar.com/atom.xml" rel="self"/>
   <link href="http://blog.ndpar.com/"/>
-  <updated>2013-06-22T10:10:09-04:00</updated>
+  <updated>2013-06-23T22:10:49-04:00</updated>
   <id>http://blog.ndpar.com/</id>
   <author>
     <name><![CDATA[Andrey Paramonov]]></name>
@@ -18,7 +18,7 @@
     <link href="http://blog.ndpar.com/2013/06/11/sleeping-barber-in-erlang/"/>
     <updated>2013-06-11T20:43:00-04:00</updated>
     <id>http://blog.ndpar.com/2013/06/11/sleeping-barber-in-erlang</id>
-    <content type="html"><![CDATA[<p>After working on <a href="http://en.wikipedia.org/wiki/Sleeping_barber_problem">Sleeping Barber</a> problem at <a href="http://www.meetup.com/Toronto-Coding-Dojo/events/120577762/">Coding Dojo</a> I decided to implement it in Erlang. Because Erlang is the perfect language for these sorts of problems, many people have alredy solved it in many different ways. I found at least three groups of solutions: 1) direct implementation using message passing between processes, 2) OTP solution using <em>gen_server</em>, and 3) something resembling object-oriented approach.</p>
+    <content type="html"><![CDATA[<p>After working on <a href="http://en.wikipedia.org/wiki/Sleeping_barber_problem"><em>Sleeping Barber</em></a> problem at <a href="http://www.meetup.com/Toronto-Coding-Dojo/events/120577762/">Coding Dojo</a> I decided to implement it in Erlang. Because Erlang is the perfect language for these sorts of problems, many people have alredy solved it in many different ways. I found at least three groups of solutions: 1) direct implementation using message passing between processes, 2) OTP solution using <em>gen_server</em>, and 3) something resembling object-oriented approach.</p>
 
 <p>Strangely enough, I didn’t see any solution based on <a href="https://en.wikipedia.org/wiki/Finite-state_machine">FSM</a>. That is odd because this is the first thing coming to my mind when I hear this problem. To fill the gap, I’m going to solve it using <em>gen_fsm</em>, which is a standard OTP behaviour for FSM.</p>
 
@@ -2745,7 +2745,7 @@ f(x) = \left\{
 
 <p><img class="center" src="http://blog.ndpar.com/images/posts/thomae.jpg" /></p>
 
-<p>This function has interesting property: it’s continuous at all irrational numbers. It’s easy to see this if you notice that for any positive <em>ε</em> there is finite number of points above the line <em>y</em> = <em>ε</em>. That means for any irrational number <em>x</em><sub>0</sub> you can always construct a <em>δ</em>-neighbourhood that doesn’t contain any point from the area above the line <em>y</em> = <em>ε</em>.</p>
+<p>This function has interesting property: it’s continuous at all irrational points. It’s easy to see this if you notice that for any positive <em>ε</em> there is a finite number of dots above the line <em>y</em> = <em>ε</em>. That means for any irrational number <em>x</em><sub>0</sub> you can always construct a <em>δ</em>-neighbourhood that doesn’t contain any dot from the area above the line <em>y</em> = <em>ε</em>.</p>
 
 <p><img class="center" src="http://blog.ndpar.com/images/posts/thomae-e-d.jpg" /></p>
 

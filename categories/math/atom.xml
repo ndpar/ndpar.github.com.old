@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Math | Side Notes]]></title>
   <link href="http://blog.ndpar.com/categories/math/atom.xml" rel="self"/>
   <link href="http://blog.ndpar.com/"/>
-  <updated>2013-06-22T10:10:09-04:00</updated>
+  <updated>2013-06-23T22:10:49-04:00</updated>
   <id>http://blog.ndpar.com/</id>
   <author>
     <name><![CDATA[Andrey Paramonov]]></name>
@@ -67,7 +67,7 @@ f(x) = \left\{
 
 <p><img class="center" src="/images/posts/thomae.jpg"></p>
 
-<p>This function has interesting property: it’s continuous at all irrational numbers. It’s easy to see this if you notice that for any positive <em>ε</em> there is finite number of points above the line <em>y</em> = <em>ε</em>. That means for any irrational number <em>x</em><sub>0</sub> you can always construct a <em>δ</em>-neighbourhood that doesn’t contain any point from the area above the line <em>y</em> = <em>ε</em>.</p>
+<p>This function has interesting property: it’s continuous at all irrational points. It’s easy to see this if you notice that for any positive <em>ε</em> there is a finite number of dots above the line <em>y</em> = <em>ε</em>. That means for any irrational number <em>x</em><sub>0</sub> you can always construct a <em>δ</em>-neighbourhood that doesn’t contain any dot from the area above the line <em>y</em> = <em>ε</em>.</p>
 
 <p><img class="center" src="/images/posts/thomae-e-d.jpg"></p>
 
