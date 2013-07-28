@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Java | Side Notes]]></title>
   <link href="http://blog.ndpar.com/categories/java/atom.xml" rel="self"/>
   <link href="http://blog.ndpar.com/"/>
-  <updated>2013-06-23T22:10:49-04:00</updated>
+  <updated>2013-07-28T12:21:21-04:00</updated>
   <id>http://blog.ndpar.com/</id>
   <author>
     <name><![CDATA[Andrey Paramonov]]></name>
@@ -12,6 +12,88 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[12PM bug in Java]]></title>
+    <link href="http://blog.ndpar.com/2013/07/28/java-12pm-bug/"/>
+    <updated>2013-07-28T08:00:00-04:00</updated>
+    <id>http://blog.ndpar.com/2013/07/28/java-12pm-bug</id>
+    <content type="html"><![CDATA[<p>I’ve recently hit on a nasty bug in Java. It sits in <code>Date.toString</code> method and shows up only at noon!
+I’m going to demonstrate it using Groovy shell, but you can reproduce it in plain Java environment too.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="n">format</span> <span class="o">=</span> <span class="k">new</span> <span class="n">java</span><span class="o">.</span><span class="na">text</span><span class="o">.</span><span class="na">SimpleDateFormat</span><span class="o">(</span><span class="err">‘</span><span class="n">EEE</span> <span class="n">MMM</span> <span class="n">d</span> <span class="nl">hh:mm:</span><span class="n">ss</span> <span class="n">z</span> <span class="n">yyyy</span><span class="err">’</span><span class="o">)</span>
+</span><span class='line'><span class="c1">//= java.text.SimpleDateFormat@fbb27a1c&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">originalDate</span> <span class="o">=</span> <span class="err">‘</span><span class="n">Sun</span> <span class="n">Jul</span> <span class="mi">28</span> <span class="mi">13</span><span class="o">:</span><span class="mi">14</span><span class="o">:</span><span class="mi">15</span> <span class="n">EDT</span> <span class="mi">2013</span><span class="err">’</span>
+</span><span class='line'><span class="c1">//= Sun Jul 28 13:14:15 EDT 2013&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">date</span> <span class="o">=</span> <span class="n">format</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">originalDate</span><span class="o">)</span>
+</span><span class='line'><span class="c1">//= Sun Jul 28 13:14:15 EDT 2013&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">parsedDate</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="na">toString</span><span class="o">()</span>
+</span><span class='line'><span class="c1">//= Sun Jul 28 13:14:15 EDT 2013&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">assert</span> <span class="n">originalDate</span> <span class="o">==</span> <span class="n">parsedDate</span>
+</span><span class='line'><span class="c1">//= null</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>So far so good.</p>
+
+<p>I chose a specific formatter on line 1 to make the bug even more evident. With this formatter lines 5, 8, and 11 must be identical on my machine, and they are in this example. The assertion on line 13 also proves the equality.</p>
+
+<p>Now let’s change the example date to one hour earlier</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="n">originalDate</span> <span class="o">=</span> <span class="err">‘</span><span class="n">Sun</span> <span class="n">Jul</span> <span class="mi">28</span> <span class="mi">12</span><span class="o">:</span><span class="mi">14</span><span class="o">:</span><span class="mi">15</span> <span class="n">EDT</span> <span class="mi">2013</span><span class="err">’</span>
+</span><span class='line'><span class="c1">//= Sun Jul 28 12:14:15 EDT 2013&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">date</span> <span class="o">=</span> <span class="n">format</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">originalDate</span><span class="o">)</span>
+</span><span class='line'><span class="c1">//= Sun Jul 28 00:14:15 EDT 2013&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">parsedDate</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="na">toString</span><span class="o">()</span>
+</span><span class='line'><span class="c1">//= Sun Jul 28 00:14:15 EDT 2013</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Lines 2, 5, and 8 are not identical any more. The String representation of the date is 12 hours off.</p>
+
+<p>To make sure the problem is in <code>toString</code> and not in <code>parse</code>, let’s format the date using formatter</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="n">format</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">date</span><span class="o">)</span>
+</span><span class='line'><span class="c1">//= Sun Jul 28 12:14:15 EDT 2013</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Looks good. The problem is in <code>toString</code> indeed.</p>
+
+<p>I’m actually quite surprised that this bug survived through JDK 1.7.0_09, and neither Sun nor Oracle hasn’t fixed it yet.</p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>Don’t rely on <code>Date.toString</code> method in Java. Use <code>DateFormat.format</code> instead.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Flexible language]]></title>

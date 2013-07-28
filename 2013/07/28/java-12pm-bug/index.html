@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Stuck with your first programming language - Side Notes</title>
+  <title>12PM bug in Java - Side Notes</title>
   <meta name="author" content="Andrey Paramonov">
 
   
-  <meta name="description" content="Barbara Liskov in her keynote presentation: I’m a little dismayed what’s happened in programming languages. And the reason I’m dismayed is because on &hellip;">
+  <meta name="description" content="I’ve recently hit on a nasty bug in Java. It sits in Date.toString method and shows up only at noon!
+I’m going to demonstrate it using Groovy shell, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://blog.ndpar.com/2013/05/09/liskov-programming-abstraction">
+  <link rel="canonical" href="http://blog.ndpar.com/2013/07/28/java-12pm-bug">
   <link href="/favicon.ico" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Side Notes" type="application/atom+xml">
@@ -102,7 +103,7 @@
   
   <header>
     
-      <h1 class="entry-title">Stuck With Your First Programming Language</h1>
+      <h1 class="entry-title">12PM Bug in Java</h1>
     
     
       <p class="meta">
@@ -118,23 +119,87 @@
   
 
 
-<time datetime="2013-05-09T19:39:00-04:00" pubdate data-updated="true">May 9<span>th</span>, 2013</time>
+<time datetime="2013-07-28T08:00:00-04:00" pubdate data-updated="true">Jul 28<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p><a href="http://en.wikipedia.org/wiki/Barbara_Liskov">Barbara Liskov</a> in her <a href="http://www.infoq.com/presentations/programming-abstraction-liskov">keynote</a> presentation:</p>
+<div class="entry-content"><p>I’ve recently hit on a nasty bug in Java. It sits in <code>Date.toString</code> method and shows up only at noon!
+I’m going to demonstrate it using Groovy shell, but you can reproduce it in plain Java environment too.</p>
 
-<blockquote>
-  <p>I’m a little dismayed what’s happened in programming languages. And the reason I’m dismayed is because on the one hand we have the programming languages that experts use — I’m thinking of Java and C# but you can name bunch of others. And the problem with these languages is — they are powerful, you can build big systems in them — but they aren’t very good for beginners. And what happens in MIT, and I think this is happening across the US anyway, is the people are no longer using those languages in their introductory programming language courses, because the amount of craft you have to go through in order to write the little print-loop is just too much, and the students just get lost in the process. So they’ve been switching to languages like Python.</p>
-</blockquote>
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+</pre></td><td class="code"><pre><code class="groovy"><span class="line"><span class="n">format</span> <span class="o">=</span> <span class="k">new</span> <span class="n">java</span><span class="o">.</span><span class="na">text</span><span class="o">.</span><span class="na">SimpleDateFormat</span><span class="o">(</span><span class="s1">&#39;EEE MMM d hh:mm:ss z yyyy&#39;</span><span class="o">)</span>
+</span><span class="line"><span class="c1">//= java.text.SimpleDateFormat@fbb27a1c</span>
+</span><span class="line">
+</span><span class="line"><span class="n">originalDate</span> <span class="o">=</span> <span class="s1">&#39;Sun Jul 28 13:14:15 EDT 2013&#39;</span>
+</span><span class="line"><span class="c1">//= Sun Jul 28 13:14:15 EDT 2013</span>
+</span><span class="line">
+</span><span class="line"><span class="n">date</span> <span class="o">=</span> <span class="n">format</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">originalDate</span><span class="o">)</span>
+</span><span class="line"><span class="c1">//= Sun Jul 28 13:14:15 EDT 2013</span>
+</span><span class="line">
+</span><span class="line"><span class="n">parsedDate</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="na">toString</span><span class="o">()</span>
+</span><span class="line"><span class="c1">//= Sun Jul 28 13:14:15 EDT 2013</span>
+</span><span class="line">
+</span><span class="line"><span class="k">assert</span> <span class="n">originalDate</span> <span class="o">==</span> <span class="n">parsedDate</span>
+</span><span class="line"><span class="c1">//= null</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<blockquote>
-  <p>Python is very simple and nice when you start to use it. But you don’t get too far down the road, if you me, before you discover it has no data abstraction at all. That’s not good because big programs require modularity and encapsulation, and you’d like the language that supports that. So my question is: Can we find a language that will work for both communities? And the reason it matters is because a lot of kids start off programming in their first programming language and that’s it. They may have to change eventually, but they are building huge systems in languages that are really ill-suited for this. So it would be good if the language they started off with is the one they can grow with, and would be good for building big programs as well as small ones.</p>
-</blockquote>
+<p>So far so good.</p>
 
+<p>I chose a specific formatter on line 1 to make the bug even more evident. With this formatter lines 5, 8, and 11 must be identical on my machine, and they are in this example. The assertion on line 13 also proves the equality.</p>
+
+<p>Now let’s change the example date to one hour earlier</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="groovy"><span class="line"><span class="n">originalDate</span> <span class="o">=</span> <span class="s1">&#39;Sun Jul 28 12:14:15 EDT 2013&#39;</span>
+</span><span class="line"><span class="c1">//= Sun Jul 28 12:14:15 EDT 2013</span>
+</span><span class="line">
+</span><span class="line"><span class="n">date</span> <span class="o">=</span> <span class="n">format</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">originalDate</span><span class="o">)</span>
+</span><span class="line"><span class="c1">//= Sun Jul 28 00:14:15 EDT 2013</span>
+</span><span class="line">
+</span><span class="line"><span class="n">parsedDate</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="na">toString</span><span class="o">()</span>
+</span><span class="line"><span class="c1">//= Sun Jul 28 00:14:15 EDT 2013</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Lines 2, 5, and 8 are not identical any more. The String representation of the date is 12 hours off.</p>
+
+<p>To make sure the problem is in <code>toString</code> and not in <code>parse</code>, let’s format the date using formatter</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="groovy"><span class="line"><span class="n">format</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">date</span><span class="o">)</span>
+</span><span class="line"><span class="c1">//= Sun Jul 28 12:14:15 EDT 2013</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Looks good. The problem is in <code>toString</code> indeed.</p>
+
+<p>I’m actually quite surprised that this bug survived through JDK 1.7.0_09, and neither Sun nor Oracle hasn’t fixed it yet.</p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>Don’t rely on <code>Date.toString</code> method in Java. Use <code>DateFormat.format</code> instead.</p>
 </div>
 
 
@@ -157,12 +222,12 @@
   
 
 
-<time datetime="2013-05-09T19:39:00-04:00" pubdate data-updated="true">May 9<span>th</span>, 2013</time>
+<time datetime="2013-07-28T08:00:00-04:00" pubdate data-updated="true">Jul 28<span>th</span>, 2013</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/categories/education/'>Education</a>, <a class='category' href='/categories/programming/'>Programming</a>
+    <a class='category' href='/categories/java/'>Java</a>
   
 </span>
 
@@ -178,10 +243,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/2013/03/09/simple-zookeeper-cluster/" title="Previous Post: Simple Zookeeper cluster">&laquo; Simple Zookeeper cluster</a>
+        <a class="basic-alignment left" href="/2013/06/11/sleeping-barber-in-erlang/" title="Previous Post: Sleeping Barber in Erlang">&laquo; Sleeping Barber in Erlang</a>
       
-      
-        <a class="basic-alignment right" href="/2013/05/21/joe-armstrong-mostlyerlang/" title="Next Post: Joe Armstrong at MostlyErlang">Joe Armstrong at MostlyErlang &raquo;</a>
       
     </p>
   </footer>

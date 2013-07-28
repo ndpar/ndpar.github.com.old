@@ -9,7 +9,7 @@
   <meta name="author" content="Andrey Paramonov">
 
   
-  <meta name="description" content="There is some sort of confusion in the object-oriented community about functional languages. How is it possible to implement stateful application if &hellip;">
+  <meta name="description" content="Installation Before installing ejabberd make sure you have Erlang environment set up. Run the following command and verify the output $ erl -version &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -99,6 +99,155 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2010/02/23/get-started-with-ejabberd/">Get Started With Ejabberd</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-23T07:00:00-05:00" pubdate data-updated="true">Feb 23<span>rd</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="installation">Installation</h2>
+
+<p>Before installing ejabberd make sure you have Erlang environment set up. Run the following command and verify the output</p>
+
+<pre><code>$ erl -version
+Erlang (ASYNC_THREADS,HIPE) (BEAM) emulator version 5.10.1
+</code></pre>
+
+<p>I used to install ejabberd with apt-get command, which is convenient but always several versions behind. That’s why I switched to building from sources. All scripts below are assumed to be run under <em>ejabberd</em> user.</p>
+
+<p>First, create a directory where all ejabberd versions will be installed, if it does not exist yet</p>
+
+<pre><code>$ sudo mkdir /opt/ejabberd
+$ sudo chown -R ejabberd /opt/ejabberd
+</code></pre>
+
+<p>Download the sources</p>
+
+<pre><code>$ cd
+$ git clone git@github.com:processone/ejabberd.git
+$ cd ejabberd
+</code></pre>
+
+<p>Select version you want to install by executing <code>git branch -a</code> and <code>git tag --list</code> commands. Let assume we want to install version 2.1.12 from branch 2.1.x</p>
+
+<pre><code>$ git checkout 2.1.x
+$ cd src
+</code></pre>
+
+<p>The next step is optional. If you are going to integrate ejabberd with RabbitMQ, you need to download the source of rabbitmq-xmpp module</p>
+
+<pre><code>$ wget https://raw.github.com/ndpar/rabbitmq-xmpp/rabbitmq3/src/mod_rabbitmq.erl
+$ wget https://raw.github.com/ndpar/rabbitmq-xmpp/rabbitmq3/src/rabbit.hrl
+</code></pre>
+
+<p>Now we are ready to install ejabberd. To see all available configuration options, run <code>./configure --help</code>.</p>
+
+<pre><code>$ ./configure --prefix=/opt/ejabberd/ejabberd-2.1.12 --enable-user=ejabberd
+$ make
+$ make install
+$ cd /opt/ejabberd
+$ ln -s ejabberd-2.1.12 ejabberd
+</code></pre>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>Ejabberd comes with reasonable default configuration. Only two lines need to be changed to make it work in your environment.</p>
+
+<p>Open <em>/opt/ejabberd/ejabberd/etc/ejabberd/ejabberd.cfg</em> file and find <em>SERVED HOSTNAMES</em> section. By default Ejabberd is configured for localhost only. Change it to your machine’s DNS name. Here is what I have in my config</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>/opt/ejabberd/ejabberd/etc/ejabberd/ejabberd.cfg </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="erlang"><span class="line"><span class="c">%%%&#39;   SERVED HOSTNAMES</span>
+</span><span class="line"><span class="p">{</span><span class="n">hosts</span><span class="p">,</span> <span class="p">[</span><span class="s">&quot;jabber.ndpar.com&quot;</span><span class="p">]}.</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The second thing we need to do is to configure admin user. Here is mine, registered for the host I just defined</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>/opt/ejabberd/ejabberd/etc/ejabberd/ejabberd.cfg </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="erlang"><span class="line"><span class="c">%%%&#39;   ACCESS CONTROL LISTS</span>
+</span><span class="line"><span class="p">{</span><span class="n">acl</span><span class="p">,</span> <span class="n">admin</span><span class="p">,</span> <span class="p">{</span><span class="n">user</span><span class="p">,</span> <span class="s">&quot;andrey&quot;</span><span class="p">,</span> <span class="s">&quot;jabber.ndpar.com&quot;</span><span class="p">}}.</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Save the config file and start the server</p>
+
+<pre><code>$ /opt/ejabberd/ejabberd/sbin/ejabberdctl start
+</code></pre>
+
+<p>You can quickly check the log file to see if the server has been started successfully</p>
+
+<pre><code>$ less /opt/ejabberd/ejabberd/var/log/ejabberd/ejabberd.log
+</code></pre>
+
+<p>If it wasn’t, you might want to enable debug logs</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>/opt/ejabberd/ejabberd/etc/ejabberd/ejabberd.cfg </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="erlang"><span class="line"><span class="c">%%%&#39;   DEBUGGING</span>
+</span><span class="line"><span class="p">{</span><span class="n">loglevel</span><span class="p">,</span> <span class="mi">5</span><span class="p">}.</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>and restart the server to see more details</p>
+
+<pre><code>$ /opt/ejabberd/ejabberd/sbin/ejabberdctl restart
+</code></pre>
+
+<h2 id="registering-users">Registering users</h2>
+
+<p>The first (admin) user has to be registered in command line</p>
+
+<pre><code>$ cd /opt/ejabberd/ejabberd/sbin
+$ ./ejabberdctl register andrey jabber.ndpar.com ******
+</code></pre>
+
+<p>This user is the same as admin you configured in the previous section. If you go to <a href="http://localhost:5280/admin">localhost:5280/admin</a> in the browser, you should be able to login with the same password you registered the user</p>
+
+<p><img class="center" src="/images/posts/ejabberd-web.png" /></p>
+
+<p>Now you are ready to add newly created account to your Jabber client. In Adium, for example, go to <em>File</em> -&gt; <em>Add Acount</em> -&gt; <em>Jabber</em> and provide server hostname/IP, JID and password.</p>
+
+<p><img class="center" src="/images/posts/ejabberd-adium-1.png" /></p>
+
+<p><img class="center" src="/images/posts/ejabberd-adium-2.png" /></p>
+
+<p>To really enjoy IM you need more users on your server. The best part here is that you can create new users just from your Jabber client. Simply go to <em>File</em> -&gt; <em>your ejabberd account</em> -&gt; <em>Add User</em></p>
+
+<p><img class="center" src="/images/posts/ejabberd-admin-client.png" /></p>
+
+<p>For other available options please consult <a href="http://www.ejabberd.im">official documentation</a>.</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -571,6 +720,10 @@ java.lang.IllegalArgumentException: id to load is required for loading
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/07/28/java-12pm-bug/">12PM Bug in Java</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/06/11/sleeping-barber-in-erlang/">Sleeping Barber in Erlang</a>
       </li>
     
@@ -584,10 +737,6 @@ java.lang.IllegalArgumentException: id to load is required for loading
     
       <li class="post">
         <a href="/2013/05/09/liskov-programming-abstraction/">Stuck With Your First Programming Language</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/03/09/simple-zookeeper-cluster/">Simple Zookeeper Cluster</a>
       </li>
     
   </ul>
@@ -645,7 +794,7 @@ java.lang.IllegalArgumentException: id to load is required for loading
 <li class='category'><a href='/categories/grails/'>Grails (1)</a></li>
 <li class='category'><a href='/categories/groovy/'>Groovy (10)</a></li>
 <li class='category'><a href='/categories/humor/'>Humor (2)</a></li>
-<li class='category'><a href='/categories/java/'>Java (3)</a></li>
+<li class='category'><a href='/categories/java/'>Java (4)</a></li>
 <li class='category'><a href='/categories/lisp/'>Lisp (2)</a></li>
 <li class='category'><a href='/categories/math/'>Math (4)</a></li>
 <li class='category'><a href='/categories/maven/'>Maven (1)</a></li>

@@ -4,7 +4,7 @@
   <title><![CDATA[Side Notes]]></title>
   <link href="http://blog.ndpar.com/atom.xml" rel="self"/>
   <link href="http://blog.ndpar.com/"/>
-  <updated>2013-06-23T22:10:49-04:00</updated>
+  <updated>2013-07-28T12:21:21-04:00</updated>
   <id>http://blog.ndpar.com/</id>
   <author>
     <name><![CDATA[Andrey Paramonov]]></name>
@@ -12,6 +12,88 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[12PM bug in Java]]></title>
+    <link href="http://blog.ndpar.com/2013/07/28/java-12pm-bug/"/>
+    <updated>2013-07-28T08:00:00-04:00</updated>
+    <id>http://blog.ndpar.com/2013/07/28/java-12pm-bug</id>
+    <content type="html"><![CDATA[<p>I’ve recently hit on a nasty bug in Java. It sits in <code>Date.toString</code> method and shows up only at noon!
+I’m going to demonstrate it using Groovy shell, but you can reproduce it in plain Java environment too.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+</pre></td><td class="code"><pre><code class="groovy"><span class="line"><span class="n">format</span> <span class="o">=</span> <span class="k">new</span> <span class="n">java</span><span class="o">.</span><span class="na">text</span><span class="o">.</span><span class="na">SimpleDateFormat</span><span class="o">(</span><span class="s1">&#39;EEE MMM d hh:mm:ss z yyyy&#39;</span><span class="o">)</span>
+</span><span class="line"><span class="c1">//= java.text.SimpleDateFormat@fbb27a1c</span>
+</span><span class="line">
+</span><span class="line"><span class="n">originalDate</span> <span class="o">=</span> <span class="s1">&#39;Sun Jul 28 13:14:15 EDT 2013&#39;</span>
+</span><span class="line"><span class="c1">//= Sun Jul 28 13:14:15 EDT 2013</span>
+</span><span class="line">
+</span><span class="line"><span class="n">date</span> <span class="o">=</span> <span class="n">format</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">originalDate</span><span class="o">)</span>
+</span><span class="line"><span class="c1">//= Sun Jul 28 13:14:15 EDT 2013</span>
+</span><span class="line">
+</span><span class="line"><span class="n">parsedDate</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="na">toString</span><span class="o">()</span>
+</span><span class="line"><span class="c1">//= Sun Jul 28 13:14:15 EDT 2013</span>
+</span><span class="line">
+</span><span class="line"><span class="k">assert</span> <span class="n">originalDate</span> <span class="o">==</span> <span class="n">parsedDate</span>
+</span><span class="line"><span class="c1">//= null</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>So far so good.</p>
+
+<p>I chose a specific formatter on line 1 to make the bug even more evident. With this formatter lines 5, 8, and 11 must be identical on my machine, and they are in this example. The assertion on line 13 also proves the equality.</p>
+
+<p>Now let’s change the example date to one hour earlier</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="groovy"><span class="line"><span class="n">originalDate</span> <span class="o">=</span> <span class="s1">&#39;Sun Jul 28 12:14:15 EDT 2013&#39;</span>
+</span><span class="line"><span class="c1">//= Sun Jul 28 12:14:15 EDT 2013</span>
+</span><span class="line">
+</span><span class="line"><span class="n">date</span> <span class="o">=</span> <span class="n">format</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">originalDate</span><span class="o">)</span>
+</span><span class="line"><span class="c1">//= Sun Jul 28 00:14:15 EDT 2013</span>
+</span><span class="line">
+</span><span class="line"><span class="n">parsedDate</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="na">toString</span><span class="o">()</span>
+</span><span class="line"><span class="c1">//= Sun Jul 28 00:14:15 EDT 2013</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Lines 2, 5, and 8 are not identical any more. The String representation of the date is 12 hours off.</p>
+
+<p>To make sure the problem is in <code>toString</code> and not in <code>parse</code>, let’s format the date using formatter</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="groovy"><span class="line"><span class="n">format</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">date</span><span class="o">)</span>
+</span><span class="line"><span class="c1">//= Sun Jul 28 12:14:15 EDT 2013</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Looks good. The problem is in <code>toString</code> indeed.</p>
+
+<p>I’m actually quite surprised that this bug survived through JDK 1.7.0_09, and neither Sun nor Oracle hasn’t fixed it yet.</p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>Don’t rely on <code>Date.toString</code> method in Java. Use <code>DateFormat.format</code> instead.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Sleeping Barber in Erlang]]></title>
@@ -2945,89 +3027,6 @@ $ groovy Main.groovy
 A/A
 B/B
 </code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Reversing Groovy switch statement]]></title>
-    <link href="http://blog.ndpar.com/2011/06/01/reversing-groovy-switch-statement/"/>
-    <updated>2011-06-01T08:00:00-04:00</updated>
-    <id>http://blog.ndpar.com/2011/06/01/reversing-groovy-switch-statement</id>
-    <content type="html"><![CDATA[<p>Recently I’ve been working on a Groovy code that had many methods with long multibranch conditionals like this:</p>
-
-<pre><code>def parse(message, options) {
-    if (options.contains('A')) {
-        parseARule message
-    } else if (options.contains(2)) {
-        parseSmallDigitRule message
-    ...
-    } else if (options.contains(something)) {
-        parseSomeRule message
-    } else {
-        parseSomeOtherRule message
-    }
-}
-</code></pre>
-
-<p>Although this code is working, it is hard to see which branch is called under which condition. It would be much better if we could replace this code with something like Lisp <code>cond</code> macro. The best candidate for such a task in Groovy would be a <code>switch</code> statement. If we could only refactor the code above to something like following, it would significantly improve readability:</p>
-
-<pre><code>def parse(message, options) {
-    switch (options) {
-        case 'A' : return parseARule(message)
-        case 2   : return parseSmallDigitRule(message)
-        ...
-        case ... : return parseSomeRule(message)
-        default  : return parseSomeOtherRule(message)
-    }
-}
-</code></pre>
-
-<p>Unfortunately, this code doesn’t work out of the box in Groovy, but it works if we do some metaprogramming.</p>
-
-<p>The way <code>switch</code> statement works in Groovy is a bit <a href="http://docs.codehaus.org/display/GROOVY/Logical+Branching#LogicalBranching-switchstatement">different</a> than in Java. Instead of equals() it uses isCase() method to match case-value and switch-value. The default implementation of isCase() method falls back to equals() method, but some classes, including <a href="http://groovy.codehaus.org/groovy-jdk/java/util/Collection.html#isCase(java.lang.Object)">Collection</a>, override this behaviour. That’s why in Groovy you can do things like this:</p>
-
-<pre><code>switch (value) {
-    case ['A','E','I','O','U'] : return 'vowel'
-    case 0..9                  : return 'digit'
-    case Date                  : return 'date'
-    default                    : return 'something else'
-}
-</code></pre>
-
-<p>For our purposes we need some sort of reverse <code>switch</code>, where collection is used as a switch-value, and String and Integer are used as a case-value. To do this we need to override default implementation of isCase() method on String and Integer classes. It’s not possible in Java, but is very easy in Groovy. You can change method implementation globally by replacing it in corresponding meta class, or locally with the help of categories. Let’s create a category that swaps object and subject of isCase() method:</p>
-
-<pre><code>class CaseCategory {
-    static boolean isCase(String string, Collection col) {
-        reverseCase(string, col)
-    }
-    static boolean isCase(Integer integer, Collection col) {
-        reverseCase(integer, col)
-    }
-    // Add more overloaded methods here if needed
-
-    private static boolean reverseCase(left, right) {
-        right.isCase(left)
-    }
-}
-</code></pre>
-
-<p>Now we can use this category to achieve the goal we stated at the beginning of this post:</p>
-
-<pre><code>def parse(message, options) {
-    use (CaseCategory) {
-        switch (options) {
-            case 'A' : return parseARule(message)
-            case 2   : return parseSmallDigitRule(message)
-            ...
-            case ... : return parseSomeRule(message)
-            default  : return parseSomeOtherRule(message)
-        }
-    }
-}
-</code></pre>
-
-<p>If you are comfortable with global method replacement, you can amend String and Integer meta classes. In this case you don’t need to wrap <code>switch</code> statement with <code>use</code> keyword.</p>
 
 ]]></content>
   </entry>
