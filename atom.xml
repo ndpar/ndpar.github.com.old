@@ -4,7 +4,7 @@
   <title><![CDATA[Side Notes]]></title>
   <link href="http://blog.ndpar.com/atom.xml" rel="self"/>
   <link href="http://blog.ndpar.com/"/>
-  <updated>2013-07-28T12:21:21-04:00</updated>
+  <updated>2013-08-13T22:45:33-04:00</updated>
   <id>http://blog.ndpar.com/</id>
   <author>
     <name><![CDATA[Andrey Paramonov]]></name>
@@ -85,13 +85,31 @@ I’m going to demonstrate it using Groovy shell, but you can reproduce it in pl
 </span><span class="line"><span class="c1">//= Sun Jul 28 12:14:15 EDT 2013</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>Looks good. The problem is in <code>toString</code> indeed.</p>
+<p>Looks good. The problem is in <code>toString</code> indeed. Or is it?</p>
+
+<p>Let’s parse 13 o’clock date and 12 o’clock date. The difference between them should be 1 hour. In reality</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="groovy"><span class="line"><span class="n">date13</span> <span class="o">=</span> <span class="s1">&#39;Sun Jul 28 13:14:15 EDT 2013&#39;</span>
+</span><span class="line"><span class="c1">//= Sun Jul 28 13:14:15 EDT 2013</span>
+</span><span class="line">
+</span><span class="line"><span class="n">date12</span> <span class="o">=</span> <span class="s1">&#39;Sun Jul 28 12:14:15 EDT 2013&#39;</span>
+</span><span class="line"><span class="c1">//= Sun Jul 28 12:14:15 EDT 2013</span>
+</span><span class="line">
+</span><span class="line"><span class="o">(</span><span class="n">format</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">date13</span><span class="o">).</span><span class="na">time</span> <span class="o">-</span> <span class="n">format</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">date12</span><span class="o">).</span><span class="na">time</span><span class="o">)</span> <span class="s">/ (1000 * 60 * 60)</span>
+</span><span class="line"><span class="s">/</span><span class="o">/=</span> <span class="mi">13</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Wow, the problem is actually in <code>parse</code>. Then how come the <code>format</code> returned the correct value? That’s still a mystery to me.</p>
 
 <p>I’m actually quite surprised that this bug survived through JDK 1.7.0_09, and neither Sun nor Oracle hasn’t fixed it yet.</p>
-
-<h3 id="conclusion">Conclusion</h3>
-
-<p>Don’t rely on <code>Date.toString</code> method in Java. Use <code>DateFormat.format</code> instead.</p>
 ]]></content>
   </entry>
   
