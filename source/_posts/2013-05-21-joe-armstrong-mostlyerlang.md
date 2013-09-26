@@ -78,4 +78,9 @@ Lesson learned: Next time you want to give a talk at a conference, come up with 
 It's a really good idea to submit a conference proposal for the stuff you want to learn. When the proposal is accepted, you don't have a choice but go and study the thing. Otherwise you would procrastinate forever. I notice actually many people do that. Maybe I'll do the same with Erlang, at some point.
 
 
+### Additional Resources
+
+- Joe Armstrong's [reply](https://groups.google.com/forum/#!msg/erlang-programming/OiyGQ4UHqxw/HgGma01CGqYJ) about efficiency of Erlang.
+
+
 [1]: http://code.mixpanel.com/2011/08/05/how-and-why-we-switched-from-erlang-to-python/
