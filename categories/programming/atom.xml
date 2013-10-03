@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Programming | Side Notes]]></title>
   <link href="http://blog.ndpar.com/categories/programming/atom.xml" rel="self"/>
   <link href="http://blog.ndpar.com/"/>
-  <updated>2013-08-13T22:45:33-04:00</updated>
+  <updated>2013-10-02T23:31:44-04:00</updated>
   <id>http://blog.ndpar.com/</id>
   <author>
     <name><![CDATA[Andrey Paramonov]]></name>
@@ -137,6 +137,12 @@
 </blockquote>
 
 <p>It’s a really good idea to submit a conference proposal for the stuff you want to learn. When the proposal is accepted, you don’t have a choice but go and study the thing. Otherwise you would procrastinate forever. I notice actually many people do that. Maybe I’ll do the same with Erlang, at some point.</p>
+
+<h3 id="additional-resources">Additional Resources</h3>
+
+<ul>
+  <li>Joe Armstrong’s <a href="https://groups.google.com/forum/#!msg/erlang-programming/OiyGQ4UHqxw/HgGma01CGqYJ">reply</a> about efficiency of Erlang.</li>
+</ul>
 
 ]]></content>
   </entry>

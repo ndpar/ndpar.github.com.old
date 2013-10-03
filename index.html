@@ -9,8 +9,8 @@
   <meta name="author" content="Andrey Paramonov">
 
   
-  <meta name="description" content="I’ve recently hit on a nasty bug in Java. It sits in Date.toString method and shows up only at noon!
-I’m going to demonstrate it using Groovy shell, &hellip;">
+  <meta name="description" content="I’ve recently hit on a nasty bug in Java. It sits in Date class and shows up only at noon!
+I’m going to demonstrate it using Groovy shell, but you &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -129,7 +129,7 @@ I’m going to demonstrate it using Groovy shell, &hellip;">
   </header>
 
 
-  <div class="entry-content"><p>I’ve recently hit on a nasty bug in Java. It sits in <code>Date.toString</code> method and shows up only at noon!
+  <div class="entry-content"><p>I’ve recently hit on a nasty bug in Java. It sits in <code>Date</code> class and shows up only at noon!
 I’m going to demonstrate it using Groovy shell, but you can reproduce it in plain Java environment too.</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
@@ -223,6 +223,52 @@ I’m going to demonstrate it using Groovy shell, but you can reproduce it in pl
 <p>I’m actually quite surprised that this bug survived through JDK 1.7.0_09, and neither Sun nor Oracle hasn’t fixed it yet.</p>
 </div>
   
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/07/08/lambdajam-2013/">Lambda Jam 2013</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-08T05:00:00-04:00" pubdate data-updated="true">Jul 8<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This is my impressionistic non-canonical irregular Clojuresque-Erlangish notes on <a href="http://lambdajam.com">Lambda Jam</a> conference which took place in Chicago on July 8–10, 2013.
+These notes are pretty long, and I don’t split them on purpose.
+If you read them all, you should become overwhelmed and overloaded with the information.
+Only this way you can feel the same I felt on the last day of the conference :)</p>
+
+<p><img src="http://lambdajam.com/storage/2013/GrandBallroom2_header.jpg.jpeg?__SQUARESPACE_CACHEVERSION=1361043346973" /></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2013/07/08/lambdajam-2013/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -735,55 +781,6 @@ $ ps -ef | grep java
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/11/22/flexible-language/">Flexible Language</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-11-22T07:00:00-05:00" pubdate data-updated="true">Nov 22<span>nd</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I’ve been learning Lisp for few years now, and every Lisp book I read keeps saying that Lisp is a flexible language that you can extend to the degree when it fits naturally to your domain. It’s easy to say, but what exactly does this phrase mean? After all, when you program in your non-Lisp language, don’t you modify it for your domain problem? I’ve been thinking about it for a long time, and only recently I started to understand what flexibility really means. There is a difference between <em>using</em> the language and <em>changing</em> the language to solve a problem. In this post I will try to show the difference based on a simple example.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p><img class="right" src="/images/posts/handlers.png" /></p>
-
-<p>Suppose you have a process that listens to a message queue. The messages are just ordinary maps. If the map contains certain keys, one or more handlers must be invoked. Here is a matrix that shows which handler is invoked for which key.</p>
-
-<p>For example, if the map has key <strong><em>a</em></strong>, then DocHandler and AlertHandler need to be called. If it has key <strong><em>b</em></strong>, then NoteHandler and AlertHandler are called. In reality there might be more keys and more handlers, but for simplicity we limit our example to three keys and three handlers.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2012/11/22/flexible-language/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -803,6 +800,10 @@ $ ps -ef | grep java
       </li>
     
       <li class="post">
+        <a href="/2013/07/08/lambdajam-2013/">Lambda Jam 2013</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/06/11/sleeping-barber-in-erlang/">Sleeping Barber in Erlang</a>
       </li>
     
@@ -812,10 +813,6 @@ $ ps -ef | grep java
     
       <li class="post">
         <a href="/2013/05/21/joe-armstrong-mostlyerlang/">Joe Armstrong at MostlyErlang</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/05/09/liskov-programming-abstraction/">Stuck With Your First Programming Language</a>
       </li>
     
   </ul>
@@ -860,22 +857,23 @@ $ ps -ef | grep java
 <li class='category'><a href='/categories/art/'>Art (1)</a></li>
 <li class='category'><a href='/categories/book-review/'>Book Review (1)</a></li>
 <li class='category'><a href='/categories/buzz/'>Buzz (2)</a></li>
-<li class='category'><a href='/categories/clojure/'>Clojure (3)</a></li>
+<li class='category'><a href='/categories/clojure/'>Clojure (4)</a></li>
 <li class='category'><a href='/categories/clustering/'>Clustering (1)</a></li>
-<li class='category'><a href='/categories/conference/'>Conference (2)</a></li>
+<li class='category'><a href='/categories/conference/'>Conference (3)</a></li>
 <li class='category'><a href='/categories/craftsmanship/'>Craftsmanship (1)</a></li>
 <li class='category'><a href='/categories/education/'>Education (1)</a></li>
 <li class='category'><a href='/categories/ejabberd/'>Ejabberd (2)</a></li>
 <li class='category'><a href='/categories/entrepreneurship/'>Entrepreneurship (1)</a></li>
-<li class='category'><a href='/categories/erlang/'>Erlang (6)</a></li>
+<li class='category'><a href='/categories/erlang/'>Erlang (7)</a></li>
 <li class='category'><a href='/categories/functional-programming/'>Functional Programming (1)</a></li>
 <li class='category'><a href='/categories/git/'>Git (2)</a></li>
 <li class='category'><a href='/categories/grails/'>Grails (1)</a></li>
 <li class='category'><a href='/categories/groovy/'>Groovy (10)</a></li>
+<li class='category'><a href='/categories/haskell/'>Haskell (1)</a></li>
 <li class='category'><a href='/categories/humor/'>Humor (2)</a></li>
 <li class='category'><a href='/categories/java/'>Java (4)</a></li>
 <li class='category'><a href='/categories/lisp/'>Lisp (2)</a></li>
-<li class='category'><a href='/categories/math/'>Math (4)</a></li>
+<li class='category'><a href='/categories/math/'>Math (5)</a></li>
 <li class='category'><a href='/categories/maven/'>Maven (1)</a></li>
 <li class='category'><a href='/categories/mongodb/'>MongoDB (1)</a></li>
 <li class='category'><a href='/categories/nosql/'>NoSQL (1)</a></li>
@@ -883,6 +881,7 @@ $ ps -ef | grep java
 <li class='category'><a href='/categories/python/'>Python (2)</a></li>
 <li class='category'><a href='/categories/rabbitmq/'>RabbitMQ (4)</a></li>
 <li class='category'><a href='/categories/regex/'>Regex (2)</a></li>
+<li class='category'><a href='/categories/scala/'>Scala (1)</a></li>
 <li class='category'><a href='/categories/solr/'>Solr (1)</a></li>
 <li class='category'><a href='/categories/spring/'>Spring (1)</a></li>
 <li class='category'><a href='/categories/tutorial/'>Tutorial (1)</a></li>
