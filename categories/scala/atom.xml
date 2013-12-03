@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Scala | Side Notes]]></title>
   <link href="http://blog.ndpar.com/categories/scala/atom.xml" rel="self"/>
   <link href="http://blog.ndpar.com/"/>
-  <updated>2013-10-02T23:31:44-04:00</updated>
+  <updated>2013-12-02T23:52:33-05:00</updated>
   <id>http://blog.ndpar.com/</id>
   <author>
     <name><![CDATA[Andrey Paramonov]]></name>
@@ -875,7 +875,7 @@ D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
 
 <ul>
   <li>Michael Spivak — Calculus. [<a href="http://ia801606.us.archive.org/22/items/Calculus_643/Spivak-Calculus.pdf">pdf</a>]</li>
-  <li>Gerald Jay Sussman, Jack Wisdom — Functional Differential Geometry [<a href="http://mitpress.mit.edu/books/functional-differential-geometry">MIT</a>].</li>
+  <li>Gerald Jay Sussman, Jack Wisdom — Functional Differential Geometry. [<a href="http://mitpress.mit.edu/books/functional-differential-geometry">MIT</a>]</li>
   <li>Marvin Minsky — Why programming is a good medium for expressing poorly understood and sloppily-formulated ideas. [<a href="http://web.media.mit.edu/~minsky/papers/Why%20programming%20is--.html">html</a>]</li>
 </ul>
 

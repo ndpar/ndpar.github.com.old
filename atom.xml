@@ -4,7 +4,7 @@
   <title><![CDATA[Side Notes]]></title>
   <link href="http://blog.ndpar.com/atom.xml" rel="self"/>
   <link href="http://blog.ndpar.com/"/>
-  <updated>2013-10-02T23:31:44-04:00</updated>
+  <updated>2013-12-02T23:52:33-05:00</updated>
   <id>http://blog.ndpar.com/</id>
   <author>
     <name><![CDATA[Andrey Paramonov]]></name>
@@ -12,6 +12,29 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Erlang Factory Lite 2013]]></title>
+    <link href="http://blog.ndpar.com/2013/11/23/efl-toronto-2013/"/>
+    <updated>2013-11-23T07:00:00-05:00</updated>
+    <id>http://blog.ndpar.com/2013/11/23/efl-toronto-2013</id>
+    <content type="html"><![CDATA[<p>For the last four months I’ve been actively involved in organizing EFL in Toronto.
+Now when the conference is over I want to take a few minutes to express my appreciation to all the people who made it happen.</p>
+
+<p><img class="center" src="http://blog.ndpar.com/images/posts/tefl-2013.jpg" /></p>
+
+<p>My big “thank you” goes to (in alphabetical order)</p>
+
+<ul>
+  <li>Carlo Barrettara, Wioletta Dec, Michael DiBernardo, Monika Jarzyna, Michael Russo, Dann Toliver</li>
+  <li>All speakers: Louis-Philippe Gauthier, Fred Hebert, Christopher Meiklejohn, Igor Ostaptchenko, Yurii Rashkovskii, Tom Santero, Garrett Smith</li>
+  <li>All attendees</li>
+  <li>My family</li>
+</ul>
+
+<p>Thank you all! Without you this conference wouldn’t be possible.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[12PM bug in Java]]></title>
@@ -986,7 +1009,7 @@ D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
 
 <ul>
   <li>Michael Spivak — Calculus. [<a href="http://ia801606.us.archive.org/22/items/Calculus_643/Spivak-Calculus.pdf">pdf</a>]</li>
-  <li>Gerald Jay Sussman, Jack Wisdom — Functional Differential Geometry [<a href="http://mitpress.mit.edu/books/functional-differential-geometry">MIT</a>].</li>
+  <li>Gerald Jay Sussman, Jack Wisdom — Functional Differential Geometry. [<a href="http://mitpress.mit.edu/books/functional-differential-geometry">MIT</a>]</li>
   <li>Marvin Minsky — Why programming is a good medium for expressing poorly understood and sloppily-formulated ideas. [<a href="http://web.media.mit.edu/~minsky/papers/Why%20programming%20is--.html">html</a>]</li>
 </ul>
 
@@ -4646,18 +4669,6 @@ def positive = {
     }
 }
 </code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Nothing new under the Sun]]></title>
-    <link href="http://blog.ndpar.com/2011/06/07/nothing-new-under-sun/"/>
-    <updated>2011-06-07T08:00:00-04:00</updated>
-    <id>http://blog.ndpar.com/2011/06/07/nothing-new-under-sun</id>
-    <content type="html"><![CDATA[<p>Every generation of software developers needs its own fad. For my generation it was Agile, for generation before it was OOP, and before that it was another big thing. Gerald Weinberg, one of the most influential people in our industry, blogged yesterday about this issue. With over 50 years of experience in software development he knows what he is talking about. Read his <a href="http://secretsofconsulting.blogspot.com/2011/06/beyond-agile-programming.html">blog post</a> — he has a very good point.</p>
-
-<p>P.S. I’m wondering what will be the next big thing. Will it be Cloud or <a href="http://blog.ndpar.com/2013/01/15/embrace-big-data/">Big Data</a>?</p>
 
 ]]></content>
   </entry>

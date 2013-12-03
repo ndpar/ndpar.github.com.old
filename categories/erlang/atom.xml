@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Erlang | Side Notes]]></title>
   <link href="http://blog.ndpar.com/categories/erlang/atom.xml" rel="self"/>
   <link href="http://blog.ndpar.com/"/>
-  <updated>2013-10-02T23:31:44-04:00</updated>
+  <updated>2013-12-02T23:52:33-05:00</updated>
   <id>http://blog.ndpar.com/</id>
   <author>
     <name><![CDATA[Andrey Paramonov]]></name>
@@ -12,6 +12,29 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Erlang Factory Lite 2013]]></title>
+    <link href="http://blog.ndpar.com/2013/11/23/efl-toronto-2013/"/>
+    <updated>2013-11-23T07:00:00-05:00</updated>
+    <id>http://blog.ndpar.com/2013/11/23/efl-toronto-2013</id>
+    <content type="html"><![CDATA[<p>For the last four months I’ve been actively involved in organizing EFL in Toronto.
+Now when the conference is over I want to take a few minutes to express my appreciation to all the people who made it happen.</p>
+
+<p><img class="center" src="/images/posts/tefl-2013.jpg"></p>
+
+<p>My big “thank you” goes to (in alphabetical order)</p>
+
+<ul>
+  <li>Carlo Barrettara, Wioletta Dec, Michael DiBernardo, Monika Jarzyna, Michael Russo, Dann Toliver</li>
+  <li>All speakers: Louis-Philippe Gauthier, Fred Hebert, Christopher Meiklejohn, Igor Ostaptchenko, Yurii Rashkovskii, Tom Santero, Garrett Smith</li>
+  <li>All attendees</li>
+  <li>My family</li>
+</ul>
+
+<p>Thank you all! Without you this conference wouldn’t be possible.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Lambda Jam 2013]]></title>
@@ -875,7 +898,7 @@ D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
 
 <ul>
   <li>Michael Spivak — Calculus. [<a href="http://ia801606.us.archive.org/22/items/Calculus_643/Spivak-Calculus.pdf">pdf</a>]</li>
-  <li>Gerald Jay Sussman, Jack Wisdom — Functional Differential Geometry [<a href="http://mitpress.mit.edu/books/functional-differential-geometry">MIT</a>].</li>
+  <li>Gerald Jay Sussman, Jack Wisdom — Functional Differential Geometry. [<a href="http://mitpress.mit.edu/books/functional-differential-geometry">MIT</a>]</li>
   <li>Marvin Minsky — Why programming is a good medium for expressing poorly understood and sloppily-formulated ideas. [<a href="http://web.media.mit.edu/~minsky/papers/Why%20programming%20is--.html">html</a>]</li>
 </ul>
 
@@ -2193,204 +2216,6 @@ I’m not going to show all the functions here in this article, only those that 
   <li>Michael DiBernardo <a href="https://twitter.com/mdibernardo/status/277439446381625345/photo/1">[1]</a></li>
   <li>Kunal Gupta <a href="https://twitter.com/kunalfrompolar/status/277491865991921664/photo/1">[2]</a></li>
   <li>Carlo Barrettara <a href="https://twitter.com/barrettara/status/277533676273823746/photo/1">[3]</a></li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Erlang explained: Selective receive]]></title>
-    <link href="http://blog.ndpar.com/2010/11/10/erlang-selective-receive/"/>
-    <updated>2010-11-10T07:00:00-05:00</updated>
-    <id>http://blog.ndpar.com/2010/11/10/erlang-selective-receive</id>
-    <content type="html"><![CDATA[<p>If you worked with Erlang you’ve probably heard about selective receive. In this article I want to demonstrate what selective receive is and how it works. Let me start with an excerpt from Joe Armstrong’s book <a href="http://www.pragprog.com/titles/jaerlang/programming-erlang">Programming Erlang</a> (<a href="http://media.pragprog.com/titles/jaerlang/Concurrent.pdf">Section 8.6</a>, p.155):</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='erlang'><span class='line'><span class="k">receive</span>
-</span><span class='line'>    <span class="nv">Pattern1</span> <span class="p">[</span><span class="k">when</span> <span class="nv">Guard1</span><span class="p">]</span> <span class="o">-</span><span class="err">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="nv">Expressions1</span><span class="p">;</span>
-</span><span class='line'>    <span class="nv">Pattern2</span> <span class="p">[</span><span class="k">when</span> <span class="nv">Guard2</span><span class="p">]</span> <span class="o">-</span><span class="err">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="nv">Expressions2</span><span class="p">;</span>
-</span><span class='line'>    <span class="err">…</span>
-</span><span class='line'><span class="k">after</span>
-</span><span class='line'>    <span class="nv">Time</span> <span class="o">-</span><span class="err">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="nv">ExpressionTimeout</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<ol>
-  <li>When we enter a <strong>receive</strong> statement, we start a timer (but only if an <strong>after</strong> section is present in the expression).</li>
-  <li>Take the first message in the mailbox and try to match it against <code>Pattern1</code>, <code>Pattern2</code>, and so on. If the match succeeds, the message is removed from the mailbox, and the expressions following the pattern are evaluated.</li>
-  <li>If none of the patterns in the <strong>receive</strong> statement matches the first message in the mailbox, then the first message is removed from the mailbox and put into a “save queue.” The second message in the mailbox is then tried. This procedure is repeated until a matching message is found or until all the messages in the mailbox have been examined.</li>
-  <li>If none of the messages in the mailbox matches, then the process is suspended and will be rescheduled for execution the next time a new message is put in the mailbox. Note that when a new message arrives, the messages in the save queue are not rematched; only the new message is matched.</li>
-  <li>As soon as a message has been matched, then all messages that have been put into the save queue are reentered into the mailbox in the order in which they arrived at the process. If a timer was set, it is cleared.</li>
-  <li>If the timer elapses when we are waiting for a message, then evaluate the expressions <code>ExpressionsTimeout</code> and put any saved messages back into the mailbox in the order in which they arrived at the process.</li>
-</ol>
-
-<!-- more -->
-
-<p>Did you notice the concept of “save queue”? That’s what many people are not aware of. Let’s run few tests and see the mailbox and the save queue in action.</p>
-
-<p>The first test is simple</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class='erlang'><span class='line'><span class="mi">1</span><span class="err">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">self</span><span class="p">()</span> <span class="o">!</span> <span class="n">a</span><span class="p">.</span>
-</span><span class='line'><span class="n">a</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="mi">2</span><span class="err">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="nb">process_info</span><span class="p">(</span><span class="n">self</span><span class="p">()).</span>
-</span><span class='line'> <span class="err">…</span>
-</span><span class='line'> <span class="p">{</span><span class="n">message_queue_len</span><span class="p">,</span><span class="mi">1</span><span class="p">},</span>
-</span><span class='line'> <span class="p">{</span><span class="n">messages</span><span class="p">,[</span><span class="n">a</span><span class="p">]},</span>
-</span><span class='line'> <span class="err">…</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="mi">3</span><span class="err">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="k">receive</span> <span class="n">a</span> <span class="o">-</span><span class="err">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">1</span><span class="p">;</span> <span class="n">b</span> <span class="o">-</span><span class="err">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">2</span> <span class="k">end</span><span class="p">.</span>
-</span><span class='line'><span class="mi">1</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="mi">4</span><span class="err">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="nb">process_info</span><span class="p">(</span><span class="n">self</span><span class="p">()).</span>
-</span><span class='line'> <span class="err">…</span>
-</span><span class='line'> <span class="p">{</span><span class="n">message_queue_len</span><span class="p">,</span><span class="mi">0</span><span class="p">},</span>
-</span><span class='line'> <span class="p">{</span><span class="n">messages</span><span class="p">,[]},</span>
-</span><span class='line'> <span class="err">…</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>We send a message to the shell, we see it in the process mailbox, then we receive it by matching, after which the queue is empty. Standard queue behaviour.</p>
-
-<p>For the next test we send three messages, and we match the last one</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class='erlang'><span class='line'><span class="mi">1</span><span class="err">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">self</span><span class="p">()</span> <span class="o">!</span> <span class="n">c</span><span class="p">,</span> <span class="n">self</span><span class="p">()</span> <span class="o">!</span> <span class="n">d</span><span class="p">,</span> <span class="n">self</span><span class="p">()</span> <span class="o">!</span> <span class="n">a</span><span class="p">.</span>
-</span><span class='line'><span class="n">a</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="mi">2</span><span class="err">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="nb">process_info</span><span class="p">(</span><span class="n">self</span><span class="p">()).</span>
-</span><span class='line'> <span class="err">…</span>
-</span><span class='line'> <span class="p">{</span><span class="n">message_queue_len</span><span class="p">,</span><span class="mi">3</span><span class="p">},</span>
-</span><span class='line'> <span class="p">{</span><span class="n">messages</span><span class="p">,[</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">a</span><span class="p">]},</span>
-</span><span class='line'> <span class="err">…</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="mi">3</span><span class="err">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="k">receive</span> <span class="n">a</span> <span class="o">-</span><span class="err">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">1</span><span class="p">;</span> <span class="n">b</span> <span class="o">-</span><span class="err">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">2</span> <span class="k">end</span><span class="p">.</span>
-</span><span class='line'><span class="mi">1</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="mi">4</span><span class="err">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="nb">process_info</span><span class="p">(</span><span class="n">self</span><span class="p">()).</span>
-</span><span class='line'> <span class="err">…</span>
-</span><span class='line'> <span class="p">{</span><span class="n">message_queue_len</span><span class="p">,</span><span class="mi">2</span><span class="p">},</span>
-</span><span class='line'> <span class="p">{</span><span class="n">messages</span><span class="p">,[</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">]},</span>
-</span><span class='line'> <span class="err">…</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>Again, no surprises. In fact, this test demonstrates what people think when they hear about selective receive.</p>
-
-<p>Unfortunately we didn’t see what happened internally between expressions 3 and 4. To find it out we need to modify the test. Let’s start the shell in distributed mode so that we can connect to it later from the remote shell.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='erlang'><span class='line'><span class="p">(</span><span class="n">foo</span><span class="p">@</span><span class="n">bar</span><span class="p">)</span><span class="mi">1</span><span class="err">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="nb">register</span><span class="p">(</span><span class="n">shell</span><span class="p">,</span> <span class="n">self</span><span class="p">()).</span>
-</span><span class='line'><span class="n">true</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="p">(</span><span class="n">foo</span><span class="p">@</span><span class="n">bar</span><span class="p">)</span><span class="mi">2</span><span class="err">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">shell</span> <span class="o">!</span> <span class="n">c</span><span class="p">,</span> <span class="n">shell</span> <span class="o">!</span> <span class="n">d</span><span class="p">.</span>
-</span><span class='line'><span class="n">d</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="p">(</span><span class="n">foo</span><span class="p">@</span><span class="n">bar</span><span class="p">)</span><span class="mi">3</span><span class="err">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="nb">process_info</span><span class="p">(</span><span class="nb">whereis</span><span class="p">(</span><span class="n">shell</span><span class="p">)).</span>
-</span><span class='line'> <span class="err">…</span>
-</span><span class='line'> <span class="p">{</span><span class="n">message_queue_len</span><span class="p">,</span><span class="mi">2</span><span class="p">},</span>
-</span><span class='line'> <span class="p">{</span><span class="n">messages</span><span class="p">,[</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">]},</span>
-</span><span class='line'> <span class="err">…</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="p">(</span><span class="n">foo</span><span class="p">@</span><span class="n">bar</span><span class="p">)</span><span class="mi">4</span><span class="err">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="k">receive</span> <span class="n">a</span> <span class="o">-</span><span class="err">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">1</span><span class="p">;</span> <span class="n">b</span> <span class="o">-</span><span class="err">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">2</span> <span class="k">end</span><span class="p">.</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>At this moment the shell is suspended, exactly as described in step 4 of selective receive algorithm. Open remote shell, connect to the initial one, and type the following:</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='erlang'><span class='line'><span class="p">(</span><span class="n">foo</span><span class="p">@</span><span class="n">bar</span><span class="p">)</span><span class="mi">1</span><span class="err">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="nb">process_info</span><span class="p">(</span><span class="nb">whereis</span><span class="p">(</span><span class="n">shell</span><span class="p">)).</span>
-</span><span class='line'> <span class="err">…</span>
-</span><span class='line'> <span class="p">{</span><span class="n">message_queue_len</span><span class="p">,</span><span class="mi">0</span><span class="p">},</span>
-</span><span class='line'> <span class="p">{</span><span class="n">messages</span><span class="p">,[]},</span>
-</span><span class='line'> <span class="err">…</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>That’s interesting: no messages in the mailbox! As Joe said, they are in the save queue. Now send a matching message:</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='erlang'><span class='line'><span class="p">(</span><span class="n">foo</span><span class="p">@</span><span class="n">bar</span><span class="p">)</span><span class="mi">2</span><span class="err">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">shell</span> <span class="o">!</span> <span class="n">a</span><span class="p">.</span>
-</span><span class='line'><span class="n">a</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>Go back to initial shell, which should be resumed now, and check the mailbox again:</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='erlang'><span class='line'><span class="mi">1</span>
-</span><span class='line'><span class="p">(</span><span class="n">foo</span><span class="p">@</span><span class="n">bar</span><span class="p">)</span><span class="mi">5</span><span class="err">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="nb">process_info</span><span class="p">(</span><span class="nb">whereis</span><span class="p">(</span><span class="n">shell</span><span class="p">)).</span>
-</span><span class='line'> <span class="err">…</span>
-</span><span class='line'> <span class="p">{</span><span class="n">message_queue_len</span><span class="p">,</span><span class="mi">2</span><span class="p">},</span>
-</span><span class='line'> <span class="p">{</span><span class="n">messages</span><span class="p">,[</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">]},</span>
-</span><span class='line'> <span class="err">…</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>That’s the same output we saw in the previous test, but now we know what happens behind the scene: <em>messages are moved from the mailbox to the save queue and then back to the mailbox after the matching message arrives</em>.</p>
-
-<p>Next time you explore your Erlang process, keep in mind the save queue and disappearing and reappearing messages.</p>
-
-<h3 id="resources">Resources</h3>
-
-<ul>
-  <li>A <a href="http://ascii.io/a/3477">screencast</a> recorded for this blog entry.</li>
-  <li>Joe Armstrong: <a href="http://www.search-document.com/pdf/3/3/erlang.html">A History of Erlang</a>. In this article you can find why the selective receive was implemented this way.</li>
 </ul>
 
 ]]></content>
