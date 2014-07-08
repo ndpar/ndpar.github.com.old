@@ -9,7 +9,7 @@
   <meta name="author" content="Andrey Paramonov">
 
   
-  <meta name="description" content="Yesterday was the Global Day of Code Retreat. Software engineers around the globe met together to learn from each other. There were several sessions &hellip;">
+  <meta name="description" content="Yesterday was the Global Day of CodeRetreat. Software engineers around the globe met together to learn from each other. There were several sessions &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -128,7 +128,7 @@
   </header>
 
 
-  <div class="entry-content"><p>Yesterday was the Global Day of Code Retreat. Software engineers around the globe met together to learn from each other.</p>
+  <div class="entry-content"><p>Yesterday was the Global Day of CodeRetreat. Software engineers around the globe met together to learn from each other.</p>
 
 <p><img class="center" src="https://pbs.twimg.com/media/A9mptOCCAAE0d7z.jpg" title="CR2012 1" /></p>
 
@@ -182,37 +182,25 @@
 <span class="line-number">10</span>
 <span class="line-number">11</span>
 <span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-</pre></td><td class="code"><pre><code class="erlang"><span class="line"><span class="p">-</span><span class="ni">import</span><span class="p">(</span><span class="n">sets</span><span class="p">,</span> <span class="p">[</span><span class="n">from_list</span><span class="o">/</span><span class="mi">1</span><span class="p">,</span> <span class="n">to_list</span><span class="o">/</span><span class="mi">1</span><span class="p">,</span> <span class="n">is_element</span><span class="o">/</span><span class="mi">2</span><span class="p">]).</span>
-</span><span class="line">
-</span><span class="line"><span class="nf">neighbours</span><span class="p">({</span><span class="nv">X</span><span class="p">,</span> <span class="nv">Y</span><span class="p">})</span> <span class="o">-&gt;</span>
+</pre></td><td class="code"><pre><code class="erlang"><span class="line"><span class="nf">neighbours</span><span class="p">({</span><span class="nv">X</span><span class="p">,</span> <span class="nv">Y</span><span class="p">})</span> <span class="o">-&gt;</span>
 </span><span class="line">    <span class="p">[{</span><span class="nv">X</span> <span class="o">+</span> <span class="nv">DX</span><span class="p">,</span> <span class="nv">Y</span> <span class="o">+</span> <span class="nv">DY</span><span class="p">}</span> <span class="p">||</span> <span class="nv">DX</span> <span class="o">&lt;-</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="nv">DY</span> <span class="o">&lt;-</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">{</span><span class="nv">DX</span><span class="p">,</span> <span class="nv">DY</span><span class="p">}</span> <span class="o">=/=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">}].</span>
 </span><span class="line">
 </span><span class="line"><span class="nf">step</span><span class="p">(</span><span class="nv">Cells</span><span class="p">)</span> <span class="o">-&gt;</span>
-</span><span class="line">    <span class="nv">Nbs</span> <span class="o">=</span> <span class="nn">lists</span><span class="p">:</span><span class="nf">flatmap</span><span class="p">(</span><span class="k">fun</span> <span class="n">neighbours</span><span class="o">/</span><span class="mi">1</span><span class="p">,</span> <span class="n">to_list</span><span class="p">(</span><span class="nv">Cells</span><span class="p">)),</span>
-</span><span class="line">    <span class="nv">NewCells</span> <span class="o">=</span> <span class="p">[</span><span class="nv">C</span> <span class="p">||</span> <span class="p">{</span><span class="nv">C</span><span class="p">,</span> <span class="nv">N</span><span class="p">}</span> <span class="o">&lt;-</span> <span class="n">frequencies</span><span class="p">(</span><span class="nv">Nbs</span><span class="p">),</span>
-</span><span class="line">                     <span class="p">(</span><span class="nv">N</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="ow">orelse</span> <span class="p">((</span><span class="nv">N</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="ow">andalso</span> <span class="n">is_element</span><span class="p">(</span><span class="nv">C</span><span class="p">,</span> <span class="nv">Cells</span><span class="p">))],</span>
-</span><span class="line">    <span class="n">from_list</span><span class="p">(</span><span class="nv">NewCells</span><span class="p">).</span>
+</span><span class="line">    <span class="nv">Nbs</span> <span class="o">=</span> <span class="nn">lists</span><span class="p">:</span><span class="nf">flatmap</span><span class="p">(</span><span class="k">fun</span> <span class="n">neighbours</span><span class="o">/</span><span class="mi">1</span><span class="p">,</span> <span class="nn">sets</span><span class="p">:</span><span class="nf">to_list</span><span class="p">(</span><span class="nv">Cells</span><span class="p">)),</span>
+</span><span class="line">    <span class="nv">NewCells</span> <span class="o">=</span> <span class="p">[</span><span class="nv">C</span> <span class="p">||</span> <span class="p">{</span><span class="nv">C</span><span class="p">,</span> <span class="nv">N</span><span class="p">}</span> <span class="o">&lt;-</span> <span class="nn">dict</span><span class="p">:</span><span class="nf">to_list</span><span class="p">(</span><span class="n">frequencies</span><span class="p">(</span><span class="nv">Nbs</span><span class="p">)),</span>
+</span><span class="line">                     <span class="p">(</span><span class="nv">N</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="ow">orelse</span> <span class="p">((</span><span class="nv">N</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="ow">andalso</span> <span class="nn">sets</span><span class="p">:</span><span class="nf">is_element</span><span class="p">(</span><span class="nv">C</span><span class="p">,</span> <span class="nv">Cells</span><span class="p">))],</span>
+</span><span class="line">    <span class="nn">sets</span><span class="p">:</span><span class="nf">from_list</span><span class="p">(</span><span class="nv">NewCells</span><span class="p">).</span>
 </span><span class="line">
-</span><span class="line"><span class="nf">frequencies</span><span class="p">(</span><span class="nv">List</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">frequencies</span><span class="p">(</span><span class="nv">List</span><span class="p">,</span> <span class="p">[]).</span>
+</span><span class="line"><span class="nf">frequencies</span><span class="p">(</span><span class="nv">List</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">frequencies</span><span class="p">(</span><span class="nv">List</span><span class="p">,</span> <span class="nn">dict</span><span class="p">:</span><span class="nf">new</span><span class="p">()).</span>
 </span><span class="line"><span class="nf">frequencies</span><span class="p">([],</span> <span class="nv">Acc</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nv">Acc</span><span class="p">;</span>
-</span><span class="line"><span class="nf">frequencies</span><span class="p">([</span><span class="nv">X</span><span class="p">|</span><span class="nv">Xs</span><span class="p">],</span> <span class="nv">Acc</span><span class="p">)</span> <span class="o">-&gt;</span>
-</span><span class="line">    <span class="k">case</span> <span class="nn">lists</span><span class="p">:</span><span class="nf">keyfind</span><span class="p">(</span><span class="nv">X</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">Acc</span><span class="p">)</span> <span class="k">of</span>
-</span><span class="line">        <span class="p">{</span><span class="nv">X</span><span class="p">,</span> <span class="nv">F</span><span class="p">}</span> <span class="o">-&gt;</span> <span class="n">frequencies</span><span class="p">(</span><span class="nv">Xs</span><span class="p">,</span> <span class="nn">lists</span><span class="p">:</span><span class="nf">keyreplace</span><span class="p">(</span><span class="nv">X</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">Acc</span><span class="p">,</span> <span class="p">{</span><span class="nv">X</span><span class="p">,</span> <span class="nv">F</span><span class="o">+</span><span class="mi">1</span><span class="p">}));</span>
-</span><span class="line">        <span class="n">false</span>  <span class="o">-&gt;</span> <span class="n">frequencies</span><span class="p">(</span><span class="nv">Xs</span><span class="p">,</span> <span class="nn">lists</span><span class="p">:</span><span class="nf">keystore</span><span class="p">(</span><span class="nv">X</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">Acc</span><span class="p">,</span> <span class="p">{</span><span class="nv">X</span><span class="p">,</span> <span class="mi">1</span><span class="p">}))</span>
-</span><span class="line">    <span class="k">end</span><span class="p">.</span>
+</span><span class="line"><span class="nf">frequencies</span><span class="p">([</span><span class="nv">X</span><span class="p">|</span><span class="nv">Xs</span><span class="p">],</span> <span class="nv">Acc</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">frequencies</span><span class="p">(</span><span class="nv">Xs</span><span class="p">,</span> <span class="nn">dict</span><span class="p">:</span><span class="nf">update_counter</span><span class="p">(</span><span class="nv">X</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">Acc</span><span class="p">)).</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <h2 id="summary">Summary</h2>
 
 <p>During this day I learnt a lot: new language, new abstractions, new techniques, new ways of communication, new ideas. I met bunch of smart people. I was so overwhelmed with all this cool stuff that I had to write this blog post to offload it from my head.</p>
 
-<p>If you are a programmer and you’ve never been to Code Retreat, I strongly encourage you to do it next year. It’s an exciting experience.</p>
+<p>If you are a programmer and you’ve never been to CodeRetreat, I strongly encourage you to do it next year. It’s an exciting experience.</p>
 
 <p>I want to thank all the people who organized and participated in this event.</p>
 
@@ -958,7 +946,7 @@ def positive = {
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2009–2013 - Andrey Paramonov -
+  Copyright &copy; 2009–2014 - Andrey Paramonov -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> -
   <span class="credit">Hosted by <a href="http://github.com">GitHub</a></span>
 </p>
