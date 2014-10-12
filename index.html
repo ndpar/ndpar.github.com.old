@@ -9,8 +9,7 @@
   <meta name="author" content="Andrey Paramonov">
 
   
-  <meta name="description" content="For the last four months I’ve been actively involved in organizing EFL in Toronto.
-Now when the conference is over I want to take a few minutes to &hellip;">
+  <meta name="description" content="In the previous post we discussed the descrete Fourier transform (DFT). Its J implementation was pretty straightforward, and the program looked &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -106,6 +105,134 @@ Now when the conference is over I want to take a few minutes to &hellip;">
       
   <header>
     
+      <h1 class="entry-title"><a href="/2014/10/12/fft-j/">Fast Fourier Transform in J</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-10-12T08:00:00-04:00" pubdate data-updated="true">Oct 12<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In the previous <a href="/2014/10/11/dft-j/">post</a> we discussed the descrete Fourier transform (DFT). Its J implementation was pretty straightforward, and the program looked almost identical to its mathematical definition. In this post, I want to explore how to implement fast Fourier transform (FFT), a recursively defined version of DFT that reduces algorithmic complexity from $O(n^2)$ to $O(N\log{N})$.</p>
+
+<h2 id="math">Math</h2>
+
+<p>Recall the DFT formula from the previous post</p>
+
+<script type="math/tex; mode=display">
+\mathcal{F}_N\mathbf{f}[m] = \sum_{n=0}^{N-1} \mathbf{f}[n] e^{-2\pi i mn/N}, \quad m = 0, \dots , N-1
+</script>
+
+<p>I use a slightly different notation here to make recursive definition easier to understand.</p>
+
+<p>We assume that <em>N</em> is a power of 2. Using basic arithmetic and properties of complex exponentials, we can derive the formula for the DFT of order <em>2N</em> in terms of two DFTs of order <em>N</em></p>
+
+<script type="math/tex; mode=display">
+\mathcal{F}_{2N}\mathbf{f}[m]=\mathcal{F}_N\mathbf{f}_{even}+e^{-\pi im/N}\mathcal{F}_N\mathbf{f}_{odd}
+</script>
+
+<script type="math/tex; mode=display">
+\mathcal{F}_{2N}\mathbf{f}[m+N]=\mathcal{F}_N\mathbf{f}_{even}-e^{-\pi im/N}\mathcal{F}_N\mathbf{f}_{odd}
+</script>
+
+<p>where $m=0,\dots,N-1$. The base case, when $N=1$, is</p>
+
+<script type="math/tex; mode=display">
+\mathcal{F}_1\mathbf{f}[0] = \mathbf{f}[0]
+</script>
+
+<p>i.e. the identity function.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2014/10/12/fft-j/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2014/10/11/dft-j/">Descrete Fourier Transform in J</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-10-11T08:00:00-04:00" pubdate data-updated="true">Oct 11<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The Fourier analysis in general and the Fourier transform in particular has always been one of my favourite topics in mathematics. When I started learning the <a href="http://www.jsoftware.com">J programming language</a> I thought that implementing the descrete Fourier transform (DFT) in J must be really elegant. One rainy weekend I finally found time to do that, and this post is a result of my experiments.</p>
+
+<h2 id="math">Math</h2>
+
+<p>The definition of one-dimensional DFT is pretty simple. It is just a function that maps a given vector <strong>f</strong> of length <em>N</em> to a vector <strong>F</strong> of the same length by the following formula</p>
+
+<script type="math/tex; mode=display">
+\mathbf{F}[m] = \sum_{n=0}^{N-1} \mathbf{f}[n] e^{-2\pi i mn/N}, \quad m = 0, \dots , N-1
+</script>
+
+<p>To implement this formula the only thing we need is basic arithmetic for complex numbers. Not only does J provide such an arithmetic, it has special code for complex exponentiation, which makes the implementation much easier than it would be in other languages.</p>
+
+<p>Before we start coding let’s rewrite the formula in terms of matrix multiplication so that we can utilize this feature of J. Let $\omega$ be the primitive <em>N</em>th root of unity $\omega = e^{2\pi i/N}$, then the DFT formula becomes</p>
+
+<script type="math/tex; mode=display">
+\mathbf{F} = \mathbf{f} \cdot \Omega
+</script>
+
+<p>where <strong>f</strong> is an input vector and $\Omega$ is a symmetric matrix $(\omega^{-mn})$ with $m,n=0,\dots,N-1$.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2014/10/11/dft-j/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/2013/11/23/efl-toronto-2013/">Erlang Factory Lite 2013</a></h1>
     
     
@@ -134,7 +261,7 @@ Now when the conference is over I want to take a few minutes to express my appre
 
 <p><img class="center" src="/images/posts/tefl-2013.jpg" /></p>
 
-<p>My big “thank you” goes to (in alphabetical order)</p>
+<p>My big thank you goes to (in alphabetical order)</p>
 
 <ul>
   <li>Carlo Barrettara, Wioletta Dec, Michael DiBernardo, Monika Jarzyna, Michael Russo, Dann Toliver</li>
@@ -621,85 +748,6 @@ $ ps -ef | grep java
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2013/01/15/embrace-big-data/">Embrace Big Data</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-01-15T07:00:00-05:00" pubdate data-updated="true">Jan 15<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img class="center" src="/images/posts/BigData.jpg" /></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/12/15/rabbitmq-activemq-zeromq-hornetq/">RabbitMQ, ActiveMQ, ZeroMQ, HornetQ</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-12-15T07:00:00-05:00" pubdate data-updated="true">Dec 15<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><em>Warning</em>: In this post I’m going to compare <a href="http://www.rabbitmq.com/">RabbitMQ</a>, <a href="http://www.zeromq.org/">ZeroMQ</a>, <a href="http://activemq.apache.org/">ActiveMQ</a>, and <a href="http://www.jboss.org/hornetq">HornetQ</a>. The basis of the comparison is not the performance, or the scalability, or any other serious feature. The comparison is done <em>purely</em> based on the popularity of those systems. Therefore, if you came here to see some performance metrics, you will be disappointed — there is none in this post.</p>
-
-<p><em>Note</em>: To calculate popularity, I’m going to use MongoDB and Python, so if you don’t care about message brokers, but you want to see some examples of MongoDB scripts, this post might be interesting to you.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2012/12/15/rabbitmq-activemq-zeromq-hornetq/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -715,6 +763,14 @@ $ ps -ef | grep java
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/10/12/fft-j/">Fast Fourier Transform in J</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/10/11/dft-j/">Descrete Fourier Transform in J</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/11/23/efl-toronto-2013/">Erlang Factory Lite 2013</a>
       </li>
     
@@ -724,14 +780,6 @@ $ ps -ef | grep java
     
       <li class="post">
         <a href="/2013/07/08/lambdajam-2013/">Lambda Jam 2013</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/06/11/sleeping-barber-in-erlang/">Sleeping Barber in Erlang</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/05/26/entrepreneur/">To Be or Not to Be… Entrepreneur</a>
       </li>
     
   </ul>
@@ -790,9 +838,10 @@ $ ps -ef | grep java
 <li class='category'><a href='/categories/groovy/'>Groovy (10)</a></li>
 <li class='category'><a href='/categories/haskell/'>Haskell (1)</a></li>
 <li class='category'><a href='/categories/humor/'>Humor (2)</a></li>
+<li class='category'><a href='/categories/j/'>J (2)</a></li>
 <li class='category'><a href='/categories/java/'>Java (4)</a></li>
 <li class='category'><a href='/categories/lisp/'>Lisp (2)</a></li>
-<li class='category'><a href='/categories/math/'>Math (5)</a></li>
+<li class='category'><a href='/categories/math/'>Math (7)</a></li>
 <li class='category'><a href='/categories/maven/'>Maven (1)</a></li>
 <li class='category'><a href='/categories/mongodb/'>MongoDB (1)</a></li>
 <li class='category'><a href='/categories/nosql/'>NoSQL (1)</a></li>

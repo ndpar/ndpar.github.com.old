@@ -9,7 +9,8 @@
   <meta name="author" content="Andrey Paramonov">
 
   
-  <meta name="description" content="Yesterday was the Global Day of CodeRetreat. Software engineers around the globe met together to learn from each other. There were several sessions &hellip;">
+  <meta name="description" content="
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -99,6 +100,85 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/01/15/embrace-big-data/">Embrace Big Data</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-15T07:00:00-05:00" pubdate data-updated="true">Jan 15<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img class="center" src="/images/posts/BigData.jpg" /></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/12/15/rabbitmq-activemq-zeromq-hornetq/">RabbitMQ, ActiveMQ, ZeroMQ, HornetQ</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-15T07:00:00-05:00" pubdate data-updated="true">Dec 15<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><em>Warning</em>: In this post I’m going to compare <a href="http://www.rabbitmq.com/">RabbitMQ</a>, <a href="http://www.zeromq.org/">ZeroMQ</a>, <a href="http://activemq.apache.org/">ActiveMQ</a>, and <a href="http://www.jboss.org/hornetq">HornetQ</a>. The basis of the comparison is not the performance, or the scalability, or any other serious feature. The comparison is done <em>purely</em> based on the popularity of those systems. Therefore, if you came here to see some performance metrics, you will be disappointed — there is none in this post.</p>
+
+<p><em>Note</em>: To calculate popularity, I’m going to use MongoDB and Python, so if you don’t care about message brokers, but you want to see some examples of MongoDB scripts, this post might be interesting to you.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2012/12/15/rabbitmq-activemq-zeromq-hornetq/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -671,163 +751,6 @@ plot "thomae.dat" using 1:2 with points
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2011/06/27/math-and-physics-of-benderama/">Math and Physics of Benderama</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-06-27T08:00:00-04:00" pubdate data-updated="true">Jun 27<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The last episode of <a href="http://theinfosphere.org/Benderama">Futurama</a> has interesting formula involved. The entire plot is based on the Professor’s latest invention — <a href="http://en.wikipedia.org/wiki/Banach&#8211;Tarski_paradox">Banach-Tarski</a> Dupla-Shrinker — the machine that produces two copies of any object at a 60% scale. It was just a matter of time when Bender found a proper usage of this machine: to replicate himself. Then two small copies of Bender replicated themselves making four smaller copies, and so forth. At some point the Professor horrified the crew that if they don’t stop this unlimited growth, the total mass of all Benders will eventually be so big that the entire Earth will be consumed during the process of replication. As a proof he demonstrated this formula of the mass of all generations of Bender</p>
-
-<p><img class="center" src="http://pool.theinfosphere.org/images/thumb/0/04/Benderama_Maths.png/800px-Benderama_Maths.png" /></p>
-
-<p>This is a perfect toy for a science geek. The first obvious question it brings: is this formula mathematically correct? As it turns out, it is not. Considering the scale of 60%, the cubic dependency of volume on linear dimension, and the constant density of all copies, the formula should be the following</p>
-
-<script type="math/tex; mode=display">
-M = \displaystyle\sum\limits_{n=0}^\infty 2^n\left[\left(\frac{3}{5}\right)^{3n} M_0\right] = \displaystyle\sum\limits_{n=0}^\infty 2^n\left[\left(\frac{27}{125}\right)^n M_0\right] = \displaystyle\sum\limits_{n=0}^\infty\left(\frac{54}{125}\right)^n M_0 = \frac{125}{71} M_0
-</script>
-
-<p>As you can see the total mass of infinite number of Benders actually converges to approximately 1.76 <em>M</em><sub>0</sub>. So from Math perspective there is nothing to worry about. But what if our assumption of constant density is invalid. Would it be a problem from Physics perspective? Let’s see.</p>
-
-<p>Knowing that every new copy has a size of 0.6 of the original it was made from, we have the following formula for the size of Bender in the <em>n</em><sup>th</sup> generation</p>
-
-<script type="math/tex; mode=display">
-L_n = 0.6^n L_0
-</script>
-
-<p>This exponential function becomes very small pretty soon. In the <a href="http://www.wolframalpha.com/input/?i=0.6%5E154">154</a><sup>th</sup> generation it already reaches the <a href="http://en.wikipedia.org/wiki/Planck_length">Planck length</a>, after which the further replication is physically impossible. If we calculate the total mass of 154 Bender’s generations using the Professor’s formula, we get <a href="http://www.wolframalpha.com/input/?i=H%28154%29">H(154)</a> × <a href="http://www.peelified.com/Futurama-Forum-1/Topic-4095-0-Benders_Weight.html">238</a> kg ≈ 1,337.56 kg, which is nothing comparing to the Earth mass.</p>
-
-<p>So we have to admit that from both Math and Physics perspective the Professor was wrong, and there was no real threat to the Earth.</p>
-
-<p>Although the Professor’s formula doesn’t describe the replication process adequately, it’s still a beautiful piece of Math because it’s a formula of <a href="http://en.wikipedia.org/wiki/Harmonic_series_(mathematics)">harmonic series</a>. If you want to know why harmonic series is beautiful and which real processes it describes, read this nice <a href="http://plus.maths.org/content/perfect-harmony">article</a> of John H. Webb.</p>
-
-<p>And don’t miss the next <a href="http://theinfosphere.org/Ghost_in_the_Machines">episode</a> of Futurama this Thursday :-)</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2011/06/08/functional-groovy-switch-statement/">Functional Groovy Switch Statement</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-06-08T08:00:00-04:00" pubdate data-updated="true">Jun 8<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>In the previous <a href="/2011/06/01/reversing-groovy-switch-statement">post</a> I showed how to replace chained if-else statements in Groovy with one concise switch. It was done for the special case of if-stement where every branch was evaluated using the same condition function. Today I want to make a generalization of that technique by allowing to use different conditionals.</p>
-
-<p>Suppose your code looks like this:</p>
-
-<pre><code>if (param % 2 == 0) {
-    'even'
-} else if (param % 3 == 0) {
-    'threeven'
-} else if (0 &lt; param) {
-    'positive'
-} else {
-    'negative'
-}
-</code></pre>
-
-<p>As long as every condition operates on the same parameter, you can replace the entire chain with a switch. In this scenario <code>param</code> becomes a switch parameter and conditions become <code>case</code> parameters of Closure type. The only thing we need to do is to override <code>Closure.isCase()</code> method as I described in the previous post. The safest way to do it is to create a category class:</p>
-
-<pre><code>class CaseCategory {
-    static boolean isCase(Closure casePredicate, Object switchParameter) {
-        casePredicate.call switchParameter
-    }
-}
-</code></pre>
-
-<p>Now we can replace if-statement with the following switch:</p>
-
-<pre><code>use (CaseCategory) {
-    switch (param) {
-        case { it % 2 == 0 } : return 'even'
-        case { it % 3 == 0 } : return 'threeven'
-        case { 0 &lt; it }      : return 'positive'
-        default              : return 'negative'
-    }
-}
-</code></pre>
-
-<p>We can actually go further and extract in-line closures:</p>
-
-<pre><code>def even = {
-    it % 2 == 0
-}
-def threeven = {
-    it % 3 == 0
-}
-def positive = {
-    0 &lt; it
-}
-</code></pre>
-
-<p>After which the code becomes even more readable:</p>
-
-<pre><code>use (CaseCategory) {
-    switch (param) {
-        case even     : return 'even'
-        case threeven : return 'threeven'
-        case positive : return 'positive'
-        default       : return 'negative'
-    }
-}
-</code></pre>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -845,6 +768,14 @@ def positive = {
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/10/12/fft-j/">Fast Fourier Transform in J</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/10/11/dft-j/">Descrete Fourier Transform in J</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/11/23/efl-toronto-2013/">Erlang Factory Lite 2013</a>
       </li>
     
@@ -854,14 +785,6 @@ def positive = {
     
       <li class="post">
         <a href="/2013/07/08/lambdajam-2013/">Lambda Jam 2013</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/06/11/sleeping-barber-in-erlang/">Sleeping Barber in Erlang</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/05/26/entrepreneur/">To Be or Not to Be… Entrepreneur</a>
       </li>
     
   </ul>
@@ -920,9 +843,10 @@ def positive = {
 <li class='category'><a href='/categories/groovy/'>Groovy (10)</a></li>
 <li class='category'><a href='/categories/haskell/'>Haskell (1)</a></li>
 <li class='category'><a href='/categories/humor/'>Humor (2)</a></li>
+<li class='category'><a href='/categories/j/'>J (2)</a></li>
 <li class='category'><a href='/categories/java/'>Java (4)</a></li>
 <li class='category'><a href='/categories/lisp/'>Lisp (2)</a></li>
-<li class='category'><a href='/categories/math/'>Math (5)</a></li>
+<li class='category'><a href='/categories/math/'>Math (7)</a></li>
 <li class='category'><a href='/categories/maven/'>Maven (1)</a></li>
 <li class='category'><a href='/categories/mongodb/'>MongoDB (1)</a></li>
 <li class='category'><a href='/categories/nosql/'>NoSQL (1)</a></li>
