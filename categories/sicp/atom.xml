@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: SICP | Side Notes]]></title>
+  <link href="http://blog.ndpar.com/categories/sicp/atom.xml" rel="self"/>
+  <link href="http://blog.ndpar.com/"/>
+  <updated>2014-10-13T21:45:18-04:00</updated>
+  <id>http://blog.ndpar.com/</id>
+  <author>
+    <name><![CDATA[Andrey Paramonov]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[GC visualization]]></title>
+    <link href="http://blog.ndpar.com/2014/10/13/gc-visualization/"/>
+    <updated>2014-10-13T08:00:00-04:00</updated>
+    <id>http://blog.ndpar.com/2014/10/13/gc-visualization</id>
+    <content type="html"><![CDATA[<p>While I was working through the chapter 5.3 of <a href="http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-33.html#%_sec_5.3.2">SICP</a>, I created small visualization of the <em>stop-and-copy</em> garbage collection algorithm.</p>
+
+<p>I start with the following memory structure example.</p>
+
+<p><img class="center" src="/images/posts/gc-01.png"></p>
+
+<p>The content of the <code>root</code> register is a pointer <code>p4</code> to the list of registers <code>(x y z)</code>. The register <code>x</code> points to address 6 where improper list <code>(1 . 2)</code> saved. The register <code>y</code> points to address 8 where list <code>(x x)</code> starts. Finally, the register <code>z</code> points to address 10 where list <code>(3 4 5)</code> starts. Addresses 1, 3, 5, 9, 11, 13, 15 contain garbage.</p>
+
+<p>After we ran the GC algorithm, we got the following memory structure.</p>
+
+<p><img class="center" src="/images/posts/gc-52.png"></p>
+
+<p><code>root</code> now points to address 0, <code>x</code> to 1, <code>y</code> to 3, and <code>z</code> to 6.</p>
+
+<!-- more -->
+
+<p>Here is the visualization</p>
+
+<p><img class="center" src="https://raw.githubusercontent.com/CompSciCabal/SMRTYPRTY/master/experiments/ndpar/sicp-5.3-gc/gc.gif"></p>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li>Bigger picture on <a href="https://raw.githubusercontent.com/CompSciCabal/SMRTYPRTY/master/experiments/ndpar/sicp-5.3-gc/gc.gif">GitHub</a>.</li>
+  <li>Animation frames for better view on <a href="https://github.com/CompSciCabal/SMRTYPRTY/tree/master/experiments/ndpar/sicp-5.3-gc">GitHub</a>.</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

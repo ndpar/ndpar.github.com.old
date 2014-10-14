@@ -9,8 +9,7 @@
   <meta name="author" content="Andrey Paramonov">
 
   
-  <meta name="description" content="
-">
+  <meta name="description" content="Sometimes I need to run ZooKeeper ensemble on my development box to test my application on the production-like environment. I found that recreating &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -100,6 +99,107 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/03/09/simple-zookeeper-cluster/">Simple Zookeeper Cluster</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-09T07:00:00-05:00" pubdate data-updated="true">Mar 9<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Sometimes I need to run <a href="http://zookeeper.apache.org">ZooKeeper</a> ensemble on my development box to test my application on the production-like environment. I found that recreating the whole ensemble from scratch is much faster than cleaning it up using ZooKeeper CLI tool. To automate this process I created a bash script which I want to share in this blog post. I hard-coded all the paths in the script using my regular conventions. You might need to change them to yours — it should be fairly straightforward.</p>
+
+<p>Before you can use the script, you need to install ZooKeeper on your box. That’s what I did on my machine</p>
+
+<pre><code>$ cd /opt
+$ sudo mkdir zookeeper
+$ sudo chown -R andrey:admin zookeeper
+$ cd zookeeper
+$ wget http://apache.mirror.rafal.ca/zookeeper/zookeeper-3.4.5/zookeeper-3.4.5.tar.gz
+$ tar xf zookeeper-3.4.5.tar.gz
+$ rm zookeeper-3.4.5.tar.gz
+$ ln -s zookeeper-3.4.5 zookeeper
+</code></pre>
+
+<p>In the end you should have a ZooKeeper installed in <em>/opt/zookeeper/zookeeper</em> directory.</p>
+
+<p>Now download, chmod, and run the <a href="https://gist.github.com/ndpar/5105486">script</a>. It will create the following files</p>
+
+<pre><code>/opt/zookeeper/zookeeper/cluster
+├── server1
+│   ├── conf
+│   │   ├── log4j.properties
+│   │   └── zoo.cfg
+│   ├── data
+│   │   └── myid
+│   └── logs
+├── server2
+│   ├── conf
+│   │   ├── log4j.properties
+│   │   └── zoo.cfg
+│   ├── data
+│   │   └── myid
+│   └── logs
+├── server3
+│   ├── conf
+│   │   ├── log4j.properties
+│   │   └── zoo.cfg
+│   ├── data
+│   │   └── myid
+│   └── logs
+├── start.sh
+└── stop.sh
+</code></pre>
+
+<p>This is the minimum configuration for 3-node ensemble (cluster), which is recommended for production. To start the cluster, run the following command</p>
+
+<pre><code>$ cd /opt/zookeeper/zookeeper
+$ cluster/start.sh
+</code></pre>
+
+<p>Check the log files to see if the cluster is successfully started</p>
+
+<pre><code>$ tail -f cluster/server{1,2,3}/logs/zookeeper.out
+</code></pre>
+
+<p>When the cluster is up and running, you can test your application. After you are done, shutdown the cluster using the following command</p>
+
+<pre><code>$ cluster/stop.sh
+$ ps -ef | grep java
+</code></pre>
+
+<p>To recreate a clean cluster, just run the script again</p>
+
+<pre><code>$ ./zookeeper-init-ensemble.sh
+</code></pre>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -651,106 +751,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2011/08/06/thomaes-function/">Thomae&#8217;s Function</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-08-06T08:00:00-04:00" pubdate data-updated="true">Aug 6<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://en.wikipedia.org/wiki/Thomae%27s_function">Thomae’s function</a> (a.k.a. Riemann function) is defined on the interval (0, 1) as follows</p>
-
-<script type="math/tex; mode=display">% <![CDATA[
-
-f(x) = \left\{
-\begin{array}{l l}
-  1/q & \quad \text{if $x = p/q$ is rational and $gcd(p, q) = 1$}\\
-  0 & \quad \text{if $x$ is irrational}\\
-\end{array} \right.
- %]]></script>
-
-<p>Here is the graph of this function with some points highlighted as plus symbols for better view.</p>
-
-<p><img class="center" src="/images/posts/thomae.jpg" /></p>
-
-<p>This function has interesting property: it’s continuous at all irrational points. It’s easy to see this if you notice that for any positive <em>ε</em> there is a finite number of dots above the line <em>y</em> = <em>ε</em>. That means for any irrational number <em>x</em><sub>0</sub> you can always construct a <em>δ</em>-neighbourhood that doesn’t contain any dot from the area above the line <em>y</em> = <em>ε</em>.</p>
-
-<p><img class="center" src="/images/posts/thomae-e-d.jpg" /></p>
-
-<p>To generate the data file with point coordinates I wrote Common Lisp program:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-</pre></td><td class="code"><pre><code class="common-lisp"><span class="line"><span class="p">(</span><span class="nb">defun</span> <span class="nv">rational-numbers</span> <span class="p">(</span><span class="nv">max-denominator</span><span class="p">)</span>
-</span><span class="line">  <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">result</span> <span class="p">(</span><span class="nb">list</span><span class="p">)))</span>
-</span><span class="line">    <span class="p">(</span><span class="nb">loop</span> <span class="nv">for</span> <span class="nv">q</span> <span class="nv">from</span> <span class="mi">2</span> <span class="nv">to</span> <span class="nv">max-denominator</span> <span class="nb">do</span>
-</span><span class="line">      <span class="p">(</span><span class="nb">loop</span> <span class="nv">for</span> <span class="nv">p</span> <span class="nv">from</span> <span class="mi">1</span> <span class="nv">to</span> <span class="p">(</span><span class="nb">1-</span> <span class="nv">q</span><span class="p">)</span> <span class="nb">do</span>
-</span><span class="line">        <span class="p">(</span><span class="nb">pushnew</span> <span class="p">(</span><span class="nb">/</span> <span class="nv">p</span> <span class="nv">q</span><span class="p">)</span> <span class="nv">result</span><span class="p">)))</span>
-</span><span class="line">    <span class="nv">result</span><span class="p">))</span>
-</span><span class="line">
-</span><span class="line"><span class="p">(</span><span class="nb">defun</span> <span class="nv">thomae-rational-points</span> <span class="p">(</span><span class="nv">abscissae</span><span class="p">)</span>
-</span><span class="line">  <span class="p">(</span><span class="nb">mapcar</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="nv">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">list</span> <span class="nv">x</span> <span class="p">(</span><span class="nb">/</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">denominator</span> <span class="nv">x</span><span class="p">))))</span> <span class="nv">abscissae</span><span class="p">))</span>
-</span><span class="line">
-</span><span class="line"><span class="p">(</span><span class="nb">defun</span> <span class="nv">thomae</span> <span class="p">(</span><span class="nv">max-denominator</span><span class="p">)</span>
-</span><span class="line">  <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">points</span> <span class="p">(</span><span class="nv">thomae-rational-points</span> <span class="p">(</span><span class="nv">rational-numbers</span> <span class="nv">max-denominator</span><span class="p">))))</span>
-</span><span class="line">    <span class="p">(</span><span class="nb">with-open-file</span> <span class="p">(</span><span class="nc">stream</span> <span class="s">&quot;thomae.dat&quot;</span> <span class="ss">:direction</span> <span class="ss">:output</span><span class="p">)</span>
-</span><span class="line">      <span class="p">(</span><span class="nb">loop</span> <span class="nv">for</span> <span class="nv">point</span> <span class="nv">in</span> <span class="nv">points</span> <span class="nb">do</span>
-</span><span class="line">        <span class="p">(</span><span class="nb">format</span> <span class="nc">stream</span> <span class="s">&quot;~4$ ~4$~%&quot;</span> <span class="p">(</span><span class="nb">first</span> <span class="nv">point</span><span class="p">)</span> <span class="p">(</span><span class="nb">second</span> <span class="nv">point</span><span class="p">))))))</span>
-</span><span class="line">
-</span><span class="line"><span class="p">(</span><span class="nv">thomae</span> <span class="mi">500</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>To create the images I used <a href="http://www.gnuplot.info/">gnuplot</a> commands:</p>
-
-<pre><code>plot "thomae.dat" using 1:2 with dots
-plot "thomae.dat" using 1:2 with points
-</code></pre>
-
-<p>and Photoshop.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -768,6 +768,10 @@ plot "thomae.dat" using 1:2 with points
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/10/13/gc-visualization/">GC Visualization</a>
+      </li>
+    
+      <li class="post">
         <a href="/2014/10/12/fft-j/">Fast Fourier Transform in J</a>
       </li>
     
@@ -781,10 +785,6 @@ plot "thomae.dat" using 1:2 with points
     
       <li class="post">
         <a href="/2013/07/28/java-12pm-bug/">12PM Bug in Java</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/07/08/lambdajam-2013/">Lambda Jam 2013</a>
       </li>
     
   </ul>
@@ -845,7 +845,7 @@ plot "thomae.dat" using 1:2 with points
 <li class='category'><a href='/categories/humor/'>Humor (2)</a></li>
 <li class='category'><a href='/categories/j/'>J (2)</a></li>
 <li class='category'><a href='/categories/java/'>Java (4)</a></li>
-<li class='category'><a href='/categories/lisp/'>Lisp (2)</a></li>
+<li class='category'><a href='/categories/lisp/'>Lisp (3)</a></li>
 <li class='category'><a href='/categories/math/'>Math (7)</a></li>
 <li class='category'><a href='/categories/maven/'>Maven (1)</a></li>
 <li class='category'><a href='/categories/mongodb/'>MongoDB (1)</a></li>
@@ -854,6 +854,7 @@ plot "thomae.dat" using 1:2 with points
 <li class='category'><a href='/categories/python/'>Python (2)</a></li>
 <li class='category'><a href='/categories/rabbitmq/'>RabbitMQ (4)</a></li>
 <li class='category'><a href='/categories/regex/'>Regex (2)</a></li>
+<li class='category'><a href='/categories/sicp/'>SICP (1)</a></li>
 <li class='category'><a href='/categories/scala/'>Scala (1)</a></li>
 <li class='category'><a href='/categories/solr/'>Solr (1)</a></li>
 <li class='category'><a href='/categories/spring/'>Spring (1)</a></li>

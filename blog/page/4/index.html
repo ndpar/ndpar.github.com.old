@@ -9,10 +9,7 @@
   <meta name="author" content="Andrey Paramonov">
 
   
-  <meta name="description" content="Title: Erlang and OTP in Action
-Author: Martin Logan, Eric Merritt, and Richard Carlsson
-Paperback: 432 pages
-Publisher: Manning Publications; &hellip;">
+  <meta name="description" content="If you worked with Erlang you’ve probably heard about selective receive. In this article I want to demonstrate what selective receive is and how it &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -102,6 +99,72 @@ Publisher: Manning Publications; &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2010/11/10/erlang-selective-receive/">Erlang Explained: Selective Receive</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-10T07:00:00-05:00" pubdate data-updated="true">Nov 10<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>If you worked with Erlang you’ve probably heard about selective receive. In this article I want to demonstrate what selective receive is and how it works. Let me start with an excerpt from Joe Armstrong’s book <a href="http://www.pragprog.com/titles/jaerlang/programming-erlang">Programming Erlang</a> (<a href="http://media.pragprog.com/titles/jaerlang/Concurrent.pdf">Section 8.6</a>, p.155):</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="erlang"><span class="line"><span class="k">receive</span>
+</span><span class="line">    <span class="nv">Pattern1</span> <span class="p">[</span><span class="k">when</span> <span class="nv">Guard1</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="nv">Expressions1</span><span class="p">;</span>
+</span><span class="line">    <span class="nv">Pattern2</span> <span class="p">[</span><span class="k">when</span> <span class="nv">Guard2</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="nv">Expressions2</span><span class="p">;</span>
+</span><span class="line">    <span class="p">...</span>
+</span><span class="line"><span class="k">after</span>
+</span><span class="line">    <span class="nv">Time</span> <span class="o">-&gt;</span> <span class="nv">ExpressionTimeout</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<ol>
+  <li>When we enter a <strong>receive</strong> statement, we start a timer (but only if an <strong>after</strong> section is present in the expression).</li>
+  <li>Take the first message in the mailbox and try to match it against <code>Pattern1</code>, <code>Pattern2</code>, and so on. If the match succeeds, the message is removed from the mailbox, and the expressions following the pattern are evaluated.</li>
+  <li>If none of the patterns in the <strong>receive</strong> statement matches the first message in the mailbox, then the first message is removed from the mailbox and put into a “save queue.” The second message in the mailbox is then tried. This procedure is repeated until a matching message is found or until all the messages in the mailbox have been examined.</li>
+  <li>If none of the messages in the mailbox matches, then the process is suspended and will be rescheduled for execution the next time a new message is put in the mailbox. Note that when a new message arrives, the messages in the save queue are not rematched; only the new message is matched.</li>
+  <li>As soon as a message has been matched, then all messages that have been put into the save queue are reentered into the mailbox in the order in which they arrived at the process. If a timer was set, it is cleared.</li>
+  <li>If the timer elapses when we are waiting for a message, then evaluate the expressions <code>ExpressionsTimeout</code> and put any saved messages back into the mailbox in the order in which they arrived at the process.</li>
+</ol>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2010/11/10/erlang-selective-receive/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -1264,6 +1327,10 @@ java.lang.IllegalArgumentException: id to load is required for loading
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/10/13/gc-visualization/">GC Visualization</a>
+      </li>
+    
+      <li class="post">
         <a href="/2014/10/12/fft-j/">Fast Fourier Transform in J</a>
       </li>
     
@@ -1277,10 +1344,6 @@ java.lang.IllegalArgumentException: id to load is required for loading
     
       <li class="post">
         <a href="/2013/07/28/java-12pm-bug/">12PM Bug in Java</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/07/08/lambdajam-2013/">Lambda Jam 2013</a>
       </li>
     
   </ul>
@@ -1341,7 +1404,7 @@ java.lang.IllegalArgumentException: id to load is required for loading
 <li class='category'><a href='/categories/humor/'>Humor (2)</a></li>
 <li class='category'><a href='/categories/j/'>J (2)</a></li>
 <li class='category'><a href='/categories/java/'>Java (4)</a></li>
-<li class='category'><a href='/categories/lisp/'>Lisp (2)</a></li>
+<li class='category'><a href='/categories/lisp/'>Lisp (3)</a></li>
 <li class='category'><a href='/categories/math/'>Math (7)</a></li>
 <li class='category'><a href='/categories/maven/'>Maven (1)</a></li>
 <li class='category'><a href='/categories/mongodb/'>MongoDB (1)</a></li>
@@ -1350,6 +1413,7 @@ java.lang.IllegalArgumentException: id to load is required for loading
 <li class='category'><a href='/categories/python/'>Python (2)</a></li>
 <li class='category'><a href='/categories/rabbitmq/'>RabbitMQ (4)</a></li>
 <li class='category'><a href='/categories/regex/'>Regex (2)</a></li>
+<li class='category'><a href='/categories/sicp/'>SICP (1)</a></li>
 <li class='category'><a href='/categories/scala/'>Scala (1)</a></li>
 <li class='category'><a href='/categories/solr/'>Solr (1)</a></li>
 <li class='category'><a href='/categories/spring/'>Spring (1)</a></li>

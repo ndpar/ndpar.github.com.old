@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Math | Side Notes]]></title>
   <link href="http://blog.ndpar.com/categories/math/atom.xml" rel="self"/>
   <link href="http://blog.ndpar.com/"/>
-  <updated>2014-10-12T19:45:20-04:00</updated>
+  <updated>2014-10-13T21:45:18-04:00</updated>
   <id>http://blog.ndpar.com/</id>
   <author>
     <name><![CDATA[Andrey Paramonov]]></name>
@@ -154,7 +154,7 @@
 <p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>omg=: ^@o.@(0j2&amp;%)</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
-<p>The next step is the matrix $\Omega=(\omega^{-mn})$. We can think of it this way: make a multiplication table of vectors $[0,\dots,N-1]$ and $-[0,\dots,N-1]$, then raise $\omega$ to the power of every element from that table. In J the multiplication table of a vector by its negation is implemented as a hook <code>*/ -</code>. For building a range-vector $[0,\dots,N-1]$ we can use the function <code>i.</code>. Therefore, the implementation of a square matrix $(-mn)$ in J is the composition <code>(*/ -)@i.</code>, and the function of $\Omega$ is</p>
+<p>The next step is the matrix $\Omega=(\omega^{-mn})$. We can think of it this way: make a multiplication table of vectors $[0,\dots,N-1]$ and $-[0,\dots,N-1]$, then raise $\omega$ to the power of every element from that table. In J the multiplication table of a vector by its negative is implemented as the hook <code>*/ -</code>. For building a range-vector $[0,\dots,N-1]$ we can use the function <code>i.</code>. Therefore, the implementation of a square matrix $(-mn)$ in J is the composition <code>(*/ -)@i.</code>, and the function of $\Omega$ is</p>
 
 <p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>Omg=: omg ^ (*/ -)@i.</span></code></pre></td></tr></table></div></figure></notextile></div></p>

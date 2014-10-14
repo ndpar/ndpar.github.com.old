@@ -1,0 +1,337 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>GC visualization - Side Notes</title>
+  <meta name="author" content="Andrey Paramonov">
+
+  
+  <meta name="description" content="While I was working through the chapter 5.3 of SICP, I created small visualization of the stop-and-copy garbage collection algorithm. I start with &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.ndpar.com/2014/10/13/gc-visualization">
+  <link href="/favicon.ico" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Side Notes" type="application/atom+xml">
+
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Side Notes</a></h1>
+  
+    <h2>never finished…</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:blog.ndpar.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">GC Visualization</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-10-13T08:00:00-04:00" pubdate data-updated="true">Oct 13<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>While I was working through the chapter 5.3 of <a href="http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-33.html#%_sec_5.3.2">SICP</a>, I created small visualization of the <em>stop-and-copy</em> garbage collection algorithm.</p>
+
+<p>I start with the following memory structure example.</p>
+
+<p><img class="center" src="/images/posts/gc-01.png" /></p>
+
+<p>The content of the <code>root</code> register is a pointer <code>p4</code> to the list of registers <code>(x y z)</code>. The register <code>x</code> points to address 6 where improper list <code>(1 . 2)</code> saved. The register <code>y</code> points to address 8 where list <code>(x x)</code> starts. Finally, the register <code>z</code> points to address 10 where list <code>(3 4 5)</code> starts. Addresses 1, 3, 5, 9, 11, 13, 15 contain garbage.</p>
+
+<p>After we ran the GC algorithm, we got the following memory structure.</p>
+
+<p><img class="center" src="/images/posts/gc-52.png" /></p>
+
+<p><code>root</code> now points to address 0, <code>x</code> to 1, <code>y</code> to 3, and <code>z</code> to 6.</p>
+
+<!-- more -->
+
+<p>Here is the visualization</p>
+
+<p><img class="center" src="https://raw.githubusercontent.com/CompSciCabal/SMRTYPRTY/master/experiments/ndpar/sicp-5.3-gc/gc.gif" /></p>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li>Bigger picture on <a href="https://raw.githubusercontent.com/CompSciCabal/SMRTYPRTY/master/experiments/ndpar/sicp-5.3-gc/gc.gif">GitHub</a>.</li>
+  <li>Animation frames for better view on <a href="https://github.com/CompSciCabal/SMRTYPRTY/tree/master/experiments/ndpar/sicp-5.3-gc">GitHub</a>.</li>
+</ul>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Andrey Paramonov</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-10-13T08:00:00-04:00" pubdate data-updated="true">Oct 13<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/categories/lisp/'>Lisp</a>, <a class='category' href='/categories/sicp/'>SICP</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2014/10/12/fft-j/" title="Previous Post: Fast Fourier transform in J">&laquo; Fast Fourier transform in J</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/10/13/gc-visualization/">GC Visualization</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/10/12/fft-j/">Fast Fourier Transform in J</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/10/11/dft-j/">Descrete Fourier Transform in J</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/11/23/efl-toronto-2013/">Erlang Factory Lite 2013</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/28/java-12pm-bug/">12PM Bug in Java</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+<section>
+  <h1>Recent GitHub Updates</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'ndpar',
+            count: 4,
+            skip_forks: false,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+<section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    <li class='category'><a href='/categories/activemq/'>ActiveMQ (1)</a></li>
+<li class='category'><a href='/categories/agile/'>Agile (1)</a></li>
+<li class='category'><a href='/categories/art/'>Art (1)</a></li>
+<li class='category'><a href='/categories/book-review/'>Book Review (1)</a></li>
+<li class='category'><a href='/categories/buzz/'>Buzz (2)</a></li>
+<li class='category'><a href='/categories/clojure/'>Clojure (4)</a></li>
+<li class='category'><a href='/categories/clustering/'>Clustering (1)</a></li>
+<li class='category'><a href='/categories/conference/'>Conference (3)</a></li>
+<li class='category'><a href='/categories/craftsmanship/'>Craftsmanship (1)</a></li>
+<li class='category'><a href='/categories/education/'>Education (1)</a></li>
+<li class='category'><a href='/categories/ejabberd/'>Ejabberd (2)</a></li>
+<li class='category'><a href='/categories/entrepreneurship/'>Entrepreneurship (1)</a></li>
+<li class='category'><a href='/categories/erlang/'>Erlang (8)</a></li>
+<li class='category'><a href='/categories/functional-programming/'>Functional Programming (1)</a></li>
+<li class='category'><a href='/categories/git/'>Git (2)</a></li>
+<li class='category'><a href='/categories/grails/'>Grails (1)</a></li>
+<li class='category'><a href='/categories/groovy/'>Groovy (10)</a></li>
+<li class='category'><a href='/categories/haskell/'>Haskell (1)</a></li>
+<li class='category'><a href='/categories/humor/'>Humor (2)</a></li>
+<li class='category'><a href='/categories/j/'>J (2)</a></li>
+<li class='category'><a href='/categories/java/'>Java (4)</a></li>
+<li class='category'><a href='/categories/lisp/'>Lisp (3)</a></li>
+<li class='category'><a href='/categories/math/'>Math (7)</a></li>
+<li class='category'><a href='/categories/maven/'>Maven (1)</a></li>
+<li class='category'><a href='/categories/mongodb/'>MongoDB (1)</a></li>
+<li class='category'><a href='/categories/nosql/'>NoSQL (1)</a></li>
+<li class='category'><a href='/categories/programming/'>Programming (6)</a></li>
+<li class='category'><a href='/categories/python/'>Python (2)</a></li>
+<li class='category'><a href='/categories/rabbitmq/'>RabbitMQ (4)</a></li>
+<li class='category'><a href='/categories/regex/'>Regex (2)</a></li>
+<li class='category'><a href='/categories/sicp/'>SICP (1)</a></li>
+<li class='category'><a href='/categories/scala/'>Scala (1)</a></li>
+<li class='category'><a href='/categories/solr/'>Solr (1)</a></li>
+<li class='category'><a href='/categories/spring/'>Spring (1)</a></li>
+<li class='category'><a href='/categories/tutorial/'>Tutorial (1)</a></li>
+<li class='category'><a href='/categories/zeromq/'>ZeroMQ (1)</a></li>
+<li class='category'><a href='/categories/zookeeper/'>ZooKeeper (1)</a></li>
+
+  </ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2009–2014 - Andrey Paramonov -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> -
+  <span class="credit">Hosted by <a href="http://github.com">GitHub</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
