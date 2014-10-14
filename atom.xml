@@ -4,7 +4,7 @@
   <title><![CDATA[Side Notes]]></title>
   <link href="http://blog.ndpar.com/atom.xml" rel="self"/>
   <link href="http://blog.ndpar.com/"/>
-  <updated>2014-10-13T21:45:18-04:00</updated>
+  <updated>2014-10-14T08:11:57-04:00</updated>
   <id>http://blog.ndpar.com/</id>
   <author>
     <name><![CDATA[Andrey Paramonov]]></name>
@@ -53,7 +53,7 @@
     <link href="http://blog.ndpar.com/2014/10/12/fft-j/"/>
     <updated>2014-10-12T08:00:00-04:00</updated>
     <id>http://blog.ndpar.com/2014/10/12/fft-j</id>
-    <content type="html"><![CDATA[<p>In the previous <a href="http://blog.ndpar.com/2014/10/11/dft-j/">post</a> we discussed the descrete Fourier transform (DFT). Its J implementation was pretty straightforward, and the program looked almost identical to its mathematical definition. In this post, I want to explore how to implement fast Fourier transform (FFT), a recursively defined version of DFT that reduces algorithmic complexity from $O(n^2)$ to $O(N\log{N})$.</p>
+    <content type="html"><![CDATA[<p>In the previous <a href="http://blog.ndpar.com/2014/10/11/dft-j/">post</a> we discussed the discrete Fourier transform (DFT). Its J implementation was pretty straightforward, and the program looked almost identical to its mathematical definition. In this post, I want to explore how to implement fast Fourier transform (FFT), a recursively defined version of DFT that reduces algorithmic complexity from $O(n^2)$ to $O(N\log{N})$.</p>
 
 <h2 id="math">Math</h2>
 
@@ -156,11 +156,11 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Descrete Fourier transform in J]]></title>
+    <title type="html"><![CDATA[Discrete Fourier transform in J]]></title>
     <link href="http://blog.ndpar.com/2014/10/11/dft-j/"/>
     <updated>2014-10-11T08:00:00-04:00</updated>
     <id>http://blog.ndpar.com/2014/10/11/dft-j</id>
-    <content type="html"><![CDATA[<p>The Fourier analysis in general and the Fourier transform in particular has always been one of my favourite topics in mathematics. When I started learning the <a href="http://www.jsoftware.com">J programming language</a> I thought that implementing the descrete Fourier transform (DFT) in J must be really elegant. One rainy weekend I finally found time to do that, and this post is a result of my experiments.</p>
+    <content type="html"><![CDATA[<p>The Fourier analysis in general and the Fourier transform in particular has always been one of my favourite topics in mathematics. When I started learning the <a href="http://www.jsoftware.com">J programming language</a> I thought that implementing the discrete Fourier transform (DFT) in J must be really elegant. One rainy weekend I finally found time to do that, and this post is a result of my experiments.</p>
 
 <h2 id="math">Math</h2>
 
