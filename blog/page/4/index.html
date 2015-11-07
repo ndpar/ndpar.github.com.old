@@ -9,7 +9,7 @@
   <meta name="author" content="Andrey Paramonov">
 
   
-  <meta name="description" content="If you worked with Erlang you’ve probably heard about selective receive. In this article I want to demonstrate what selective receive is and how it &hellip;">
+  <meta name="description" content="More and more Maven projects are switching from Subversion to Git, and the majority of those projects make the same mistake: They configure scm &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -99,6 +99,128 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/01/24/git-maven/">Maven and Git</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-01-24T07:00:00-05:00" pubdate data-updated="true">Jan 24<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>More and more Maven projects are switching from Subversion to Git, and the majority of those projects make the same mistake: They configure <em>scm</em> section of POM to point to remote repository, the same way they did it in Subversion</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="xml"><span class="line"><span class="nt">&lt;scm&gt;</span>
+</span><span class="line">    <span class="nt">&lt;url&gt;</span>http://github.com/SpringSource/spring-batch<span class="nt">&lt;/url&gt;</span>
+</span><span class="line">    <span class="nt">&lt;connection&gt;</span>scm:git:git://github.com/SpringSource/spring-batch.git<span class="nt">&lt;/connection&gt;</span>
+</span><span class="line">    <span class="nt">&lt;developerConnection&gt;</span>scm:git:ssh://git@github.com/SpringSource/spring-batch.git<span class="nt">&lt;/developerConnection&gt;</span>
+</span><span class="line"><span class="nt">&lt;/scm&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>By doing this they lose the main benefit of Git. They become dependent on the remote machine. And when their release depends on the remote machine, that’s what happens: They need to release the project but the remote machine is down</p>
+
+<p><img class="center" src="/images/posts/github-down.jpg" /></p>
+
+<p>The right way of configuring Git in Maven is following</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="xml"><span class="line"><span class="nt">&lt;scm&gt;</span>
+</span><span class="line">    <span class="nt">&lt;url&gt;</span>scm:git:file://.<span class="nt">&lt;/url&gt;</span>
+</span><span class="line">    <span class="nt">&lt;connection&gt;</span>scm:git:file://.<span class="nt">&lt;/connection&gt;</span>
+</span><span class="line">    <span class="nt">&lt;developerConnection&gt;</span>scm:git:file://.<span class="nt">&lt;/developerConnection&gt;</span>
+</span><span class="line"><span class="nt">&lt;/scm&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>This configuration is universal, and it separates two orthogonal concerns: releases and remote copies.</p>
+
+<h3 id="resources">Resources</h3>
+
+<ul>
+  <li><a href="http://ascii.io/a/3459">Screencast</a> that shows how to work with Git in Maven projects.</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2010/11/18/joe-armstrong-on-optimization/">Joe Armstrong on Optimization</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-18T07:00:00-05:00" pubdate data-updated="true">Nov 18<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A quote from <em>Erlang and OTP in Action</em> <a href="http://www.manning.com/logan/">book</a></p>
+
+<blockquote>
+  <p>Make it work, then make it beautiful, then if you really, really have to, make it fast. 90 percent of the time, if you make it beautiful, it will already be fast. So really, just make it beautiful!</p>
+</blockquote>
+
+<p>A quote from InfoQ <a href="http://www.infoq.com/interviews/functional-langs">interview</a></p>
+
+<blockquote>
+  <p>I think that people first of all write a problem, they solve the problem and then they sort of optimize this code, work on it and the code becomes very efficient but unreadable. What I think they should doing is specifying it with a domain specific language or some higher thing and then writing a compiler and then changing the compiler because it’s not efficient. Because then they would have the benefits of a clear specification and a fast implementation. What they do is they don’t keep these things separated and the language doesn’t support them separating it like that.</p>
+</blockquote>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1178,141 +1300,9 @@ java.lang.IllegalArgumentException: id to load is required for loading
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/09/25/groovy-regular-expressions/">Groovy Regular Expressions</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-09-25T08:00:00-04:00" pubdate data-updated="true">Sep 25<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Because of the compact syntax regular expressions in Groovy are more readable than in Java. Here is how Jeffrey Friedl’s <a href="http://regex.info/listing.cgi?ed=3&amp;p=208">example</a> looks in Groovy:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-<span class="line-number">28</span>
-<span class="line-number">29</span>
-<span class="line-number">30</span>
-<span class="line-number">31</span>
-<span class="line-number">32</span>
-<span class="line-number">33</span>
-<span class="line-number">34</span>
-<span class="line-number">35</span>
-<span class="line-number">36</span>
-<span class="line-number">37</span>
-<span class="line-number">38</span>
-<span class="line-number">39</span>
-<span class="line-number">40</span>
-<span class="line-number">41</span>
-<span class="line-number">42</span>
-</pre></td><td class="code"><pre><code class="groovy"><span class="line"><span class="kt">def</span> <span class="n">subDomain</span>  <span class="o">=</span> <span class="s1">&#39;(?i:[a-z0-9]|[a-z0-9][-a-z0-9]*[a-z0-9])&#39;</span> <span class="c1">// simple regex in single quotes</span>
-</span><span class="line"><span class="kt">def</span> <span class="n">topDomains</span> <span class="o">=</span> <span class="s">$/</span>
-</span><span class="line"><span class="s">    (?x-i : com         \b     # you can put whitespaces and comments</span>
-</span><span class="line"><span class="s">          | edu         \b     # inside regex in eXtended mode</span>
-</span><span class="line"><span class="s">          | biz         \b</span>
-</span><span class="line"><span class="s">          | in(?:t|fo)  \b     # backslash is not escaped</span>
-</span><span class="line"><span class="s">          | mil         \b     # in dollar-slash strings</span>
-</span><span class="line"><span class="s">          | net         \b</span>
-</span><span class="line"><span class="s">          | org         \b</span>
-</span><span class="line"><span class="s">          | [a-z][a-z]  \b</span>
-</span><span class="line"><span class="s">    )/$</span>
-</span><span class="line">
-</span><span class="line"><span class="kt">def</span> <span class="n">hostname</span> <span class="o">=</span> <span class="s">/(?:${subDomain}\.)+${topDomains}/</span>  <span class="c1">// variable substitution in slashy string</span>
-</span><span class="line">
-</span><span class="line"><span class="kt">def</span> <span class="n">NOT_IN</span>   <span class="o">=</span> <span class="s">/;\&quot;&#39;&lt;&gt;()\[\]{}\s\x7F-\xFF/</span>     <span class="c1">// backslash is not escaped in slashy strings</span>
-</span><span class="line"><span class="kt">def</span> <span class="n">NOT_END</span>  <span class="o">=</span> <span class="s">/!.,?/</span>
-</span><span class="line"><span class="kt">def</span> <span class="n">ANYWHERE</span> <span class="o">=</span> <span class="s">/[^${NOT_IN}${NOT_END}]/</span>
-</span><span class="line"><span class="kt">def</span> <span class="n">EMBEDDED</span> <span class="o">=</span> <span class="s">/[$NOT_END]/</span>                        <span class="c1">// you can ommit {} around var name</span>
-</span><span class="line">
-</span><span class="line"><span class="kt">def</span> <span class="n">urlPath</span>  <span class="o">=</span> <span class="s2">&quot;/$ANYWHERE*($EMBEDDED+$ANYWHERE+)*&quot;</span>
-</span><span class="line">
-</span><span class="line"><span class="kt">def</span> <span class="n">url</span> <span class="o">=</span>
-</span><span class="line">    <span class="s2">&quot;&quot;&quot;(?x:</span>
-</span><span class="line"><span class="s2">             # you have to escape backslash in multi-line double quotes</span>
-</span><span class="line"><span class="s2">             \\b</span>
-</span><span class="line">
-</span><span class="line"><span class="s2">             # match the hostname part</span>
-</span><span class="line"><span class="s2">             (</span>
-</span><span class="line"><span class="s2">               (?: ftp | http s? ): // [-\\w]+(\\.\\w[-\\w]*)+</span>
-</span><span class="line"><span class="s2">             |</span>
-</span><span class="line"><span class="s2">               $hostname</span>
-</span><span class="line"><span class="s2">             )</span>
-</span><span class="line">
-</span><span class="line"><span class="s2">             # allow optional port</span>
-</span><span class="line"><span class="s2">             (?: :\\d+ )?</span>
-</span><span class="line">
-</span><span class="line"><span class="s2">             # rest of url is optional, and begins with /</span>
-</span><span class="line"><span class="s2">             (?: $urlPath )?</span>
-</span><span class="line"><span class="s2">       )&quot;&quot;&quot;</span>
-</span><span class="line">
-</span><span class="line"><span class="k">assert</span> <span class="s1">&#39;http://www.google.com/search?rls=en&amp;q=regex&amp;ie=UTF-8&amp;oe=UTF-8&#39;</span> <span class="o">==~</span> <span class="n">url</span>
-</span><span class="line"><span class="k">assert</span> <span class="s1">&#39;pages.github.io&#39;</span> <span class="o">==~</span> <span class="n">url</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>As you can see, there are several notations, and for every subexpression you can choose the one that is most expressive.</p>
-
-<h3 id="resources">Resources</h3>
-
-<ul>
-  <li>Martin Fowler on <a href="http://martinfowler.com/bliki/ComposedRegex.html">composed regexes</a></li>
-  <li><a href="http://jira.codehaus.org/browse/GROOVY-2701">Introducing dollar-slash</a> notation into Groovy</li>
-  <li><a href="http://regex.info/">Mastering Regular Expressions</a> — the best regex book</li>
-  <li>Groovy <a href="http://mrhaki.blogspot.com/2009/09/groovy-goodness-using-regular.html">Pattern</a> and <a href="http://mrhaki.blogspot.com/2009/09/groovy-goodness-matchers-for-regular.html">Matcher</a> classes</li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/blog/page/5/">&larr; Older</a>
     
     <a href="/archives">Blog Archives</a>
     
@@ -1327,6 +1317,14 @@ java.lang.IllegalArgumentException: id to load is required for loading
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2015/04/03/feynman-tot/">Another Notation as a Tool of Thought</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/11/29/two-series/">Two Series</a>
+      </li>
+    
+      <li class="post">
         <a href="/2014/10/13/gc-visualization/">GC Visualization</a>
       </li>
     
@@ -1336,14 +1334,6 @@ java.lang.IllegalArgumentException: id to load is required for loading
     
       <li class="post">
         <a href="/2014/10/11/dft-j/">Discrete Fourier Transform in J</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/11/23/efl-toronto-2013/">Erlang Factory Lite 2013</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/07/28/java-12pm-bug/">12PM Bug in Java</a>
       </li>
     
   </ul>
@@ -1396,8 +1386,9 @@ java.lang.IllegalArgumentException: id to load is required for loading
 <li class='category'><a href='/categories/ejabberd/'>Ejabberd (2)</a></li>
 <li class='category'><a href='/categories/entrepreneurship/'>Entrepreneurship (1)</a></li>
 <li class='category'><a href='/categories/erlang/'>Erlang (8)</a></li>
+<li class='category'><a href='/categories/feynman/'>Feynman (1)</a></li>
 <li class='category'><a href='/categories/functional-programming/'>Functional Programming (1)</a></li>
-<li class='category'><a href='/categories/git/'>Git (2)</a></li>
+<li class='category'><a href='/categories/git/'>Git (3)</a></li>
 <li class='category'><a href='/categories/grails/'>Grails (1)</a></li>
 <li class='category'><a href='/categories/groovy/'>Groovy (10)</a></li>
 <li class='category'><a href='/categories/haskell/'>Haskell (1)</a></li>
@@ -1405,7 +1396,7 @@ java.lang.IllegalArgumentException: id to load is required for loading
 <li class='category'><a href='/categories/j/'>J (2)</a></li>
 <li class='category'><a href='/categories/java/'>Java (4)</a></li>
 <li class='category'><a href='/categories/lisp/'>Lisp (3)</a></li>
-<li class='category'><a href='/categories/math/'>Math (7)</a></li>
+<li class='category'><a href='/categories/math/'>Math (9)</a></li>
 <li class='category'><a href='/categories/maven/'>Maven (1)</a></li>
 <li class='category'><a href='/categories/mongodb/'>MongoDB (1)</a></li>
 <li class='category'><a href='/categories/nosql/'>NoSQL (1)</a></li>
@@ -1430,7 +1421,7 @@ java.lang.IllegalArgumentException: id to load is required for loading
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2009–2014 - Andrey Paramonov -
+  Copyright &copy; 2009–2015 - Andrey Paramonov -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> -
   <span class="credit">Hosted by <a href="http://github.com">GitHub</a></span>
 </p>

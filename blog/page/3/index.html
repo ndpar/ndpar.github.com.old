@@ -9,8 +9,7 @@
   <meta name="author" content="Andrey Paramonov">
 
   
-  <meta name="description" content="Thomae’s function (a.k.a. Riemann function) is defined on the interval (0, 1) as follows % <![CDATA[ f(x) = \left\{
-\begin{array}{l l} 1/q & \quad \ &hellip;">
+  <meta name="description" content="I found these marvelous renderings of Ford circles on flickr. I can’t help but share them here. ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -100,6 +99,90 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/11/05/ford-marbles/">Ford Marbles</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-05T08:00:00-04:00" pubdate data-updated="true">Nov 5<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I found these marvelous renderings of Ford circles on <a href="http://www.flickr.com/photos/fdecomite/2564742912/in/photostream">flickr</a>. I can’t help but share them here.</p>
+
+<p><img class="center" src="http://farm4.static.flickr.com/3189/2564742912_d0faf59e38_z.jpg" /></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2011/11/05/ford-marbles/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/09/16/modulo-who/">Modulo Who?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-16T08:00:00-04:00" pubdate data-updated="true">Sep 16<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>When programmer and mathematician are talking about modulus or modulo, there is often a confusion what this term means. For programmer <a href="http://en.wikipedia.org/wiki/Modulo_operator">modulo</a> means an operator that finds the <em>remainder</em> of division of one number by another, e.g. 5 mod 2 = 1. For mathematician <a href="http://en.wikipedia.org/wiki/Modular_arithmetic">modulo</a> is a <em>congruence</em> relation between two numbers: <em>a</em> and <em>b</em> are said to be congruent modulo <em>n</em>, written <em>a</em> ≡ <em>b</em> (mod <em>n</em>), if their difference <em>a</em> − <em>b</em> is an integer multiple of <em>n</em>.</p>
+
+<p>These two definitions are not equivalent. The former is a special case of the latter: if <em>b</em> mod <em>n</em> = <em>a</em> then <em>a</em> ≡ <em>b</em> (mod <em>n</em>). The inverse is not true in general case. 5 mod 2 = 1, and 1 ≡ 5 (mod 2) because 1 - 5 = –4 is integer multiple of 2. Now 5 ≡ 1 (mod 2), because 5 - 1 = 4 is evenly divisible by 2, but 1 mod 2 = 1, not 5.</p>
+
+<p>The biggest confusion happens when programmer and mathematician start arguing about Gauss’ famous <a href="http://mathworld.wolfram.com/QuadraticReciprocityTheorem.html">Golden Theorem</a> where both definitions of modulus can be used.</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1054,128 +1137,6 @@ B/B
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2011/01/24/git-maven/">Maven and Git</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-01-24T07:00:00-05:00" pubdate data-updated="true">Jan 24<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>More and more Maven projects are switching from Subversion to Git, and the majority of those projects make the same mistake: They configure <em>scm</em> section of POM to point to remote repository, the same way they did it in Subversion</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="xml"><span class="line"><span class="nt">&lt;scm&gt;</span>
-</span><span class="line">    <span class="nt">&lt;url&gt;</span>http://github.com/SpringSource/spring-batch<span class="nt">&lt;/url&gt;</span>
-</span><span class="line">    <span class="nt">&lt;connection&gt;</span>scm:git:git://github.com/SpringSource/spring-batch.git<span class="nt">&lt;/connection&gt;</span>
-</span><span class="line">    <span class="nt">&lt;developerConnection&gt;</span>scm:git:ssh://git@github.com/SpringSource/spring-batch.git<span class="nt">&lt;/developerConnection&gt;</span>
-</span><span class="line"><span class="nt">&lt;/scm&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>By doing this they lose the main benefit of Git. They become dependent on the remote machine. And when their release depends on the remote machine, that’s what happens: They need to release the project but the remote machine is down</p>
-
-<p><img class="center" src="/images/posts/github-down.jpg" /></p>
-
-<p>The right way of configuring Git in Maven is following</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="xml"><span class="line"><span class="nt">&lt;scm&gt;</span>
-</span><span class="line">    <span class="nt">&lt;url&gt;</span>scm:git:file://.<span class="nt">&lt;/url&gt;</span>
-</span><span class="line">    <span class="nt">&lt;connection&gt;</span>scm:git:file://.<span class="nt">&lt;/connection&gt;</span>
-</span><span class="line">    <span class="nt">&lt;developerConnection&gt;</span>scm:git:file://.<span class="nt">&lt;/developerConnection&gt;</span>
-</span><span class="line"><span class="nt">&lt;/scm&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>This configuration is universal, and it separates two orthogonal concerns: releases and remote copies.</p>
-
-<h3 id="resources">Resources</h3>
-
-<ul>
-  <li><a href="http://ascii.io/a/3459">Screencast</a> that shows how to work with Git in Maven projects.</li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2010/11/18/joe-armstrong-on-optimization/">Joe Armstrong on Optimization</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-11-18T07:00:00-05:00" pubdate data-updated="true">Nov 18<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>A quote from <em>Erlang and OTP in Action</em> <a href="http://www.manning.com/logan/">book</a></p>
-
-<blockquote>
-  <p>Make it work, then make it beautiful, then if you really, really have to, make it fast. 90 percent of the time, if you make it beautiful, it will already be fast. So really, just make it beautiful!</p>
-</blockquote>
-
-<p>A quote from InfoQ <a href="http://www.infoq.com/interviews/functional-langs">interview</a></p>
-
-<blockquote>
-  <p>I think that people first of all write a problem, they solve the problem and then they sort of optimize this code, work on it and the code becomes very efficient but unreadable. What I think they should doing is specifying it with a domain specific language or some higher thing and then writing a compiler and then changing the compiler because it’s not efficient. Because then they would have the benefits of a clear specification and a fast implementation. What they do is they don’t keep these things separated and the language doesn’t support them separating it like that.</p>
-</blockquote>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -1193,6 +1154,14 @@ B/B
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2015/04/03/feynman-tot/">Another Notation as a Tool of Thought</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/11/29/two-series/">Two Series</a>
+      </li>
+    
+      <li class="post">
         <a href="/2014/10/13/gc-visualization/">GC Visualization</a>
       </li>
     
@@ -1202,14 +1171,6 @@ B/B
     
       <li class="post">
         <a href="/2014/10/11/dft-j/">Discrete Fourier Transform in J</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/11/23/efl-toronto-2013/">Erlang Factory Lite 2013</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/07/28/java-12pm-bug/">12PM Bug in Java</a>
       </li>
     
   </ul>
@@ -1262,8 +1223,9 @@ B/B
 <li class='category'><a href='/categories/ejabberd/'>Ejabberd (2)</a></li>
 <li class='category'><a href='/categories/entrepreneurship/'>Entrepreneurship (1)</a></li>
 <li class='category'><a href='/categories/erlang/'>Erlang (8)</a></li>
+<li class='category'><a href='/categories/feynman/'>Feynman (1)</a></li>
 <li class='category'><a href='/categories/functional-programming/'>Functional Programming (1)</a></li>
-<li class='category'><a href='/categories/git/'>Git (2)</a></li>
+<li class='category'><a href='/categories/git/'>Git (3)</a></li>
 <li class='category'><a href='/categories/grails/'>Grails (1)</a></li>
 <li class='category'><a href='/categories/groovy/'>Groovy (10)</a></li>
 <li class='category'><a href='/categories/haskell/'>Haskell (1)</a></li>
@@ -1271,7 +1233,7 @@ B/B
 <li class='category'><a href='/categories/j/'>J (2)</a></li>
 <li class='category'><a href='/categories/java/'>Java (4)</a></li>
 <li class='category'><a href='/categories/lisp/'>Lisp (3)</a></li>
-<li class='category'><a href='/categories/math/'>Math (7)</a></li>
+<li class='category'><a href='/categories/math/'>Math (9)</a></li>
 <li class='category'><a href='/categories/maven/'>Maven (1)</a></li>
 <li class='category'><a href='/categories/mongodb/'>MongoDB (1)</a></li>
 <li class='category'><a href='/categories/nosql/'>NoSQL (1)</a></li>
@@ -1296,7 +1258,7 @@ B/B
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2009–2014 - Andrey Paramonov -
+  Copyright &copy; 2009–2015 - Andrey Paramonov -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> -
   <span class="credit">Hosted by <a href="http://github.com">GitHub</a></span>
 </p>

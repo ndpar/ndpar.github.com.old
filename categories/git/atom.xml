@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Git | Side Notes]]></title>
   <link href="http://blog.ndpar.com/categories/git/atom.xml" rel="self"/>
   <link href="http://blog.ndpar.com/"/>
-  <updated>2014-10-14T08:11:57-04:00</updated>
+  <updated>2015-11-06T20:35:32-05:00</updated>
   <id>http://blog.ndpar.com/</id>
   <author>
     <name><![CDATA[Andrey Paramonov]]></name>
@@ -90,6 +90,22 @@
   <li><a href="http://ascii.io/a/3459">Screencast</a> that shows how to work with Git in Maven projects.</li>
 </ul>
 
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Split commits in Git]]></title>
+    <link href="http://blog.ndpar.com/2009/04/13/git-split/"/>
+    <updated>2009-04-13T17:13:01-04:00</updated>
+    <id>http://blog.ndpar.com/2009/04/13/git-split</id>
+    <content type="html"><![CDATA[<pre><code>$ git log # copy commit_id
+$ git rebase -i &lt;commit_id&gt;^ # choose edit
+$ git reset HEAD^
+$ git add -i
+    # loop through files; patch or update
+    $ git ci
+$ git rebase --continue
+</code></pre>
 ]]></content>
   </entry>
   
