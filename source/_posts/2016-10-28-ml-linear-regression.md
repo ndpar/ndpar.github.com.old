@@ -7,19 +7,49 @@ tags:       [machine learning, math, matlab]
 published:  true
 ---
 
-Let $y$ be a dependent variable of a feature vector $x = (x_1, ..., x_n)$. We know $m$ values of $y^{(i)}$ for $m$ vectors $(x^{(i)}_1, ..., x^{(i)}_n)$, $1 \le i \le m$.
+Let $y$ be a dependent variable of a feature vector $x$
 
-Problem: Given a vector $x^{(0)} = (x^{(0)}_1, ..., x^{(0)}_n)$ find the best value of $y^{(0)}$.
+$$
+x =
+\begin{pmatrix}
+x_1 \\
+x_2 \\
+\vdots \\
+x_n \\
+\end{pmatrix}
+$$
+
+Problem: Given a training set $\langle x^{(i)}, y^{(i)} \rangle$, $1 \le i \le m$,
+find the value of $y$ on any input vector $x$.
+
+We solve this problem by finding a _hypothesis funciton_ $h_\theta(x)$
+using one of the methods below.
 
 <!-- more -->
 
-## Gradient Descent
+## Notation
 
-Step 0. Normalize each feature $(x^{(0)}_j, ..., x^{(m)}_j)^T$ using mean $\mu$ and standard deviation $\sigma$.
-
-Step 1. Prepend $1$ as a $0^{th}$ "feature" to each vector $(x^{(i)}_1, ..., x^{(i)}_n)$ and denote the result as $X$
+To use matrix/vector equations, let's extend vector $x$ with
+a constant "feature" $x_0 = 1$ and introduce matrix $X$ and vector $y$
 
 $$
+x =
+\begin{pmatrix}
+x_0 \\
+x_1 \\
+x_2 \\
+\vdots \\
+x_n \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 \\
+x_1 \\
+x_2 \\
+\vdots \\
+x_n \\
+\end{pmatrix}
+\quad
 X =
 \begin{pmatrix}
 1 & x^{(1)}_1 & x^{(1)}_2 & \cdots & x^{(1)}_n \\
@@ -29,7 +59,7 @@ X =
 1 & x^{(m)}_1 & x^{(m)}_2 & \cdots & x^{(m)}_n \\
 \end{pmatrix}
 \quad
-y =
+\mathbf{y} =
 \begin{pmatrix}
 y^{(1)} \\
 y^{(2)} \\
@@ -39,13 +69,27 @@ y^{(m)} \\
 \end{pmatrix}
 $$
 
-Step 2. Find vector $\theta^{(0)} = (\theta^{(0)}_0, ..., \theta^{(0)}_n)^T$ that minimizes cost function
+## Gradient Descent
+
+Step 1. Normalize each feature $(x^{(0)}_j, ..., x^{(m)}_j)$, $1 \le j \le n$ by mean $\mu$ and standard deviation $\sigma$
+
+$$
+x^{(i)}_j \leftarrow \frac{x^{(i)}_j - \mu_j}{\sigma_j}
+$$
+
+Step 2. Find vector $\theta = (\theta_0, ..., \theta_n)^T$ that minimizes cost function
 
 $$
 J(\theta) = \frac{1}{2m} \|X\theta - y\|^2 = \frac{1}{2m}(X\theta - y)^T (X\theta - y)
 $$
 
-Step 3. The best value for $y^{(0)}$ will be $(1, x^{(0)})\theta^{(0)}$, where each feature in $x^{(0)}$ is normalized using the same values of $\mu$ and $\sigma$ as in Step 0.
+Step 3. Compute hypothesis function as
+
+$$
+h_\theta(x) = x^T \theta = \theta^T x
+$$
+
+where vector $x$ is normalized using the same values of $\mu$ and $\sigma$ as in Step 1.
 
 _Gradient Descent_ method for finding (global) minimum of cost funtion $J(\theta)$: choose small learning rate $\alpha > 0$ and find the fixed point of the function
 
@@ -76,7 +120,7 @@ end
 
 ## Normal Equation
 
-Unlike Gradient Descent this method does not require feature normalization (Step 0) and conversion loop. _Normal Equation_ gives the closed-form solution to linear regression
+Unlike Gradient Descent this method does not require feature normalization (Step 1) and convergence loop. _Normal Equation_ gives the closed-form solution to linear regression
 
 $$
 \theta = (X^T X)^{-1} X^T y
