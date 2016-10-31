@@ -2,7 +2,7 @@
 layout:     post
 title:      "Machine Learning: Linear Regression"
 date:       2016-10-28 21:05:31
-categories: [Machine Learning, Math, Matlab]
+categories: [Machine Learning, Math, MATLAB]
 tags:       [machine learning, math, matlab]
 published:  true
 ---
@@ -86,7 +86,7 @@ $$
 Step 3. Compute hypothesis function as
 
 $$
-h_\theta(x) = x^T \theta = \theta^T x
+h_\theta(x) = \theta \cdot x = x^T \theta = \theta^T x
 $$
 
 where vector $x$ is normalized using the same values of $\mu$ and $\sigma$ as in Step 1.
@@ -97,7 +97,7 @@ $$
 f(\theta) = \theta - \frac{\alpha}{m}X^T (X\theta - y)
 $$
 
-### Matlab implementation
+### MATLAB implementation
 
 {% codeblock featureNormalize.m lang:matlab %}
 function [X_norm, mu, sigma] = featureNormalize(X)
@@ -126,10 +126,39 @@ $$
 \theta = (X^T X)^{-1} X^T y
 $$
 
-### Matlab implementation
+### MATLAB implementation
 
 {% codeblock normalEquation.m lang:matlab %}
 function [theta] = normalEquation(X, y)
     theta = pinv(X' * X) * X' * y
 end
 {% endcodeblock %}
+
+## Regularization
+
+In case of overfitting both methods can be tweaked by introducing polynomial
+features and adjusting equations as follows. Let $\lambda > 0$ and
+
+$$
+E =
+\begin{pmatrix}
+0 & & & & \\
+& 1 & & & \\
+& & 1 & & \\
+& & & \ddots & \\
+& & & & 1 \\
+\end{pmatrix}_{n+1 \times n+1}
+$$
+
+Then the cost function for gradient descent becomes
+
+$$
+J(\theta) = \frac{1}{2m} \left( \|h_\theta(X) - y\|^2 + \lambda \| E\theta \|^2 \right) \\
+f(\theta) = \theta - \frac{\alpha}{m} \left( X^T (h_\theta(X) - y) + \lambda E\theta \right)
+$$
+
+and normal equation
+
+$$
+\theta = \left( X^T X +\lambda E \right)^{-1} X^T y
+$$
