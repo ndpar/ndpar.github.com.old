@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Humor | Side Notes]]></title>
+  <title><![CDATA[Category: humor | Side Notes]]></title>
   <link href="http://blog.ndpar.com/categories/humor/atom.xml" rel="self"/>
   <link href="http://blog.ndpar.com/"/>
-  <updated>2015-11-06T20:35:32-05:00</updated>
+  <updated>2017-01-08T17:14:02-05:00</updated>
   <id>http://blog.ndpar.com/</id>
   <author>
     <name><![CDATA[Andrey Paramonov]]></name>
@@ -33,17 +33,13 @@
 
 <p>This is a perfect toy for a science geek. The first obvious question it brings: is this formula mathematically correct? As it turns out, it is not. Considering the scale of 60%, the cubic dependency of volume on linear dimension, and the constant density of all copies, the formula should be the following</p>
 
-<script type="math/tex; mode=display">
-M = \displaystyle\sum\limits_{n=0}^\infty 2^n\left[\left(\frac{3}{5}\right)^{3n} M_0\right] = \displaystyle\sum\limits_{n=0}^\infty 2^n\left[\left(\frac{27}{125}\right)^n M_0\right] = \displaystyle\sum\limits_{n=0}^\infty\left(\frac{54}{125}\right)^n M_0 = \frac{125}{71} M_0
-</script>
+<script type="math/tex; mode=display">M = \displaystyle\sum\limits_{n=0}^\infty 2^n\left[\left(\frac{3}{5}\right)^{3n} M_0\right] = \displaystyle\sum\limits_{n=0}^\infty 2^n\left[\left(\frac{27}{125}\right)^n M_0\right] = \displaystyle\sum\limits_{n=0}^\infty\left(\frac{54}{125}\right)^n M_0 = \frac{125}{71} M_0</script>
 
 <p>As you can see the total mass of infinite number of Benders actually converges to approximately 1.76 <em>M</em><sub>0</sub>. So from Math perspective there is nothing to worry about. But what if our assumption of constant density is invalid. Would it be a problem from Physics perspective? Let’s see.</p>
 
 <p>Knowing that every new copy has a size of 0.6 of the original it was made from, we have the following formula for the size of Bender in the <em>n</em><sup>th</sup> generation</p>
 
-<script type="math/tex; mode=display">
-L_n = 0.6^n L_0
-</script>
+<script type="math/tex; mode=display">L_n = 0.6^n L_0</script>
 
 <p>This exponential function becomes very small pretty soon. In the <a href="http://www.wolframalpha.com/input/?i=0.6%5E154">154</a><sup>th</sup> generation it already reaches the <a href="http://en.wikipedia.org/wiki/Planck_length">Planck length</a>, after which the further replication is physically impossible. If we calculate the total mass of 154 Bender’s generations using the Professor’s formula, we get <a href="http://www.wolframalpha.com/input/?i=H%28154%29">H(154)</a> × <a href="http://www.peelified.com/Futurama-Forum-1/Topic-4095-0-Benders_Weight.html">238</a> kg ≈ 1,337.56 kg, which is nothing comparing to the Earth mass.</p>
 

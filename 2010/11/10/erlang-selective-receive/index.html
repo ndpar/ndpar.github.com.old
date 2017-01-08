@@ -81,7 +81,7 @@
   
 </ul>
   
-<form action="http://google.com/search" method="get">
+<form action="https://www.google.com/search" method="get">
   <fieldset role="search">
     <input type="hidden" name="q" value="site:blog.ndpar.com" />
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
@@ -118,7 +118,8 @@
   
 
 
-<time datetime="2010-11-10T07:00:00-05:00" pubdate data-updated="true">Nov 10<span>th</span>, 2010</time>
+
+<time datetime="2010-11-10T07:00:00-05:00" pubdate data-updated="true">November 10, 2010</time>
         
       </p>
     
@@ -127,7 +128,7 @@
 
 <div class="entry-content"><p>If you worked with Erlang you’ve probably heard about selective receive. In this article I want to demonstrate what selective receive is and how it works. Let me start with an excerpt from Joe Armstrong’s book <a href="http://www.pragprog.com/titles/jaerlang/programming-erlang">Programming Erlang</a> (<a href="http://media.pragprog.com/titles/jaerlang/Concurrent.pdf">Section 8.6</a>, p.155):</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -141,7 +142,7 @@
 </span><span class="line"><span class="k">after</span>
 </span><span class="line">    <span class="nv">Time</span> <span class="o">-&gt;</span> <span class="nv">ExpressionTimeout</span>
 </span><span class="line"><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <ol>
   <li>When we enter a <strong>receive</strong> statement, we start a timer (but only if an <strong>after</strong> section is present in the expression).</li>
@@ -158,7 +159,7 @@
 
 <p>The first test is simple</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -192,13 +193,13 @@
 </span><span class="line"> <span class="p">{</span><span class="n">message_queue_len</span><span class="p">,</span><span class="mi">0</span><span class="p">},</span>
 </span><span class="line"> <span class="p">{</span><span class="n">messages</span><span class="p">,[]},</span>
 </span><span class="line"> <span class="p">...</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>We send a message to the shell, we see it in the process mailbox, then we receive it by matching, after which the queue is empty. Standard queue behaviour.</p>
 
 <p>For the next test we send three messages, and we match the last one</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -232,13 +233,13 @@
 </span><span class="line"> <span class="p">{</span><span class="n">message_queue_len</span><span class="p">,</span><span class="mi">2</span><span class="p">},</span>
 </span><span class="line"> <span class="p">{</span><span class="n">messages</span><span class="p">,[</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">]},</span>
 </span><span class="line"> <span class="p">...</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>Again, no surprises. In fact, this test demonstrates what people think when they hear about selective receive.</p>
 
 <p>Unfortunately we didn’t see what happened internally between expressions 3 and 4. To find it out we need to modify the test. Let’s start the shell in distributed mode so that we can connect to it later from the remote shell.</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -264,11 +265,11 @@
 </span><span class="line"> <span class="p">...</span>
 </span><span class="line">
 </span><span class="line"><span class="p">(</span><span class="n">foo</span><span class="p">@</span><span class="n">bar</span><span class="p">)</span><span class="mi">4</span><span class="o">&gt;</span> <span class="k">receive</span> <span class="n">a</span> <span class="o">-&gt;</span> <span class="mi">1</span><span class="p">;</span> <span class="n">b</span> <span class="o">-&gt;</span> <span class="mi">2</span> <span class="k">end</span><span class="p">.</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>At this moment the shell is suspended, exactly as described in step 4 of selective receive algorithm. Open remote shell, connect to the initial one, and type the following:</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -278,19 +279,19 @@
 </span><span class="line"> <span class="p">{</span><span class="n">message_queue_len</span><span class="p">,</span><span class="mi">0</span><span class="p">},</span>
 </span><span class="line"> <span class="p">{</span><span class="n">messages</span><span class="p">,[]},</span>
 </span><span class="line"> <span class="p">...</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>That’s interesting: no messages in the mailbox! As Joe said, they are in the save queue. Now send a matching message:</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 </pre></td><td class="code"><pre><code class="erlang"><span class="line"><span class="p">(</span><span class="n">foo</span><span class="p">@</span><span class="n">bar</span><span class="p">)</span><span class="mi">2</span><span class="o">&gt;</span> <span class="n">shell</span> <span class="o">!</span> <span class="n">a</span><span class="p">.</span>
 </span><span class="line"><span class="n">a</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>Go back to initial shell, which should be resumed now, and check the mailbox again:</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -302,7 +303,7 @@
 </span><span class="line"> <span class="p">{</span><span class="n">message_queue_len</span><span class="p">,</span><span class="mi">2</span><span class="p">},</span>
 </span><span class="line"> <span class="p">{</span><span class="n">messages</span><span class="p">,[</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">]},</span>
 </span><span class="line"> <span class="p">...</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>That’s the same output we saw in the previous test, but now we know what happens behind the scene: <em>messages are moved from the mailbox to the save queue and then back to the mailbox after the matching message arrives</em>.</p>
 
@@ -337,12 +338,13 @@
   
 
 
-<time datetime="2010-11-10T07:00:00-05:00" pubdate data-updated="true">Nov 10<span>th</span>, 2010</time>
+
+<time datetime="2010-11-10T07:00:00-05:00" pubdate data-updated="true">November 10, 2010</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/categories/erlang/'>Erlang</a>
+    <a class='category' href='/categories/erlang/'>erlang</a>
   
 </span>
 
@@ -376,23 +378,23 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2016/12/24/spring-oauth2/">Spring OAuth 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/11/07/ml-logistic-regression/">Machine Learning: Logistic Regression</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/10/28/ml-linear-regression/">Machine Learning: Linear Regression</a>
+      </li>
+    
+      <li class="post">
         <a href="/2015/04/03/feynman-tot/">Another Notation as a Tool of Thought</a>
       </li>
     
       <li class="post">
         <a href="/2014/11/29/two-series/">Two Series</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/10/13/gc-visualization/">GC Visualization</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/10/12/fft-j/">Fast Fourier Transform in J</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/10/11/dft-j/">Discrete Fourier Transform in J</a>
       </li>
     
   </ul>
@@ -432,44 +434,47 @@
 <section>
   <h1>Categories</h1>
   <ul id="categories">
-    <li class='category'><a href='/categories/activemq/'>ActiveMQ (1)</a></li>
-<li class='category'><a href='/categories/agile/'>Agile (1)</a></li>
-<li class='category'><a href='/categories/art/'>Art (1)</a></li>
-<li class='category'><a href='/categories/book-review/'>Book Review (1)</a></li>
-<li class='category'><a href='/categories/buzz/'>Buzz (2)</a></li>
-<li class='category'><a href='/categories/clojure/'>Clojure (4)</a></li>
-<li class='category'><a href='/categories/clustering/'>Clustering (1)</a></li>
-<li class='category'><a href='/categories/conference/'>Conference (3)</a></li>
-<li class='category'><a href='/categories/craftsmanship/'>Craftsmanship (1)</a></li>
-<li class='category'><a href='/categories/education/'>Education (1)</a></li>
-<li class='category'><a href='/categories/ejabberd/'>Ejabberd (2)</a></li>
-<li class='category'><a href='/categories/entrepreneurship/'>Entrepreneurship (1)</a></li>
-<li class='category'><a href='/categories/erlang/'>Erlang (8)</a></li>
-<li class='category'><a href='/categories/feynman/'>Feynman (1)</a></li>
-<li class='category'><a href='/categories/functional-programming/'>Functional Programming (1)</a></li>
-<li class='category'><a href='/categories/git/'>Git (3)</a></li>
-<li class='category'><a href='/categories/grails/'>Grails (1)</a></li>
-<li class='category'><a href='/categories/groovy/'>Groovy (10)</a></li>
-<li class='category'><a href='/categories/haskell/'>Haskell (1)</a></li>
-<li class='category'><a href='/categories/humor/'>Humor (2)</a></li>
-<li class='category'><a href='/categories/j/'>J (2)</a></li>
-<li class='category'><a href='/categories/java/'>Java (4)</a></li>
-<li class='category'><a href='/categories/lisp/'>Lisp (3)</a></li>
-<li class='category'><a href='/categories/math/'>Math (9)</a></li>
-<li class='category'><a href='/categories/maven/'>Maven (1)</a></li>
-<li class='category'><a href='/categories/mongodb/'>MongoDB (1)</a></li>
-<li class='category'><a href='/categories/nosql/'>NoSQL (1)</a></li>
-<li class='category'><a href='/categories/programming/'>Programming (6)</a></li>
-<li class='category'><a href='/categories/python/'>Python (2)</a></li>
-<li class='category'><a href='/categories/rabbitmq/'>RabbitMQ (4)</a></li>
-<li class='category'><a href='/categories/regex/'>Regex (2)</a></li>
-<li class='category'><a href='/categories/sicp/'>SICP (1)</a></li>
-<li class='category'><a href='/categories/scala/'>Scala (1)</a></li>
-<li class='category'><a href='/categories/solr/'>Solr (1)</a></li>
-<li class='category'><a href='/categories/spring/'>Spring (1)</a></li>
-<li class='category'><a href='/categories/tutorial/'>Tutorial (1)</a></li>
-<li class='category'><a href='/categories/zeromq/'>ZeroMQ (1)</a></li>
-<li class='category'><a href='/categories/zookeeper/'>ZooKeeper (1)</a></li>
+    <li class='category'><a href='/categories/activemq/'>activemq (1)</a></li>
+<li class='category'><a href='/categories/agile/'>agile (1)</a></li>
+<li class='category'><a href='/categories/art/'>art (1)</a></li>
+<li class='category'><a href='/categories/book-review/'>book review (1)</a></li>
+<li class='category'><a href='/categories/buzz/'>buzz (2)</a></li>
+<li class='category'><a href='/categories/clojure/'>clojure (4)</a></li>
+<li class='category'><a href='/categories/clustering/'>clustering (1)</a></li>
+<li class='category'><a href='/categories/conference/'>conference (3)</a></li>
+<li class='category'><a href='/categories/craftsmanship/'>craftsmanship (1)</a></li>
+<li class='category'><a href='/categories/education/'>education (1)</a></li>
+<li class='category'><a href='/categories/ejabberd/'>ejabberd (2)</a></li>
+<li class='category'><a href='/categories/entrepreneurship/'>entrepreneurship (1)</a></li>
+<li class='category'><a href='/categories/erlang/'>erlang (8)</a></li>
+<li class='category'><a href='/categories/feynman/'>feynman (1)</a></li>
+<li class='category'><a href='/categories/functional-programming/'>functional programming (1)</a></li>
+<li class='category'><a href='/categories/git/'>git (3)</a></li>
+<li class='category'><a href='/categories/grails/'>grails (1)</a></li>
+<li class='category'><a href='/categories/groovy/'>groovy (10)</a></li>
+<li class='category'><a href='/categories/haskell/'>haskell (1)</a></li>
+<li class='category'><a href='/categories/humor/'>humor (2)</a></li>
+<li class='category'><a href='/categories/j/'>j (2)</a></li>
+<li class='category'><a href='/categories/java/'>java (4)</a></li>
+<li class='category'><a href='/categories/lisp/'>lisp (3)</a></li>
+<li class='category'><a href='/categories/machine-learning/'>machine learning (2)</a></li>
+<li class='category'><a href='/categories/math/'>math (11)</a></li>
+<li class='category'><a href='/categories/matlab/'>matlab (2)</a></li>
+<li class='category'><a href='/categories/maven/'>maven (1)</a></li>
+<li class='category'><a href='/categories/mongodb/'>mongodb (1)</a></li>
+<li class='category'><a href='/categories/nosql/'>nosql (1)</a></li>
+<li class='category'><a href='/categories/oauth/'>oauth (1)</a></li>
+<li class='category'><a href='/categories/programming/'>programming (6)</a></li>
+<li class='category'><a href='/categories/python/'>python (2)</a></li>
+<li class='category'><a href='/categories/rabbitmq/'>rabbitmq (4)</a></li>
+<li class='category'><a href='/categories/regex/'>regex (2)</a></li>
+<li class='category'><a href='/categories/scala/'>scala (1)</a></li>
+<li class='category'><a href='/categories/sicp/'>sicp (1)</a></li>
+<li class='category'><a href='/categories/solr/'>solr (1)</a></li>
+<li class='category'><a href='/categories/spring/'>spring (2)</a></li>
+<li class='category'><a href='/categories/tutorial/'>tutorial (1)</a></li>
+<li class='category'><a href='/categories/zeromq/'>zeromq (1)</a></li>
+<li class='category'><a href='/categories/zookeeper/'>zookeeper (1)</a></li>
 
   </ul>
 </section>
@@ -481,7 +486,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2009–2015 - Andrey Paramonov -
+  Copyright &copy; 2009–2017 - Andrey Paramonov -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> -
   <span class="credit">Hosted by <a href="http://github.com">GitHub</a></span>
 </p>

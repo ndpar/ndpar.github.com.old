@@ -81,7 +81,7 @@
   
 </ul>
   
-<form action="http://google.com/search" method="get">
+<form action="https://www.google.com/search" method="get">
   <fieldset role="search">
     <input type="hidden" name="q" value="site:blog.ndpar.com" />
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
@@ -118,7 +118,8 @@
   
 
 
-<time datetime="2012-11-08T07:00:00-05:00" pubdate data-updated="true">Nov 8<span>th</span>, 2012</time>
+
+<time datetime="2012-11-08T07:00:00-05:00" pubdate data-updated="true">November 08, 2012</time>
         
       </p>
     
@@ -178,8 +179,8 @@ $ python -m SimpleHTTPServer 3030
 
 <p>You can ignore <em>.gitignore</em>, it’s already configured properly. Before we make our initial checkin, it’s a good practice to edit project.clj and README.md to replace FIXME’s. We will edit README file again later when we finish the development to provide more information on how to use the application. Before we move to Noir, let’s quickly review project.clj file</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>project.clj </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><figcaption><span>project.clj </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -189,12 +190,12 @@ $ python -m SimpleHTTPServer 3030
 </span><span class="line">  <span class="ss">:dependencies</span> <span class="p">[[</span><span class="nv">org.clojure/clojure</span> <span class="s">&quot;1.4.0&quot;</span><span class="p">]</span>
 </span><span class="line">                 <span class="p">[</span><span class="nv">noir</span> <span class="s">&quot;1.3.0-beta3&quot;</span><span class="p">]]</span>
 </span><span class="line">  <span class="ss">:main</span> <span class="nv">bookshelf.server</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p><em>project.clj</em> is a Clojure version of pom.xml (in fact, you can use pom.xml if you want, Clojure perfectly understands it). First two lines are obvious. Dependency entry specifies which JAR files we need to make our application work. In our case we only need two JARs. Leiningen will check Maven central repository as well as <a href="https://clojars.org/">Clojars</a> to download the required JARs with all transitive dependencies. The last line in the project descriptor says which namespace contains the main method. In our case it is <code>bookshelf.server</code>. You can find the source of this namespace in <em>/src/bookshelf/server.clj</em> file. Let’s take a look at this file</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>/src/bookshelf/server.clj </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><figcaption><span>/src/bookshelf/server.clj </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -214,7 +215,7 @@ $ python -m SimpleHTTPServer 3030
 </span><span class="line">        <span class="nv">port</span> <span class="p">(</span><span class="nf">Integer.</span> <span class="p">(</span><span class="nb">get </span><span class="p">(</span><span class="nf">System/getenv</span><span class="p">)</span> <span class="s">&quot;PORT&quot;</span> <span class="s">&quot;8080&quot;</span><span class="p">))]</span>
 </span><span class="line">    <span class="p">(</span><span class="nf">server/start</span> <span class="nv">port</span> <span class="p">{</span><span class="ss">:mode</span> <span class="nv">mode</span>
 </span><span class="line">                        <span class="ss">:ns</span> <span class="ss">&#39;bookshelf</span><span class="p">})))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p><code>server/load-views-ns</code> specifies the prefixes of the view namespaces that will be loaded by Noir server. In our case those namespaces start with <code>bookshelf.views</code>. By default Leiningen generates two view files: <em>/bookshelf/views/common.clj</em> and <em>/bookshelf/views/welcome.clj</em>, but you can create more if your project becomes more complex. Since Noir scans namespaces by prefixes, you can even put your files in the nested directories under <em>/bookshelf/views</em>, no changes in <em>server.clj</em> required.</p>
 
@@ -236,8 +237,8 @@ $ python -m SimpleHTTPServer 3030
 
 <p>This page by itself contains all you need to get started with Noir, so you can safely stop reading this article, and just follow the instructions on that page. Those who continue reading this tutorial and wondering where that start page is coming from, please open <em>/src/bookshelf/views/welcome.clj</em></p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>/src/bookshelf/views/welcome.clj </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><figcaption><span>/src/bookshelf/views/welcome.clj </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -253,14 +254,14 @@ $ python -m SimpleHTTPServer 3030
 </span><span class="line"><span class="p">(</span><span class="nf">defpage</span> <span class="s">&quot;/welcome&quot;</span> <span class="p">[]</span>
 </span><span class="line">  <span class="p">(</span><span class="nf">common/layout</span>
 </span><span class="line">    <span class="p">[</span><span class="ss">:p</span> <span class="s">&quot;Welcome to bookshelf&quot;</span><span class="p">]))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>Third line tells us that the source of the start page is in <em>noir/content/getting-started.clj</em> file. If you are curious where this file is, look <a href="https://github.com/noir-clojure/noir/blob/master/src/noir/content/getting_started.clj">here</a>. Search for <code>(defpage "/" [] …)</code> to see how the start page is defined. On your web-site you probably want the start page to be different, so you can remove <code>[noir.content.getting-started]</code> from <code>:require</code> section.</p>
 
 <p>The next thing to notice on the snippet above is <code>(defpage "/welcome" [] …)</code> function. That’s how you define URL mappings (or routes, in Noir lingo) of your web-site. (Internally, Noir uses <a href="https://github.com/weavejester/compojure">Compojure</a> library to handle the routing.) It is similar to @RequestMapping annotations in Spring-MVC, where you specify which method is called when a user hits the given URL. As you can see, we have only one mapping at the moment, <code>/welcome</code>. Since we are building bookshelf application, let’s rename it to <code>/books</code>. Also, to be even more explicit, let’s rename the whole file to <em>books.clj</em>. Don’t forget to update the namespace. Your <em>books.clj</em> file should now look like this</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>/src/bookshelf/views/books.clj </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><figcaption><span>/src/bookshelf/views/books.clj </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -274,7 +275,7 @@ $ python -m SimpleHTTPServer 3030
 </span><span class="line"><span class="p">(</span><span class="nf">defpage</span> <span class="s">&quot;/books&quot;</span> <span class="p">[]</span>
 </span><span class="line">  <span class="p">(</span><span class="nf">common/layout</span>
 </span><span class="line">    <span class="p">[</span><span class="ss">:p</span> <span class="s">&quot;Welcome to bookshelf&quot;</span><span class="p">]))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>If you go to <a href="http://localhost:8080/books">http://localhost:8080/books</a> in your browser, you should see this screen</p>
 
@@ -297,8 +298,8 @@ $ python -m SimpleHTTPServer 3030
 
 <p>Now let’s take look at how the page content is generated. If you look at the routing definition in <em>books.clj</em>, you see that the body of <code>defpage</code> function is a call to <code>layout</code> function defined in <em>/src/bookshelf/views/common.clj</em>. Let’s open this file</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>/src/bookshelf/views/common.clj </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><figcaption><span>/src/bookshelf/views/common.clj </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -322,7 +323,7 @@ $ python -m SimpleHTTPServer 3030
 </span><span class="line">    <span class="p">[</span><span class="ss">:body</span>
 </span><span class="line">     <span class="p">[</span><span class="ss">:div#wrapper</span>
 </span><span class="line">      <span class="nv">content</span><span class="p">]]))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p><code>layout</code> is just a wrapper on top of <code>hiccup.core/html</code> function. Hiccup is an XML/HTML rendering library in Clojure. The idea behind it is pretty simple: You build a tree using Clojure vectors, and Hiccup transforms it to a valid HTML. If you are familiar with Groovy MarkupBuilder, it’s the same idea. For example, let’s define a couple of trees: head and body</p>
 
@@ -383,8 +384,8 @@ $ python -m SimpleHTTPServer 3030
 
 <p>We define controllers and views in <em>books.clj</em> file. For now I also include the model in this file. We’ll move it to a proper namespace later when we are done with the front-end. Here is the new version of <em>books.clj</em></p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>/src/bookshelf/views/books.clj </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><figcaption><span>/src/bookshelf/views/books.clj </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -458,7 +459,7 @@ $ python -m SimpleHTTPServer 3030
 </span><span class="line"><span class="p">(</span><span class="nf">defpage</span> <span class="s">&quot;/books&quot;</span> <span class="p">[]</span>
 </span><span class="line">  <span class="p">(</span><span class="nf">common/layout</span>
 </span><span class="line">    <span class="p">(</span><span class="nf">list-books</span><span class="p">)))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>There are three functions in this file: <code>books</code> (model), <code>list-books</code> (view), and <code>/books</code> (controller/router). The controller is essentially the same as before and the model is simply a vector of maps. Each map contains the same keys as column names on the book table. View might look complicated, but there shouldn’t be any surprise here either — it’s again an ordinary tree. The only new element here is <code>link-to</code> function defined in <code>hiccup.element</code> namespace. We could really build it directly using <code>[:a {:href …}]</code> vector, but link-to is a standard way to do it in Hiccup.</p>
 
@@ -468,8 +469,8 @@ $ python -m SimpleHTTPServer 3030
 
 <p>The important part of the view function is the format of the links. For the current book model the links are <a href="http://localhost:8080/books/1/pdf">http://localhost:8080/books/1/pdf</a> and <a href="http://localhost:8080/books/2/epub">http://localhost:8080/books/2/epub</a>. You can verify it by hovering the mouse over them. Those links are actually the main goal of our application. By clicking the link I want to load (or download) the book into the browser and read it. To implement this feature add the following functions to <em>books.clj</em></p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>/src/bookshelf/views/books.clj (cont&#8217;d) </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><figcaption><span>/src/bookshelf/views/books.clj (cont'd) </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -485,7 +486,7 @@ $ python -m SimpleHTTPServer 3030
 </span><span class="line">
 </span><span class="line"><span class="p">(</span><span class="nf">defpage</span> <span class="s">&quot;/books/:id/:format&quot;</span> <span class="p">{</span><span class="ss">:keys</span> <span class="p">[</span><span class="nv">id</span> <span class="nv">format</span><span class="p">]}</span>
 </span><span class="line">  <span class="p">(</span><span class="nf">content-type</span> <span class="p">(</span><span class="nf">ctype</span> <span class="nv">format</span><span class="p">)</span> <span class="p">(</span><span class="nf">java.io.ByteArrayInputStream.</span> <span class="p">(</span><span class="nf">get-file</span> <span class="nv">id</span><span class="p">))))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>Ignore for a moment <code>get-file</code> function — it does nothing. Later we will move it to model namespace and implement it properly, but we need some placeholder now to compile the application. ctype is a helper function that maps the file format to HTTP content type. I have three ebook formats in my library: ePub, Mobi, and PDF. The first two are plain text formats from HTTP content type perspective. Only PDF requires special type.</p>
 
@@ -497,8 +498,8 @@ $ python -m SimpleHTTPServer 3030
 
 <p>Now we need to extract the logic that creates a model from presentation tier to middle-tier. In Noir that’s what models directory is for. In our case it’s <em>/src/bookshelf/models</em>. Let’s create a file called <em>db.clj</em> in that directory, and move there books and <code>get-file</code> functions from <em>bookshelf.views.books</em> namespace. We have to update <em>books.clj</em> to load the new namespace. It should now look like this</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>/src/bookshelf/views/books.clj </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><figcaption><span>/src/bookshelf/views/books.clj </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -564,14 +565,14 @@ $ python -m SimpleHTTPServer 3030
 </span><span class="line">
 </span><span class="line"><span class="p">(</span><span class="nf">defpage</span> <span class="s">&quot;/books/:id/:format&quot;</span> <span class="p">{</span><span class="ss">:keys</span> <span class="p">[</span><span class="nv">id</span> <span class="nv">format</span><span class="p">]}</span>
 </span><span class="line">  <span class="p">(</span><span class="nf">content-type</span> <span class="p">(</span><span class="nf">ctype</span> <span class="nv">format</span><span class="p">)</span> <span class="p">(</span><span class="nf">java.io.ByteArrayInputStream.</span> <span class="p">(</span><span class="nf">db/get-file</span> <span class="nv">id</span><span class="p">))))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>If you refresh your browser, nothing should change.</p>
 
 <p>All right, now it’s time to implement our model properly. Recall that our model should scan the directory it’s running in for the files with the format Author-Title-Year.FileFormat, and convert each of those files to byte array. Here is how I implemented it</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>/src/bookshelf/models/db.clj </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><figcaption><span>/src/bookshelf/models/db.clj </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -621,7 +622,7 @@ $ python -m SimpleHTTPServer 3030
 </span><span class="line">              <span class="nv">buffer</span> <span class="p">(</span><span class="nf">java.io.ByteArrayOutputStream.</span><span class="p">)]</span>
 </span><span class="line">    <span class="p">(</span><span class="nf">clojure.java.io/copy</span> <span class="nv">input</span> <span class="nv">buffer</span><span class="p">)</span>
 </span><span class="line">    <span class="p">(</span><span class="nf">.toByteArray</span> <span class="nv">buffer</span><span class="p">)))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>Let’s take a look what each of the functions does. Function <code>list-files</code> returns a vector of file names that reside in the given directory <code>dir</code>. To find all files in the directory I’m using <code>clojure.java.shell/sh</code> function which executes <code>ls</code> command. This works fine on Linux and Mac, but probalby doesn’t on Windows. Function <code>parse</code> checks if the given file name has the required format. If so, it returns a map <code>{:file file, :author Author, :title Title, :year Year, :format FileFormat}</code>, otherwise it returns <code>nil</code>. <code>add-id</code> function removes dots, commas, and spaces from the file name and add the result as a book ID to the book map. Function <code>books</code> is just a composition of those three functions, and it returns the result expected by the view.</p>
 
@@ -653,8 +654,8 @@ test
 
 <p>Since our application is written in Noir framework, let’s make it look like Noir. First, I downloaded Noir background <a href="http://www.webnoir.org/img/bg.png">image</a> and save it to <em>/resources/public/img</em> directory. Second, I created a stylesheet <em>/resources/public/css/noir.css</em> which resembles Noir’s original</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>/resources/public/css/noir.css </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><figcaption><span>/resources/public/css/noir.css </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -688,12 +689,12 @@ test
 </span><span class="line"><span class="nt">h1</span> <span class="p">{</span>
 </span><span class="line">    <span class="k">color</span><span class="o">:</span> <span class="m">#6bffbd</span><span class="p">;</span>
 </span><span class="line"><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>Then I updated <em>bookshelf.views.common</em> namespace to include new CSS</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>/src/bookshelf/views/common.clj (cont&#8217;d) </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><figcaption><span>/src/bookshelf/views/common.clj (cont'd) </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -711,12 +712,12 @@ test
 </span><span class="line">    <span class="p">[</span><span class="ss">:body</span>
 </span><span class="line">     <span class="p">[</span><span class="ss">:div#wrapper</span>
 </span><span class="line">      <span class="nv">content</span><span class="p">]]))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>Finally, I want to add a header to the page in <em>bookshelf.views.books</em></p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>/src/bookshelf/views/books.clj (cont&#8217;d) </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><figcaption><span>/src/bookshelf/views/books.clj (cont'd) </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -724,7 +725,7 @@ test
 </span><span class="line">  <span class="p">(</span><span class="nf">common/layout</span>
 </span><span class="line">    <span class="p">[</span><span class="ss">:h1</span> <span class="s">&quot;Books&quot;</span><span class="p">]</span>
 </span><span class="line">    <span class="p">(</span><span class="nf">list-books</span><span class="p">)))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>Refresh books web page on the browser to see the changes</p>
 
@@ -746,8 +747,8 @@ resources/public/js/jquery.tablesorter.js
 
 <p>If you are curious, here is my <em>style.css</em>. I changed the original tablesorter css a little bit to better fit Noir theme</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>/resources/public/css/style.css </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><figcaption><span>/resources/public/css/style.css </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -821,12 +822,12 @@ resources/public/js/jquery.tablesorter.js
 </span><span class="line"><span class="nt">table</span><span class="nc">.tablesorter</span> <span class="nt">thead</span> <span class="nt">tr</span> <span class="nc">.headerSortDown</span><span class="o">,</span> <span class="nt">table</span><span class="nc">.tablesorter</span> <span class="nt">thead</span> <span class="nt">tr</span> <span class="nc">.headerSortUp</span> <span class="p">{</span>
 </span><span class="line">    <span class="k">background-color</span><span class="o">:</span> <span class="m">#6bffbd</span><span class="p">;</span>
 </span><span class="line"><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>To enable tablesorter we have to update both view files. Few changes in bookshelf.views.common</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>/src/bookshelf/views/common.clj </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><figcaption><span>/src/bookshelf/views/common.clj </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -858,12 +859,12 @@ resources/public/js/jquery.tablesorter.js
 </span><span class="line">    <span class="p">[</span><span class="ss">:body</span>
 </span><span class="line">     <span class="p">[</span><span class="ss">:div#wrapper</span>
 </span><span class="line">      <span class="nv">content</span><span class="p">]]))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>and few changes in <em>bookshelf.views.books</em></p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>/src/bookshelf/views/books.clj </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><figcaption><span>/src/bookshelf/views/books.clj </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -933,7 +934,7 @@ resources/public/js/jquery.tablesorter.js
 </span><span class="line">
 </span><span class="line"><span class="p">(</span><span class="nf">defpage</span> <span class="s">&quot;/books/:id/:format&quot;</span> <span class="p">{</span><span class="ss">:keys</span> <span class="p">[</span><span class="nv">id</span> <span class="nv">format</span><span class="p">]}</span>
 </span><span class="line">  <span class="p">(</span><span class="nf">content-type</span> <span class="p">(</span><span class="nf">ctype</span> <span class="nv">format</span><span class="p">)</span> <span class="p">(</span><span class="nf">java.io.ByteArrayInputStream.</span> <span class="p">(</span><span class="nf">db/get-file</span> <span class="nv">id</span><span class="p">))))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>After we refresh the browser, we should see the final design and be able to sort the table</p>
 
@@ -943,8 +944,8 @@ resources/public/js/jquery.tablesorter.js
 
 <p>OK, we are ready to ship. But before we build a deployable artifact, we, as professional developers, should update documentation (<a href="https://github.com/ndpar/bookshelf/blob/master/README.md">README.md</a> in our case) and finalize the version of the application</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>project.clj </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><figcaption><span>project.clj </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -954,12 +955,12 @@ resources/public/js/jquery.tablesorter.js
 </span><span class="line">  <span class="ss">:dependencies</span> <span class="p">[[</span><span class="nv">org.clojure/clojure</span> <span class="s">&quot;1.4.0&quot;</span><span class="p">]</span>
 </span><span class="line">                 <span class="p">[</span><span class="nv">noir</span> <span class="s">&quot;1.3.0-beta3&quot;</span><span class="p">]]</span>
 </span><span class="line">  <span class="ss">:main</span> <span class="nv">bookshelf.server</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>I want to run this application as a a standalone Java web application, without any dependency on Leiningen. Therefore I have to add <code>:gen-class</code> to <em>server.clj</em></p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>/src/bookshelf/server.clj </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><figcaption><span>/src/bookshelf/server.clj </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -981,7 +982,7 @@ resources/public/js/jquery.tablesorter.js
 </span><span class="line">        <span class="nv">port</span> <span class="p">(</span><span class="nf">Integer.</span> <span class="p">(</span><span class="nb">get </span><span class="p">(</span><span class="nf">System/getenv</span><span class="p">)</span> <span class="s">&quot;PORT&quot;</span> <span class="s">&quot;8080&quot;</span><span class="p">))]</span>
 </span><span class="line">    <span class="p">(</span><span class="nf">server/start</span> <span class="nv">port</span> <span class="p">{</span><span class="ss">:mode</span> <span class="nv">mode</span>
 </span><span class="line">                        <span class="ss">:ns</span> <span class="ss">&#39;bookshelf</span><span class="p">})))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>Now package the application by running the following command</p>
 
@@ -1040,12 +1041,13 @@ resources/public/js/jquery.tablesorter.js
   
 
 
-<time datetime="2012-11-08T07:00:00-05:00" pubdate data-updated="true">Nov 8<span>th</span>, 2012</time>
+
+<time datetime="2012-11-08T07:00:00-05:00" pubdate data-updated="true">November 08, 2012</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/categories/clojure/'>Clojure</a>, <a class='category' href='/categories/tutorial/'>Tutorial</a>
+    <a class='category' href='/categories/clojure/'>clojure</a>, <a class='category' href='/categories/tutorial/'>tutorial</a>
   
 </span>
 
@@ -1079,23 +1081,23 @@ resources/public/js/jquery.tablesorter.js
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2016/12/24/spring-oauth2/">Spring OAuth 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/11/07/ml-logistic-regression/">Machine Learning: Logistic Regression</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/10/28/ml-linear-regression/">Machine Learning: Linear Regression</a>
+      </li>
+    
+      <li class="post">
         <a href="/2015/04/03/feynman-tot/">Another Notation as a Tool of Thought</a>
       </li>
     
       <li class="post">
         <a href="/2014/11/29/two-series/">Two Series</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/10/13/gc-visualization/">GC Visualization</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/10/12/fft-j/">Fast Fourier Transform in J</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/10/11/dft-j/">Discrete Fourier Transform in J</a>
       </li>
     
   </ul>
@@ -1135,44 +1137,47 @@ resources/public/js/jquery.tablesorter.js
 <section>
   <h1>Categories</h1>
   <ul id="categories">
-    <li class='category'><a href='/categories/activemq/'>ActiveMQ (1)</a></li>
-<li class='category'><a href='/categories/agile/'>Agile (1)</a></li>
-<li class='category'><a href='/categories/art/'>Art (1)</a></li>
-<li class='category'><a href='/categories/book-review/'>Book Review (1)</a></li>
-<li class='category'><a href='/categories/buzz/'>Buzz (2)</a></li>
-<li class='category'><a href='/categories/clojure/'>Clojure (4)</a></li>
-<li class='category'><a href='/categories/clustering/'>Clustering (1)</a></li>
-<li class='category'><a href='/categories/conference/'>Conference (3)</a></li>
-<li class='category'><a href='/categories/craftsmanship/'>Craftsmanship (1)</a></li>
-<li class='category'><a href='/categories/education/'>Education (1)</a></li>
-<li class='category'><a href='/categories/ejabberd/'>Ejabberd (2)</a></li>
-<li class='category'><a href='/categories/entrepreneurship/'>Entrepreneurship (1)</a></li>
-<li class='category'><a href='/categories/erlang/'>Erlang (8)</a></li>
-<li class='category'><a href='/categories/feynman/'>Feynman (1)</a></li>
-<li class='category'><a href='/categories/functional-programming/'>Functional Programming (1)</a></li>
-<li class='category'><a href='/categories/git/'>Git (3)</a></li>
-<li class='category'><a href='/categories/grails/'>Grails (1)</a></li>
-<li class='category'><a href='/categories/groovy/'>Groovy (10)</a></li>
-<li class='category'><a href='/categories/haskell/'>Haskell (1)</a></li>
-<li class='category'><a href='/categories/humor/'>Humor (2)</a></li>
-<li class='category'><a href='/categories/j/'>J (2)</a></li>
-<li class='category'><a href='/categories/java/'>Java (4)</a></li>
-<li class='category'><a href='/categories/lisp/'>Lisp (3)</a></li>
-<li class='category'><a href='/categories/math/'>Math (9)</a></li>
-<li class='category'><a href='/categories/maven/'>Maven (1)</a></li>
-<li class='category'><a href='/categories/mongodb/'>MongoDB (1)</a></li>
-<li class='category'><a href='/categories/nosql/'>NoSQL (1)</a></li>
-<li class='category'><a href='/categories/programming/'>Programming (6)</a></li>
-<li class='category'><a href='/categories/python/'>Python (2)</a></li>
-<li class='category'><a href='/categories/rabbitmq/'>RabbitMQ (4)</a></li>
-<li class='category'><a href='/categories/regex/'>Regex (2)</a></li>
-<li class='category'><a href='/categories/sicp/'>SICP (1)</a></li>
-<li class='category'><a href='/categories/scala/'>Scala (1)</a></li>
-<li class='category'><a href='/categories/solr/'>Solr (1)</a></li>
-<li class='category'><a href='/categories/spring/'>Spring (1)</a></li>
-<li class='category'><a href='/categories/tutorial/'>Tutorial (1)</a></li>
-<li class='category'><a href='/categories/zeromq/'>ZeroMQ (1)</a></li>
-<li class='category'><a href='/categories/zookeeper/'>ZooKeeper (1)</a></li>
+    <li class='category'><a href='/categories/activemq/'>activemq (1)</a></li>
+<li class='category'><a href='/categories/agile/'>agile (1)</a></li>
+<li class='category'><a href='/categories/art/'>art (1)</a></li>
+<li class='category'><a href='/categories/book-review/'>book review (1)</a></li>
+<li class='category'><a href='/categories/buzz/'>buzz (2)</a></li>
+<li class='category'><a href='/categories/clojure/'>clojure (4)</a></li>
+<li class='category'><a href='/categories/clustering/'>clustering (1)</a></li>
+<li class='category'><a href='/categories/conference/'>conference (3)</a></li>
+<li class='category'><a href='/categories/craftsmanship/'>craftsmanship (1)</a></li>
+<li class='category'><a href='/categories/education/'>education (1)</a></li>
+<li class='category'><a href='/categories/ejabberd/'>ejabberd (2)</a></li>
+<li class='category'><a href='/categories/entrepreneurship/'>entrepreneurship (1)</a></li>
+<li class='category'><a href='/categories/erlang/'>erlang (8)</a></li>
+<li class='category'><a href='/categories/feynman/'>feynman (1)</a></li>
+<li class='category'><a href='/categories/functional-programming/'>functional programming (1)</a></li>
+<li class='category'><a href='/categories/git/'>git (3)</a></li>
+<li class='category'><a href='/categories/grails/'>grails (1)</a></li>
+<li class='category'><a href='/categories/groovy/'>groovy (10)</a></li>
+<li class='category'><a href='/categories/haskell/'>haskell (1)</a></li>
+<li class='category'><a href='/categories/humor/'>humor (2)</a></li>
+<li class='category'><a href='/categories/j/'>j (2)</a></li>
+<li class='category'><a href='/categories/java/'>java (4)</a></li>
+<li class='category'><a href='/categories/lisp/'>lisp (3)</a></li>
+<li class='category'><a href='/categories/machine-learning/'>machine learning (2)</a></li>
+<li class='category'><a href='/categories/math/'>math (11)</a></li>
+<li class='category'><a href='/categories/matlab/'>matlab (2)</a></li>
+<li class='category'><a href='/categories/maven/'>maven (1)</a></li>
+<li class='category'><a href='/categories/mongodb/'>mongodb (1)</a></li>
+<li class='category'><a href='/categories/nosql/'>nosql (1)</a></li>
+<li class='category'><a href='/categories/oauth/'>oauth (1)</a></li>
+<li class='category'><a href='/categories/programming/'>programming (6)</a></li>
+<li class='category'><a href='/categories/python/'>python (2)</a></li>
+<li class='category'><a href='/categories/rabbitmq/'>rabbitmq (4)</a></li>
+<li class='category'><a href='/categories/regex/'>regex (2)</a></li>
+<li class='category'><a href='/categories/scala/'>scala (1)</a></li>
+<li class='category'><a href='/categories/sicp/'>sicp (1)</a></li>
+<li class='category'><a href='/categories/solr/'>solr (1)</a></li>
+<li class='category'><a href='/categories/spring/'>spring (2)</a></li>
+<li class='category'><a href='/categories/tutorial/'>tutorial (1)</a></li>
+<li class='category'><a href='/categories/zeromq/'>zeromq (1)</a></li>
+<li class='category'><a href='/categories/zookeeper/'>zookeeper (1)</a></li>
 
   </ul>
 </section>
@@ -1184,7 +1189,7 @@ resources/public/js/jquery.tablesorter.js
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2009–2015 - Andrey Paramonov -
+  Copyright &copy; 2009–2017 - Andrey Paramonov -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> -
   <span class="credit">Hosted by <a href="http://github.com">GitHub</a></span>
 </p>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Lisp | Side Notes]]></title>
+  <title><![CDATA[Category: lisp | Side Notes]]></title>
   <link href="http://blog.ndpar.com/categories/lisp/atom.xml" rel="self"/>
   <link href="http://blog.ndpar.com/"/>
-  <updated>2015-11-06T20:35:32-05:00</updated>
+  <updated>2017-01-08T17:14:02-05:00</updated>
   <id>http://blog.ndpar.com/</id>
   <author>
     <name><![CDATA[Andrey Paramonov]]></name>
@@ -69,8 +69,8 @@
 
 <p>Let’s see how this can be implemented in Java. I chose Java just as an example of non-Lisp language. You can pick any other non-Lisp language instead.</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>SimpleMessageListener.java </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>SimpleMessageListener.java </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -156,7 +156,7 @@
 </span><span class='line'><span class="kd">private</span> <span class="n">String</span> <span class="nf">handleAlert</span><span class="o">(</span><span class="n">Map</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
 </span><span class='line'>    <span class="k">return</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&quot;Alert:%s:%s&quot;</span><span class="o">,</span> <span class="n">message</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&quot;a&quot;</span><span class="o">),</span> <span class="n">message</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&quot;b&quot;</span><span class="o">));</span>
 </span><span class='line'><span class="o">}</span> <span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 </code></pre>
 
 <p>The internals of <code>handle</code> methods might be very different in reality. Consider the fact they have the same structure here as a coincidence. What is not coincidence though is the structure of <code>is</code> methods. Those methods are identical indeed.</p>
@@ -167,8 +167,8 @@
 
 <p>Can we make this code better? Let’s rewrite it as follows:</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>FunctionalMessageListener.java </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>FunctionalMessageListener.java </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -256,7 +256,7 @@
 </span><span class='line'>    <span class="o">}</span>
 </span><span class='line'>    <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
 </span><span class='line'><span class="o">}</span> <span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 </code></pre>
 
 <p>In this version we eliminated ugly <code>if</code> series, and grouped together <em>decision making</em> logic and <em>message handling</em>. From that perspective the code became cleaner, but not necessarily clearer. Now it actually takes more effort to understand what the code is doing. Also, the duplication inside the <code>is</code> methods is still there. We can fix it by extracting it to some abstract class or utility method. We can also use Java reflection within <code>handlers</code> method to build a collection of handlers without explicitly specifying them. All these manipulations arguably make the code cleaner, but… one thing we’ll never be able to fix is the separation between decision making logic and message handling. <em>Whatever you do, there will always be the if-statement, in one form or another, that checks if you need to process the message, and the message processing logic itself.</em> Those two things will always be separate. This is the point where we hit the language limits.</p>
@@ -265,7 +265,7 @@
 
 <p>Now let’s try to solve the same problem in Lisp and see if we can fix the language to eliminate the last issue from the paragraph above. Here is the direct translation of the previous Java snippet to Clojure dialect of Lisp</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -313,11 +313,11 @@
 </span><span class='line'>              <span class="p">(</span><span class="nb">conj </span><span class="nv">acc</span> <span class="nv">res</span><span class="p">)</span>
 </span><span class='line'>              <span class="nv">acc</span><span class="p">))]</span>
 </span><span class='line'>    <span class="p">(</span><span class="nb">reduce </span><span class="nv">handle</span> <span class="p">[]</span> <span class="p">(</span><span class="nf">handlers</span><span class="p">))))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>This code is already easier to read, but we can do even better. The separation between decision making logic and message handling is still there. At this point we should ask the question: what kind of code do we want to see there? And the answer is: we want to replace the <code>-handler</code> methods above with the following code</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -333,13 +333,13 @@
 </span><span class='line'>
 </span><span class='line'><span class="nv">&lt;p&gt;</span><span class="p">(</span><span class="nf">handler</span> <span class="nv">alert</span> <span class="p">[</span><span class="nv">a</span> <span class="nv">b</span><span class="p">]</span>
 </span><span class='line'>  <span class="p">(</span><span class="nf">format</span> <span class="err">“</span><span class="nv">Alert</span><span class="ss">:%s:%s</span><span class="err">”</span> <span class="nv">a</span> <span class="nv">b</span><span class="p">))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>You see: no conditionals. Handlers are self-sufficient entities which know <em>when</em> they have to be applied and <em>how</em>. In their signatures they explicitly declare which message keys they expect, and in the body they just <em>use</em> those keys. No boilerplate: clean and simple. The beauty of Lisp is that you can actually implement that code. The way you do it is by creating a macro which generates the appropriate functions. Creating a macro is not a simple task, I spent quite some time to get this one working, but it’s worth of doing, because it makes the code clean and clear.</p>
 
 <p>We can make one additional step further by moving the <code>handler</code> declarations inside the <code>build-handlers</code> function. (We need one small macro for that.) And here is the final solution</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -393,23 +393,23 @@
 </span><span class='line'>              <span class="p">(</span><span class="nb">conj </span><span class="nv">acc</span> <span class="nv">res</span><span class="p">)</span>
 </span><span class='line'>              <span class="nv">acc</span><span class="p">))]</span>
 </span><span class='line'>    <span class="p">(</span><span class="nb">reduce </span><span class="nv">handle</span> <span class="p">[]</span> <span class="p">(</span><span class="nf">handlers</span><span class="p">))))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>As I said, the first macro might be cryptic, but look at the lines 11–20. This is the essence of our problem, and it cannot be done any simpler. Suppose, we need to implement a new handler which should be called if key <strong><em>c</em></strong> is present in the message. Here what we would need to add to <code>build-handler</code>’s body to implement this new requirement</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class='clojure'><span class='line'>  <span class="p">(</span><span class="nf">handler</span> <span class="k">new </span><span class="p">[</span><span class="nv">c</span><span class="p">]</span>
 </span><span class='line'>    <span class="err">…</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Simple, right? And what if a new key <strong><em>d</em></strong> is added to the message that should be processed by document handler? Here is what we need to change</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class='clojure'><span class='line'>  <span class="p">(</span><span class="nf">handler</span> <span class="nb">doc </span><span class="p">[</span><span class="nv">a</span> <span class="nv">c</span> <span class="nv">d</span><span class="p">]</span>
 </span><span class='line'>    <span class="err">…</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>We just add a new key to the function’s parameter list. That’s it — one-word change.</p>
 
@@ -432,13 +432,11 @@
     <content type="html"><![CDATA[<p><a href="http://en.wikipedia.org/wiki/Thomae%27s_function">Thomae’s function</a> (a.k.a. Riemann function) is defined on the interval (0, 1) as follows</p>
 
 <script type="math/tex; mode=display">% &lt;![CDATA[
-
 f(x) = \left\{
 \begin{array}{l l}
   1/q & \quad \text{if $x = p/q$ is rational and $gcd(p, q) = 1$}\\
   0 & \quad \text{if $x$ is irrational}\\
-\end{array} \right.
- %]]&gt;</script>
+\end{array} \right. %]]&gt;</script>
 
 <p>Here is the graph of this function with some points highlighted as plus symbols for better view.</p>
 
@@ -450,7 +448,7 @@ f(x) = \left\{
 
 <p>To generate the data file with point coordinates I wrote Common Lisp program:</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -484,7 +482,7 @@ f(x) = \left\{
 </span><span class='line'>        <span class="p">(</span><span class="nb">format</span> <span class="nc">stream</span> <span class="err">“</span><span class="nv">~4$</span> <span class="nv">~4$~%</span><span class="err">”</span> <span class="p">(</span><span class="nb">first</span> <span class="nv">point</span><span class="p">)</span> <span class="p">(</span><span class="nb">second</span> <span class="nv">point</span><span class="p">))))))</span><span class="nv">&lt;/p&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="nv">&lt;p&gt;</span><span class="p">(</span><span class="nv">thomae</span> <span class="mi">500</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>To create the images I used <a href="http://www.gnuplot.info/">gnuplot</a> commands:</p>
 

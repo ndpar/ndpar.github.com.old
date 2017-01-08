@@ -81,7 +81,7 @@
   
 </ul>
   
-<form action="http://google.com/search" method="get">
+<form action="https://www.google.com/search" method="get">
   <fieldset role="search">
     <input type="hidden" name="q" value="site:blog.ndpar.com" />
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
@@ -118,7 +118,8 @@
   
 
 
-<time datetime="2012-12-15T07:00:00-05:00" pubdate data-updated="true">Dec 15<span>th</span>, 2012</time>
+
+<time datetime="2012-12-15T07:00:00-05:00" pubdate data-updated="true">December 15, 2012</time>
         
       </p>
     
@@ -224,8 +225,8 @@
 
 <p>First of all, we want to know how many questions are posted for each messaging system from our list. Here is the MongoDB query for that. The first snippet is a query, the second is the result.</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Number of questions </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><figcaption><span>Number of questions </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -237,9 +238,9 @@
 </span><span class="line">     <span class="p">{</span><span class="nx">$match</span><span class="o">:</span><span class="p">{</span><span class="nx">_id</span><span class="o">:</span><span class="p">{</span><span class="nx">$in</span><span class="o">:</span><span class="p">[</span><span class="s1">&#39;activemq&#39;</span><span class="p">,</span> <span class="s1">&#39;rabbitmq&#39;</span><span class="p">,</span> <span class="s1">&#39;zeromq&#39;</span><span class="p">,</span> <span class="s1">&#39;hornetq&#39;</span><span class="p">]}}},</span>
 </span><span class="line">     <span class="p">{</span><span class="nx">$sort</span><span class="o">:</span><span class="p">{</span><span class="nx">questions</span><span class="o">:-</span><span class="mi">1</span><span class="p">}}</span>
 </span><span class="line"><span class="p">])[</span><span class="s1">&#39;result&#39;</span><span class="p">];</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -275,12 +276,12 @@
 </span><span class="line">          <span class="s2">&quot;questions&quot;</span> <span class="o">:</span> <span class="mi">185</span>
 </span><span class="line">     <span class="p">}</span>
 </span><span class="line"><span class="p">]</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>The next query is to get the total number of answers by tag</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Number of answers </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><figcaption><span>Number of answers </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -292,9 +293,9 @@
 </span><span class="line">     <span class="p">{</span><span class="nx">$match</span><span class="o">:</span><span class="p">{</span><span class="nx">_id</span><span class="o">:</span><span class="p">{</span><span class="nx">$in</span><span class="o">:</span><span class="p">[</span><span class="s1">&#39;activemq&#39;</span><span class="p">,</span> <span class="s1">&#39;rabbitmq&#39;</span><span class="p">,</span> <span class="s1">&#39;zeromq&#39;</span><span class="p">,</span> <span class="s1">&#39;hornetq&#39;</span><span class="p">]}}},</span>
 </span><span class="line">     <span class="p">{</span><span class="nx">$sort</span><span class="o">:</span><span class="p">{</span><span class="nx">answers</span><span class="o">:-</span><span class="mi">1</span><span class="p">}}</span>
 </span><span class="line"><span class="p">])[</span><span class="s1">&#39;result&#39;</span><span class="p">];</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -330,12 +331,12 @@
 </span><span class="line">          <span class="s2">&quot;answers&quot;</span> <span class="o">:</span> <span class="mi">227</span>
 </span><span class="line">     <span class="p">}</span>
 </span><span class="line"><span class="p">]</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>It seems that the number of answers is proportional to the number of questions. With MongoDB we can quickly verify it.</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Answers to questions ratio </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><figcaption><span>Answers to questions ratio </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -349,9 +350,9 @@
 </span><span class="line">     <span class="p">{</span><span class="nx">$project</span><span class="o">:</span><span class="p">{</span><span class="nx">answers</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span> <span class="nx">questions</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span> <span class="nx">ratio</span><span class="o">:</span><span class="p">{</span><span class="nx">$divide</span><span class="o">:</span><span class="p">[</span><span class="s1">&#39;$answers&#39;</span><span class="p">,</span> <span class="s1">&#39;$questions&#39;</span><span class="p">]}}},</span>
 </span><span class="line">     <span class="p">{</span><span class="nx">$sort</span><span class="o">:</span><span class="p">{</span><span class="nx">ratio</span><span class="o">:-</span><span class="mi">1</span><span class="p">}}</span>
 </span><span class="line"><span class="p">])[</span><span class="s1">&#39;result&#39;</span><span class="p">];</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -403,14 +404,14 @@
 </span><span class="line">          <span class="s2">&quot;ratio&quot;</span> <span class="o">:</span> <span class="mf">1.227027027027027</span>
 </span><span class="line">     <span class="p">}</span>
 </span><span class="line"><span class="p">]</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>Indeed, the answers/question ratio is almost the same for every tag. That means we can use just the number of questions for our analysis.</p>
 
 <p>Here is the query that calculates the number of <em>accepted</em> answers by tag. Again, it correlates fairly well with the total number of answers and questions.</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Number of accepted answers </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><figcaption><span>Number of accepted answers </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -424,9 +425,9 @@
 </span><span class="line">     <span class="p">{</span><span class="nx">$match</span><span class="o">:</span><span class="p">{</span><span class="nx">_id</span><span class="o">:</span><span class="p">{</span><span class="nx">$in</span><span class="o">:</span><span class="p">[</span><span class="s1">&#39;activemq&#39;</span><span class="p">,</span> <span class="s1">&#39;rabbitmq&#39;</span><span class="p">,</span> <span class="s1">&#39;zeromq&#39;</span><span class="p">,</span> <span class="s1">&#39;hornetq&#39;</span><span class="p">]}}},</span>
 </span><span class="line">     <span class="p">{</span><span class="nx">$sort</span><span class="o">:</span><span class="p">{</span><span class="nx">accepted_answers</span><span class="o">:-</span><span class="mi">1</span><span class="p">}}</span>
 </span><span class="line"><span class="p">])[</span><span class="s1">&#39;result&#39;</span><span class="p">];</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -462,12 +463,12 @@
 </span><span class="line">          <span class="s2">&quot;accepted_answers&quot;</span> <span class="o">:</span> <span class="mi">94</span>
 </span><span class="line">     <span class="p">}</span>
 </span><span class="line"><span class="p">]</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>The next query is more interesting. It calculates the number of question up-votes by tag. In other words, it shows the number of <em>useful</em> questions. If we divide it by the total number of questions, we should see which messaging system has bigger rate of useful questions than others</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Number of useful questions </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><figcaption><span>Number of useful questions </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -481,9 +482,9 @@
 </span><span class="line">     <span class="p">{</span><span class="nx">$project</span><span class="o">:</span><span class="p">{</span><span class="nx">upvotes</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span> <span class="nx">questions</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span> <span class="nx">ratio</span><span class="o">:</span><span class="p">{</span><span class="nx">$divide</span><span class="o">:</span><span class="p">[</span><span class="s1">&#39;$upvotes&#39;</span><span class="p">,</span> <span class="s1">&#39;$questions&#39;</span><span class="p">]}}},</span>
 </span><span class="line">     <span class="p">{</span><span class="nx">$sort</span><span class="o">:</span><span class="p">{</span><span class="nx">ratio</span><span class="o">:-</span><span class="mi">1</span><span class="p">}}</span>
 </span><span class="line"><span class="p">])[</span><span class="s1">&#39;result&#39;</span><span class="p">];</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -535,14 +536,14 @@
 </span><span class="line">          <span class="s2">&quot;ratio&quot;</span> <span class="o">:</span> <span class="mf">1.2594594594594595</span>
 </span><span class="line">     <span class="p">}</span>
 </span><span class="line"><span class="p">]</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>Interesting. The ZeroMQ users seem to ask more useful questions than the users of other brokers.</p>
 
 <p>Let’s do the same analysis for the answers. Here is the query that calculates the number of answer up-votes by tag.</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Number of useful answers </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><figcaption><span>Number of useful answers </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -560,9 +561,9 @@
 </span><span class="line">     <span class="p">{</span><span class="nx">$project</span><span class="o">:</span><span class="p">{</span><span class="nx">upvotes</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span> <span class="nx">questions</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span> <span class="nx">ratio</span><span class="o">:</span><span class="p">{</span><span class="nx">$divide</span><span class="o">:</span><span class="p">[</span><span class="s1">&#39;$upvotes&#39;</span><span class="p">,</span> <span class="s1">&#39;$questions&#39;</span><span class="p">]}}},</span>
 </span><span class="line">     <span class="p">{</span><span class="nx">$sort</span><span class="o">:</span><span class="p">{</span><span class="nx">ratio</span><span class="o">:-</span><span class="mi">1</span><span class="p">}}</span>
 </span><span class="line"><span class="p">])[</span><span class="s1">&#39;result&#39;</span><span class="p">];</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -614,14 +615,14 @@
 </span><span class="line">          <span class="s2">&quot;ratio&quot;</span> <span class="o">:</span> <span class="mf">1.6794871794871795</span>
 </span><span class="line">     <span class="p">}</span>
 </span><span class="line"><span class="p">]</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>Again, ZeroMQ users post more useful answers than others.</p>
 
 <p>To complete the picture of typical users, let’s run the following query that calculates an average reputation of people that post answers</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Reputation of respondents </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><figcaption><span>Reputation of respondents </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -637,9 +638,9 @@
 </span><span class="line">     <span class="p">{</span><span class="nx">$match</span><span class="o">:</span><span class="p">{</span><span class="nx">_id</span><span class="o">:</span><span class="p">{</span><span class="nx">$in</span><span class="o">:</span><span class="p">[</span><span class="s1">&#39;activemq&#39;</span><span class="p">,</span> <span class="s1">&#39;rabbitmq&#39;</span><span class="p">,</span> <span class="s1">&#39;zeromq&#39;</span><span class="p">,</span> <span class="s1">&#39;hornetq&#39;</span><span class="p">]}}},</span>
 </span><span class="line">     <span class="p">{</span><span class="nx">$sort</span><span class="o">:</span><span class="p">{</span><span class="nx">reputation</span><span class="o">:-</span><span class="mi">1</span><span class="p">}}</span>
 </span><span class="line"><span class="p">])[</span><span class="s1">&#39;result&#39;</span><span class="p">];</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -675,7 +676,7 @@
 </span><span class="line">          <span class="s2">&quot;reputation&quot;</span> <span class="o">:</span> <span class="mf">3472.9658119658116</span>
 </span><span class="line">     <span class="p">}</span>
 </span><span class="line"><span class="p">]</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>Wow. ZeroMQ users not only ask more useful questions and give useful answers, they also have higher reputation on average in the StackOverflow community.</p>
 
@@ -717,12 +718,13 @@
   
 
 
-<time datetime="2012-12-15T07:00:00-05:00" pubdate data-updated="true">Dec 15<span>th</span>, 2012</time>
+
+<time datetime="2012-12-15T07:00:00-05:00" pubdate data-updated="true">December 15, 2012</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/categories/activemq/'>ActiveMQ</a>, <a class='category' href='/categories/mongodb/'>MongoDB</a>, <a class='category' href='/categories/python/'>Python</a>, <a class='category' href='/categories/rabbitmq/'>RabbitMQ</a>, <a class='category' href='/categories/zeromq/'>ZeroMQ</a>
+    <a class='category' href='/categories/activemq/'>activemq</a>, <a class='category' href='/categories/mongodb/'>mongodb</a>, <a class='category' href='/categories/python/'>python</a>, <a class='category' href='/categories/rabbitmq/'>rabbitmq</a>, <a class='category' href='/categories/zeromq/'>zeromq</a>
   
 </span>
 
@@ -756,23 +758,23 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2016/12/24/spring-oauth2/">Spring OAuth 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/11/07/ml-logistic-regression/">Machine Learning: Logistic Regression</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/10/28/ml-linear-regression/">Machine Learning: Linear Regression</a>
+      </li>
+    
+      <li class="post">
         <a href="/2015/04/03/feynman-tot/">Another Notation as a Tool of Thought</a>
       </li>
     
       <li class="post">
         <a href="/2014/11/29/two-series/">Two Series</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/10/13/gc-visualization/">GC Visualization</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/10/12/fft-j/">Fast Fourier Transform in J</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/10/11/dft-j/">Discrete Fourier Transform in J</a>
       </li>
     
   </ul>
@@ -812,44 +814,47 @@
 <section>
   <h1>Categories</h1>
   <ul id="categories">
-    <li class='category'><a href='/categories/activemq/'>ActiveMQ (1)</a></li>
-<li class='category'><a href='/categories/agile/'>Agile (1)</a></li>
-<li class='category'><a href='/categories/art/'>Art (1)</a></li>
-<li class='category'><a href='/categories/book-review/'>Book Review (1)</a></li>
-<li class='category'><a href='/categories/buzz/'>Buzz (2)</a></li>
-<li class='category'><a href='/categories/clojure/'>Clojure (4)</a></li>
-<li class='category'><a href='/categories/clustering/'>Clustering (1)</a></li>
-<li class='category'><a href='/categories/conference/'>Conference (3)</a></li>
-<li class='category'><a href='/categories/craftsmanship/'>Craftsmanship (1)</a></li>
-<li class='category'><a href='/categories/education/'>Education (1)</a></li>
-<li class='category'><a href='/categories/ejabberd/'>Ejabberd (2)</a></li>
-<li class='category'><a href='/categories/entrepreneurship/'>Entrepreneurship (1)</a></li>
-<li class='category'><a href='/categories/erlang/'>Erlang (8)</a></li>
-<li class='category'><a href='/categories/feynman/'>Feynman (1)</a></li>
-<li class='category'><a href='/categories/functional-programming/'>Functional Programming (1)</a></li>
-<li class='category'><a href='/categories/git/'>Git (3)</a></li>
-<li class='category'><a href='/categories/grails/'>Grails (1)</a></li>
-<li class='category'><a href='/categories/groovy/'>Groovy (10)</a></li>
-<li class='category'><a href='/categories/haskell/'>Haskell (1)</a></li>
-<li class='category'><a href='/categories/humor/'>Humor (2)</a></li>
-<li class='category'><a href='/categories/j/'>J (2)</a></li>
-<li class='category'><a href='/categories/java/'>Java (4)</a></li>
-<li class='category'><a href='/categories/lisp/'>Lisp (3)</a></li>
-<li class='category'><a href='/categories/math/'>Math (9)</a></li>
-<li class='category'><a href='/categories/maven/'>Maven (1)</a></li>
-<li class='category'><a href='/categories/mongodb/'>MongoDB (1)</a></li>
-<li class='category'><a href='/categories/nosql/'>NoSQL (1)</a></li>
-<li class='category'><a href='/categories/programming/'>Programming (6)</a></li>
-<li class='category'><a href='/categories/python/'>Python (2)</a></li>
-<li class='category'><a href='/categories/rabbitmq/'>RabbitMQ (4)</a></li>
-<li class='category'><a href='/categories/regex/'>Regex (2)</a></li>
-<li class='category'><a href='/categories/sicp/'>SICP (1)</a></li>
-<li class='category'><a href='/categories/scala/'>Scala (1)</a></li>
-<li class='category'><a href='/categories/solr/'>Solr (1)</a></li>
-<li class='category'><a href='/categories/spring/'>Spring (1)</a></li>
-<li class='category'><a href='/categories/tutorial/'>Tutorial (1)</a></li>
-<li class='category'><a href='/categories/zeromq/'>ZeroMQ (1)</a></li>
-<li class='category'><a href='/categories/zookeeper/'>ZooKeeper (1)</a></li>
+    <li class='category'><a href='/categories/activemq/'>activemq (1)</a></li>
+<li class='category'><a href='/categories/agile/'>agile (1)</a></li>
+<li class='category'><a href='/categories/art/'>art (1)</a></li>
+<li class='category'><a href='/categories/book-review/'>book review (1)</a></li>
+<li class='category'><a href='/categories/buzz/'>buzz (2)</a></li>
+<li class='category'><a href='/categories/clojure/'>clojure (4)</a></li>
+<li class='category'><a href='/categories/clustering/'>clustering (1)</a></li>
+<li class='category'><a href='/categories/conference/'>conference (3)</a></li>
+<li class='category'><a href='/categories/craftsmanship/'>craftsmanship (1)</a></li>
+<li class='category'><a href='/categories/education/'>education (1)</a></li>
+<li class='category'><a href='/categories/ejabberd/'>ejabberd (2)</a></li>
+<li class='category'><a href='/categories/entrepreneurship/'>entrepreneurship (1)</a></li>
+<li class='category'><a href='/categories/erlang/'>erlang (8)</a></li>
+<li class='category'><a href='/categories/feynman/'>feynman (1)</a></li>
+<li class='category'><a href='/categories/functional-programming/'>functional programming (1)</a></li>
+<li class='category'><a href='/categories/git/'>git (3)</a></li>
+<li class='category'><a href='/categories/grails/'>grails (1)</a></li>
+<li class='category'><a href='/categories/groovy/'>groovy (10)</a></li>
+<li class='category'><a href='/categories/haskell/'>haskell (1)</a></li>
+<li class='category'><a href='/categories/humor/'>humor (2)</a></li>
+<li class='category'><a href='/categories/j/'>j (2)</a></li>
+<li class='category'><a href='/categories/java/'>java (4)</a></li>
+<li class='category'><a href='/categories/lisp/'>lisp (3)</a></li>
+<li class='category'><a href='/categories/machine-learning/'>machine learning (2)</a></li>
+<li class='category'><a href='/categories/math/'>math (11)</a></li>
+<li class='category'><a href='/categories/matlab/'>matlab (2)</a></li>
+<li class='category'><a href='/categories/maven/'>maven (1)</a></li>
+<li class='category'><a href='/categories/mongodb/'>mongodb (1)</a></li>
+<li class='category'><a href='/categories/nosql/'>nosql (1)</a></li>
+<li class='category'><a href='/categories/oauth/'>oauth (1)</a></li>
+<li class='category'><a href='/categories/programming/'>programming (6)</a></li>
+<li class='category'><a href='/categories/python/'>python (2)</a></li>
+<li class='category'><a href='/categories/rabbitmq/'>rabbitmq (4)</a></li>
+<li class='category'><a href='/categories/regex/'>regex (2)</a></li>
+<li class='category'><a href='/categories/scala/'>scala (1)</a></li>
+<li class='category'><a href='/categories/sicp/'>sicp (1)</a></li>
+<li class='category'><a href='/categories/solr/'>solr (1)</a></li>
+<li class='category'><a href='/categories/spring/'>spring (2)</a></li>
+<li class='category'><a href='/categories/tutorial/'>tutorial (1)</a></li>
+<li class='category'><a href='/categories/zeromq/'>zeromq (1)</a></li>
+<li class='category'><a href='/categories/zookeeper/'>zookeeper (1)</a></li>
 
   </ul>
 </section>
@@ -861,7 +866,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2009–2015 - Andrey Paramonov -
+  Copyright &copy; 2009–2017 - Andrey Paramonov -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> -
   <span class="credit">Hosted by <a href="http://github.com">GitHub</a></span>
 </p>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Clojure | Side Notes]]></title>
+  <title><![CDATA[Category: clojure | Side Notes]]></title>
   <link href="http://blog.ndpar.com/categories/clojure/atom.xml" rel="self"/>
   <link href="http://blog.ndpar.com/"/>
-  <updated>2015-11-06T20:35:32-05:00</updated>
+  <updated>2017-01-08T17:14:02-05:00</updated>
   <id>http://blog.ndpar.com/</id>
   <author>
     <name><![CDATA[Andrey Paramonov]]></name>
@@ -23,8 +23,6 @@ These notes are pretty long, and I don’t split them on purpose.
 If you read them all, you should become overwhelmed and overloaded with the information.
 Only this way you can feel the same I felt on the last day of the conference :)</p>
 
-<p><img src="http://lambdajam.com/storage/2013/GrandBallroom2_header.jpg.jpeg?__SQUARESPACE_CACHEVERSION=1361043346973"></p>
-
 <!-- more -->
 
 <h2 id="stuart-sierra--data-visibility-and-abstraction">Stuart Sierra — Data, Visibility, and Abstraction</h2>
@@ -42,7 +40,7 @@ Only this way you can feel the same I felt on the last day of the conference :)<
   <li>Just a few generic data structures can represent pretty much any kind of data.</li>
 </ul>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -62,7 +60,7 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 </span><span class='line'>               <span class="err">“</span><span class="n">Perl</span><span class="err">”</span> <span class="p">]</span> <span class="p">};</span><span class="sr">&lt;/p&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="sr">&lt;p&gt;</span><span class="k">print</span> <span class="nv">$user</span><span class="o">-&amp;</span><span class="ow">gt</span><span class="p">;{</span><span class="err">‘</span><span class="n">langs</span><span class="err">’</span><span class="p">}[</span><span class="mi">2</span><span class="p">];</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <ul>
   <li><code>Tie::File</code> — Access the lines of a disk file via a Perl array.</li>
@@ -70,7 +68,7 @@ Only this way you can feel the same I felt on the last day of the conference :)<
   <li>[In XSLT] you can write the entire program as a series of data transformations.</li>
 </ul>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -80,13 +78,13 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 </span><span class='line'>saxon two.xslt t1.xml t2.xml
 </span><span class='line'>saxon three.xslt t2.xml t3.xml
 </span><span class='line'>saxon four.xslt t3.xml index.html
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <ul>
   <li>Clojure has universal data structures.</li>
 </ul>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -96,17 +94,17 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 </span><span class='line'>           <span class="ss">:langs</span> <span class="p">[</span><span class="err">“</span><span class="nv">Lisp</span><span class="err">”</span>
 </span><span class='line'>                   <span class="err">“</span><span class="nv">Ruby</span><span class="err">”</span>
 </span><span class='line'>                   <span class="err">“</span><span class="nv">Clojure</span><span class="err">”</span><span class="p">]})</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <ul>
   <li>I’m frequently suspicious of libraries that use a lot of macros to create their abstractions because it means I can’t see them, I can’t manipulate them with the tools I already have.</li>
 </ul>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="nf">require</span> <span class="err">‘</span><span class="nv">clojure.inspector</span><span class="p">)</span>
 </span><span class='line'><span class="p">(</span><span class="nf">clojure.inspector/inspect-tree</span> <span class="nv">user</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p><img class="center" src="/images/posts/clojure.inspector.png"></p>
 
@@ -114,7 +112,7 @@ Only this way you can feel the same I felt on the last day of the conference :)<
   <li>I started to write my programs as a series of data transformations with just one set of side-effects at the very end.</li>
 </ul>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -154,7 +152,7 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 </span><span class='line'>      <span class="nv">gather-information</span>
 </span><span class='line'>      <span class="nv">make-decision</span>
 </span><span class='line'>      <span class="nv">take-action</span><span class="p">))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <ul>
   <li>I try to pursue abstractions that make programs more visible, make easier to see what the program is doing.</li>
@@ -179,7 +177,7 @@ Only this way you can feel the same I felt on the last day of the conference :)<
   <li><code>return</code> puts the value into monadic context.</li>
 </ul>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -193,7 +191,7 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 </span><span class='line'>  <span class="kr">let</span> <span class="n">upCased</span> <span class="ow">::</span> <span class="kt">String</span> <span class="ow">=</span> <span class="n">map</span> <span class="n">toUpper</span> <span class="n">x</span>
 </span><span class='line'>  <span class="n">y</span> <span class="ow">::</span> <span class="kt">String</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">-</span> <span class="n">return</span> <span class="n">upCased</span> <span class="ow">::</span> <span class="kt">IO</span> <span class="kt">String</span>
 </span><span class='line'>  <span class="n">print</span> <span class="n">y</span> <span class="ow">::</span> <span class="kt">IO</span> <span class="nb">()</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h3 id="reader">Reader</h3>
 
@@ -236,7 +234,7 @@ Only this way you can feel the same I felt on the last day of the conference :)<
   <li>Hadoop is the EJBs of our time</li>
 </ul>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -304,14 +302,14 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 </span><span class='line'>    <span class="o">}</span>
 </span><span class='line'>    <span class="n">output</span><span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="n">keyWord</span><span class="o">,</span> <span class="k">new</span> <span class="n">IntWritable</span><span class="o">(</span><span class="n">totalCount</span><span class="o">));</span>
 </span><span class='line'><span class="o">}</span> <span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 </code></pre>
 
 <ul>
   <li>Use Cascalog</li>
 </ul>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -325,13 +323,13 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 </span><span class='line'>    <span class="p">(</span><span class="nf">split</span> <span class="nv">?s</span> <span class="err">:</span><span class="o">&amp;</span><span class="nv">gt</span><span class="c1">; ?word1)</span>
 </span><span class='line'>  <span class="p">(</span><span class="nf">lowercase</span> <span class="nv">?word1</span> <span class="err">:</span><span class="o">&amp;</span><span class="nv">gt</span><span class="c1">; ?word)</span>
 </span><span class='line'>    <span class="p">(</span><span class="nf">c/count</span> <span class="nv">?count</span><span class="p">))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <ul>
   <li>Use Spark</li>
 </ul>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -349,7 +347,7 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 </span><span class='line'>        <span class="n">counts</span><span class="o">.</span><span class="n">saveAsTextFile</span><span class="o">(</span><span class="n">args</span><span class="o">(</span><span class="mi">1</span><span class="o">))</span>
 </span><span class='line'>    <span class="o">}</span>
 </span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <ul>
   <li>Data problems are fundamentally Mathematics!</li>
@@ -418,7 +416,7 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 
 <p><em>Chord</em> algorithm: distributing data across several machines</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -462,7 +460,7 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 </span><span class='line'>md5<span class="o">(</span>md5<span class="o">(</span>“mail-23412”<span class="o">))</span> <span class="o">=</span>&amp;gt; D604E7A54DC18FD7AC70D12468C34B63&lt;/p&gt;
 </span><span class='line'>
 </span><span class='line'>&lt;p&gt;So the replica is on machine s1
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <ul>
   <li>What if master dies? <em>Paxos</em> — distributed leadership election algorithm. Very complicated algorithm that only few people understand.</li>
@@ -531,7 +529,7 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 
 <p><blockquote><p>This is the example @kaleidic is showing now</p><footer><strong>@gazoombo</strong> <cite><a href='https://twitter.com/gazoombo/statuses/354622989599383552'>twitter.com/gazoombo/statuses/&hellip;</a></cite></footer></blockquote></p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -564,7 +562,7 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 </span><span class='line'>└──┴──┴──┴───┴───┴──┴──┴───┴──┴───┴───┴────┴───┴───┴────┴────┘&lt;/p>
 </span><span class='line'>
 </span><span class='line'>&lt;p>#noncont i.10
-</span><span class='line'>968</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span><span class='line'>968</span></code></pre></td></tr></table></div></figure></p>
 
 <h3 id="resources-4">Resources</h3>
 
@@ -589,9 +587,9 @@ Only this way you can feel the same I felt on the last day of the conference :)<
   <li>A canon is defined as a series of notes that are accompanied by a functional transformation of themselves.</li>
 </ul>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="p">(</span><span class="kd">defn </span><span class="nv">canon</span> <span class="p">[</span><span class="nv">f</span> <span class="nv">notes</span><span class="p">]</span> <span class="p">(</span><span class="nb">concat </span><span class="nv">notes</span> <span class="p">(</span><span class="nf">f</span> <span class="nv">notes</span><span class="p">)))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <ul>
   <li>These are all pure functions, so we can compose them together. And that’s what composers did long before the lambda calculus was invented.</li>
@@ -603,7 +601,7 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 
 <h3 id="ring">Ring</h3>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -621,14 +619,14 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 </span><span class='line'>
 </span><span class='line'><span class="nv">&lt;p&gt;</span><span class="ss">:ring</span> <span class="p">{</span><span class="ss">:handler</span> <span class="nv">request-echo/handler</span>
 </span><span class='line'>         <span class="ss">:port</span> <span class="mi">3001</span><span class="p">})</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <pre><code>lein ring server
 </code></pre>
 
 <p><img class="center" src="/images/posts/ring.png"></p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -642,11 +640,11 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 </span><span class='line'><span class="nv">&lt;p&gt;</span><span class="ss">:body</span> <span class="p">(</span><span class="nb">str </span><span class="err">“</span><span class="o">&amp;</span><span class="nv">lt</span><span class="c1">;h1&amp;gt;Request Echo&amp;lt;/h1&amp;gt;&amp;lt;pre&amp;gt;”</span>
 </span><span class='line'>              <span class="p">(</span><span class="nb">with-out-str </span><span class="p">(</span><span class="nf">pprint</span> <span class="nv">request</span><span class="p">))</span>
 </span><span class='line'>              <span class="err">“</span><span class="o">&amp;</span><span class="nv">lt</span><span class="c1">;/pre&amp;gt;”)})</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h3 id="compojure">Compojure</h3>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -670,11 +668,11 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 </span><span class='line'>         <span class="p">(</span><span class="nf">add-debt-post</span> <span class="p">{</span><span class="ss">:from</span> <span class="nv">from</span>, <span class="ss">:to</span> <span class="nv">to</span>, <span class="ss">:amount</span> <span class="nv">amount</span><span class="p">}))</span>
 </span><span class='line'>  <span class="p">(</span><span class="nf">route/resources</span> <span class="err">“</span><span class="nv">/</span><span class="err">”</span><span class="p">)</span>
 </span><span class='line'>  <span class="p">(</span><span class="nf">route/not-found</span> <span class="err">“</span><span class="nv">Page</span> <span class="nb">not </span><span class="nv">found</span><span class="err">”</span><span class="p">))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h3 id="hiccup">Hiccup</h3>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -686,11 +684,11 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 </span><span class='line'>       <span class="p">{</span><span class="ss">:href</span> <span class="err">“</span><span class="nv">/go</span><span class="err">”</span><span class="p">}</span>  <span class="c1">; map for attributes</span>
 </span><span class='line'>       <span class="err">“</span><span class="nv">Click</span> <span class="nv">here</span><span class="err">”</span><span class="p">])</span> <span class="c1">; Content</span>
 </span><span class='line'><span class="c1">;;=&amp;gt; “&lt;a class=&quot;btn&quot; href=&quot;http://blog.ndpar.com/go&quot;&gt;Click here&lt;/a&gt;”</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h3 id="cheshire">Cheshire</h3>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -718,11 +716,11 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 </span><span class='line'>
 </span><span class='line'><span class="nv">&lt;p&gt;</span><span class="p">(</span><span class="kd">defn </span><span class="nv">add-debt-json</span> <span class="p">[</span><span class="nv">db</span> <span class="nv">body</span><span class="p">]</span>
 </span><span class='line'>  <span class="p">(</span><span class="nf">json/parse-string</span> <span class="nv">body</span><span class="p">))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h3 id="garden">Garden</h3>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -770,7 +768,7 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 </span><span class='line'>       <span class="ss">:body</span> <span class="p">(</span><span class="nf">css</span> <span class="nv">garden-data</span><span class="p">)})))</span><span class="nv">&lt;/p&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="nv">&lt;p&gt;</span><span class="p">(</span><span class="k">def </span><span class="nv">css-page-memoized</span> <span class="p">(</span><span class="nf">memoize</span> <span class="nv">css-page</span><span class="p">))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h3 id="resources-5">Resources</h3>
 
@@ -797,32 +795,24 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 
 <p>Lagrange’s equations of motion in Leibniz notation (with type violation)</p>
 
-<script type="math/tex; mode=display">
-\frac{\mathrm d}{\mathrm d t} \left(\frac{\partial L}{\partial \dot{q}^i}\right) - \frac{\partial L}{\partial q^i} = 0
-</script>
+<script type="math/tex; mode=display">\frac{\mathrm d}{\mathrm d t} \left(\frac{\partial L}{\partial \dot{q}^i}\right) - \frac{\partial L}{\partial q^i} = 0</script>
 
 <p>Expanded form (correct but ugly)</p>
 
 <script type="math/tex; mode=display">% &lt;![CDATA[
-
-\frac{\mathrm d}{\mathrm d t} \left(\left.\frac{\partial L(t,q,\dot{q})}{\partial \dot{q}}\right|_{\begin{aligned}q &= w(t)\\ \dot{q} &= \frac{\mathrm d w(t)}{\mathrm d t}\end{aligned}}\right) - \left.\frac{\partial L(t,q,\dot{q})}{\partial q}\right|_{\begin{aligned}q &= w(t)\\ \dot{q} &= \frac{\mathrm d w(t)}{\mathrm d t}\end{aligned}} = 0
- %]]&gt;</script>
+\frac{\mathrm d}{\mathrm d t} \left(\left.\frac{\partial L(t,q,\dot{q})}{\partial \dot{q}}\right|_{\begin{aligned}q &= w(t)\\ \dot{q} &= \frac{\mathrm d w(t)}{\mathrm d t}\end{aligned}}\right) - \left.\frac{\partial L(t,q,\dot{q})}{\partial q}\right|_{\begin{aligned}q &= w(t)\\ \dot{q} &= \frac{\mathrm d w(t)}{\mathrm d t}\end{aligned}} = 0 %]]&gt;</script>
 
 <p>Functional form (correct and beautiful)</p>
 
-<script type="math/tex; mode=display">
-D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
-</script>
+<script type="math/tex; mode=display">D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0</script>
 
 <p>where</p>
 
-<script type="math/tex; mode=display">
-(Df)(t) = \left.\frac{\mathrm d}{\mathrm d x} f(x)\right|_{x=t}  \qquad  \Gamma[w](t) = (t, w(t), Dw(t))
-</script>
+<script type="math/tex; mode=display">(Df)(t) = \left.\frac{\mathrm d}{\mathrm d x} f(x)\right|_{x=t}  \qquad  \Gamma[w](t) = (t, w(t), Dw(t))</script>
 
 <p>As Scheme code</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -838,11 +828,11 @@ D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
 </span><span class='line'>
 </span><span class='line'><span class="nv">&lt;p&gt;</span><span class="p">(</span><span class="k">define </span><span class="p">((</span><span class="nf">Gamma</span> <span class="nv">w</span><span class="p">)</span> <span class="nv">t</span><span class="p">)</span>
 </span><span class='line'>  <span class="p">(</span><span class="nf">up</span> <span class="nv">t</span> <span class="p">(</span><span class="nf">w</span> <span class="nv">t</span><span class="p">)</span> <span class="p">((</span><span class="nf">D</span> <span class="nv">w</span><span class="p">)</span> <span class="nv">t</span><span class="p">)))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>We can even generate LaTeX from the Scheme code.</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -850,7 +840,7 @@ D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
 </span><span class='line'>  <span class="p">(((</span><span class="nf">Lagrange-equations</span> <span class="p">(</span><span class="nf">L-harmonic</span> <span class="err">‘</span><span class="nv">m</span> <span class="err">‘</span><span class="nv">k</span><span class="p">))</span>
 </span><span class='line'>    <span class="nv">proposed-solution</span><span class="p">)</span>
 </span><span class='line'>   <span class="err">‘</span><span class="nv">t</span><span class="p">))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>The moral: originally, Lagrange’s equations had missing parameters and a type error. Programming them forced an elegant and <em>effective</em> statement.</p>
 
@@ -982,9 +972,9 @@ D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
   <li>Webmachine <a href="https://github.com/basho/webmachine/wiki/Diagram">diagram</a></li>
 </ul>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'>git clone git@github.com:cmeiklejohn/webmachine-tutorial.git
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p><img class="center" src="/images/posts/webmachine-diagram.png"></p>
 
@@ -996,8 +986,8 @@ D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
   <li><code>iolist()</code></li>
 </ul>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>src/tweeter_resource.erl </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>src/tweeter_resource.erl </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1011,15 +1001,15 @@ D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
 </span><span class='line'>    <span class="p">{[</span><span class="err">“&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">html</span><span class="err">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="err">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">body</span><span class="err">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="err">”</span><span class="p">,</span> <span class="nn">wrq</span><span class="p">:</span><span class="nf">get_req_header</span><span class="p">(</span><span class="err">“</span><span class="n">host</span><span class="err">”</span><span class="p">,</span> <span class="nv">ReqData</span><span class="p">),</span> <span class="err">“&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">body</span><span class="err">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="err">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">/</span><span class="n">html</span><span class="err">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="err">”</span><span class="p">],</span>
 </span><span class='line'>     <span class="nv">ReqData</span><span class="p">,</span>
 </span><span class='line'>     <span class="nv">State</span><span class="p">}.</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Supervisor: resources, routes, dispatch</p>
 
 <pre><code>git checkout -f load-tweets
 </code></pre>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>src/tweeter_sup.erl </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>src/tweeter_sup.erl </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1029,26 +1019,26 @@ D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
 </span><span class='line'>    <span class="nv">Resources</span> <span class="o">=</span> <span class="p">[</span><span class="n">tweeter_wm_tweet_resource</span><span class="p">,</span> <span class="n">tweeter_wm_asset_resource</span><span class="p">],</span>
 </span><span class='line'>    <span class="nv">Dispatch</span> <span class="o">=</span> <span class="nn">lists</span><span class="p">:</span><span class="nf">flatten</span><span class="p">([</span><span class="nv">Module</span><span class="p">:</span><span class="nf">routes</span><span class="p">()</span> <span class="p">||</span> <span class="nv">Module</span> <span class="err">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">-</span> <span class="nv">Resources</span><span class="p">]),</span>
 </span><span class='line'>    <span class="err">…</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>src/tweeter_wm_tweet_resource.erl </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>src/tweeter_wm_tweet_resource.erl </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class='erlang'><span class='line'><span class="nf">routes</span><span class="p">()</span> <span class="o">-</span><span class="err">&amp;</span><span class="n">gt</span><span class="p">;</span>
 </span><span class='line'>    <span class="p">[{[</span><span class="err">“</span><span class="n">tweets</span><span class="err">”</span><span class="p">],</span> <span class="o">?</span><span class="nv">MODULE</span><span class="p">,</span> <span class="p">[]}].</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>src/tweeter_wm_asset_resource.erl </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>src/tweeter_wm_asset_resource.erl </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class='erlang'><span class='line'><span class="nf">routes</span><span class="p">()</span> <span class="o">-</span><span class="err">&amp;</span><span class="n">gt</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">[{[</span><span class="err">””</span><span class="p">],</span> <span class="o">?</span><span class="nv">MODULE</span><span class="p">,</span> <span class="p">[]},</span> <span class="p">{[</span><span class="err">’</span><span class="o">*</span><span class="err">’</span><span class="p">],</span> <span class="o">?</span><span class="nv">MODULE</span><span class="p">,</span> <span class="p">[]}].</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span><span class='line'>    <span class="p">[{[</span><span class="err">””</span><span class="p">],</span> <span class="o">?</span><span class="nv">MODULE</span><span class="p">,</span> <span class="p">[]},</span> <span class="p">{[</span><span class="err">‘</span><span class="o">*</span><span class="err">’</span><span class="p">],</span> <span class="o">?</span><span class="nv">MODULE</span><span class="p">,</span> <span class="p">[]}].</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Media Types</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>src/tweeter_wm_tweet_resource.erl </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>src/tweeter_wm_tweet_resource.erl </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1074,9 +1064,9 @@ D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
 </span><span class='line'>    <span class="nv">Tweets</span> <span class="o">=</span> <span class="p">[</span><span class="nv">Value</span> <span class="p">||</span> <span class="p">[{_</span><span class="nv">Key</span><span class="p">,</span> <span class="nv">Value</span><span class="p">}]</span> <span class="err">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">-</span> <span class="nn">ets</span><span class="p">:</span><span class="nf">match</span><span class="p">(</span><span class="n">tweets</span><span class="p">,</span> <span class="err">‘</span><span class="sc">$1</span><span class="err">’</span><span class="p">)],</span>
 </span><span class='line'>    <span class="nv">Content</span> <span class="o">=</span> <span class="nb">term_to_binary</span><span class="p">(</span><span class="nv">Tweets</span><span class="p">),</span>
 </span><span class='line'>    <span class="p">{</span><span class="nv">Content</span><span class="p">,</span> <span class="nv">ReqData</span><span class="p">,</span> <span class="nv">Context</span><span class="p">}.</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1089,15 +1079,15 @@ D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
 </span><span class='line'>Server: MochiWeb/1.1 WebMachine/1.10.0 (never breaks eye contact)
 </span><span class='line'>Content-Type: application/x-erlang-binary&lt;/p>
 </span><span class='line'>
-</span><span class='line'>&lt;p>?llhdavatarmZhttps://si0.twimg.com/profile_images/2536088319/4sl2go65was3o0km520j_reasonably_small.jpeghdmessageCaremad.jlhdavatarm\https://si0.twimg.com/profile_images/3778090444/e4fde2cad4b921cd8c07fcecc0ff2fff_bigger.jpeghdmessagemRubby is over!jlhdavatarmZhttps://si0.twimg.com/profile_images/2536088319/4sl2go65was3o0km520j_reasonably_small.jpeghdmessagemYou boys having a taste?jj</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span><span class='line'>&lt;p>?llhdavatarmZhttps://si0.twimg.com/profile_images/2536088319/4sl2go65was3o0km520j_reasonably_small.jpeghdmessageCaremad.jlhdavatarm\https://si0.twimg.com/profile_images/3778090444/e4fde2cad4b921cd8c07fcecc0ff2fff_bigger.jpeghdmessagemRubby is over!jlhdavatarmZhttps://si0.twimg.com/profile_images/2536088319/4sl2go65was3o0km520j_reasonably_small.jpeghdmessagemYou boys having a taste?jj</span></code></pre></td></tr></table></div></figure></p>
 
 <p><code>resource_exists</code></p>
 
 <pre><code>git checkout -f tweet-urls
 </code></pre>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>src/tweeter_wm_tweet_resource.erl </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>src/tweeter_wm_tweet_resource.erl </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1119,9 +1109,9 @@ D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
 </span><span class='line'>        <span class="p">{</span><span class="n">true</span><span class="p">,</span> <span class="nv">NewContext</span><span class="p">}</span> <span class="o">-</span><span class="err">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="p">{</span><span class="n">true</span><span class="p">,</span> <span class="nv">ReqData</span><span class="p">,</span> <span class="nv">NewContext</span><span class="p">};</span>
 </span><span class='line'>        <span class="p">{</span><span class="n">false</span><span class="p">,</span> <span class="nv">Context</span><span class="p">}</span>   <span class="o">-</span><span class="err">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="p">{</span><span class="n">false</span><span class="p">,</span> <span class="nv">ReqData</span><span class="p">,</span> <span class="nv">Context</span><span class="p">}</span>
 </span><span class='line'>    <span class="k">end</span><span class="p">.</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1130,32 +1120,32 @@ D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
 </span><span class='line'>{“tweets”:[
 </span><span class='line'>  {“avatar”:”https://si0.twimg.com/profile_images/2536088319/4sl2go65was3o0km520j_reasonably_small.jpeg”,”message”:”Caremad.”,”id”:”1376843311536798”},
 </span><span class='line'>  {“avatar”:”https://si0.twimg.com/profile_images/3778090444/e4fde2cad4b921cd8c07fcecc0ff2fff_bigger.jpeg”,”message”:”Rubby is over!”,”id”:”1376843311536799”},
-</span><span class='line'>  {“avatar”:”https://si0.twimg.com/profile_images/2536088319/4sl2go65was3o0km520j_reasonably_small.jpeg”,”message”:”You boys having a taste?”,”id”:”1376843311536800”}]}</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span><span class='line'>  {“avatar”:”https://si0.twimg.com/profile_images/2536088319/4sl2go65was3o0km520j_reasonably_small.jpeg”,”message”:”You boys having a taste?”,”id”:”1376843311536800”}]}</span></code></pre></td></tr></table></div></figure></p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>$ curl -i http://localhost:8080/tweets/1376843311536798
 </span><span class='line'>HTTP/1.1 200 OK&lt;/p>
 </span><span class='line'>
-</span><span class='line'>&lt;p>{“tweet”:{“avatar”:”https://si0.twimg.com/profile_images/2536088319/4sl2go65was3o0km520j_reasonably_small.jpeg”,”message”:”Caremad.”}}</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span><span class='line'>&lt;p>{“tweet”:{“avatar”:”https://si0.twimg.com/profile_images/2536088319/4sl2go65was3o0km520j_reasonably_small.jpeg”,”message”:”Caremad.”}}</span></code></pre></td></tr></table></div></figure></p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>$ curl -i http://localhost:8080/tweets/42
 </span><span class='line'>HTTP/1.1 404 Object Not Found&lt;/p>
 </span><span class='line'>
-</span><span class='line'>&lt;html>&lt;head>&lt;title>404 Not Found&lt;/title>&lt;/head>&lt;body>&lt;h1>Not Found&lt;/h1>The requested document was not found on this server.&lt;p>&lt;hr />&lt;address>mochiweb+webmachine web server&lt;/address></span></code></pre></td></tr></table></div></figure></notextile></div>
+</span><span class='line'>&lt;html>&lt;head>&lt;TITLE>404 Not Found&lt;/TITLE>&lt;/head>&lt;body>&lt;h1>Not Found&lt;/h1>The requested document was not found on this server.&lt;p>&lt;hr />&lt;address>mochiweb+webmachine web server&lt;/address>&lt;/BODY&gt;&lt;/HTML&gt;</span></code></pre></td></tr></table></div></figure>
 
 `POST`, response header
 
     git checkout -f create-tweets
 
-<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>src/tweeter_wm_tweets_resource.erl </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>src/tweeter_wm_tweets_resource.erl </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1215,9 +1205,9 @@ D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
 </span><span class='line'>        <span class="p">{</span><span class="n">false</span><span class="p">,</span> <span class="nv">Context</span><span class="p">}</span> <span class="o">-</span><span class="err">&amp;</span><span class="n">gt</span><span class="p">;</span>
 </span><span class='line'>            <span class="p">{</span> <span class="p">{</span><span class="n">halt</span><span class="p">,</span> <span class="mi">409</span><span class="p">},</span> <span class="nv">ReqData</span><span class="p">,</span> <span class="nv">Context</span><span class="p">}</span>
 </span><span class='line'>    <span class="k">end</span><span class="p">.</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1242,9 +1232,9 @@ D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
 </span><span class='line'>Location: /tweets/1376847941255278
 </span><span class='line'>Content-Type: application/json
 </span><span class='line'>
-</span><span class='line'>{"tweet":{"message":"testing...","avatar":"https://si0.twimg.com/profile_images/3778090444/e4fde2cad4b921cd8c07fcecc0ff2fff_bigger.jpeg"}}</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span><span class='line'>{"tweet":{"message":"testing...","avatar":"https://si0.twimg.com/profile_images/3778090444/e4fde2cad4b921cd8c07fcecc0ff2fff_bigger.jpeg"}}</span></code></pre></td></tr></table></div></figure>
 
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1269,11 +1259,11 @@ D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
 </span><span class='line'>Location: /tweets/1376848621307991
 </span><span class='line'>Content-Type: text/html
 </span><span class='line'>
-</span><span class='line'>&lt;html>&lt;head>&lt;title>415 Unsupported Media Type&lt;/title>&lt;/head>&lt;body>&lt;h1>Unsupported Media Type&lt;/h1>Unsupported Media Type&lt;p>&lt;hr />&lt;address>mochiweb+webmachine web server&lt;/address></span></code></pre></td></tr></table></div></figure></notextile></div>
+</span><span class='line'>&lt;html>&lt;head>&lt;title>415 Unsupported Media Type&lt;/title>&lt;/head>&lt;body>&lt;h1>Unsupported Media Type&lt;/h1>Unsupported Media Type&lt;p>&lt;hr />&lt;address>mochiweb+webmachine web server&lt;/address>&lt;/body&gt;&lt;/html&gt;</span></code></pre></td></tr></table></div></figure>
 
 Note: `create_path` is called before `content_types_accepted`
 
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1296,14 +1286,14 @@ Note: `create_path` is called before `content_types_accepted`
 </span><span class='line'>
 </span><span class='line'>&lt;html>&lt;head>&lt;title>500 Internal Server Error&lt;/title>&lt;/head>&lt;body>&lt;h1>Internal Server Error&lt;/h1>The server encountered an error while processing this request:&lt;br />&lt;pre>{"create_path not a string",
 </span><span class='line'> {error,
-</span><span class='line'>     {...}}}&lt;/pre>&lt;p>&lt;hr />&lt;address>mochiweb+webmachine web server&lt;/address></span></code></pre></td></tr></table></div></figure></notextile></div>
+</span><span class='line'>     {...}}}&lt;/pre>&lt;p>&lt;hr />&lt;address>mochiweb+webmachine web server&lt;/address>&lt;/body&gt;&lt;/html&gt;</span></code></pre></td></tr></table></div></figure>
 
 ETags, caching, preconditions
 
     git checkout -f etag-tweets
 
-<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>src/tweeter_wm_tweets_resource.erl </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>src/tweeter_wm_tweets_resource.erl </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1319,9 +1309,9 @@ ETags, caching, preconditions
 </span><span class='line'><span class="nf">last_modified</span><span class="p">(</span><span class="nv">ReqData</span><span class="p">,</span> <span class="nv">Context</span><span class="p">)</span> <span class="o">-</span><span class="err">&amp;</span><span class="n">gt</span><span class="p">;</span>
 </span><span class='line'>    <span class="nv">Id</span> <span class="o">=</span> <span class="nn">ets</span><span class="p">:</span><span class="nf">last</span><span class="p">(</span><span class="n">tweets</span><span class="p">),</span>
 </span><span class='line'>    <span class="p">{</span><span class="nn">calendar</span><span class="p">:</span><span class="nf">now_to_datetime</span><span class="p">(</span><span class="nv">Id</span><span class="p">),</span> <span class="nv">ReqData</span><span class="p">,</span> <span class="nv">Context</span><span class="p">}.</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1338,45 +1328,45 @@ ETags, caching, preconditions
 </span><span class='line'>{"tweets":[
 </span><span class='line'>  {"avatar":"https://si0.twimg.com/profile_images/2536088319/4sl2go65was3o0km520j_reasonably_small.jpeg","message":"Caremad.","id":"1376860726482913"},
 </span><span class='line'>  {"avatar":"https://si0.twimg.com/profile_images/3778090444/e4fde2cad4b921cd8c07fcecc0ff2fff_bigger.jpeg","message":"Rubby is over!","id":"1376860726482914"},
-</span><span class='line'>  {"avatar":"https://si0.twimg.com/profile_images/2536088319/4sl2go65was3o0km520j_reasonably_small.jpeg","message":"You boys having a taste?","id":"1376860726482915"}]}</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span><span class='line'>  {"avatar":"https://si0.twimg.com/profile_images/2536088319/4sl2go65was3o0km520j_reasonably_small.jpeg","message":"You boys having a taste?","id":"1376860726482915"}]}</span></code></pre></td></tr></table></div></figure>
 
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>$ curl -i -H 'If-None-Match:"30008d7"' http://localhost:8080/tweets
 </span><span class='line'>HTTP/1.1 304 Not Modified
-</span><span class='line'>ETag: "30008d7"</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span><span class='line'>ETag: "30008d7"</span></code></pre></td></tr></table></div></figure>
 
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>$ curl -i -H 'If-Modified-Since:Sun, 18 Aug 2013 21:45:41 GMT' http://localhost:8080/tweets
 </span><span class='line'>HTTP/1.1 304 Not Modified
-</span><span class='line'>ETag: "30008d7"</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span><span class='line'>ETag: "30008d7"</span></code></pre></td></tr></table></div></figure>
 
 Authorization, CSRF
 
     git checkout -f csrf
 
-<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>src/tweeter_wm_tweets_resource.erl </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>src/tweeter_wm_tweets_resource.erl </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class='erlang'><span class='line'><span class="nf">forbidden</span><span class="p">(</span><span class="nv">ReqData</span><span class="p">,</span> <span class="nv">Context</span><span class="p">)</span> <span class="o">-</span><span class="err">&amp;</span><span class="n">gt</span><span class="p">;</span>
 </span><span class='line'>    <span class="p">{</span><span class="nn">tweeter_security</span><span class="p">:</span><span class="nf">is_protected</span><span class="p">(</span><span class="nv">ReqData</span><span class="p">,</span> <span class="nv">Context</span><span class="p">),</span> <span class="nv">ReqData</span><span class="p">,</span> <span class="nv">Context</span><span class="p">}.</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 Visual debugger
 
     git checkout -f debugger
 
-<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>src/tweeter_wm_asset_resource.erl </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>src/tweeter_wm_asset_resource.erl </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 </pre></td><td class='code'><pre><code class='erlang'><span class='line'><span class="nf">init</span><span class="p">([])</span> <span class="o">-</span><span class="err">&amp;</span><span class="n">gt</span><span class="p">;</span>
 </span><span class='line'>    <span class="nn">wmtrace_resource</span><span class="p">:</span><span class="nf">add_dispatch_rule</span><span class="p">(</span><span class="s">&quot;wmtrace&quot;</span><span class="p">,</span> <span class="s">&quot;/tmp&quot;</span><span class="p">),</span>
 </span><span class='line'>    <span class="p">{</span> <span class="p">{</span><span class="nb">trace</span><span class="p">,</span> <span class="s">&quot;/tmp&quot;</span><span class="p">},</span> <span class="nl">#context</span><span class="p">{}}.</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <img class="center" src="/images/posts/webmachine-debugger-1.png">
 
@@ -1405,7 +1395,7 @@ ErlyDTL, Dialyzer
 - We sick of the status quo, and there is a resurgence among engineers and excitement around new programming languages.
 - In Clojure we can pattern match on persistent vectors and hashmaps.
 
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1435,7 +1425,7 @@ ErlyDTL, Dialyzer
 </span><span class='line'>  <span class="p">[{</span><span class="ss">:a</span> <span class="mi">1</span> <span class="ss">:b</span> <span class="mi">1</span><span class="p">}]</span> <span class="mi">2</span>
 </span><span class='line'>  <span class="p">[{</span><span class="ss">:c</span> <span class="mi">3</span> <span class="ss">:d</span> <span class="nv">_</span> <span class="ss">:e</span> <span class="mi">4</span><span class="p">}]</span> <span class="mi">3</span>
 </span><span class='line'>  <span class="ss">:else</span> <span class="mi">4</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 - The best way to predict the future is to read papers and *engineer* it.
 
@@ -1480,7 +1470,7 @@ Video: [YouTube](http://www.youtube.com/watch?v=HCwRGHj5jOE)
 - Version 1.03 lost in the mists of time.
 - When Prolog program goes wrong, it says *No*.
 
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1508,14 +1498,14 @@ Video: [YouTube](http://www.youtube.com/watch?v=HCwRGHj5jOE)
 </span><span class='line'>              <span class="p">])</span>
 </span><span class='line'>             <span class="p">]</span>
 </span><span class='line'>    <span class="p">]).</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 - This diagrams are nested state machines.
 - You do not program the abnormal things, you do not make any decisions about how to program the stuff which is outside of the specification. What you do is you crash your program and let somebody else to resolve the problem and put back all the invariants.
 - It took four days to re-write the whole Erlang.
 - That's the entire documentation of Erlang 1.05
 
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1541,7 +1531,7 @@ Video: [YouTube](http://www.youtube.com/watch?v=HCwRGHj5jOE)
 </pre></td><td class='code'><pre><code class=''><span class='line'>h                help
 </span><span class='line'>reset            reset all queues
 </span><span class='line'>reset_erlang     kill all erlang definitions
-</span><span class='line'>load(F)          load erlang file &lt;f>.erlang
+</span><span class='line'>load(F)          load erlang file &lt;F>.erlang
 </span><span class='line'>load             load the same file as before
 </span><span class='line'>load(?)          what is the current load file
 </span><span class='line'>what_erlang      list all loaded erlang files
@@ -1560,7 +1550,7 @@ Video: [YouTube](http://www.youtube.com/watch?v=HCwRGHj5jOE)
 </span><span class='line'>talk(N)          N=1 verbose, =0 silent
 </span><span class='line'>peep(M)          set peeping point on M
 </span><span class='line'>no_peep(M)       unset peeping point on M
-</span><span class='line'>vsn(X)           erlang vsn number is X</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span><span class='line'>vsn(X)           erlang vsn number is X</span></code></pre></td></tr></table></div></figure>
 
 - Don't speculate about performance. Write the program, run it, and measure it.
 - Robert collected the whole pile of papers on how abstract machines worked. I borrowed this file and took it for a weekend, and I read every single paper from beginning to end… and I understood nothing. Then Monday morning I suddenly woke up and I understood it.
@@ -1616,7 +1606,7 @@ $$
 
 <blockquote><p>Life returning to normal. Have been suffering for PCSD (Post Conference Stress Disorder) — too many ideas in too short time + Jet Lag</p><footer><strong>@joeerl</strong> <cite><a href='https://twitter.com/joeerl/statuses/356672073675972609'>twitter.com/joeerl/statuses/&hellip;</a></cite></footer></blockquote>
 
-</f></p></body></html></p></body></html></p></body></html>
+</F></p></body></html></p></body></html></p></body></html>
 ]]></content>
   </entry>
   
@@ -1645,8 +1635,8 @@ $$
 
 <p>On the fourth session the facilitators put an interesting constraint: the coding must be done in absolute silence. That was the most amazing experience of the day. Before we started I thought we couldn’t accomplish much without talking. As it turned out, we could. The key of effective silent coding is to use the tools which both partners are familiar with. In our case we both were advanced users of Vim, and we knew Lisp languages. Our Clojure implementation was based on map/filter/reduce approach and spanned 20 lines of code. After the session <a href="http://langnostic.blogspot.com">Leo</a> showed me Christophe Grand’s <a href="http://clj-me.cgrand.net/2011/08/19/conways-game-of-life/">7-line solution</a> based on list comprehensions. It is so wonderful that I want to post it here</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>life.clj </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>life.clj </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1662,12 +1652,12 @@ $$
 </span><span class='line'>  <span class="p">(</span><span class="nb">set </span><span class="p">(</span><span class="nb">for </span><span class="p">[[</span><span class="nv">loc</span> <span class="nv">n</span><span class="p">]</span> <span class="p">(</span><span class="nf">frequencies</span> <span class="p">(</span><span class="nb">mapcat </span><span class="nv">neighbours</span> <span class="nv">cells</span><span class="p">))</span>
 </span><span class='line'>             <span class="ss">:when</span> <span class="p">(</span><span class="nb">or </span><span class="p">(</span><span class="nb">= </span><span class="nv">n</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">and </span><span class="p">(</span><span class="nb">= </span><span class="nv">n</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="nf">cells</span> <span class="nv">loc</span><span class="p">)))]</span>
 </span><span class='line'>         <span class="nv">loc</span><span class="p">)))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>For the last session we chose Erlang. Because we already knew how to implement the functional solution, that was just an exercise of translating Clojure code into Erlang. Unfortunately we didn’t find an equivalent of <code>frequencies</code> function in the standard library, so we implemented it ourselves. Other than that, the Erlang code is almost identical to Clojure.</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>life.erl </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>life.erl </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1691,7 +1681,7 @@ $$
 </span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">frequencies</span><span class="p">(</span><span class="nv">List</span><span class="p">)</span> <span class="o">-</span><span class="err">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">frequencies</span><span class="p">(</span><span class="nv">List</span><span class="p">,</span> <span class="nn">dict</span><span class="p">:</span><span class="nf">new</span><span class="p">()).</span>
 </span><span class='line'><span class="nf">frequencies</span><span class="p">([],</span> <span class="nv">Acc</span><span class="p">)</span> <span class="o">-</span><span class="err">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="nv">Acc</span><span class="p">;</span>
 </span><span class='line'><span class="nf">frequencies</span><span class="p">([</span><span class="nv">X</span><span class="p">|</span><span class="nv">Xs</span><span class="p">],</span> <span class="nv">Acc</span><span class="p">)</span> <span class="o">-</span><span class="err">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">frequencies</span><span class="p">(</span><span class="nv">Xs</span><span class="p">,</span> <span class="nn">dict</span><span class="p">:</span><span class="nf">update_counter</span><span class="p">(</span><span class="nv">X</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nv">Acc</span><span class="p">)).</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h2 id="summary">Summary</h2>
 
@@ -1733,8 +1723,8 @@ $$
 
 <p>Let’s see how this can be implemented in Java. I chose Java just as an example of non-Lisp language. You can pick any other non-Lisp language instead.</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>SimpleMessageListener.java </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>SimpleMessageListener.java </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1820,7 +1810,7 @@ $$
 </span><span class='line'><span class="kd">private</span> <span class="n">String</span> <span class="nf">handleAlert</span><span class="o">(</span><span class="n">Map</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
 </span><span class='line'>    <span class="k">return</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&quot;Alert:%s:%s&quot;</span><span class="o">,</span> <span class="n">message</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&quot;a&quot;</span><span class="o">),</span> <span class="n">message</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&quot;b&quot;</span><span class="o">));</span>
 </span><span class='line'><span class="o">}</span> <span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 </code></pre>
 
 <p>The internals of <code>handle</code> methods might be very different in reality. Consider the fact they have the same structure here as a coincidence. What is not coincidence though is the structure of <code>is</code> methods. Those methods are identical indeed.</p>
@@ -1831,8 +1821,8 @@ $$
 
 <p>Can we make this code better? Let’s rewrite it as follows:</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>FunctionalMessageListener.java </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>FunctionalMessageListener.java </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1920,7 +1910,7 @@ $$
 </span><span class='line'>    <span class="o">}</span>
 </span><span class='line'>    <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
 </span><span class='line'><span class="o">}</span> <span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 </code></pre>
 
 <p>In this version we eliminated ugly <code>if</code> series, and grouped together <em>decision making</em> logic and <em>message handling</em>. From that perspective the code became cleaner, but not necessarily clearer. Now it actually takes more effort to understand what the code is doing. Also, the duplication inside the <code>is</code> methods is still there. We can fix it by extracting it to some abstract class or utility method. We can also use Java reflection within <code>handlers</code> method to build a collection of handlers without explicitly specifying them. All these manipulations arguably make the code cleaner, but… one thing we’ll never be able to fix is the separation between decision making logic and message handling. <em>Whatever you do, there will always be the if-statement, in one form or another, that checks if you need to process the message, and the message processing logic itself.</em> Those two things will always be separate. This is the point where we hit the language limits.</p>
@@ -1929,7 +1919,7 @@ $$
 
 <p>Now let’s try to solve the same problem in Lisp and see if we can fix the language to eliminate the last issue from the paragraph above. Here is the direct translation of the previous Java snippet to Clojure dialect of Lisp</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1977,11 +1967,11 @@ $$
 </span><span class='line'>              <span class="p">(</span><span class="nb">conj </span><span class="nv">acc</span> <span class="nv">res</span><span class="p">)</span>
 </span><span class='line'>              <span class="nv">acc</span><span class="p">))]</span>
 </span><span class='line'>    <span class="p">(</span><span class="nb">reduce </span><span class="nv">handle</span> <span class="p">[]</span> <span class="p">(</span><span class="nf">handlers</span><span class="p">))))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>This code is already easier to read, but we can do even better. The separation between decision making logic and message handling is still there. At this point we should ask the question: what kind of code do we want to see there? And the answer is: we want to replace the <code>-handler</code> methods above with the following code</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1997,13 +1987,13 @@ $$
 </span><span class='line'>
 </span><span class='line'><span class="nv">&lt;p&gt;</span><span class="p">(</span><span class="nf">handler</span> <span class="nv">alert</span> <span class="p">[</span><span class="nv">a</span> <span class="nv">b</span><span class="p">]</span>
 </span><span class='line'>  <span class="p">(</span><span class="nf">format</span> <span class="err">“</span><span class="nv">Alert</span><span class="ss">:%s:%s</span><span class="err">”</span> <span class="nv">a</span> <span class="nv">b</span><span class="p">))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>You see: no conditionals. Handlers are self-sufficient entities which know <em>when</em> they have to be applied and <em>how</em>. In their signatures they explicitly declare which message keys they expect, and in the body they just <em>use</em> those keys. No boilerplate: clean and simple. The beauty of Lisp is that you can actually implement that code. The way you do it is by creating a macro which generates the appropriate functions. Creating a macro is not a simple task, I spent quite some time to get this one working, but it’s worth of doing, because it makes the code clean and clear.</p>
 
 <p>We can make one additional step further by moving the <code>handler</code> declarations inside the <code>build-handlers</code> function. (We need one small macro for that.) And here is the final solution</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -2057,23 +2047,23 @@ $$
 </span><span class='line'>              <span class="p">(</span><span class="nb">conj </span><span class="nv">acc</span> <span class="nv">res</span><span class="p">)</span>
 </span><span class='line'>              <span class="nv">acc</span><span class="p">))]</span>
 </span><span class='line'>    <span class="p">(</span><span class="nb">reduce </span><span class="nv">handle</span> <span class="p">[]</span> <span class="p">(</span><span class="nf">handlers</span><span class="p">))))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>As I said, the first macro might be cryptic, but look at the lines 11–20. This is the essence of our problem, and it cannot be done any simpler. Suppose, we need to implement a new handler which should be called if key <strong><em>c</em></strong> is present in the message. Here what we would need to add to <code>build-handler</code>’s body to implement this new requirement</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class='clojure'><span class='line'>  <span class="p">(</span><span class="nf">handler</span> <span class="k">new </span><span class="p">[</span><span class="nv">c</span><span class="p">]</span>
 </span><span class='line'>    <span class="err">…</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Simple, right? And what if a new key <strong><em>d</em></strong> is added to the message that should be processed by document handler? Here is what we need to change</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class='clojure'><span class='line'>  <span class="p">(</span><span class="nf">handler</span> <span class="nb">doc </span><span class="p">[</span><span class="nv">a</span> <span class="nv">c</span> <span class="nv">d</span><span class="p">]</span>
 </span><span class='line'>    <span class="err">…</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>We just add a new key to the function’s parameter list. That’s it — one-word change.</p>
 
@@ -2146,8 +2136,8 @@ $ python -m SimpleHTTPServer 3030
 
 <p>You can ignore <em>.gitignore</em>, it’s already configured properly. Before we make our initial checkin, it’s a good practice to edit project.clj and README.md to replace FIXME’s. We will edit README file again later when we finish the development to provide more information on how to use the application. Before we move to Noir, let’s quickly review project.clj file</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>project.clj </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>project.clj </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -2157,12 +2147,12 @@ $ python -m SimpleHTTPServer 3030
 </span><span class='line'>  <span class="ss">:dependencies</span> <span class="p">[[</span><span class="nv">org.clojure/clojure</span> <span class="err">“</span><span class="mf">1.4</span><span class="nv">.0</span><span class="err">”</span><span class="p">]</span>
 </span><span class='line'>                 <span class="p">[</span><span class="nv">noir</span> <span class="err">“</span><span class="mf">1.3</span><span class="nv">.0-beta3</span><span class="err">”</span><span class="p">]]</span>
 </span><span class='line'>  <span class="ss">:main</span> <span class="nv">bookshelf.server</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p><em>project.clj</em> is a Clojure version of pom.xml (in fact, you can use pom.xml if you want, Clojure perfectly understands it). First two lines are obvious. Dependency entry specifies which JAR files we need to make our application work. In our case we only need two JARs. Leiningen will check Maven central repository as well as <a href="https://clojars.org/">Clojars</a> to download the required JARs with all transitive dependencies. The last line in the project descriptor says which namespace contains the main method. In our case it is <code>bookshelf.server</code>. You can find the source of this namespace in <em>/src/bookshelf/server.clj</em> file. Let’s take a look at this file</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>/src/bookshelf/server.clj </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>/src/bookshelf/server.clj </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -2182,7 +2172,7 @@ $ python -m SimpleHTTPServer 3030
 </span><span class='line'>        <span class="nv">port</span> <span class="p">(</span><span class="nf">Integer.</span> <span class="p">(</span><span class="nb">get </span><span class="p">(</span><span class="nf">System/getenv</span><span class="p">)</span> <span class="err">“</span><span class="nv">PORT</span><span class="err">”</span> <span class="err">“</span><span class="mi">8080</span><span class="err">”</span><span class="p">))]</span>
 </span><span class='line'>    <span class="p">(</span><span class="nf">server/start</span> <span class="nv">port</span> <span class="p">{</span><span class="ss">:mode</span> <span class="nv">mode</span>
 </span><span class='line'>                        <span class="ss">:ns</span> <span class="err">‘</span><span class="nv">bookshelf</span><span class="p">})))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p><code>server/load-views-ns</code> specifies the prefixes of the view namespaces that will be loaded by Noir server. In our case those namespaces start with <code>bookshelf.views</code>. By default Leiningen generates two view files: <em>/bookshelf/views/common.clj</em> and <em>/bookshelf/views/welcome.clj</em>, but you can create more if your project becomes more complex. Since Noir scans namespaces by prefixes, you can even put your files in the nested directories under <em>/bookshelf/views</em>, no changes in <em>server.clj</em> required.</p>
 
@@ -2204,8 +2194,8 @@ $ python -m SimpleHTTPServer 3030
 
 <p>This page by itself contains all you need to get started with Noir, so you can safely stop reading this article, and just follow the instructions on that page. Those who continue reading this tutorial and wondering where that start page is coming from, please open <em>/src/bookshelf/views/welcome.clj</em></p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>/src/bookshelf/views/welcome.clj </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>/src/bookshelf/views/welcome.clj </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -2221,14 +2211,14 @@ $ python -m SimpleHTTPServer 3030
 </span><span class='line'><span class="nv">&lt;p&gt;</span><span class="p">(</span><span class="nf">defpage</span> <span class="err">“</span><span class="nv">/welcome</span><span class="err">”</span> <span class="p">[]</span>
 </span><span class='line'>  <span class="p">(</span><span class="nf">common/layout</span>
 </span><span class='line'>    <span class="p">[</span><span class="ss">:p</span> <span class="err">“</span><span class="nv">Welcome</span> <span class="nv">to</span> <span class="nv">bookshelf</span><span class="err">”</span><span class="p">]))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Third line tells us that the source of the start page is in <em>noir/content/getting-started.clj</em> file. If you are curious where this file is, look <a href="https://github.com/noir-clojure/noir/blob/master/src/noir/content/getting_started.clj">here</a>. Search for <code>(defpage "/" [] …)</code> to see how the start page is defined. On your web-site you probably want the start page to be different, so you can remove <code>[noir.content.getting-started]</code> from <code>:require</code> section.</p>
 
 <p>The next thing to notice on the snippet above is <code>(defpage "/welcome" [] …)</code> function. That’s how you define URL mappings (or routes, in Noir lingo) of your web-site. (Internally, Noir uses <a href="https://github.com/weavejester/compojure">Compojure</a> library to handle the routing.) It is similar to @RequestMapping annotations in Spring-MVC, where you specify which method is called when a user hits the given URL. As you can see, we have only one mapping at the moment, <code>/welcome</code>. Since we are building bookshelf application, let’s rename it to <code>/books</code>. Also, to be even more explicit, let’s rename the whole file to <em>books.clj</em>. Don’t forget to update the namespace. Your <em>books.clj</em> file should now look like this</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>/src/bookshelf/views/books.clj </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>/src/bookshelf/views/books.clj </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -2242,7 +2232,7 @@ $ python -m SimpleHTTPServer 3030
 </span><span class='line'><span class="nv">&lt;p&gt;</span><span class="p">(</span><span class="nf">defpage</span> <span class="err">“</span><span class="nv">/books</span><span class="err">”</span> <span class="p">[]</span>
 </span><span class='line'>  <span class="p">(</span><span class="nf">common/layout</span>
 </span><span class='line'>    <span class="p">[</span><span class="ss">:p</span> <span class="err">“</span><span class="nv">Welcome</span> <span class="nv">to</span> <span class="nv">bookshelf</span><span class="err">”</span><span class="p">]))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>If you go to <a href="http://localhost:8080/books">http://localhost:8080/books</a> in your browser, you should see this screen</p>
 
@@ -2265,8 +2255,8 @@ $ python -m SimpleHTTPServer 3030
 
 <p>Now let’s take look at how the page content is generated. If you look at the routing definition in <em>books.clj</em>, you see that the body of <code>defpage</code> function is a call to <code>layout</code> function defined in <em>/src/bookshelf/views/common.clj</em>. Let’s open this file</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>/src/bookshelf/views/common.clj </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>/src/bookshelf/views/common.clj </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -2290,7 +2280,7 @@ $ python -m SimpleHTTPServer 3030
 </span><span class='line'>    <span class="p">[</span><span class="ss">:body</span>
 </span><span class='line'>     <span class="p">[</span><span class="ss">:div#wrapper</span>
 </span><span class='line'>      <span class="nv">content</span><span class="p">]]))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p><code>layout</code> is just a wrapper on top of <code>hiccup.core/html</code> function. Hiccup is an XML/HTML rendering library in Clojure. The idea behind it is pretty simple: You build a tree using Clojure vectors, and Hiccup transforms it to a valid HTML. If you are familiar with Groovy MarkupBuilder, it’s the same idea. For example, let’s define a couple of trees: head and body</p>
 
@@ -2351,8 +2341,8 @@ $ python -m SimpleHTTPServer 3030
 
 <p>We define controllers and views in <em>books.clj</em> file. For now I also include the model in this file. We’ll move it to a proper namespace later when we are done with the front-end. Here is the new version of <em>books.clj</em></p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>/src/bookshelf/views/books.clj </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>/src/bookshelf/views/books.clj </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -2426,7 +2416,7 @@ $ python -m SimpleHTTPServer 3030
 </span><span class='line'><span class="nv">&lt;p&gt;</span><span class="p">(</span><span class="nf">defpage</span> <span class="err">“</span><span class="nv">/books</span><span class="err">”</span> <span class="p">[]</span>
 </span><span class='line'>  <span class="p">(</span><span class="nf">common/layout</span>
 </span><span class='line'>    <span class="p">(</span><span class="nf">list-books</span><span class="p">)))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>There are three functions in this file: <code>books</code> (model), <code>list-books</code> (view), and <code>/books</code> (controller/router). The controller is essentially the same as before and the model is simply a vector of maps. Each map contains the same keys as column names on the book table. View might look complicated, but there shouldn’t be any surprise here either — it’s again an ordinary tree. The only new element here is <code>link-to</code> function defined in <code>hiccup.element</code> namespace. We could really build it directly using <code>[:a {:href …}]</code> vector, but link-to is a standard way to do it in Hiccup.</p>
 
@@ -2436,8 +2426,8 @@ $ python -m SimpleHTTPServer 3030
 
 <p>The important part of the view function is the format of the links. For the current book model the links are <a href="http://localhost:8080/books/1/pdf">http://localhost:8080/books/1/pdf</a> and <a href="http://localhost:8080/books/2/epub">http://localhost:8080/books/2/epub</a>. You can verify it by hovering the mouse over them. Those links are actually the main goal of our application. By clicking the link I want to load (or download) the book into the browser and read it. To implement this feature add the following functions to <em>books.clj</em></p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>/src/bookshelf/views/books.clj (cont’d) </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>/src/bookshelf/views/books.clj (cont’d) </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -2453,7 +2443,7 @@ $ python -m SimpleHTTPServer 3030
 </span><span class='line'>
 </span><span class='line'><span class="nv">&lt;p&gt;</span><span class="p">(</span><span class="nf">defpage</span> <span class="err">“</span><span class="nv">/books/</span><span class="ss">:id/:format</span><span class="err">”</span> <span class="p">{</span><span class="ss">:keys</span> <span class="p">[</span><span class="nv">id</span> <span class="nv">format</span><span class="p">]}</span>
 </span><span class='line'>  <span class="p">(</span><span class="nf">content-type</span> <span class="p">(</span><span class="nf">ctype</span> <span class="nv">format</span><span class="p">)</span> <span class="p">(</span><span class="nf">java.io.ByteArrayInputStream.</span> <span class="p">(</span><span class="nf">get-file</span> <span class="nv">id</span><span class="p">))))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Ignore for a moment <code>get-file</code> function — it does nothing. Later we will move it to model namespace and implement it properly, but we need some placeholder now to compile the application. ctype is a helper function that maps the file format to HTTP content type. I have three ebook formats in my library: ePub, Mobi, and PDF. The first two are plain text formats from HTTP content type perspective. Only PDF requires special type.</p>
 
@@ -2465,8 +2455,8 @@ $ python -m SimpleHTTPServer 3030
 
 <p>Now we need to extract the logic that creates a model from presentation tier to middle-tier. In Noir that’s what models directory is for. In our case it’s <em>/src/bookshelf/models</em>. Let’s create a file called <em>db.clj</em> in that directory, and move there books and <code>get-file</code> functions from <em>bookshelf.views.books</em> namespace. We have to update <em>books.clj</em> to load the new namespace. It should now look like this</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>/src/bookshelf/views/books.clj </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>/src/bookshelf/views/books.clj </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -2532,14 +2522,14 @@ $ python -m SimpleHTTPServer 3030
 </span><span class='line'>
 </span><span class='line'><span class="nv">&lt;p&gt;</span><span class="p">(</span><span class="nf">defpage</span> <span class="err">“</span><span class="nv">/books/</span><span class="ss">:id/:format</span><span class="err">”</span> <span class="p">{</span><span class="ss">:keys</span> <span class="p">[</span><span class="nv">id</span> <span class="nv">format</span><span class="p">]}</span>
 </span><span class='line'>  <span class="p">(</span><span class="nf">content-type</span> <span class="p">(</span><span class="nf">ctype</span> <span class="nv">format</span><span class="p">)</span> <span class="p">(</span><span class="nf">java.io.ByteArrayInputStream.</span> <span class="p">(</span><span class="nf">db/get-file</span> <span class="nv">id</span><span class="p">))))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>If you refresh your browser, nothing should change.</p>
 
 <p>All right, now it’s time to implement our model properly. Recall that our model should scan the directory it’s running in for the files with the format Author-Title-Year.FileFormat, and convert each of those files to byte array. Here is how I implemented it</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>/src/bookshelf/models/db.clj </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>/src/bookshelf/models/db.clj </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -2589,7 +2579,7 @@ $ python -m SimpleHTTPServer 3030
 </span><span class='line'>              <span class="nv">buffer</span> <span class="p">(</span><span class="nf">java.io.ByteArrayOutputStream.</span><span class="p">)]</span>
 </span><span class='line'>    <span class="p">(</span><span class="nf">clojure.java.io/copy</span> <span class="nv">input</span> <span class="nv">buffer</span><span class="p">)</span>
 </span><span class='line'>    <span class="p">(</span><span class="nf">.toByteArray</span> <span class="nv">buffer</span><span class="p">)))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Let’s take a look what each of the functions does. Function <code>list-files</code> returns a vector of file names that reside in the given directory <code>dir</code>. To find all files in the directory I’m using <code>clojure.java.shell/sh</code> function which executes <code>ls</code> command. This works fine on Linux and Mac, but probalby doesn’t on Windows. Function <code>parse</code> checks if the given file name has the required format. If so, it returns a map <code>{:file file, :author Author, :title Title, :year Year, :format FileFormat}</code>, otherwise it returns <code>nil</code>. <code>add-id</code> function removes dots, commas, and spaces from the file name and add the result as a book ID to the book map. Function <code>books</code> is just a composition of those three functions, and it returns the result expected by the view.</p>
 
@@ -2621,8 +2611,8 @@ test
 
 <p>Since our application is written in Noir framework, let’s make it look like Noir. First, I downloaded Noir background <a href="http://www.webnoir.org/img/bg.png">image</a> and save it to <em>/resources/public/img</em> directory. Second, I created a stylesheet <em>/resources/public/css/noir.css</em> which resembles Noir’s original</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>/resources/public/css/noir.css </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>/resources/public/css/noir.css </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -2656,12 +2646,12 @@ test
 </span><span class='line'><span class="nt">h1</span> <span class="p">{</span>
 </span><span class='line'>    <span class="k">color</span><span class="o">:</span> <span class="m">#6bffbd</span><span class="p">;</span>
 </span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Then I updated <em>bookshelf.views.common</em> namespace to include new CSS</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>/src/bookshelf/views/common.clj (cont’d) </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>/src/bookshelf/views/common.clj (cont’d) </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -2679,12 +2669,12 @@ test
 </span><span class='line'>    <span class="p">[</span><span class="ss">:body</span>
 </span><span class='line'>     <span class="p">[</span><span class="ss">:div#wrapper</span>
 </span><span class='line'>      <span class="nv">content</span><span class="p">]]))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Finally, I want to add a header to the page in <em>bookshelf.views.books</em></p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>/src/bookshelf/views/books.clj (cont’d) </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>/src/bookshelf/views/books.clj (cont’d) </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -2692,7 +2682,7 @@ test
 </span><span class='line'>  <span class="p">(</span><span class="nf">common/layout</span>
 </span><span class='line'>    <span class="p">[</span><span class="ss">:h1</span> <span class="err">“</span><span class="nv">Books</span><span class="err">”</span><span class="p">]</span>
 </span><span class='line'>    <span class="p">(</span><span class="nf">list-books</span><span class="p">)))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Refresh books web page on the browser to see the changes</p>
 
@@ -2714,8 +2704,8 @@ resources/public/js/jquery.tablesorter.js
 
 <p>If you are curious, here is my <em>style.css</em>. I changed the original tablesorter css a little bit to better fit Noir theme</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>/resources/public/css/style.css </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>/resources/public/css/style.css </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -2789,12 +2779,12 @@ resources/public/js/jquery.tablesorter.js
 </span><span class='line'><span class="nt">table</span><span class="nc">.tablesorter</span> <span class="nt">thead</span> <span class="nt">tr</span> <span class="nc">.headerSortDown</span><span class="o">,</span> <span class="nt">table</span><span class="nc">.tablesorter</span> <span class="nt">thead</span> <span class="nt">tr</span> <span class="nc">.headerSortUp</span> <span class="p">{</span>
 </span><span class='line'>    <span class="k">background-color</span><span class="o">:</span> <span class="m">#6bffbd</span><span class="p">;</span>
 </span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>To enable tablesorter we have to update both view files. Few changes in bookshelf.views.common</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>/src/bookshelf/views/common.clj </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>/src/bookshelf/views/common.clj </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -2826,12 +2816,12 @@ resources/public/js/jquery.tablesorter.js
 </span><span class='line'>    <span class="p">[</span><span class="ss">:body</span>
 </span><span class='line'>     <span class="p">[</span><span class="ss">:div#wrapper</span>
 </span><span class='line'>      <span class="nv">content</span><span class="p">]]))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>and few changes in <em>bookshelf.views.books</em></p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>/src/bookshelf/views/books.clj </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>/src/bookshelf/views/books.clj </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -2901,7 +2891,7 @@ resources/public/js/jquery.tablesorter.js
 </span><span class='line'>
 </span><span class='line'><span class="nv">&lt;p&gt;</span><span class="p">(</span><span class="nf">defpage</span> <span class="err">“</span><span class="nv">/books/</span><span class="ss">:id/:format</span><span class="err">”</span> <span class="p">{</span><span class="ss">:keys</span> <span class="p">[</span><span class="nv">id</span> <span class="nv">format</span><span class="p">]}</span>
 </span><span class='line'>  <span class="p">(</span><span class="nf">content-type</span> <span class="p">(</span><span class="nf">ctype</span> <span class="nv">format</span><span class="p">)</span> <span class="p">(</span><span class="nf">java.io.ByteArrayInputStream.</span> <span class="p">(</span><span class="nf">db/get-file</span> <span class="nv">id</span><span class="p">))))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>After we refresh the browser, we should see the final design and be able to sort the table</p>
 
@@ -2911,8 +2901,8 @@ resources/public/js/jquery.tablesorter.js
 
 <p>OK, we are ready to ship. But before we build a deployable artifact, we, as professional developers, should update documentation (<a href="https://github.com/ndpar/bookshelf/blob/master/README.md">README.md</a> in our case) and finalize the version of the application</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>project.clj </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>project.clj </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -2922,12 +2912,12 @@ resources/public/js/jquery.tablesorter.js
 </span><span class='line'>  <span class="ss">:dependencies</span> <span class="p">[[</span><span class="nv">org.clojure/clojure</span> <span class="err">“</span><span class="mf">1.4</span><span class="nv">.0</span><span class="err">”</span><span class="p">]</span>
 </span><span class='line'>                 <span class="p">[</span><span class="nv">noir</span> <span class="err">“</span><span class="mf">1.3</span><span class="nv">.0-beta3</span><span class="err">”</span><span class="p">]]</span>
 </span><span class='line'>  <span class="ss">:main</span> <span class="nv">bookshelf.server</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>I want to run this application as a a standalone Java web application, without any dependency on Leiningen. Therefore I have to add <code>:gen-class</code> to <em>server.clj</em></p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>/src/bookshelf/server.clj </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>/src/bookshelf/server.clj </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -2949,7 +2939,7 @@ resources/public/js/jquery.tablesorter.js
 </span><span class='line'>        <span class="nv">port</span> <span class="p">(</span><span class="nf">Integer.</span> <span class="p">(</span><span class="nb">get </span><span class="p">(</span><span class="nf">System/getenv</span><span class="p">)</span> <span class="err">“</span><span class="nv">PORT</span><span class="err">”</span> <span class="err">“</span><span class="mi">8080</span><span class="err">”</span><span class="p">))]</span>
 </span><span class='line'>    <span class="p">(</span><span class="nf">server/start</span> <span class="nv">port</span> <span class="p">{</span><span class="ss">:mode</span> <span class="nv">mode</span>
 </span><span class='line'>                        <span class="ss">:ns</span> <span class="err">‘</span><span class="nv">bookshelf</span><span class="p">})))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Now package the application by running the following command</p>
 

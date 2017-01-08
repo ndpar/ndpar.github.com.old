@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Maven | Side Notes]]></title>
+  <title><![CDATA[Category: maven | Side Notes]]></title>
   <link href="http://blog.ndpar.com/categories/maven/atom.xml" rel="self"/>
   <link href="http://blog.ndpar.com/"/>
-  <updated>2015-11-06T20:35:32-05:00</updated>
+  <updated>2017-01-08T17:14:02-05:00</updated>
   <id>http://blog.ndpar.com/</id>
   <author>
     <name><![CDATA[Andrey Paramonov]]></name>
@@ -20,7 +20,7 @@
     <id>http://blog.ndpar.com/2011/01/24/git-maven</id>
     <content type="html"><![CDATA[<p>More and more Maven projects are switching from Subversion to Git, and the majority of those projects make the same mistake: They configure <em>scm</em> section of POM to point to remote repository, the same way they did it in Subversion</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -31,10 +31,10 @@
 </span><span class='line'><span class="nt">&lt;scm&gt;</span>
 </span><span class='line'>    <span class="nt">&lt;url&gt;</span>http://github.com/SpringSource/spring-batch<span class="nt">&lt;/url&gt;</span>
 </span><span class='line'>    <span class="nt">&lt;connection&gt;</span>scm:git:git://github.com/SpringSource/spring-batch.git<span class="nt">&lt;/connection&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;developerconnection&gt;</span>scm:git:ssh://git@github.com/SpringSource/spring-batch.git<span class="nt">&lt;/developerconnection&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;developerConnection&gt;</span>scm:git:ssh://git@github.com/SpringSource/spring-batch.git<span class="nt">&lt;/developerConnection&gt;</span>
 </span><span class='line'><span class="nt">&lt;/scm&gt;</span>
 </span><span class='line'><span class="nt">&lt;p&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>By doing this they lose the main benefit of Git. They become dependent on the remote machine. And when their release depends on the remote machine, that’s what happens: They need to release the project but the remote machine is down</p>
 
@@ -42,7 +42,7 @@
 
 <p>The right way of configuring Git in Maven is following</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -53,10 +53,10 @@
 </span><span class='line'><span class="nt">&lt;scm&gt;</span>
 </span><span class='line'>    <span class="nt">&lt;url&gt;</span>scm:git:file://.<span class="nt">&lt;/url&gt;</span>
 </span><span class='line'>    <span class="nt">&lt;connection&gt;</span>scm:git:file://.<span class="nt">&lt;/connection&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;developerconnection&gt;</span>scm:git:file://.<span class="nt">&lt;/developerconnection&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;developerConnection&gt;</span>scm:git:file://.<span class="nt">&lt;/developerConnection&gt;</span>
 </span><span class='line'><span class="nt">&lt;/scm&gt;</span>
 </span><span class='line'><span class="nt">&lt;p&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>This configuration is universal, and it separates two orthogonal concerns: releases and remote copies.</p>
 

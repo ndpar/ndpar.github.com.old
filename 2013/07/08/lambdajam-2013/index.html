@@ -81,7 +81,7 @@
   
 </ul>
   
-<form action="http://google.com/search" method="get">
+<form action="https://www.google.com/search" method="get">
   <fieldset role="search">
     <input type="hidden" name="q" value="site:blog.ndpar.com" />
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
@@ -118,7 +118,8 @@
   
 
 
-<time datetime="2013-07-08T05:00:00-04:00" pubdate data-updated="true">Jul 8<span>th</span>, 2013</time>
+
+<time datetime="2013-07-08T05:00:00-04:00" pubdate data-updated="true">July 08, 2013</time>
         
       </p>
     
@@ -129,8 +130,6 @@
 These notes are pretty long, and I don’t split them on purpose.
 If you read them all, you should become overwhelmed and overloaded with the information.
 Only this way you can feel the same I felt on the last day of the conference :)</p>
-
-<p><img src="http://lambdajam.com/storage/2013/GrandBallroom2_header.jpg.jpeg?__SQUARESPACE_CACHEVERSION=1361043346973" /></p>
 
 <!-- more -->
 
@@ -149,7 +148,7 @@ Only this way you can feel the same I felt on the last day of the conference :)<
   <li>Just a few generic data structures can represent pretty much any kind of data.</li>
 </ul>
 
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -169,7 +168,7 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 </span><span class="line">               <span class="s">&quot;Perl&quot;</span> <span class="p">]</span> <span class="p">};</span>
 </span><span class="line">
 </span><span class="line"><span class="k">print</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;langs&#39;</span><span class="p">}[</span><span class="mi">2</span><span class="p">];</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <ul>
   <li><code>Tie::File</code> — Access the lines of a disk file via a Perl array.</li>
@@ -177,7 +176,7 @@ Only this way you can feel the same I felt on the last day of the conference :)<
   <li>[In XSLT] you can write the entire program as a series of data transformations.</li>
 </ul>
 
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -187,13 +186,13 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 </span><span class="line">saxon two.xslt t1.xml t2.xml
 </span><span class="line">saxon three.xslt t2.xml t3.xml
 </span><span class="line">saxon four.xslt t3.xml index.html
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <ul>
   <li>Clojure has universal data structures.</li>
 </ul>
 
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -203,17 +202,17 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 </span><span class="line">           <span class="ss">:langs</span> <span class="p">[</span><span class="s">&quot;Lisp&quot;</span>
 </span><span class="line">                   <span class="s">&quot;Ruby&quot;</span>
 </span><span class="line">                   <span class="s">&quot;Clojure&quot;</span><span class="p">]})</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <ul>
   <li>I’m frequently suspicious of libraries that use a lot of macros to create their abstractions because it means I can’t see them, I can’t manipulate them with the tools I already have.</li>
 </ul>
 
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 </pre></td><td class="code"><pre><code class="clojure"><span class="line"><span class="p">(</span><span class="nf">require</span> <span class="ss">&#39;clojure.inspector</span><span class="p">)</span>
 </span><span class="line"><span class="p">(</span><span class="nf">clojure.inspector/inspect-tree</span> <span class="nv">user</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p><img class="center" src="/images/posts/clojure.inspector.png" /></p>
 
@@ -221,7 +220,7 @@ Only this way you can feel the same I felt on the last day of the conference :)<
   <li>I started to write my programs as a series of data transformations with just one set of side-effects at the very end.</li>
 </ul>
 
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -261,7 +260,7 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 </span><span class="line">      <span class="nv">gather-information</span>
 </span><span class="line">      <span class="nv">make-decision</span>
 </span><span class="line">      <span class="nv">take-action</span><span class="p">))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <ul>
   <li>I try to pursue abstractions that make programs more visible, make easier to see what the program is doing.</li>
@@ -286,7 +285,7 @@ Only this way you can feel the same I felt on the last day of the conference :)<
   <li><code>return</code> puts the value into monadic context.</li>
 </ul>
 
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -300,7 +299,7 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 </span><span class="line">  <span class="kr">let</span> <span class="n">upCased</span> <span class="ow">::</span> <span class="kt">String</span> <span class="ow">=</span> <span class="n">map</span> <span class="n">toUpper</span> <span class="n">x</span>
 </span><span class="line">  <span class="n">y</span> <span class="ow">::</span> <span class="kt">String</span> <span class="ow">&lt;-</span> <span class="n">return</span> <span class="n">upCased</span> <span class="ow">::</span> <span class="kt">IO</span> <span class="kt">String</span>
 </span><span class="line">  <span class="n">print</span> <span class="n">y</span> <span class="ow">::</span> <span class="kt">IO</span> <span class="nb">()</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <h3 id="reader">Reader</h3>
 
@@ -343,7 +342,7 @@ Only this way you can feel the same I felt on the last day of the conference :)<
   <li>Hadoop is the EJBs of our time</li>
 </ul>
 
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -413,13 +412,13 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 </span><span class="line">        <span class="n">output</span><span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="n">keyWord</span><span class="o">,</span> <span class="k">new</span> <span class="n">IntWritable</span><span class="o">(</span><span class="n">totalCount</span><span class="o">));</span>
 </span><span class="line">    <span class="o">}</span>
 </span><span class="line"><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <ul>
   <li>Use Cascalog</li>
 </ul>
 
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -433,13 +432,13 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 </span><span class="line">    <span class="p">(</span><span class="nf">split</span> <span class="nv">?s</span> <span class="ss">:&gt;</span> <span class="nv">?word1</span><span class="p">)</span>
 </span><span class="line">  <span class="p">(</span><span class="nf">lowercase</span> <span class="nv">?word1</span> <span class="ss">:&gt;</span> <span class="nv">?word</span><span class="p">)</span>
 </span><span class="line">    <span class="p">(</span><span class="nf">c/count</span> <span class="nv">?count</span><span class="p">))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <ul>
   <li>Use Spark</li>
 </ul>
 
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -457,7 +456,7 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 </span><span class="line">        <span class="n">counts</span><span class="o">.</span><span class="n">saveAsTextFile</span><span class="o">(</span><span class="n">args</span><span class="o">(</span><span class="mi">1</span><span class="o">))</span>
 </span><span class="line">    <span class="o">}</span>
 </span><span class="line"><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <ul>
   <li>Data problems are fundamentally Mathematics!</li>
@@ -526,7 +525,7 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 
 <p><em>Chord</em> algorithm: distributing data across several machines</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -570,7 +569,7 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 </span><span class="line">md5<span class="o">(</span>md5<span class="o">(</span><span class="s2">&quot;mail-23412&quot;</span><span class="o">))</span> <span class="o">=</span>&gt; D604E7A54DC18FD7AC70D12468C34B63
 </span><span class="line">
 </span><span class="line">So the replica is on machine s1
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <ul>
   <li>What if master dies? <em>Paxos</em> — distributed leadership election algorithm. Very complicated algorithm that only few people understand.</li>
@@ -630,7 +629,7 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 
 <h2 id="tracy-harms--semantics-clarity-and-notation-the-benefits-of-expressions-over-statements">Tracy Harms — Semantics, clarity, and notation: the benefits of expressions over statements</h2>
 
-<blockquote><p>@kaleidic&#8217;s &#8220;Benefits of Expressions Over Statements&#8221; is gold. Brain is barely keeping up.</p><footer><strong>@bryan_hunter</strong> <cite><a href="https://twitter.com/bryan_hunter/statuses/354619102792396803">twitter.com/bryan_hunter/&hellip;</a></cite></footer></blockquote>
+<blockquote><p>@kaleidic's "Benefits of Expressions Over Statements" is gold. Brain is barely keeping up.</p><footer><strong>@bryan_hunter</strong> <cite><a href="https://twitter.com/bryan_hunter/statuses/354619102792396803">twitter.com/bryan_hunter/&hellip;</a></cite></footer></blockquote>
 
 <ul>
   <li>Expressions condense meaning in space, and eliminate time.</li>
@@ -639,7 +638,7 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 
 <blockquote><p>This is the example @kaleidic is showing now</p><footer><strong>@gazoombo</strong> <cite><a href="https://twitter.com/gazoombo/statuses/354622989599383552">twitter.com/gazoombo/statuses/&hellip;</a></cite></footer></blockquote>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -672,7 +671,7 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 </span><span class="line">└──┴──┴──┴───┴───┴──┴──┴───┴──┴───┴───┴────┴───┴───┴────┴────┘
 </span><span class="line">
 </span><span class="line">   #noncont i.10
-</span><span class="line">968</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span><span class="line">968</span></code></pre></td></tr></table></div></figure>
 
 <h3 id="resources-4">Resources</h3>
 
@@ -697,9 +696,9 @@ Only this way you can feel the same I felt on the last day of the conference :)<
   <li>A canon is defined as a series of notes that are accompanied by a functional transformation of themselves.</li>
 </ul>
 
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td><td class="code"><pre><code class="clojure"><span class="line"><span class="p">(</span><span class="kd">defn </span><span class="nv">canon</span> <span class="p">[</span><span class="nv">f</span> <span class="nv">notes</span><span class="p">]</span> <span class="p">(</span><span class="nb">concat </span><span class="nv">notes</span> <span class="p">(</span><span class="nf">f</span> <span class="nv">notes</span><span class="p">)))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <ul>
   <li>These are all pure functions, so we can compose them together. And that’s what composers did long before the lambda calculus was invented.</li>
@@ -711,7 +710,7 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 
 <h3 id="ring">Ring</h3>
 
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -729,14 +728,14 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 </span><span class="line">
 </span><span class="line">  <span class="ss">:ring</span> <span class="p">{</span><span class="ss">:handler</span> <span class="nv">request-echo/handler</span>
 </span><span class="line">         <span class="ss">:port</span> <span class="mi">3001</span><span class="p">})</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <pre><code>lein ring server
 </code></pre>
 
 <p><img class="center" src="/images/posts/ring.png" /></p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -754,11 +753,11 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 </span><span class="line">   <span class="ss">:body</span> <span class="p">(</span><span class="nb">str </span><span class="s">&quot;&lt;h1&gt;Request Echo&lt;/h1&gt;&lt;pre&gt;&quot;</span>
 </span><span class="line">              <span class="p">(</span><span class="nb">with-out-str </span><span class="p">(</span><span class="nf">pprint</span> <span class="nv">request</span><span class="p">))</span>
 </span><span class="line">              <span class="s">&quot;&lt;/pre&gt;&quot;</span><span class="p">)})</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <h3 id="compojure">Compojure</h3>
 
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -782,11 +781,11 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 </span><span class="line">         <span class="p">(</span><span class="nf">add-debt-post</span> <span class="p">{</span><span class="ss">:from</span> <span class="nv">from</span>, <span class="ss">:to</span> <span class="nv">to</span>, <span class="ss">:amount</span> <span class="nv">amount</span><span class="p">}))</span>
 </span><span class="line">  <span class="p">(</span><span class="nf">route/resources</span> <span class="s">&quot;/&quot;</span><span class="p">)</span>
 </span><span class="line">  <span class="p">(</span><span class="nf">route/not-found</span> <span class="s">&quot;Page not found&quot;</span><span class="p">))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <h3 id="hiccup">Hiccup</h3>
 
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -798,11 +797,11 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 </span><span class="line">       <span class="p">{</span><span class="ss">:href</span> <span class="s">&quot;/go&quot;</span><span class="p">}</span>  <span class="c1">; map for attributes</span>
 </span><span class="line">       <span class="s">&quot;Click here&quot;</span><span class="p">])</span> <span class="c1">; Content</span>
 </span><span class="line"><span class="c1">;;=&gt; &quot;&lt;a class=&quot;btn&quot; href=&quot;/go&quot;&gt;Click here&lt;/a&gt;&quot;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <h3 id="cheshire">Cheshire</h3>
 
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -834,11 +833,11 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 </span><span class="line">
 </span><span class="line"><span class="p">(</span><span class="kd">defn </span><span class="nv">add-debt-json</span> <span class="p">[</span><span class="nv">db</span> <span class="nv">body</span><span class="p">]</span>
 </span><span class="line">  <span class="p">(</span><span class="nf">json/parse-string</span> <span class="nv">body</span><span class="p">))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <h3 id="garden">Garden</h3>
 
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -888,7 +887,7 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 </span><span class="line">       <span class="ss">:body</span> <span class="p">(</span><span class="nf">css</span> <span class="nv">garden-data</span><span class="p">)})))</span>
 </span><span class="line">
 </span><span class="line"><span class="p">(</span><span class="k">def </span><span class="nv">css-page-memoized</span> <span class="p">(</span><span class="nf">memoize</span> <span class="nv">css-page</span><span class="p">))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <h3 id="resources-5">Resources</h3>
 
@@ -915,32 +914,24 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 
 <p>Lagrange’s equations of motion in Leibniz notation (with type violation)</p>
 
-<script type="math/tex; mode=display">
-\frac{\mathrm d}{\mathrm d t} \left(\frac{\partial L}{\partial \dot{q}^i}\right) - \frac{\partial L}{\partial q^i} = 0
-</script>
+<script type="math/tex; mode=display">\frac{\mathrm d}{\mathrm d t} \left(\frac{\partial L}{\partial \dot{q}^i}\right) - \frac{\partial L}{\partial q^i} = 0</script>
 
 <p>Expanded form (correct but ugly)</p>
 
 <script type="math/tex; mode=display">% <![CDATA[
-
-\frac{\mathrm d}{\mathrm d t} \left(\left.\frac{\partial L(t,q,\dot{q})}{\partial \dot{q}}\right|_{\begin{aligned}q &= w(t)\\ \dot{q} &= \frac{\mathrm d w(t)}{\mathrm d t}\end{aligned}}\right) - \left.\frac{\partial L(t,q,\dot{q})}{\partial q}\right|_{\begin{aligned}q &= w(t)\\ \dot{q} &= \frac{\mathrm d w(t)}{\mathrm d t}\end{aligned}} = 0
- %]]></script>
+\frac{\mathrm d}{\mathrm d t} \left(\left.\frac{\partial L(t,q,\dot{q})}{\partial \dot{q}}\right|_{\begin{aligned}q &= w(t)\\ \dot{q} &= \frac{\mathrm d w(t)}{\mathrm d t}\end{aligned}}\right) - \left.\frac{\partial L(t,q,\dot{q})}{\partial q}\right|_{\begin{aligned}q &= w(t)\\ \dot{q} &= \frac{\mathrm d w(t)}{\mathrm d t}\end{aligned}} = 0 %]]></script>
 
 <p>Functional form (correct and beautiful)</p>
 
-<script type="math/tex; mode=display">
-D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
-</script>
+<script type="math/tex; mode=display">D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0</script>
 
 <p>where</p>
 
-<script type="math/tex; mode=display">
-(Df)(t) = \left.\frac{\mathrm d}{\mathrm d x} f(x)\right|_{x=t}  \qquad  \Gamma[w](t) = (t, w(t), Dw(t))
-</script>
+<script type="math/tex; mode=display">(Df)(t) = \left.\frac{\mathrm d}{\mathrm d x} f(x)\right|_{x=t}  \qquad  \Gamma[w](t) = (t, w(t), Dw(t))</script>
 
 <p>As Scheme code</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -956,11 +947,11 @@ D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
 </span><span class="line">
 </span><span class="line"><span class="p">(</span><span class="k">define </span><span class="p">((</span><span class="nf">Gamma</span> <span class="nv">w</span><span class="p">)</span> <span class="nv">t</span><span class="p">)</span>
 </span><span class="line">  <span class="p">(</span><span class="nf">up</span> <span class="nv">t</span> <span class="p">(</span><span class="nf">w</span> <span class="nv">t</span><span class="p">)</span> <span class="p">((</span><span class="nf">D</span> <span class="nv">w</span><span class="p">)</span> <span class="nv">t</span><span class="p">)))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>We can even generate LaTeX from the Scheme code.</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -968,7 +959,7 @@ D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
 </span><span class="line">  <span class="p">(((</span><span class="nf">Lagrange-equations</span> <span class="p">(</span><span class="nf">L-harmonic</span> <span class="ss">&#39;m</span> <span class="ss">&#39;k</span><span class="p">))</span>
 </span><span class="line">    <span class="nv">proposed-solution</span><span class="p">)</span>
 </span><span class="line">   <span class="ss">&#39;t</span><span class="p">))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>The moral: originally, Lagrange’s equations had missing parameters and a type error. Programming them forced an elegant and <em>effective</em> statement.</p>
 
@@ -1014,7 +1005,7 @@ D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
   <li>Slides: <a href="https://github.com/strangeloop/lambdajam2013/blob/master/slides/Thomas-LivingInBigDataWithVectorFunctionalProgramming.pdf">GitHub</a></li>
 </ul>
 
-<blockquote><p>This is the first time I&#8217;ve been in the audience of a talk on vector languages.</p><footer><strong>@kaleidic</strong> <cite><a href="https://twitter.com/kaleidic/statuses/354961117816176642">twitter.com/kaleidic/statuses/&hellip;</a></cite></footer></blockquote>
+<blockquote><p>This is the first time I've been in the audience of a talk on vector languages.</p><footer><strong>@kaleidic</strong> <cite><a href="https://twitter.com/kaleidic/statuses/354961117816176642">twitter.com/kaleidic/statuses/&hellip;</a></cite></footer></blockquote>
 
 <ul>
   <li>Extreme cases — that’s what is interesting.</li>
@@ -1079,7 +1070,7 @@ D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
   <li>Slides: <a href="http://www.slideshare.net/dieswaytoofast/genfsm-the-erlang-behavior-that-gets-no-respect">Slideshare</a></li>
 </ul>
 
-<blockquote><p>Sitting behind @webyrd, @dfried00, Sussman, and @joeerl in @dieswaytoofast&#8217;s finite state machine talk.</p><footer><strong>@gazoombo</strong> <cite><a href="https://twitter.com/gazoombo/statuses/354991392247906305">twitter.com/gazoombo/statuses/&hellip;</a></cite></footer></blockquote>
+<blockquote><p>Sitting behind @webyrd, @dfried00, Sussman, and @joeerl in @dieswaytoofast's finite state machine talk.</p><footer><strong>@gazoombo</strong> <cite><a href="https://twitter.com/gazoombo/statuses/354991392247906305">twitter.com/gazoombo/statuses/&hellip;</a></cite></footer></blockquote>
 
 <p><img class="center" src="https://pbs.twimg.com/media/BO0uyloCAAAS7X4.jpg" /></p>
 
@@ -1100,9 +1091,9 @@ D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
   <li>Webmachine <a href="https://github.com/basho/webmachine/wiki/Diagram">diagram</a></li>
 </ul>
 
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td><td class="code"><pre><code class="bash"><span class="line">git clone git@github.com:cmeiklejohn/webmachine-tutorial.git
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p><img class="center" src="/images/posts/webmachine-diagram.png" /></p>
 
@@ -1114,8 +1105,8 @@ D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
   <li><code>iolist()</code></li>
 </ul>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>src/tweeter_resource.erl </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><figcaption><span>src/tweeter_resource.erl </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -1129,15 +1120,15 @@ D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
 </span><span class="line">    <span class="p">{[</span><span class="s">&quot;&lt;html&gt;&lt;body&gt;&quot;</span><span class="p">,</span> <span class="nn">wrq</span><span class="p">:</span><span class="nf">get_req_header</span><span class="p">(</span><span class="s">&quot;host&quot;</span><span class="p">,</span> <span class="nv">ReqData</span><span class="p">),</span> <span class="s">&quot;&lt;/body&gt;&lt;/html&gt;&quot;</span><span class="p">],</span>
 </span><span class="line">     <span class="nv">ReqData</span><span class="p">,</span>
 </span><span class="line">     <span class="nv">State</span><span class="p">}.</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>Supervisor: resources, routes, dispatch</p>
 
 <pre><code>git checkout -f load-tweets
 </code></pre>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>src/tweeter_sup.erl </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><figcaption><span>src/tweeter_sup.erl </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -1147,26 +1138,26 @@ D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
 </span><span class="line">    <span class="nv">Resources</span> <span class="o">=</span> <span class="p">[</span><span class="n">tweeter_wm_tweet_resource</span><span class="p">,</span> <span class="n">tweeter_wm_asset_resource</span><span class="p">],</span>
 </span><span class="line">    <span class="nv">Dispatch</span> <span class="o">=</span> <span class="nn">lists</span><span class="p">:</span><span class="nf">flatten</span><span class="p">([</span><span class="nv">Module</span><span class="p">:</span><span class="nf">routes</span><span class="p">()</span> <span class="p">||</span> <span class="nv">Module</span> <span class="o">&lt;-</span> <span class="nv">Resources</span><span class="p">]),</span>
 </span><span class="line">    <span class="p">...</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>src/tweeter_wm_tweet_resource.erl </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><figcaption><span>src/tweeter_wm_tweet_resource.erl </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 </pre></td><td class="code"><pre><code class="erlang"><span class="line"><span class="nf">routes</span><span class="p">()</span> <span class="o">-&gt;</span>
 </span><span class="line">    <span class="p">[{[</span><span class="s">&quot;tweets&quot;</span><span class="p">],</span> <span class="o">?</span><span class="nv">MODULE</span><span class="p">,</span> <span class="p">[]}].</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>src/tweeter_wm_asset_resource.erl </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><figcaption><span>src/tweeter_wm_asset_resource.erl </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 </pre></td><td class="code"><pre><code class="erlang"><span class="line"><span class="nf">routes</span><span class="p">()</span> <span class="o">-&gt;</span>
 </span><span class="line">    <span class="p">[{[</span><span class="s">&quot;&quot;</span><span class="p">],</span> <span class="o">?</span><span class="nv">MODULE</span><span class="p">,</span> <span class="p">[]},</span> <span class="p">{[</span><span class="n">&#39;*&#39;</span><span class="p">],</span> <span class="o">?</span><span class="nv">MODULE</span><span class="p">,</span> <span class="p">[]}].</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>Media Types</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>src/tweeter_wm_tweet_resource.erl </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><figcaption><span>src/tweeter_wm_tweet_resource.erl </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -1192,9 +1183,9 @@ D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
 </span><span class="line">    <span class="nv">Tweets</span> <span class="o">=</span> <span class="p">[</span><span class="nv">Value</span> <span class="p">||</span> <span class="p">[{_</span><span class="nv">Key</span><span class="p">,</span> <span class="nv">Value</span><span class="p">}]</span> <span class="o">&lt;-</span> <span class="nn">ets</span><span class="p">:</span><span class="nf">match</span><span class="p">(</span><span class="n">tweets</span><span class="p">,</span> <span class="n">&#39;$1&#39;</span><span class="p">)],</span>
 </span><span class="line">    <span class="nv">Content</span> <span class="o">=</span> <span class="nb">term_to_binary</span><span class="p">(</span><span class="nv">Tweets</span><span class="p">),</span>
 </span><span class="line">    <span class="p">{</span><span class="nv">Content</span><span class="p">,</span> <span class="nv">ReqData</span><span class="p">,</span> <span class="nv">Context</span><span class="p">}.</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -1207,15 +1198,15 @@ D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
 </span><span class="line">Server: MochiWeb/1.1 WebMachine/1.10.0 (never breaks eye contact)
 </span><span class="line">Content-Type: application/x-erlang-binary
 </span><span class="line">
-</span><span class="line">?llhdavatarmZhttps://si0.twimg.com/profile_images/2536088319/4sl2go65was3o0km520j_reasonably_small.jpeghdmessageCaremad.jlhdavatarm\https://si0.twimg.com/profile_images/3778090444/e4fde2cad4b921cd8c07fcecc0ff2fff_bigger.jpeghdmessagemRubby is over!jlhdavatarmZhttps://si0.twimg.com/profile_images/2536088319/4sl2go65was3o0km520j_reasonably_small.jpeghdmessagemYou boys having a taste?jj</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span><span class="line">?llhdavatarmZhttps://si0.twimg.com/profile_images/2536088319/4sl2go65was3o0km520j_reasonably_small.jpeghdmessageCaremad.jlhdavatarm\https://si0.twimg.com/profile_images/3778090444/e4fde2cad4b921cd8c07fcecc0ff2fff_bigger.jpeghdmessagemRubby is over!jlhdavatarmZhttps://si0.twimg.com/profile_images/2536088319/4sl2go65was3o0km520j_reasonably_small.jpeghdmessagemYou boys having a taste?jj</span></code></pre></td></tr></table></div></figure>
 
 <p><code>resource_exists</code></p>
 
 <pre><code>git checkout -f tweet-urls
 </code></pre>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>src/tweeter_wm_tweet_resource.erl </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><figcaption><span>src/tweeter_wm_tweet_resource.erl </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -1237,9 +1228,9 @@ D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
 </span><span class="line">        <span class="p">{</span><span class="n">true</span><span class="p">,</span> <span class="nv">NewContext</span><span class="p">}</span> <span class="o">-&gt;</span> <span class="p">{</span><span class="n">true</span><span class="p">,</span> <span class="nv">ReqData</span><span class="p">,</span> <span class="nv">NewContext</span><span class="p">};</span>
 </span><span class="line">        <span class="p">{</span><span class="n">false</span><span class="p">,</span> <span class="nv">Context</span><span class="p">}</span>   <span class="o">-&gt;</span> <span class="p">{</span><span class="n">false</span><span class="p">,</span> <span class="nv">ReqData</span><span class="p">,</span> <span class="nv">Context</span><span class="p">}</span>
 </span><span class="line">    <span class="k">end</span><span class="p">.</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -1248,33 +1239,33 @@ D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
 </span><span class="line">{"tweets":[
 </span><span class="line">  {"avatar":"https://si0.twimg.com/profile_images/2536088319/4sl2go65was3o0km520j_reasonably_small.jpeg","message":"Caremad.","id":"1376843311536798"},
 </span><span class="line">  {"avatar":"https://si0.twimg.com/profile_images/3778090444/e4fde2cad4b921cd8c07fcecc0ff2fff_bigger.jpeg","message":"Rubby is over!","id":"1376843311536799"},
-</span><span class="line">  {"avatar":"https://si0.twimg.com/profile_images/2536088319/4sl2go65was3o0km520j_reasonably_small.jpeg","message":"You boys having a taste?","id":"1376843311536800"}]}</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span><span class="line">  {"avatar":"https://si0.twimg.com/profile_images/2536088319/4sl2go65was3o0km520j_reasonably_small.jpeg","message":"You boys having a taste?","id":"1376843311536800"}]}</span></code></pre></td></tr></table></div></figure>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
 </pre></td><td class="code"><pre><code class=""><span class="line">$ curl -i http://localhost:8080/tweets/1376843311536798
 </span><span class="line">HTTP/1.1 200 OK
 </span><span class="line">
-</span><span class="line">{"tweet":{"avatar":"https://si0.twimg.com/profile_images/2536088319/4sl2go65was3o0km520j_reasonably_small.jpeg","message":"Caremad."}}</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span><span class="line">{"tweet":{"avatar":"https://si0.twimg.com/profile_images/2536088319/4sl2go65was3o0km520j_reasonably_small.jpeg","message":"Caremad."}}</span></code></pre></td></tr></table></div></figure>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
 </pre></td><td class="code"><pre><code class=""><span class="line">$ curl -i http://localhost:8080/tweets/42
 </span><span class="line">HTTP/1.1 404 Object Not Found
 </span><span class="line">
-</span><span class="line">&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;404 Not Found&lt;/TITLE&gt;&lt;/HEAD&gt;&lt;BODY&gt;&lt;H1&gt;Not Found&lt;/H1&gt;The requested document was not found on this server.&lt;P&gt;&lt;HR&gt;&lt;ADDRESS&gt;mochiweb+webmachine web server&lt;/ADDRESS&gt;&lt;/BODY&gt;&lt;/HTML&gt;</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span><span class="line">&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;404 Not Found&lt;/TITLE&gt;&lt;/HEAD&gt;&lt;BODY&gt;&lt;H1&gt;Not Found&lt;/H1&gt;The requested document was not found on this server.&lt;P&gt;&lt;HR&gt;&lt;ADDRESS&gt;mochiweb+webmachine web server&lt;/ADDRESS&gt;&lt;/BODY&gt;&lt;/HTML&gt;</span></code></pre></td></tr></table></div></figure>
 
 <p><code>POST</code>, response header</p>
 
 <pre><code>git checkout -f create-tweets
 </code></pre>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>src/tweeter_wm_tweets_resource.erl </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><figcaption><span>src/tweeter_wm_tweets_resource.erl </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -1334,9 +1325,9 @@ D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
 </span><span class="line">        <span class="p">{</span><span class="n">false</span><span class="p">,</span> <span class="nv">Context</span><span class="p">}</span> <span class="o">-&gt;</span>
 </span><span class="line">            <span class="p">{</span> <span class="p">{</span><span class="n">halt</span><span class="p">,</span> <span class="mi">409</span><span class="p">},</span> <span class="nv">ReqData</span><span class="p">,</span> <span class="nv">Context</span><span class="p">}</span>
 </span><span class="line">    <span class="k">end</span><span class="p">.</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -1361,9 +1352,9 @@ D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
 </span><span class="line">Location: /tweets/1376847941255278
 </span><span class="line">Content-Type: application/json
 </span><span class="line">
-</span><span class="line">{"tweet":{"message":"testing...","avatar":"https://si0.twimg.com/profile_images/3778090444/e4fde2cad4b921cd8c07fcecc0ff2fff_bigger.jpeg"}}</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span><span class="line">{"tweet":{"message":"testing...","avatar":"https://si0.twimg.com/profile_images/3778090444/e4fde2cad4b921cd8c07fcecc0ff2fff_bigger.jpeg"}}</span></code></pre></td></tr></table></div></figure>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -1388,11 +1379,11 @@ D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
 </span><span class="line">Location: /tweets/1376848621307991
 </span><span class="line">Content-Type: text/html
 </span><span class="line">
-</span><span class="line">&lt;html&gt;&lt;head&gt;&lt;title&gt;415 Unsupported Media Type&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;Unsupported Media Type&lt;/h1&gt;Unsupported Media Type&lt;p&gt;&lt;hr&gt;&lt;address&gt;mochiweb+webmachine web server&lt;/address&gt;&lt;/body&gt;&lt;/html&gt;</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span><span class="line">&lt;html&gt;&lt;head&gt;&lt;title&gt;415 Unsupported Media Type&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;Unsupported Media Type&lt;/h1&gt;Unsupported Media Type&lt;p&gt;&lt;hr&gt;&lt;address&gt;mochiweb+webmachine web server&lt;/address&gt;&lt;/body&gt;&lt;/html&gt;</span></code></pre></td></tr></table></div></figure>
 
 <p>Note: <code>create_path</code> is called before <code>content_types_accepted</code></p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -1415,15 +1406,15 @@ D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
 </span><span class="line">
 </span><span class="line">&lt;html&gt;&lt;head&gt;&lt;title&gt;500 Internal Server Error&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;Internal Server Error&lt;/h1&gt;The server encountered an error while processing this request:&lt;br&gt;&lt;pre&gt;{"create_path not a string",
 </span><span class="line"> {error,
-</span><span class="line">     {...}}}&lt;/pre&gt;&lt;P&gt;&lt;HR&gt;&lt;ADDRESS&gt;mochiweb+webmachine web server&lt;/ADDRESS&gt;&lt;/body&gt;&lt;/html&gt;</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span><span class="line">     {...}}}&lt;/pre&gt;&lt;P&gt;&lt;HR&gt;&lt;ADDRESS&gt;mochiweb+webmachine web server&lt;/ADDRESS&gt;&lt;/body&gt;&lt;/html&gt;</span></code></pre></td></tr></table></div></figure>
 
 <p>ETags, caching, preconditions</p>
 
 <pre><code>git checkout -f etag-tweets
 </code></pre>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>src/tweeter_wm_tweets_resource.erl </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><figcaption><span>src/tweeter_wm_tweets_resource.erl </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -1439,9 +1430,9 @@ D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
 </span><span class="line"><span class="nf">last_modified</span><span class="p">(</span><span class="nv">ReqData</span><span class="p">,</span> <span class="nv">Context</span><span class="p">)</span> <span class="o">-&gt;</span>
 </span><span class="line">    <span class="nv">Id</span> <span class="o">=</span> <span class="nn">ets</span><span class="p">:</span><span class="nf">last</span><span class="p">(</span><span class="n">tweets</span><span class="p">),</span>
 </span><span class="line">    <span class="p">{</span><span class="nn">calendar</span><span class="p">:</span><span class="nf">now_to_datetime</span><span class="p">(</span><span class="nv">Id</span><span class="p">),</span> <span class="nv">ReqData</span><span class="p">,</span> <span class="nv">Context</span><span class="p">}.</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -1458,47 +1449,47 @@ D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
 </span><span class="line">{"tweets":[
 </span><span class="line">  {"avatar":"https://si0.twimg.com/profile_images/2536088319/4sl2go65was3o0km520j_reasonably_small.jpeg","message":"Caremad.","id":"1376860726482913"},
 </span><span class="line">  {"avatar":"https://si0.twimg.com/profile_images/3778090444/e4fde2cad4b921cd8c07fcecc0ff2fff_bigger.jpeg","message":"Rubby is over!","id":"1376860726482914"},
-</span><span class="line">  {"avatar":"https://si0.twimg.com/profile_images/2536088319/4sl2go65was3o0km520j_reasonably_small.jpeg","message":"You boys having a taste?","id":"1376860726482915"}]}</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span><span class="line">  {"avatar":"https://si0.twimg.com/profile_images/2536088319/4sl2go65was3o0km520j_reasonably_small.jpeg","message":"You boys having a taste?","id":"1376860726482915"}]}</span></code></pre></td></tr></table></div></figure>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 </pre></td><td class="code"><pre><code class=""><span class="line">$ curl -i -H 'If-None-Match:"30008d7"' http://localhost:8080/tweets
 </span><span class="line">HTTP/1.1 304 Not Modified
-</span><span class="line">ETag: "30008d7"</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span><span class="line">ETag: "30008d7"</span></code></pre></td></tr></table></div></figure>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 </pre></td><td class="code"><pre><code class=""><span class="line">$ curl -i -H 'If-Modified-Since:Sun, 18 Aug 2013 21:45:41 GMT' http://localhost:8080/tweets
 </span><span class="line">HTTP/1.1 304 Not Modified
-</span><span class="line">ETag: "30008d7"</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span><span class="line">ETag: "30008d7"</span></code></pre></td></tr></table></div></figure>
 
 <p>Authorization, CSRF</p>
 
 <pre><code>git checkout -f csrf
 </code></pre>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>src/tweeter_wm_tweets_resource.erl </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><figcaption><span>src/tweeter_wm_tweets_resource.erl </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 </pre></td><td class="code"><pre><code class="erlang"><span class="line"><span class="nf">forbidden</span><span class="p">(</span><span class="nv">ReqData</span><span class="p">,</span> <span class="nv">Context</span><span class="p">)</span> <span class="o">-&gt;</span>
 </span><span class="line">    <span class="p">{</span><span class="nn">tweeter_security</span><span class="p">:</span><span class="nf">is_protected</span><span class="p">(</span><span class="nv">ReqData</span><span class="p">,</span> <span class="nv">Context</span><span class="p">),</span> <span class="nv">ReqData</span><span class="p">,</span> <span class="nv">Context</span><span class="p">}.</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>Visual debugger</p>
 
 <pre><code>git checkout -f debugger
 </code></pre>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>src/tweeter_wm_asset_resource.erl </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><figcaption><span>src/tweeter_wm_asset_resource.erl </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 </pre></td><td class="code"><pre><code class="erlang"><span class="line"><span class="nf">init</span><span class="p">([])</span> <span class="o">-&gt;</span>
 </span><span class="line">    <span class="nn">wmtrace_resource</span><span class="p">:</span><span class="nf">add_dispatch_rule</span><span class="p">(</span><span class="s">&quot;wmtrace&quot;</span><span class="p">,</span> <span class="s">&quot;/tmp&quot;</span><span class="p">),</span>
 </span><span class="line">    <span class="p">{</span> <span class="p">{</span><span class="nb">trace</span><span class="p">,</span> <span class="s">&quot;/tmp&quot;</span><span class="p">},</span> <span class="nl">#context</span><span class="p">{}}.</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p><img class="center" src="/images/posts/webmachine-debugger-1.png" /></p>
 
@@ -1532,7 +1523,7 @@ D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
   <li>In Clojure we can pattern match on persistent vectors and hashmaps.</li>
 </ul>
 
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -1562,7 +1553,7 @@ D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
 </span><span class="line">  <span class="p">[{</span><span class="ss">:a</span> <span class="mi">1</span> <span class="ss">:b</span> <span class="mi">1</span><span class="p">}]</span> <span class="mi">2</span>
 </span><span class="line">  <span class="p">[{</span><span class="ss">:c</span> <span class="mi">3</span> <span class="ss">:d</span> <span class="nv">_</span> <span class="ss">:e</span> <span class="mi">4</span><span class="p">}]</span> <span class="mi">3</span>
 </span><span class="line">  <span class="ss">:else</span> <span class="mi">4</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <ul>
   <li>The best way to predict the future is to read papers and <em>engineer</em> it.</li>
@@ -1616,7 +1607,7 @@ D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
   <li>When Prolog program goes wrong, it says <em>No</em>.</li>
 </ul>
 
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -1644,7 +1635,7 @@ D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
 </span><span class="line">              <span class="p">])</span>
 </span><span class="line">             <span class="p">]</span>
 </span><span class="line">    <span class="p">]).</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <ul>
   <li>This diagrams are nested state machines.</li>
@@ -1653,7 +1644,7 @@ D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
   <li>That’s the entire documentation of Erlang 1.05</li>
 </ul>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -1698,7 +1689,7 @@ D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
 </span><span class="line">talk(N)          N=1 verbose, =0 silent
 </span><span class="line">peep(M)          set peeping point on M
 </span><span class="line">no_peep(M)       unset peeping point on M
-</span><span class="line">vsn(X)           erlang vsn number is X</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span><span class="line">vsn(X)           erlang vsn number is X</span></code></pre></td></tr></table></div></figure>
 
 <ul>
   <li>Don’t speculate about performance. Write the program, run it, and measure it.</li>
@@ -1729,9 +1720,7 @@ D((\partial_2 L) \circ (\Gamma[w])) - (\partial_1 L) \circ (\Gamma[w]) = 0
   <li>Naive Bayesian</li>
 </ul>
 
-<script type="math/tex; mode=display">
-P(A|B) P(B) = P(B|A) P(A)
-</script>
+<script type="math/tex; mode=display">P(A|B) P(B) = P(B|A) P(A)</script>
 
 <ul>
   <li>Normalized compression difference: If $A$ and $B$ are similar then size(compress($A$++$B$) will be wee bit larger than size(compress($A$)). It’s insensitive to choice of compression algorithm.</li>
@@ -1756,7 +1745,7 @@ P(A|B) P(B) = P(B|A) P(A)
 
 <h2 id="epilogue">Epilogue</h2>
 
-<blockquote><p>As I leave #LambdaJam I&#8217;m particularly happy at my improved sense of being able to think about OO stuff in FP terms. That may serve me well.</p><footer><strong>@kaleidic</strong> <cite><a href="https://twitter.com/kaleidic/statuses/355327906764959744">twitter.com/kaleidic/statuses/&hellip;</a></cite></footer></blockquote>
+<blockquote><p>As I leave #LambdaJam I'm particularly happy at my improved sense of being able to think about OO stuff in FP terms. That may serve me well.</p><footer><strong>@kaleidic</strong> <cite><a href="https://twitter.com/kaleidic/statuses/355327906764959744">twitter.com/kaleidic/statuses/&hellip;</a></cite></footer></blockquote>
 
 <blockquote><p>Life returning to normal. Have been suffering for PCSD (Post Conference Stress Disorder) — too many ideas in too short time + Jet Lag</p><footer><strong>@joeerl</strong> <cite><a href="https://twitter.com/joeerl/statuses/356672073675972609">twitter.com/joeerl/statuses/&hellip;</a></cite></footer></blockquote>
 
@@ -1782,12 +1771,13 @@ P(A|B) P(B) = P(B|A) P(A)
   
 
 
-<time datetime="2013-07-08T05:00:00-04:00" pubdate data-updated="true">Jul 8<span>th</span>, 2013</time>
+
+<time datetime="2013-07-08T05:00:00-04:00" pubdate data-updated="true">July 08, 2013</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/categories/clojure/'>Clojure</a>, <a class='category' href='/categories/conference/'>Conference</a>, <a class='category' href='/categories/erlang/'>Erlang</a>, <a class='category' href='/categories/haskell/'>Haskell</a>, <a class='category' href='/categories/math/'>Math</a>, <a class='category' href='/categories/scala/'>Scala</a>
+    <a class='category' href='/categories/clojure/'>clojure</a>, <a class='category' href='/categories/conference/'>conference</a>, <a class='category' href='/categories/erlang/'>erlang</a>, <a class='category' href='/categories/haskell/'>haskell</a>, <a class='category' href='/categories/math/'>math</a>, <a class='category' href='/categories/scala/'>scala</a>
   
 </span>
 
@@ -1821,23 +1811,23 @@ P(A|B) P(B) = P(B|A) P(A)
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2016/12/24/spring-oauth2/">Spring OAuth 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/11/07/ml-logistic-regression/">Machine Learning: Logistic Regression</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/10/28/ml-linear-regression/">Machine Learning: Linear Regression</a>
+      </li>
+    
+      <li class="post">
         <a href="/2015/04/03/feynman-tot/">Another Notation as a Tool of Thought</a>
       </li>
     
       <li class="post">
         <a href="/2014/11/29/two-series/">Two Series</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/10/13/gc-visualization/">GC Visualization</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/10/12/fft-j/">Fast Fourier Transform in J</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/10/11/dft-j/">Discrete Fourier Transform in J</a>
       </li>
     
   </ul>
@@ -1877,44 +1867,47 @@ P(A|B) P(B) = P(B|A) P(A)
 <section>
   <h1>Categories</h1>
   <ul id="categories">
-    <li class='category'><a href='/categories/activemq/'>ActiveMQ (1)</a></li>
-<li class='category'><a href='/categories/agile/'>Agile (1)</a></li>
-<li class='category'><a href='/categories/art/'>Art (1)</a></li>
-<li class='category'><a href='/categories/book-review/'>Book Review (1)</a></li>
-<li class='category'><a href='/categories/buzz/'>Buzz (2)</a></li>
-<li class='category'><a href='/categories/clojure/'>Clojure (4)</a></li>
-<li class='category'><a href='/categories/clustering/'>Clustering (1)</a></li>
-<li class='category'><a href='/categories/conference/'>Conference (3)</a></li>
-<li class='category'><a href='/categories/craftsmanship/'>Craftsmanship (1)</a></li>
-<li class='category'><a href='/categories/education/'>Education (1)</a></li>
-<li class='category'><a href='/categories/ejabberd/'>Ejabberd (2)</a></li>
-<li class='category'><a href='/categories/entrepreneurship/'>Entrepreneurship (1)</a></li>
-<li class='category'><a href='/categories/erlang/'>Erlang (8)</a></li>
-<li class='category'><a href='/categories/feynman/'>Feynman (1)</a></li>
-<li class='category'><a href='/categories/functional-programming/'>Functional Programming (1)</a></li>
-<li class='category'><a href='/categories/git/'>Git (3)</a></li>
-<li class='category'><a href='/categories/grails/'>Grails (1)</a></li>
-<li class='category'><a href='/categories/groovy/'>Groovy (10)</a></li>
-<li class='category'><a href='/categories/haskell/'>Haskell (1)</a></li>
-<li class='category'><a href='/categories/humor/'>Humor (2)</a></li>
-<li class='category'><a href='/categories/j/'>J (2)</a></li>
-<li class='category'><a href='/categories/java/'>Java (4)</a></li>
-<li class='category'><a href='/categories/lisp/'>Lisp (3)</a></li>
-<li class='category'><a href='/categories/math/'>Math (9)</a></li>
-<li class='category'><a href='/categories/maven/'>Maven (1)</a></li>
-<li class='category'><a href='/categories/mongodb/'>MongoDB (1)</a></li>
-<li class='category'><a href='/categories/nosql/'>NoSQL (1)</a></li>
-<li class='category'><a href='/categories/programming/'>Programming (6)</a></li>
-<li class='category'><a href='/categories/python/'>Python (2)</a></li>
-<li class='category'><a href='/categories/rabbitmq/'>RabbitMQ (4)</a></li>
-<li class='category'><a href='/categories/regex/'>Regex (2)</a></li>
-<li class='category'><a href='/categories/sicp/'>SICP (1)</a></li>
-<li class='category'><a href='/categories/scala/'>Scala (1)</a></li>
-<li class='category'><a href='/categories/solr/'>Solr (1)</a></li>
-<li class='category'><a href='/categories/spring/'>Spring (1)</a></li>
-<li class='category'><a href='/categories/tutorial/'>Tutorial (1)</a></li>
-<li class='category'><a href='/categories/zeromq/'>ZeroMQ (1)</a></li>
-<li class='category'><a href='/categories/zookeeper/'>ZooKeeper (1)</a></li>
+    <li class='category'><a href='/categories/activemq/'>activemq (1)</a></li>
+<li class='category'><a href='/categories/agile/'>agile (1)</a></li>
+<li class='category'><a href='/categories/art/'>art (1)</a></li>
+<li class='category'><a href='/categories/book-review/'>book review (1)</a></li>
+<li class='category'><a href='/categories/buzz/'>buzz (2)</a></li>
+<li class='category'><a href='/categories/clojure/'>clojure (4)</a></li>
+<li class='category'><a href='/categories/clustering/'>clustering (1)</a></li>
+<li class='category'><a href='/categories/conference/'>conference (3)</a></li>
+<li class='category'><a href='/categories/craftsmanship/'>craftsmanship (1)</a></li>
+<li class='category'><a href='/categories/education/'>education (1)</a></li>
+<li class='category'><a href='/categories/ejabberd/'>ejabberd (2)</a></li>
+<li class='category'><a href='/categories/entrepreneurship/'>entrepreneurship (1)</a></li>
+<li class='category'><a href='/categories/erlang/'>erlang (8)</a></li>
+<li class='category'><a href='/categories/feynman/'>feynman (1)</a></li>
+<li class='category'><a href='/categories/functional-programming/'>functional programming (1)</a></li>
+<li class='category'><a href='/categories/git/'>git (3)</a></li>
+<li class='category'><a href='/categories/grails/'>grails (1)</a></li>
+<li class='category'><a href='/categories/groovy/'>groovy (10)</a></li>
+<li class='category'><a href='/categories/haskell/'>haskell (1)</a></li>
+<li class='category'><a href='/categories/humor/'>humor (2)</a></li>
+<li class='category'><a href='/categories/j/'>j (2)</a></li>
+<li class='category'><a href='/categories/java/'>java (4)</a></li>
+<li class='category'><a href='/categories/lisp/'>lisp (3)</a></li>
+<li class='category'><a href='/categories/machine-learning/'>machine learning (2)</a></li>
+<li class='category'><a href='/categories/math/'>math (11)</a></li>
+<li class='category'><a href='/categories/matlab/'>matlab (2)</a></li>
+<li class='category'><a href='/categories/maven/'>maven (1)</a></li>
+<li class='category'><a href='/categories/mongodb/'>mongodb (1)</a></li>
+<li class='category'><a href='/categories/nosql/'>nosql (1)</a></li>
+<li class='category'><a href='/categories/oauth/'>oauth (1)</a></li>
+<li class='category'><a href='/categories/programming/'>programming (6)</a></li>
+<li class='category'><a href='/categories/python/'>python (2)</a></li>
+<li class='category'><a href='/categories/rabbitmq/'>rabbitmq (4)</a></li>
+<li class='category'><a href='/categories/regex/'>regex (2)</a></li>
+<li class='category'><a href='/categories/scala/'>scala (1)</a></li>
+<li class='category'><a href='/categories/sicp/'>sicp (1)</a></li>
+<li class='category'><a href='/categories/solr/'>solr (1)</a></li>
+<li class='category'><a href='/categories/spring/'>spring (2)</a></li>
+<li class='category'><a href='/categories/tutorial/'>tutorial (1)</a></li>
+<li class='category'><a href='/categories/zeromq/'>zeromq (1)</a></li>
+<li class='category'><a href='/categories/zookeeper/'>zookeeper (1)</a></li>
 
   </ul>
 </section>
@@ -1926,7 +1919,7 @@ P(A|B) P(B) = P(B|A) P(A)
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2009–2015 - Andrey Paramonov -
+  Copyright &copy; 2009–2017 - Andrey Paramonov -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> -
   <span class="credit">Hosted by <a href="http://github.com">GitHub</a></span>
 </p>

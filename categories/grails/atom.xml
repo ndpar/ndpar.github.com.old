@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Grails | Side Notes]]></title>
+  <title><![CDATA[Category: grails | Side Notes]]></title>
   <link href="http://blog.ndpar.com/categories/grails/atom.xml" rel="self"/>
   <link href="http://blog.ndpar.com/"/>
-  <updated>2015-11-06T20:35:32-05:00</updated>
+  <updated>2017-01-08T17:14:02-05:00</updated>
   <id>http://blog.ndpar.com/</id>
   <author>
     <name><![CDATA[Andrey Paramonov]]></name>
@@ -148,7 +148,7 @@
 
 <p>One of the topics he covered was the usage of the <code>return</code> keyword in Groovy. That was interesting. Compare the following two functions, guess what they return, and check your answer in the console</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -162,9 +162,9 @@
 </span><span class='line'>        <span class="k">return</span> <span class="mi">22</span>
 </span><span class='line'>    <span class="o">}</span>
 </span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -178,7 +178,7 @@
 </span><span class='line'>        <span class="mi">22</span>
 </span><span class='line'>    <span class="o">}</span>
 </span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h3 id="paul-king-guillaume-laforge--groovydsls-from-beginner-to-expert-videohttpwwwinfoqcompresentationsgroovy-dsls">Paul King, Guillaume Laforge — Groovy.DSLs (from: beginner, to: expert) (<a href="http://www.infoq.com/presentations/Groovy-DSLs">video</a>)</h3>
 
@@ -253,13 +253,13 @@
 
 <p>Spring Social offers consistent template-based API across different social providers. It basically gives you an OAuth aware RestTemplate, so you can do something like this:</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 </pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">TwitterTemplate</span> <span class="n">twitter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TwitterTemplate</span><span class="o">(</span><span class="n">API_KEY</span><span class="o">,</span> <span class="n">API_SECRET</span><span class="o">,</span> <span class="n">ACCESS_TOKEN</span><span class="o">,</span> <span class="n">ACCESS_TOKEN_SECRET</span><span class="o">);</span>
 </span><span class='line'><span class="n">twitter</span><span class="o">.</span><span class="na">updateStatus</span><span class="o">(</span><span class="err">“</span><span class="n">Hello</span> <span class="err">#</span><span class="n">s2gx</span> <span class="o">!</span><span class="err">”</span><span class="o">);</span>
 </span><span class='line'><span class="n">twitter</span><span class="o">.</span><span class="na">retweet</span><span class="o">(</span><span class="mi">26887414177L</span><span class="o">);</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>If you are in a social network business, definitely take a look at <a href="http://www.springsource.org/spring-social">Spring Social</a>.</p>
 

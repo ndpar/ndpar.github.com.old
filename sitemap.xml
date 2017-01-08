@@ -1,187 +1,327 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
-    <url>
-        <loc>http://blog.ndpar.com/2009/04/13/git-split/</loc>
-        <lastmod>2015-11-06T20:27:39-05:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/2009/09/25/groovy-regular-expressions/</loc>
-        <lastmod>2013-06-23T18:27:48-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/2009/10/22/parsing-files-using-groovy-regex/</loc>
-        <lastmod>2013-06-23T22:02:27-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/2009/11/12/state-machine-in-erlang/</loc>
-        <lastmod>2013-06-16T10:39:05-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/2010/02/23/get-started-with-ejabberd/</loc>
-        <lastmod>2013-06-03T17:22:49-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/2010/03/14/get-started-with-rabbitmq/</loc>
-        <lastmod>2013-05-30T20:19:15-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/2010/03/31/integrating-rabbitmq-with-ejabberd/</loc>
-        <lastmod>2013-06-03T21:47:57-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/2010/10/31/springone2gx-2010/</loc>
-        <lastmod>2013-06-09T09:56:30-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/2010/11/06/erlang-and-otp-in-action/</loc>
-        <lastmod>2013-06-08T19:47:57-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/2010/11/10/erlang-selective-receive/</loc>
-        <lastmod>2013-06-08T09:50:38-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/2010/11/18/joe-armstrong-on-optimization/</loc>
-        <lastmod>2013-06-06T22:35:57-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/2011/01/24/git-maven/</loc>
-        <lastmod>2013-06-06T21:47:57-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/2011/01/29/counting-modifications-in-git/</loc>
-        <lastmod>2013-06-02T22:16:55-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/2011/02/03/lazy-lists-in-groovy/</loc>
-        <lastmod>2013-05-28T19:13:09-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/2011/06/01/reversing-groovy-switch-statement/</loc>
-        <lastmod>2013-05-25T19:28:36-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/2011/06/05/multimethods-in-groovy/</loc>
-        <lastmod>2013-05-25T19:39:19-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/2011/06/07/nothing-new-under-sun/</loc>
-        <lastmod>2013-05-27T19:54:50-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/2011/06/08/functional-groovy-switch-statement/</loc>
-        <lastmod>2013-05-25T19:20:35-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/2011/06/27/math-and-physics-of-benderama/</loc>
-        <lastmod>2013-06-22T09:54:41-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/2011/08/06/thomaes-function/</loc>
-        <lastmod>2013-06-23T12:08:35-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/2011/09/16/modulo-who/</loc>
-        <lastmod>2013-05-26T19:46:54-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/2011/11/05/ford-marbles/</loc>
-        <lastmod>2013-05-26T19:17:31-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/2012/10/01/exporting-solr-documents/</loc>
-        <lastmod>2013-05-25T18:52:52-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/2012/11/08/simple-web-application-in-clojure/</loc>
-        <lastmod>2013-05-26T17:28:41-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/2012/11/12/pycon-canada-2012/</loc>
-        <lastmod>2013-05-24T21:28:40-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/2012/11/22/flexible-language/</loc>
-        <lastmod>2013-05-26T11:42:48-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/2012/12/09/code-retreat-2012/</loc>
-        <lastmod>2013-12-11T11:15:17-05:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/2012/12/15/rabbitmq-activemq-zeromq-hornetq/</loc>
-        <lastmod>2013-05-24T21:15:29-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/2013/01/15/embrace-big-data/</loc>
-        <lastmod>2013-05-22T00:24:49-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/2013/03/09/simple-zookeeper-cluster/</loc>
-        <lastmod>2013-05-25T18:38:47-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/2013/05/09/liskov-programming-abstraction/</loc>
-        <lastmod>2013-05-21T20:34:31-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/2013/05/21/joe-armstrong-mostlyerlang/</loc>
-        <lastmod>2013-09-25T20:21:11-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/2013/05/26/entrepreneur/</loc>
-        <lastmod>2013-05-26T22:48:10-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/2013/06/11/sleeping-barber-in-erlang/</loc>
-        <lastmod>2013-06-23T12:05:09-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/2013/07/08/lambdajam-2013/</loc>
-        <lastmod>2013-10-03T23:50:34-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/2013/07/28/java-12pm-bug/</loc>
-        <lastmod>2013-09-20T23:05:52-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/2013/11/23/efl-toronto-2013/</loc>
-        <lastmod>2014-10-11T13:44:35-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/2014/10/11/dft-j/</loc>
-        <lastmod>2014-10-14T08:09:37-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/2014/10/12/fft-j/</loc>
-        <lastmod>2014-10-14T08:10:00-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/2014/10/13/gc-visualization/</loc>
-        <lastmod>2014-10-13T21:41:39-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/2014/11/29/two-series/</loc>
-        <lastmod>2014-11-29T16:31:12-05:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/2015/04/03/feynman-tot/</loc>
-        <lastmod>2015-04-03T15:30:00-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/about/</loc>
-        <lastmod>2015-11-06T20:27:39-05:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/archives/</loc>
-        <lastmod>2015-11-06T20:27:39-05:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/</loc>
-        <lastmod>2015-11-06T20:27:39-05:00</lastmod>
-    </url>
-    <url>
-        <loc>http://blog.ndpar.com/robots.txt</loc>
-        <lastmod>2013-05-20T15:51:12-04:00</lastmod>
-    </url>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>http://blog.ndpar.com/2016/12/24/spring-oauth2/</loc>
+<lastmod>2016-12-24T13:11:35-05:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2016/11/07/ml-logistic-regression/</loc>
+<lastmod>2016-11-07T16:05:31-05:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2016/10/28/ml-linear-regression/</loc>
+<lastmod>2016-10-28T17:05:31-04:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2015/04/03/feynman-tot/</loc>
+<lastmod>2015-04-03T08:00:00-04:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2014/11/29/two-series/</loc>
+<lastmod>2014-11-29T07:00:00-05:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2014/10/13/gc-visualization/</loc>
+<lastmod>2014-10-13T08:00:00-04:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2014/10/12/fft-j/</loc>
+<lastmod>2014-10-12T08:00:00-04:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2014/10/11/dft-j/</loc>
+<lastmod>2014-10-11T08:00:00-04:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2013/11/23/efl-toronto-2013/</loc>
+<lastmod>2013-11-23T07:00:00-05:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2013/07/28/java-12pm-bug/</loc>
+<lastmod>2013-07-28T08:00:00-04:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2013/07/08/lambdajam-2013/</loc>
+<lastmod>2013-07-08T05:00:00-04:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2013/06/11/sleeping-barber-in-erlang/</loc>
+<lastmod>2013-06-11T20:43:00-04:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2013/05/26/entrepreneur/</loc>
+<lastmod>2013-05-26T18:00:00-04:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2013/05/21/joe-armstrong-mostlyerlang/</loc>
+<lastmod>2013-05-21T15:13:01-04:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2013/05/09/liskov-programming-abstraction/</loc>
+<lastmod>2013-05-09T19:39:00-04:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2013/03/09/simple-zookeeper-cluster/</loc>
+<lastmod>2013-03-09T07:00:00-05:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2013/01/15/embrace-big-data/</loc>
+<lastmod>2013-01-15T07:00:00-05:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2012/12/15/rabbitmq-activemq-zeromq-hornetq/</loc>
+<lastmod>2012-12-15T07:00:00-05:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2012/12/09/code-retreat-2012/</loc>
+<lastmod>2012-12-09T07:00:00-05:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2012/11/22/flexible-language/</loc>
+<lastmod>2012-11-22T07:00:00-05:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2012/11/12/pycon-canada-2012/</loc>
+<lastmod>2012-11-12T15:40:01-05:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2012/11/08/simple-web-application-in-clojure/</loc>
+<lastmod>2012-11-08T07:00:00-05:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2012/10/01/exporting-solr-documents/</loc>
+<lastmod>2012-10-01T08:00:00-04:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2011/11/05/ford-marbles/</loc>
+<lastmod>2011-11-05T08:00:00-04:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2011/09/16/modulo-who/</loc>
+<lastmod>2011-09-16T08:00:00-04:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2011/08/06/thomaes-function/</loc>
+<lastmod>2011-08-06T08:00:00-04:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2011/06/27/math-and-physics-of-benderama/</loc>
+<lastmod>2011-06-27T08:00:00-04:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2011/06/08/functional-groovy-switch-statement/</loc>
+<lastmod>2011-06-08T08:00:00-04:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2011/06/07/nothing-new-under-sun/</loc>
+<lastmod>2011-06-07T08:00:00-04:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2011/06/05/multimethods-in-groovy/</loc>
+<lastmod>2011-06-05T08:00:00-04:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2011/06/01/reversing-groovy-switch-statement/</loc>
+<lastmod>2011-06-01T08:00:00-04:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2011/02/03/lazy-lists-in-groovy/</loc>
+<lastmod>2011-02-03T07:00:00-05:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2011/01/29/counting-modifications-in-git/</loc>
+<lastmod>2011-01-29T07:00:00-05:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2011/01/24/git-maven/</loc>
+<lastmod>2011-01-24T07:00:00-05:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2010/11/18/joe-armstrong-on-optimization/</loc>
+<lastmod>2010-11-18T07:00:00-05:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2010/11/10/erlang-selective-receive/</loc>
+<lastmod>2010-11-10T07:00:00-05:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2010/11/06/erlang-and-otp-in-action/</loc>
+<lastmod>2010-11-06T08:00:00-04:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2010/10/31/springone2gx-2010/</loc>
+<lastmod>2010-10-31T08:00:00-04:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2010/03/31/integrating-rabbitmq-with-ejabberd/</loc>
+<lastmod>2010-03-31T08:00:00-04:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2010/03/14/get-started-with-rabbitmq/</loc>
+<lastmod>2010-03-14T08:00:00-04:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2010/02/23/get-started-with-ejabberd/</loc>
+<lastmod>2010-02-23T07:00:00-05:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2009/11/12/state-machine-in-erlang/</loc>
+<lastmod>2009-11-12T10:43:00-05:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2009/10/22/parsing-files-using-groovy-regex/</loc>
+<lastmod>2009-10-22T08:00:00-04:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2009/09/25/groovy-regular-expressions/</loc>
+<lastmod>2009-09-25T08:00:00-04:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/2009/04/13/git-split/</loc>
+<lastmod>2009-04-13T17:13:01-04:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ndpar.com/archives/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/about/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/categories/git/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/categories/groovy/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/categories/regex/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/categories/erlang/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/categories/ejabberd/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/categories/rabbitmq/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/categories/conference/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/categories/grails/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/categories/java/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/categories/nosql/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/categories/spring/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/categories/book-review/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/categories/programming/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/categories/maven/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/categories/functional-programming/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/categories/agile/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/categories/buzz/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/categories/humor/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/categories/math/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/categories/lisp/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/categories/art/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/categories/solr/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/categories/clojure/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/categories/tutorial/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/categories/python/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/categories/craftsmanship/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/categories/activemq/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/categories/mongodb/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/categories/zeromq/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/categories/clustering/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/categories/zookeeper/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/categories/education/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/categories/entrepreneurship/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/categories/haskell/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/categories/scala/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/categories/j/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/categories/sicp/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/categories/feynman/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/categories/machine-learning/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/categories/matlab/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/categories/oauth/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/posts/2/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/posts/3/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/posts/4/</loc>
+</url>
+<url>
+<loc>http://blog.ndpar.com/posts/5/</loc>
+</url>
 </urlset>

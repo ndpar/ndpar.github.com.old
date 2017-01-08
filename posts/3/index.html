@@ -1,0 +1,912 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Side Notes</title>
+  <meta name="author" content="Andrey Paramonov">
+
+  
+  <meta name="description" content="This weekend I attended PyCon Canada, the first conference in Canada dedicated to Python ecosystem. As you might find from my blog, I’m not a Python &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.ndpar.com/posts/3">
+  <link href="/favicon.ico" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Side Notes" type="application/atom+xml">
+
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Side Notes</a></h1>
+  
+    <h2>never finished…</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:blog.ndpar.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/11/12/pycon-canada-2012/">PyCon Canada 2012</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2012-11-12T15:40:01-05:00" pubdate data-updated="true">November 12, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This weekend I attended <a href="http://pycon.ca/">PyCon Canada</a>, the first conference in Canada dedicated to Python ecosystem. As you might find from my blog, I’m not a Python guy. I’ve been using Python mostly as a scripting language. I went to this conference for fresh ideas, or, as Michael Feathers said, for cross-polination from Python community. This blog post is not a detailed review of the conference — I just want to share my impression in general.</p>
+
+<h2 id="organization">Organization</h2>
+
+<p>Considering how little time the organizers had for preparing this conference, 5 months I believe, they did amazing job. They invited great speakers. They kept people well informed using mailing list and Twitter. The official web site was clear and easy to navigate. The location was good. The food was decent. The only complaint I had is about the temperature in the rooms on the first day. It was so freezing cold inside that I had to wear my jacket all the time. But on the second day the problem was fixed.</p>
+
+<h2 id="keynotes">Keynotes</h2>
+
+<p>Keynotes were absolutely fantastic. There were three of them. Jessica McKellar was talking about Python community. How they foster it, how they attract new people to programming in general and to Python in particular. She shared her experience from organizing Boston Python user group, the biggest Python user group in the world. The takeaway from her talk: Python community is big, welcoming, and well supported by Python Foundation.</p>
+
+<p>Second keynote was Michael Feathers’ <em>Why You Should(n’t) be Using a Functional Programming Language Instead</em>. The main idea of his talk is: Don’t lock yourself inside one language. Go outside of your community to see what other languages exist out there, how they solved the problems. Study those languages, learn their idioms and techniques, and then go back to your language and start using the ideas you’ve learnt. I completely agree with that, and that’s why I went to this conference in the first place. He gave bunch of examples of functional programming in Haskell. Then he showed his Ruby code written in functional style, where you could see the influence of Haskell. I liked his presentation because he verbalized the ideas I myself have been thinking about for a while. When I started programming in Groovy my Groovy code was basically a Java code without semicolons. Now my Java code looks more like Groovy.</p>
+
+<p>The closing keynote was by Fernando Pérez, the scientist from University of California, Berkeley, and the creator of IPython. The talk, titled <a href="https://speakerdeck.com/fperez/science-and-python-a-interactively-biased-retrospective-of-a-mostly-successful-decade"><em>Science and Python</em></a>,  was really mind blowing. When I was a student I did all my computations using mainly Fortran and some proprietary software I don’t even remember the name of. Later, I played with Mathematica and Octave a little bit. But I didn’t know that you can do very sophisticated scientific calculations using Python. Fernando gave some examples from neuroscience, astrophysics and biology, and it’s really impressive. The discovery of Supernova PTF11kyl is especially astonishing. From now on, if I need to do some math, I’ll be using Python libraries; no more proprietary expensive software. Another theme of the presentation was IPython. Initially I thought it’s just a shell on top of the standard Python, but it’s actually the whole ecosystem. I cannot explain in a few words how amazing it is. Just google for “ipython notebook” or read Fernando’s <a href="http://blog.fperez.org/2012/09/blogging-with-ipython-notebook.html">blog</a>.</p>
+
+<h2 id="talks">Talks</h2>
+
+<p>As it happens on every conference, there were some great talks and some lousy talks, interesting talks and boring talks, geeky talks and academic talks. It’s all normal and fine. The good thing about this conference though is that signal-noise ratio was pretty high; congratulations to the organizers for choosing talks. Another thing I like is the diversity of formats. There were 45-min presentation, 20-min talks, 5-min lightning talks, 90-min tutorials, and 3-hour workshop (there are also two full day coding sessions but I’m not attending them). This is a really good approach. Switching between different formats during the day helps your brain functioning more productive, in my opinion.</p>
+
+<h2 id="pleasant-discoveries">Pleasant discoveries</h2>
+
+<p>I found many projects presented at the conference are using RabbitMQ, and that’s great. I wish in Java world people would use AMQP more frequently instead of blindly choosing JMS for every new project.</p>
+
+<p>Many people are using MongoDB properly. Nowadays NoSQL is a very popular buzzword, and many projects are using various NoSQL databases just because it’s cool, even if it makes no sense for the project at all. It was nice to see that there are developers out there who do their homework and adopt NoSQL because it fits their domain.</p>
+
+<h2 id="unpleasant-discoveries">Unpleasant discoveries</h2>
+
+<p>There seems to be a trend in Python community to despise Java. I actually see this trend in many communities outside of Java, so it’s not Python specific, but at this conference I’ve heard too many jokes about Java so it’s not funny anymore, especially hearing them from the people who don’t write a line of code in Java.</p>
+
+<p>Another thing surprised me is the fanatic admiration of Mercurial and hate of Git from some Python programmers. I know lots of people who hate Git, mainly because they are confused and scared by Git. But dislike it for the reason not being written in Python is something new to me.</p>
+
+<h2 id="problems-in-python">Problems in Python</h2>
+
+<p>Package and distribution management in Python is in pretty bad shape. Every person I talked to admitted that it’s complete mess at the moment. I myself feel that pain every time I need to install a new library. Which tool should I use: pip, easy_install, pysetup? Some libraries installed using those tools don’t work, or work partially. Many programmers use rpm or deb packages instead of Python tools, because OS packages usually work. I came to the same conclusion on my Mac OS. The only flawlessly working Python environment I have is that installed via mac ports. In Java we don’t have those problems. Maven solved it once and for all long time ago. Now every JVM language benefits from it. Python community should clean up this mess and standardize their tools. I was told that with introducing PyPi and PEPs the situation is getting better, well, let’s see if it resolves all the issues.</p>
+
+<h2 id="what-ive-learnt">What I’ve learnt</h2>
+
+<p>Here is the list of things I found pretty interesting, in no particular order.</p>
+
+<h3 id="python-libraries-to-use">Python libraries to use</h3>
+
+<p>numpy, matplotlib, pandas, scipy, sympy, quantities, collections. Thanks to the people who told me about these libraries.</p>
+
+<h3 id="cool-python-stuff">Cool Python stuff</h3>
+
+<p>RunSnakeRun — GUI for Python profiler. Check out the screenshots on their <a href="http://www.vrplumber.com/programming/runsnakerun/">web site</a>. I wish Java profilers could draw such nice graphs.</p>
+
+<p><a href="http://bpython-interpreter.org/screenshots/">bpython</a> — Python REPL for geeks written in <a href="http://excess.org/urwid/examples.html">Urwid</a>. Thanks to Ian Ward for the really nice <a href="http://pyvideo.org/video/1568/console-applications-with-urwid">presentation</a>.</p>
+
+<h3 id="interesting-ideas">Interesting ideas</h3>
+
+<p>Print log statements in JSON format so that you can analyze them using powerful tools. You can also save logs in MongoDB, either offline or asynchronously, and do statistic analysis using aggregation framework.</p>
+
+<p>Write stored procedures in PostgreSQL in Python (and some other languages). They look much better in Python than plSQL.</p>
+
+<h2 id="things-to-learna-namelearnnbspa">Things to learn<a name="learn"> </a></h2>
+
+<p>Here are some technology and tools that have a great potential, in my opinion, and worthy of learning: ZeroMQ, IPython, OpenStack. Those were mentioned multiple times during the conference, and I need to check them out in more details.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>The conference was great. I’m glad I attended it. The organizers did a great job. The conference was beneficial not only to Python community but to Toronto programming community in general. Thanks to all who made it happen.</p>
+
+<p>P.S. Videos from the conference are available <a href="http://pyvideo.org/category/25/pycon-ca-2012">here</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/11/08/simple-web-application-in-clojure/">Simple Web Application in Clojure</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2012-11-08T07:00:00-05:00" pubdate data-updated="true">November 08, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This blog entry is a micro-tutorial on how to build a simple web application in Clojure. The reason I call it micro will be clear when I introduce the framework we are going to use. This tutorial will be interesting to programmers relatively new to Clojure, but who have some experience with web frameworks in other languages, for instance Spring MVC. The goal of this tutorial is to help you get started with web development in Clojure. Also I want to share my approach to web development in general and in Clojure in particular. This approach is by no means the best way to develop web applications, but because I like to watch how other people write the software, I thought somebody might be interested to see how I do it.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2012/11/08/simple-web-application-in-clojure/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/10/01/exporting-solr-documents/">Exporting Solr Documents</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2012-10-01T08:00:00-04:00" pubdate data-updated="true">October 01, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Recently I had to copy some documents from one <a href="http://lucene.apache.org/solr/">Solr</a> server to another. I expected Solr already had an interface that allowed me to extract documents in the same format they were inserted. In that case I would pipe an output of one curl command to another, and consider the job done. As it turned out, the format of Solr input document is different than the output format. Here is how input document looks like:</p>
+
+<pre><code>&lt;add&gt;
+    &lt;doc&gt;
+        &lt;field name="id"&gt;12345&lt;/field&gt;
+        &lt;field name="articlestate"&gt;published&lt;/field&gt;
+        &lt;field name="articletype"&gt;news&lt;/field&gt;
+        &lt;field name="body"&gt;Lorem ipsum dolor...&lt;/field&gt;
+        &lt;field name="referenceid"&gt;175820&lt;/field&gt;
+        &lt;field name="referenceid"&gt;163786&lt;/field&gt;
+        &lt;field name="created"&gt;2011-02-15T14:57:54.766Z&lt;/field&gt;
+    &lt;/doc&gt;
+&lt;/add&gt;
+</code></pre>
+
+<p>Notice the flat structure of this document: all element names are the same regardless of the filed type, and arrays (referenceid) are not grouped. Now compare it to the output format. Here is what you get when you execute a query against a Solr server:</p>
+
+<pre><code>&lt;response&gt;
+    &lt;lst name="responseHeader"&gt;
+        &lt;int name="status"&gt;0&lt;/int&gt;
+        &lt;int name="QTime"&gt;1&lt;/int&gt;
+        &lt;lst name="params"&gt;
+            &lt;str name="q"&gt;id:12345&lt;/str&gt;
+        &lt;/lst&gt;
+    &lt;/lst&gt;
+    &lt;result name="response" numFound="1" start="0"&gt;
+        &lt;doc&gt;
+            &lt;str name="id"&gt;12345&lt;/str&gt;
+            &lt;str name="articlestate"&gt;published&lt;/str&gt;
+            &lt;str name="articletype"&gt;news&lt;/str&gt;
+            &lt;str name="body"&gt;Lorem ipsum dolor...&lt;/str&gt;
+            &lt;arr name="referenceid"&gt;
+                &lt;str&gt;175820&lt;/str&gt;
+                &lt;str&gt;163786&lt;/str&gt;
+            &lt;/arr&gt;
+            &lt;date name="created"&gt;2011-02-15T14:57:54.766Z&lt;/date&gt;
+        &lt;/doc&gt;
+    &lt;/result&gt;
+&lt;/response&gt;
+</code></pre>
+
+<p>Even if we ignore the response header, the structure of the response/result/doc is not the same as of input document: the element names reflect the types, the arrays are grouped. If you try to add this document to a Solr server, you will get an error “unexpected XML tag”, obviously. I googled for couple hours on how to convert an output document to an input, and, to my surprise, didn’t find any solution. Therefore I implemented my own converter in Groovy, which solved the problem. I post it <a href="http://gist.github.com/3813775">here</a> in case somebody needs it.</p>
+
+<p>Note: You can also use this script to re-index Solr.</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/11/05/ford-marbles/">Ford Marbles</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-05T08:00:00-04:00" pubdate data-updated="true">November 05, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I found these marvelous renderings of Ford circles on <a href="http://www.flickr.com/photos/fdecomite/2564742912/in/photostream">flickr</a>. I can’t help but share them here.</p>
+
+<p><img class="center" src="http://farm4.static.flickr.com/3189/2564742912_d0faf59e38_z.jpg" /></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2011/11/05/ford-marbles/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/09/16/modulo-who/">Modulo Who?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-09-16T08:00:00-04:00" pubdate data-updated="true">September 16, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>When programmer and mathematician are talking about modulus or modulo, there is often a confusion what this term means. For programmer <a href="http://en.wikipedia.org/wiki/Modulo_operator">modulo</a> means an operator that finds the <em>remainder</em> of division of one number by another, e.g. 5 mod 2 = 1. For mathematician <a href="http://en.wikipedia.org/wiki/Modular_arithmetic">modulo</a> is a <em>congruence</em> relation between two numbers: <em>a</em> and <em>b</em> are said to be congruent modulo <em>n</em>, written <em>a</em> ≡ <em>b</em> (mod <em>n</em>), if their difference <em>a</em> − <em>b</em> is an integer multiple of <em>n</em>.</p>
+
+<p>These two definitions are not equivalent. The former is a special case of the latter: if <em>b</em> mod <em>n</em> = <em>a</em> then <em>a</em> ≡ <em>b</em> (mod <em>n</em>). The inverse is not true in general case. 5 mod 2 = 1, and 1 ≡ 5 (mod 2) because 1 - 5 = –4 is integer multiple of 2. Now 5 ≡ 1 (mod 2), because 5 - 1 = 4 is evenly divisible by 2, but 1 mod 2 = 1, not 5.</p>
+
+<p>The biggest confusion happens when programmer and mathematician start arguing about Gauss’ famous <a href="http://mathworld.wolfram.com/QuadraticReciprocityTheorem.html">Golden Theorem</a> where both definitions of modulus can be used.</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/08/06/thomaes-function/">Thomae's Function</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-08-06T08:00:00-04:00" pubdate data-updated="true">August 06, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://en.wikipedia.org/wiki/Thomae%27s_function">Thomae’s function</a> (a.k.a. Riemann function) is defined on the interval (0, 1) as follows</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+f(x) = \left\{
+\begin{array}{l l}
+  1/q & \quad \text{if $x = p/q$ is rational and $gcd(p, q) = 1$}\\
+  0 & \quad \text{if $x$ is irrational}\\
+\end{array} \right. %]]></script>
+
+<p>Here is the graph of this function with some points highlighted as plus symbols for better view.</p>
+
+<p><img class="center" src="/images/posts/thomae.jpg" /></p>
+
+<p>This function has interesting property: it’s continuous at all irrational points. It’s easy to see this if you notice that for any positive <em>ε</em> there is a finite number of dots above the line <em>y</em> = <em>ε</em>. That means for any irrational number <em>x</em><sub>0</sub> you can always construct a <em>δ</em>-neighbourhood that doesn’t contain any dot from the area above the line <em>y</em> = <em>ε</em>.</p>
+
+<p><img class="center" src="/images/posts/thomae-e-d.jpg" /></p>
+
+<p>To generate the data file with point coordinates I wrote Common Lisp program:</p>
+
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+</pre></td><td class="code"><pre><code class="common-lisp"><span class="line"><span class="p">(</span><span class="nb">defun</span> <span class="nv">rational-numbers</span> <span class="p">(</span><span class="nv">max-denominator</span><span class="p">)</span>
+</span><span class="line">  <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">result</span> <span class="p">(</span><span class="nb">list</span><span class="p">)))</span>
+</span><span class="line">    <span class="p">(</span><span class="nb">loop</span> <span class="nv">for</span> <span class="nv">q</span> <span class="nv">from</span> <span class="mi">2</span> <span class="nv">to</span> <span class="nv">max-denominator</span> <span class="nb">do</span>
+</span><span class="line">      <span class="p">(</span><span class="nb">loop</span> <span class="nv">for</span> <span class="nv">p</span> <span class="nv">from</span> <span class="mi">1</span> <span class="nv">to</span> <span class="p">(</span><span class="nb">1-</span> <span class="nv">q</span><span class="p">)</span> <span class="nb">do</span>
+</span><span class="line">        <span class="p">(</span><span class="nb">pushnew</span> <span class="p">(</span><span class="nb">/</span> <span class="nv">p</span> <span class="nv">q</span><span class="p">)</span> <span class="nv">result</span><span class="p">)))</span>
+</span><span class="line">    <span class="nv">result</span><span class="p">))</span>
+</span><span class="line">
+</span><span class="line"><span class="p">(</span><span class="nb">defun</span> <span class="nv">thomae-rational-points</span> <span class="p">(</span><span class="nv">abscissae</span><span class="p">)</span>
+</span><span class="line">  <span class="p">(</span><span class="nb">mapcar</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="nv">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">list</span> <span class="nv">x</span> <span class="p">(</span><span class="nb">/</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">denominator</span> <span class="nv">x</span><span class="p">))))</span> <span class="nv">abscissae</span><span class="p">))</span>
+</span><span class="line">
+</span><span class="line"><span class="p">(</span><span class="nb">defun</span> <span class="nv">thomae</span> <span class="p">(</span><span class="nv">max-denominator</span><span class="p">)</span>
+</span><span class="line">  <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">points</span> <span class="p">(</span><span class="nv">thomae-rational-points</span> <span class="p">(</span><span class="nv">rational-numbers</span> <span class="nv">max-denominator</span><span class="p">))))</span>
+</span><span class="line">    <span class="p">(</span><span class="nb">with-open-file</span> <span class="p">(</span><span class="nc">stream</span> <span class="s">&quot;thomae.dat&quot;</span> <span class="ss">:direction</span> <span class="ss">:output</span><span class="p">)</span>
+</span><span class="line">      <span class="p">(</span><span class="nb">loop</span> <span class="nv">for</span> <span class="nv">point</span> <span class="nv">in</span> <span class="nv">points</span> <span class="nb">do</span>
+</span><span class="line">        <span class="p">(</span><span class="nb">format</span> <span class="nc">stream</span> <span class="s">&quot;~4$ ~4$~%&quot;</span> <span class="p">(</span><span class="nb">first</span> <span class="nv">point</span><span class="p">)</span> <span class="p">(</span><span class="nb">second</span> <span class="nv">point</span><span class="p">))))))</span>
+</span><span class="line">
+</span><span class="line"><span class="p">(</span><span class="nv">thomae</span> <span class="mi">500</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>To create the images I used <a href="http://www.gnuplot.info/">gnuplot</a> commands:</p>
+
+<pre><code>plot "thomae.dat" using 1:2 with dots
+plot "thomae.dat" using 1:2 with points
+</code></pre>
+
+<p>and Photoshop.</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/06/27/math-and-physics-of-benderama/">Math and Physics of Benderama</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-06-27T08:00:00-04:00" pubdate data-updated="true">June 27, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The last episode of <a href="http://theinfosphere.org/Benderama">Futurama</a> has interesting formula involved. The entire plot is based on the Professor’s latest invention — <a href="http://en.wikipedia.org/wiki/Banach&#8211;Tarski_paradox">Banach-Tarski</a> Dupla-Shrinker — the machine that produces two copies of any object at a 60% scale. It was just a matter of time when Bender found a proper usage of this machine: to replicate himself. Then two small copies of Bender replicated themselves making four smaller copies, and so forth. At some point the Professor horrified the crew that if they don’t stop this unlimited growth, the total mass of all Benders will eventually be so big that the entire Earth will be consumed during the process of replication. As a proof he demonstrated this formula of the mass of all generations of Bender</p>
+
+<p><img class="center" src="http://pool.theinfosphere.org/images/thumb/0/04/Benderama_Maths.png/800px-Benderama_Maths.png" /></p>
+
+<p>This is a perfect toy for a science geek. The first obvious question it brings: is this formula mathematically correct? As it turns out, it is not. Considering the scale of 60%, the cubic dependency of volume on linear dimension, and the constant density of all copies, the formula should be the following</p>
+
+<script type="math/tex; mode=display">M = \displaystyle\sum\limits_{n=0}^\infty 2^n\left[\left(\frac{3}{5}\right)^{3n} M_0\right] = \displaystyle\sum\limits_{n=0}^\infty 2^n\left[\left(\frac{27}{125}\right)^n M_0\right] = \displaystyle\sum\limits_{n=0}^\infty\left(\frac{54}{125}\right)^n M_0 = \frac{125}{71} M_0</script>
+
+<p>As you can see the total mass of infinite number of Benders actually converges to approximately 1.76 <em>M</em><sub>0</sub>. So from Math perspective there is nothing to worry about. But what if our assumption of constant density is invalid. Would it be a problem from Physics perspective? Let’s see.</p>
+
+<p>Knowing that every new copy has a size of 0.6 of the original it was made from, we have the following formula for the size of Bender in the <em>n</em><sup>th</sup> generation</p>
+
+<script type="math/tex; mode=display">L_n = 0.6^n L_0</script>
+
+<p>This exponential function becomes very small pretty soon. In the <a href="http://www.wolframalpha.com/input/?i=0.6%5E154">154</a><sup>th</sup> generation it already reaches the <a href="http://en.wikipedia.org/wiki/Planck_length">Planck length</a>, after which the further replication is physically impossible. If we calculate the total mass of 154 Bender’s generations using the Professor’s formula, we get <a href="http://www.wolframalpha.com/input/?i=H%28154%29">H(154)</a> × <a href="http://www.peelified.com/Futurama-Forum-1/Topic-4095-0-Benders_Weight.html">238</a> kg ≈ 1,337.56 kg, which is nothing comparing to the Earth mass.</p>
+
+<p>So we have to admit that from both Math and Physics perspective the Professor was wrong, and there was no real threat to the Earth.</p>
+
+<p>Although the Professor’s formula doesn’t describe the replication process adequately, it’s still a beautiful piece of Math because it’s a formula of <a href="http://en.wikipedia.org/wiki/Harmonic_series_(mathematics)">harmonic series</a>. If you want to know why harmonic series is beautiful and which real processes it describes, read this nice <a href="http://plus.maths.org/content/perfect-harmony">article</a> of John H. Webb.</p>
+
+<p>And don’t miss the next <a href="http://theinfosphere.org/Ghost_in_the_Machines">episode</a> of Futurama this Thursday :-)</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/06/08/functional-groovy-switch-statement/">Functional Groovy Switch Statement</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-06-08T08:00:00-04:00" pubdate data-updated="true">June 08, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In the previous <a href="/2011/06/01/reversing-groovy-switch-statement">post</a> I showed how to replace chained if-else statements in Groovy with one concise switch. It was done for the special case of if-stement where every branch was evaluated using the same condition function. Today I want to make a generalization of that technique by allowing to use different conditionals.</p>
+
+<p>Suppose your code looks like this:</p>
+
+<pre><code>if (param % 2 == 0) {
+    'even'
+} else if (param % 3 == 0) {
+    'threeven'
+} else if (0 &lt; param) {
+    'positive'
+} else {
+    'negative'
+}
+</code></pre>
+
+<p>As long as every condition operates on the same parameter, you can replace the entire chain with a switch. In this scenario <code>param</code> becomes a switch parameter and conditions become <code>case</code> parameters of Closure type. The only thing we need to do is to override <code>Closure.isCase()</code> method as I described in the previous post. The safest way to do it is to create a category class:</p>
+
+<pre><code>class CaseCategory {
+    static boolean isCase(Closure casePredicate, Object switchParameter) {
+        casePredicate.call switchParameter
+    }
+}
+</code></pre>
+
+<p>Now we can replace if-statement with the following switch:</p>
+
+<pre><code>use (CaseCategory) {
+    switch (param) {
+        case { it % 2 == 0 } : return 'even'
+        case { it % 3 == 0 } : return 'threeven'
+        case { 0 &lt; it }      : return 'positive'
+        default              : return 'negative'
+    }
+}
+</code></pre>
+
+<p>We can actually go further and extract in-line closures:</p>
+
+<pre><code>def even = {
+    it % 2 == 0
+}
+def threeven = {
+    it % 3 == 0
+}
+def positive = {
+    0 &lt; it
+}
+</code></pre>
+
+<p>After which the code becomes even more readable:</p>
+
+<pre><code>use (CaseCategory) {
+    switch (param) {
+        case even     : return 'even'
+        case threeven : return 'threeven'
+        case positive : return 'positive'
+        default       : return 'negative'
+    }
+}
+</code></pre>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/06/07/nothing-new-under-sun/">Nothing New Under the Sun</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-06-07T08:00:00-04:00" pubdate data-updated="true">June 07, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Every generation of software developers needs its own fad. For my generation it was Agile, for generation before it was OOP, and before that it was another big thing. Gerald Weinberg, one of the most influential people in our industry, blogged yesterday about this issue. With over 50 years of experience in software development he knows what he is talking about. Read his <a href="http://secretsofconsulting.blogspot.com/2011/06/beyond-agile-programming.html">blog post</a> — he has a very good point.</p>
+
+<p>P.S. I’m wondering what will be the next big thing. Will it be Cloud or <a href="/2013/01/15/embrace-big-data/">Big Data</a>?</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/06/05/multimethods-in-groovy/">Multimethods in Groovy</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-06-05T08:00:00-04:00" pubdate data-updated="true">June 05, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Every time I switch from Groovy to Java I have to remind myself that some things that seem so natural and work as expected in Groovy, don’t work in Java. One of such differences is method dispatching. Groovy supports <a href="http://en.wikipedia.org/wiki/Multiple_dispatch">multiple dispatch</a>, while Java does not. Therefore the following <a href="http://www.gigamonkeys.com/book/object-reorientation-generic-functions.html#multimethods">code</a> works differently in Groovy and Java:</p>
+
+<pre><code>public class A {
+    public void foo(A a) { System.out.println("A/A"); }
+    public void foo(B b) { System.out.println("A/B"); }
+}
+public class B extends A {
+    public void foo(A a) { System.out.println("B/A"); }
+    public void foo(B b) { System.out.println("B/B"); }
+}
+public class Main {
+    public static void main(String[] args) {
+        A a = new A();
+        A b = new B();
+        a.foo(a);
+        b.foo(b);
+    }
+}
+
+$ java Main
+A/A
+B/A
+
+$ groovy Main.groovy
+A/A
+B/B
+</code></pre>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="4">&larr; Older</a>
+    
+    <a href="/archives">Blog Archives</a>
+    
+    <a class="next" href="2">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2016/12/24/spring-oauth2/">Spring OAuth 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/11/07/ml-logistic-regression/">Machine Learning: Logistic Regression</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/10/28/ml-linear-regression/">Machine Learning: Linear Regression</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2015/04/03/feynman-tot/">Another Notation as a Tool of Thought</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/11/29/two-series/">Two Series</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+<section>
+  <h1>Recent GitHub Updates</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'ndpar',
+            count: 4,
+            skip_forks: false,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+<section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    <li class='category'><a href='/categories/activemq/'>activemq (1)</a></li>
+<li class='category'><a href='/categories/agile/'>agile (1)</a></li>
+<li class='category'><a href='/categories/art/'>art (1)</a></li>
+<li class='category'><a href='/categories/book-review/'>book review (1)</a></li>
+<li class='category'><a href='/categories/buzz/'>buzz (2)</a></li>
+<li class='category'><a href='/categories/clojure/'>clojure (4)</a></li>
+<li class='category'><a href='/categories/clustering/'>clustering (1)</a></li>
+<li class='category'><a href='/categories/conference/'>conference (3)</a></li>
+<li class='category'><a href='/categories/craftsmanship/'>craftsmanship (1)</a></li>
+<li class='category'><a href='/categories/education/'>education (1)</a></li>
+<li class='category'><a href='/categories/ejabberd/'>ejabberd (2)</a></li>
+<li class='category'><a href='/categories/entrepreneurship/'>entrepreneurship (1)</a></li>
+<li class='category'><a href='/categories/erlang/'>erlang (8)</a></li>
+<li class='category'><a href='/categories/feynman/'>feynman (1)</a></li>
+<li class='category'><a href='/categories/functional-programming/'>functional programming (1)</a></li>
+<li class='category'><a href='/categories/git/'>git (3)</a></li>
+<li class='category'><a href='/categories/grails/'>grails (1)</a></li>
+<li class='category'><a href='/categories/groovy/'>groovy (10)</a></li>
+<li class='category'><a href='/categories/haskell/'>haskell (1)</a></li>
+<li class='category'><a href='/categories/humor/'>humor (2)</a></li>
+<li class='category'><a href='/categories/j/'>j (2)</a></li>
+<li class='category'><a href='/categories/java/'>java (4)</a></li>
+<li class='category'><a href='/categories/lisp/'>lisp (3)</a></li>
+<li class='category'><a href='/categories/machine-learning/'>machine learning (2)</a></li>
+<li class='category'><a href='/categories/math/'>math (11)</a></li>
+<li class='category'><a href='/categories/matlab/'>matlab (2)</a></li>
+<li class='category'><a href='/categories/maven/'>maven (1)</a></li>
+<li class='category'><a href='/categories/mongodb/'>mongodb (1)</a></li>
+<li class='category'><a href='/categories/nosql/'>nosql (1)</a></li>
+<li class='category'><a href='/categories/oauth/'>oauth (1)</a></li>
+<li class='category'><a href='/categories/programming/'>programming (6)</a></li>
+<li class='category'><a href='/categories/python/'>python (2)</a></li>
+<li class='category'><a href='/categories/rabbitmq/'>rabbitmq (4)</a></li>
+<li class='category'><a href='/categories/regex/'>regex (2)</a></li>
+<li class='category'><a href='/categories/scala/'>scala (1)</a></li>
+<li class='category'><a href='/categories/sicp/'>sicp (1)</a></li>
+<li class='category'><a href='/categories/solr/'>solr (1)</a></li>
+<li class='category'><a href='/categories/spring/'>spring (2)</a></li>
+<li class='category'><a href='/categories/tutorial/'>tutorial (1)</a></li>
+<li class='category'><a href='/categories/zeromq/'>zeromq (1)</a></li>
+<li class='category'><a href='/categories/zookeeper/'>zookeeper (1)</a></li>
+
+  </ul>
+</section>
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2009–2017 - Andrey Paramonov -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> -
+  <span class="credit">Hosted by <a href="http://github.com">GitHub</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

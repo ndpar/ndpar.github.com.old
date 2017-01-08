@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: RabbitMQ | Side Notes]]></title>
+  <title><![CDATA[Category: rabbitmq | Side Notes]]></title>
   <link href="http://blog.ndpar.com/categories/rabbitmq/atom.xml" rel="self"/>
   <link href="http://blog.ndpar.com/"/>
-  <updated>2015-11-06T20:35:32-05:00</updated>
+  <updated>2017-01-08T17:14:02-05:00</updated>
   <id>http://blog.ndpar.com/</id>
   <author>
     <name><![CDATA[Andrey Paramonov]]></name>
@@ -30,7 +30,7 @@
 
 <p>Here is the Google trend graph for the last five years. It turns out, my personal preferences coincide with the public interest.</p>
 
-<div class="separator" style="clear: both; text-align: center;"><script type="text/javascript" src="http://blog.ndpar.com//www.google.ca/trends/embed.js?hl=en-US&amp;q=activemq,+rabbitmq,+zeromq,+hornetq&amp;date=1/2008+60m&amp;cmpt=q&amp;content=1&amp;cid=TIMESERIES_GRAPH_AVERAGES_CHART&amp;export=5&amp;w=800&amp;h=330"></script></div>
+<div class="separator" style="clear: both; text-align: center;"><script type="text/javascript" src="//www.google.ca/trends/embed.js?hl=en-US&amp;q=activemq,+rabbitmq,+zeromq,+hornetq&amp;date=1/2008+60m&amp;cmpt=q&amp;content=1&amp;cid=TIMESERIES_GRAPH_AVERAGES_CHART&amp;export=5&amp;w=800&amp;h=330"></script></div>
 
 <p>At this point I can stop and say “Well, you see who’s the winner”. There are 5 times more people interested in RabbitMQ than HornetQ, so if you bet on Rabbit you have more chances to get the help from your fellow programmers, if you need to.</p>
 
@@ -117,8 +117,8 @@
 
 <p>First of all, we want to know how many questions are posted for each messaging system from our list. Here is the MongoDB query for that. The first snippet is a query, the second is the result.</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Number of questions </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>Number of questions </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -130,9 +130,9 @@
 </span><span class='line'>     <span class="p">{</span><span class="nx">$match</span><span class="o">:</span><span class="p">{</span><span class="nx">_id</span><span class="o">:</span><span class="p">{</span><span class="nx">$in</span><span class="o">:</span><span class="p">[</span><span class="err">‘</span><span class="nx">activemq</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="nx">rabbitmq</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="nx">zeromq</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="nx">hornetq</span><span class="err">’</span><span class="p">]}}},</span>
 </span><span class='line'>     <span class="p">{</span><span class="nx">$sort</span><span class="o">:</span><span class="p">{</span><span class="nx">questions</span><span class="o">:-</span><span class="mi">1</span><span class="p">}}</span>
 </span><span class='line'><span class="p">])[</span><span class="err">‘</span><span class="nx">result</span><span class="err">’</span><span class="p">];</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -168,12 +168,12 @@
 </span><span class='line'>          <span class="err">“</span><span class="nx">questions</span><span class="err">”</span> <span class="o">:</span> <span class="mi">185</span>
 </span><span class='line'>     <span class="p">}</span>
 </span><span class='line'><span class="p">]</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>The next query is to get the total number of answers by tag</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Number of answers </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>Number of answers </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -185,9 +185,9 @@
 </span><span class='line'>     <span class="p">{</span><span class="nx">$match</span><span class="o">:</span><span class="p">{</span><span class="nx">_id</span><span class="o">:</span><span class="p">{</span><span class="nx">$in</span><span class="o">:</span><span class="p">[</span><span class="err">‘</span><span class="nx">activemq</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="nx">rabbitmq</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="nx">zeromq</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="nx">hornetq</span><span class="err">’</span><span class="p">]}}},</span>
 </span><span class='line'>     <span class="p">{</span><span class="nx">$sort</span><span class="o">:</span><span class="p">{</span><span class="nx">answers</span><span class="o">:-</span><span class="mi">1</span><span class="p">}}</span>
 </span><span class='line'><span class="p">])[</span><span class="err">‘</span><span class="nx">result</span><span class="err">’</span><span class="p">];</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -223,12 +223,12 @@
 </span><span class='line'>          <span class="err">“</span><span class="nx">answers</span><span class="err">”</span> <span class="o">:</span> <span class="mi">227</span>
 </span><span class='line'>     <span class="p">}</span>
 </span><span class='line'><span class="p">]</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>It seems that the number of answers is proportional to the number of questions. With MongoDB we can quickly verify it.</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Answers to questions ratio </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>Answers to questions ratio </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -242,9 +242,9 @@
 </span><span class='line'>     <span class="p">{</span><span class="nx">$project</span><span class="o">:</span><span class="p">{</span><span class="nx">answers</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span> <span class="nx">questions</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span> <span class="nx">ratio</span><span class="o">:</span><span class="p">{</span><span class="nx">$divide</span><span class="o">:</span><span class="p">[</span><span class="err">‘</span><span class="nx">$answers</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="nx">$questions</span><span class="err">’</span><span class="p">]}}},</span>
 </span><span class='line'>     <span class="p">{</span><span class="nx">$sort</span><span class="o">:</span><span class="p">{</span><span class="nx">ratio</span><span class="o">:-</span><span class="mi">1</span><span class="p">}}</span>
 </span><span class='line'><span class="p">])[</span><span class="err">‘</span><span class="nx">result</span><span class="err">’</span><span class="p">];</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -296,14 +296,14 @@
 </span><span class='line'>          <span class="err">“</span><span class="nx">ratio</span><span class="err">”</span> <span class="o">:</span> <span class="mf">1.227027027027027</span>
 </span><span class='line'>     <span class="p">}</span>
 </span><span class='line'><span class="p">]</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Indeed, the answers/question ratio is almost the same for every tag. That means we can use just the number of questions for our analysis.</p>
 
 <p>Here is the query that calculates the number of <em>accepted</em> answers by tag. Again, it correlates fairly well with the total number of answers and questions.</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Number of accepted answers </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>Number of accepted answers </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -317,9 +317,9 @@
 </span><span class='line'>     <span class="p">{</span><span class="nx">$match</span><span class="o">:</span><span class="p">{</span><span class="nx">_id</span><span class="o">:</span><span class="p">{</span><span class="nx">$in</span><span class="o">:</span><span class="p">[</span><span class="err">‘</span><span class="nx">activemq</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="nx">rabbitmq</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="nx">zeromq</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="nx">hornetq</span><span class="err">’</span><span class="p">]}}},</span>
 </span><span class='line'>     <span class="p">{</span><span class="nx">$sort</span><span class="o">:</span><span class="p">{</span><span class="nx">accepted_answers</span><span class="o">:-</span><span class="mi">1</span><span class="p">}}</span>
 </span><span class='line'><span class="p">])[</span><span class="err">‘</span><span class="nx">result</span><span class="err">’</span><span class="p">];</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -355,12 +355,12 @@
 </span><span class='line'>          <span class="err">“</span><span class="nx">accepted_answers</span><span class="err">”</span> <span class="o">:</span> <span class="mi">94</span>
 </span><span class='line'>     <span class="p">}</span>
 </span><span class='line'><span class="p">]</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>The next query is more interesting. It calculates the number of question up-votes by tag. In other words, it shows the number of <em>useful</em> questions. If we divide it by the total number of questions, we should see which messaging system has bigger rate of useful questions than others</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Number of useful questions </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>Number of useful questions </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -374,9 +374,9 @@
 </span><span class='line'>     <span class="p">{</span><span class="nx">$project</span><span class="o">:</span><span class="p">{</span><span class="nx">upvotes</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span> <span class="nx">questions</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span> <span class="nx">ratio</span><span class="o">:</span><span class="p">{</span><span class="nx">$divide</span><span class="o">:</span><span class="p">[</span><span class="err">‘</span><span class="nx">$upvotes</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="nx">$questions</span><span class="err">’</span><span class="p">]}}},</span>
 </span><span class='line'>     <span class="p">{</span><span class="nx">$sort</span><span class="o">:</span><span class="p">{</span><span class="nx">ratio</span><span class="o">:-</span><span class="mi">1</span><span class="p">}}</span>
 </span><span class='line'><span class="p">])[</span><span class="err">‘</span><span class="nx">result</span><span class="err">’</span><span class="p">];</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -428,14 +428,14 @@
 </span><span class='line'>          <span class="err">“</span><span class="nx">ratio</span><span class="err">”</span> <span class="o">:</span> <span class="mf">1.2594594594594595</span>
 </span><span class='line'>     <span class="p">}</span>
 </span><span class='line'><span class="p">]</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Interesting. The ZeroMQ users seem to ask more useful questions than the users of other brokers.</p>
 
 <p>Let’s do the same analysis for the answers. Here is the query that calculates the number of answer up-votes by tag.</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Number of useful answers </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>Number of useful answers </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -453,9 +453,9 @@
 </span><span class='line'>     <span class="p">{</span><span class="nx">$project</span><span class="o">:</span><span class="p">{</span><span class="nx">upvotes</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span> <span class="nx">questions</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span> <span class="nx">ratio</span><span class="o">:</span><span class="p">{</span><span class="nx">$divide</span><span class="o">:</span><span class="p">[</span><span class="err">‘</span><span class="nx">$upvotes</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="nx">$questions</span><span class="err">’</span><span class="p">]}}},</span>
 </span><span class='line'>     <span class="p">{</span><span class="nx">$sort</span><span class="o">:</span><span class="p">{</span><span class="nx">ratio</span><span class="o">:-</span><span class="mi">1</span><span class="p">}}</span>
 </span><span class='line'><span class="p">])[</span><span class="err">‘</span><span class="nx">result</span><span class="err">’</span><span class="p">];</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -507,14 +507,14 @@
 </span><span class='line'>          <span class="err">“</span><span class="nx">ratio</span><span class="err">”</span> <span class="o">:</span> <span class="mf">1.6794871794871795</span>
 </span><span class='line'>     <span class="p">}</span>
 </span><span class='line'><span class="p">]</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Again, ZeroMQ users post more useful answers than others.</p>
 
 <p>To complete the picture of typical users, let’s run the following query that calculates an average reputation of people that post answers</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Reputation of respondents </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>Reputation of respondents </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -530,9 +530,9 @@
 </span><span class='line'>     <span class="p">{</span><span class="nx">$match</span><span class="o">:</span><span class="p">{</span><span class="nx">_id</span><span class="o">:</span><span class="p">{</span><span class="nx">$in</span><span class="o">:</span><span class="p">[</span><span class="err">‘</span><span class="nx">activemq</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="nx">rabbitmq</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="nx">zeromq</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="nx">hornetq</span><span class="err">’</span><span class="p">]}}},</span>
 </span><span class='line'>     <span class="p">{</span><span class="nx">$sort</span><span class="o">:</span><span class="p">{</span><span class="nx">reputation</span><span class="o">:-</span><span class="mi">1</span><span class="p">}}</span>
 </span><span class='line'><span class="p">])[</span><span class="err">‘</span><span class="nx">result</span><span class="err">’</span><span class="p">];</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -568,7 +568,7 @@
 </span><span class='line'>          <span class="err">“</span><span class="nx">reputation</span><span class="err">”</span> <span class="o">:</span> <span class="mf">3472.9658119658116</span>
 </span><span class='line'>     <span class="p">}</span>
 </span><span class='line'><span class="p">]</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Wow. ZeroMQ users not only ask more useful questions and give useful answers, they also have higher reputation on average in the StackOverflow community.</p>
 
@@ -726,7 +726,7 @@
 
 <p>One of the topics he covered was the usage of the <code>return</code> keyword in Groovy. That was interesting. Compare the following two functions, guess what they return, and check your answer in the console</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -740,9 +740,9 @@
 </span><span class='line'>        <span class="k">return</span> <span class="mi">22</span>
 </span><span class='line'>    <span class="o">}</span>
 </span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -756,7 +756,7 @@
 </span><span class='line'>        <span class="mi">22</span>
 </span><span class='line'>    <span class="o">}</span>
 </span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h3 id="paul-king-guillaume-laforge--groovydsls-from-beginner-to-expert-videohttpwwwinfoqcompresentationsgroovy-dsls">Paul King, Guillaume Laforge — Groovy.DSLs (from: beginner, to: expert) (<a href="http://www.infoq.com/presentations/Groovy-DSLs">video</a>)</h3>
 
@@ -831,13 +831,13 @@
 
 <p>Spring Social offers consistent template-based API across different social providers. It basically gives you an OAuth aware RestTemplate, so you can do something like this:</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 </pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">TwitterTemplate</span> <span class="n">twitter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TwitterTemplate</span><span class="o">(</span><span class="n">API_KEY</span><span class="o">,</span> <span class="n">API_SECRET</span><span class="o">,</span> <span class="n">ACCESS_TOKEN</span><span class="o">,</span> <span class="n">ACCESS_TOKEN_SECRET</span><span class="o">);</span>
 </span><span class='line'><span class="n">twitter</span><span class="o">.</span><span class="na">updateStatus</span><span class="o">(</span><span class="err">“</span><span class="n">Hello</span> <span class="err">#</span><span class="n">s2gx</span> <span class="o">!</span><span class="err">”</span><span class="o">);</span>
 </span><span class='line'><span class="n">twitter</span><span class="o">.</span><span class="na">retweet</span><span class="o">(</span><span class="mi">26887414177L</span><span class="o">);</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>If you are in a social network business, definitely take a look at <a href="http://www.springsource.org/spring-social">Spring Social</a>.</p>
 
@@ -914,8 +914,8 @@
 
 <p>Open <em>/opt/ejabberd/ejabberd/etc/ejabberd/ejabberd.cfg</em> file, find <em>modules</em> section, and add mod_rabbitmq stanza to the list</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>/opt/ejabberd/ejabberd/etc/ejabberd/ejabberd.cfg </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>/opt/ejabberd/ejabberd/etc/ejabberd/ejabberd.cfg </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -927,7 +927,7 @@
 </span><span class='line'>  <span class="p">{</span><span class="n">mod_rabbitmq</span><span class="p">,</span>  <span class="p">[{</span><span class="n">rabbitmq_node</span><span class="p">,</span> <span class="nv">RABBIT_NODE</span><span class="p">}]},</span>
 </span><span class='line'>  <span class="err">…</span>
 </span><span class='line'> <span class="p">]}.</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>You need to replace <em>RABBIT_NODE</em> with the real value, which you can find from the RabbitMQ process information</p>
 
@@ -1013,12 +1013,12 @@ $ ln -s rabbitmq_server-3.1.1 rabbitmq
 
 <p>Append the following lines to <em>~/.bashrc</em></p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>~/.bashrc </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>~/.bashrc </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">RABBITMQ_HOME</span><span class="o">=</span>/opt/rabbitmq/rabbitmq
 </span><span class='line'><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$RABBITMQ_HOME</span>/sbin
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Enable web admin plugin</p>
 
@@ -1044,8 +1044,8 @@ $ ln -s rabbitmq_server-3.1.1 rabbitmq
 
 <p>Groovy client is essentially Java client written in Groovy language. Here are the scripts for consumer and publisher in Groovy</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>consumer.groovy </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>consumer.groovy </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1103,10 +1103,10 @@ $ ln -s rabbitmq_server-3.1.1 rabbitmq
 </span><span class='line'><span class="o">}</span>
 </span><span class='line'><span class="n">channel</span><span class="o">.</span><span class="na">close</span><span class="o">()</span>
 </span><span class='line'><span class="n">conn</span><span class="o">.</span><span class="na">close</span><span class="o">()</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>publisher.groovy </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>publisher.groovy </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -1142,7 +1142,7 @@ $ ln -s rabbitmq_server-3.1.1 rabbitmq
 </span><span class='line'>
 </span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">channel</span><span class="o">.</span><span class="na">close</span><span class="o">()</span>
 </span><span class='line'><span class="n">conn</span><span class="o">.</span><span class="na">close</span><span class="o">()</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Run consumer script in one terminal window</p>
 

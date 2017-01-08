@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Regex | Side Notes]]></title>
+  <title><![CDATA[Category: regex | Side Notes]]></title>
   <link href="http://blog.ndpar.com/categories/regex/atom.xml" rel="self"/>
   <link href="http://blog.ndpar.com/"/>
-  <updated>2015-11-06T20:35:32-05:00</updated>
+  <updated>2017-01-08T17:14:02-05:00</updated>
   <id>http://blog.ndpar.com/</id>
   <author>
     <name><![CDATA[Andrey Paramonov]]></name>
@@ -30,7 +30,7 @@
 
 <p><em>Demonstrates:</em> <code>File.eachLine</code> method, matrix syntax of <em>Matcher</em> object.</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -44,7 +44,7 @@
 </span><span class='line'>    <span class="o">}</span>
 </span><span class='line'><span class="o">}</span>
 </span><span class='line'><span class="n">println</span> <span class="n">properties</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h2 id="parsing-csv-files-simplifiedsup2sup">Parsing CSV files (simplified)<sup>2</sup></h2>
 
@@ -56,7 +56,7 @@
 
 <p><em>Demonstrates:</em> <code>~//</code> <em>Pattern</em> defenition, <code>Matcher.group</code> method, <code>\G</code> regex meta-sequence.</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -74,7 +74,7 @@
 </span><span class='line'>    <span class="o">}</span>
 </span><span class='line'>    <span class="n">println</span> <span class="n">fields</span>
 </span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h2 id="finding-snapshot-dependencies-in-the-pom-simplifiedsup3sup">Finding snapshot dependencies in the POM (simplified)<sup>3</sup></h2>
 
@@ -86,7 +86,7 @@
 
 <p><em>Demonstrates:</em> <code>File.text</code> property, list syntaxt of <em>Matcher</em> object, named capture, global <code>\x</code> regex modifier, local <code>\s</code> regex modifier.</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -100,15 +100,15 @@
 </pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="kt">def</span> <span class="n">pom</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="err">‘</span><span class="n">path</span><span class="s">/to/</span><span class="n">pom</span><span class="o">.</span><span class="na">xml</span><span class="err">’</span><span class="o">).</span><span class="na">text</span>
 </span><span class='line'><span class="kt">def</span> <span class="n">matcher</span> <span class="o">=</span> <span class="n">pom</span> <span class="o">=~</span> <span class="s">$/(?x)</span>
 </span><span class='line'><span class="s">    &lt;dependency&gt;                          \s*</span>
-</span><span class='line'><span class="s">      &lt;groupid&gt;([^&amp;lt;]+)&lt;/groupid&gt;          \s*</span>
-</span><span class='line'><span class="s">      &lt;artifactid&gt;([^&amp;lt;]+)&lt;/artifactid&gt;    \s*</span>
+</span><span class='line'><span class="s">      &lt;groupId&gt;([^&amp;lt;]+)&lt;/groupId&gt;          \s*</span>
+</span><span class='line'><span class="s">      &lt;artifactId&gt;([^&amp;lt;]+)&lt;/artifactId&gt;    \s*</span>
 </span><span class='line'><span class="s">      &lt;version&gt;(.+?-SNAPSHOT)&lt;/version&gt;   (?s:.*?)</span>
 </span><span class='line'><span class="s">    &lt;/dependency&gt;</span>
 </span><span class='line'><span class="s">/$</span>
 </span><span class='line'><span class="n">matcher</span><span class="o">.</span><span class="na">each</span> <span class="o">{</span> <span class="n">matched</span><span class="o">,</span> <span class="n">groupId</span><span class="o">,</span> <span class="n">artifactId</span><span class="o">,</span> <span class="n">version</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="o">;</span>
 </span><span class='line'>    <span class="n">println</span> <span class="err">“</span><span class="n">$groupId</span><span class="o">:</span><span class="n">$artifactId</span><span class="o">:</span><span class="n">$version</span><span class="err">”</span>
 </span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h2 id="finding-stacktraces-in-the-log">Finding stacktraces in the log</h2>
 
@@ -139,7 +139,7 @@ java.lang.IllegalArgumentException: id to load is required for loading
 
 <p><em>Demonstrates:</em> regex interpolation, combined global regex modifiers <code>\s</code> and <code>\m</code>.</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -157,7 +157,7 @@ java.lang.IllegalArgumentException: id to load is required for loading
 </span><span class='line'><span class="n">splitter</span><span class="o">.</span><span class="na">each</span> <span class="o">{</span> <span class="n">matched</span><span class="o">,</span> <span class="n">entry</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="o">;</span>
 </span><span class='line'>    <span class="k">if</span> <span class="o">(</span><span class="n">entry</span> <span class="o">=~</span> <span class="s">/(?m)^(?:\t| {8})at/</span><span class="o">)</span> <span class="n">println</span> <span class="n">entry</span>
 </span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h3 id="resources">Resources</h3>
 
@@ -186,7 +186,7 @@ java.lang.IllegalArgumentException: id to load is required for loading
     <id>http://blog.ndpar.com/2009/09/25/groovy-regular-expressions</id>
     <content type="html"><![CDATA[<p>Because of the compact syntax regular expressions in Groovy are more readable than in Java. Here is how Jeffrey Friedl’s <a href="http://regex.info/listing.cgi?ed=3&amp;p=208">example</a> looks in Groovy:</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -272,7 +272,7 @@ java.lang.IllegalArgumentException: id to load is required for loading
 </span><span class='line'>
 </span><span class='line'><span class="s">&lt;p&gt;assert ‘http://www.google.com/</span><span class="n">search</span><span class="o">?</span><span class="n">rls</span><span class="o">=</span><span class="n">en</span><span class="o">&amp;</span><span class="n">amp</span><span class="o">;</span><span class="n">q</span><span class="o">=</span><span class="n">regex</span><span class="o">&amp;</span><span class="n">amp</span><span class="o">;</span><span class="n">ie</span><span class="o">=</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span><span class="o">&amp;</span><span class="n">amp</span><span class="o">;</span><span class="n">oe</span><span class="o">=</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span><span class="err">’</span> <span class="o">==~</span> <span class="n">url</span>
 </span><span class='line'><span class="k">assert</span> <span class="err">‘</span><span class="n">pages</span><span class="o">.</span><span class="na">github</span><span class="o">.</span><span class="na">io</span><span class="err">’</span> <span class="o">==~</span> <span class="n">url</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>As you can see, there are several notations, and for every subexpression you can choose the one that is most expressive.</p>
 

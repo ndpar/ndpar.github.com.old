@@ -81,7 +81,7 @@
   
 </ul>
   
-<form action="http://google.com/search" method="get">
+<form action="https://www.google.com/search" method="get">
   <fieldset role="search">
     <input type="hidden" name="q" value="site:blog.ndpar.com" />
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
@@ -118,7 +118,8 @@
   
 
 
-<time datetime="2014-10-11T08:00:00-04:00" pubdate data-updated="true">Oct 11<span>th</span>, 2014</time>
+
+<time datetime="2014-10-11T08:00:00-04:00" pubdate data-updated="true">October 11, 2014</time>
         
       </p>
     
@@ -131,17 +132,13 @@
 
 <p>The definition of one-dimensional DFT is pretty simple. It is just a function that maps a given vector <strong>f</strong> of length <em>N</em> to a vector <strong>F</strong> of the same length by the following formula</p>
 
-<script type="math/tex; mode=display">
-\mathbf{F}[m] = \sum_{n=0}^{N-1} \mathbf{f}[n] e^{-2\pi i mn/N}, \quad m = 0, \dots , N-1
-</script>
+<script type="math/tex; mode=display">\mathbf{F}[m] = \sum_{n=0}^{N-1} \mathbf{f}[n] e^{-2\pi i mn/N}, \quad m = 0, \dots , N-1</script>
 
 <p>To implement this formula the only thing we need is basic arithmetic for complex numbers. Not only does J provide such an arithmetic, it has special code for complex exponentiation, which makes the implementation much easier than it would be in other languages.</p>
 
 <p>Before we start coding let’s rewrite the formula in terms of matrix multiplication so that we can utilize this feature of J. Let $\omega$ be the primitive <em>N</em>th root of unity $\omega = e^{2\pi i/N}$, then the DFT formula becomes</p>
 
-<script type="math/tex; mode=display">
-\mathbf{F} = \mathbf{f} \cdot \Omega
-</script>
+<script type="math/tex; mode=display">\mathbf{F} = \mathbf{f} \cdot \Omega</script>
 
 <p>where <strong>f</strong> is an input vector and $\Omega$ is a symmetric matrix $(\omega^{-mn})$ with $m,n=0,\dots,N-1$.</p>
 
@@ -151,34 +148,34 @@
 
 <p>We are now ready to code. Let’s start with $\omega = e^{2\pi i/N}$. As I said before J has special code for function $e^{\pi x}$, namely the composition <code>^@o.@</code>. In our case $x$ is equal to $2i/N$, where $N$ is an input to the function $\omega$. In other words, $x$ is a function that divides $2i$ by its input, which in J is written as <code>0j2&amp;%</code>. That means the complete little omega implementation is</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">omg=: ^@o.@(0j2&amp;%)</span></code></pre></td></tr></table></div></figure></notextile></div>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">omg=: ^@o.@(0j2&amp;%)</span></code></pre></td></tr></table></div></figure>
 
 <p>The next step is the matrix $\Omega=(\omega^{-mn})$. We can think of it this way: make a multiplication table of vectors $[0,\dots,N-1]$ and $-[0,\dots,N-1]$, then raise $\omega$ to the power of every element from that table. In J the multiplication table of a vector by its negative is implemented as the hook <code>*/ -</code>. For building a range-vector $[0,\dots,N-1]$ we can use the function <code>i.</code>. Therefore, the implementation of a square matrix $(-mn)$ in J is the composition <code>(*/ -)@i.</code>, and the function of $\Omega$ is</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">Omg=: omg ^ (*/ -)@i.</span></code></pre></td></tr></table></div></figure></notextile></div>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">Omg=: omg ^ (*/ -)@i.</span></code></pre></td></tr></table></div></figure>
 
 <p>The last piece of the DFT program is the formula $\mathbf{f}\cdot\Omega$. Our <code>Omg</code> function accepts as a parameter the length of the input vector, while the <code>dft</code> function does the vector itself. That means we need to compose <code>Omg</code> function with the length function <code>#</code>. Then the composition <code>Omg@#</code> will work on vectors.</p>
 
 <p>The matrix (and vector) multiplication function in J is <code>+/ .*</code>. Therefore, the product of the input vector and the function <code>Omg@#</code> is just a hook</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">dft=: +/ .* Omg@#</span></code></pre></td></tr></table></div></figure></notextile></div>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">dft=: +/ .* Omg@#</span></code></pre></td></tr></table></div></figure>
 
 <p>That’s it. This is a complete implementation of DFT in J. Let’s put all three lines together.</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 </pre></td><td class="code"><pre><code class=""><span class="line">omg=: ^@o.@(0j2&amp;%)
 </span><span class="line">Omg=: omg ^ (*/ -)@i.
-</span><span class="line">dft=: +/ .* Omg@#</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span><span class="line">dft=: +/ .* Omg@#</span></code></pre></td></tr></table></div></figure>
 
 <p>The whole program fits in one tweet. If you like one-liners, you can do this as well</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">dft=: +/ .* ^@o.@(0j2&amp;% * (*/ -)@i.)@#</span></code></pre></td></tr></table></div></figure></notextile></div>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">dft=: +/ .* ^@o.@(0j2&amp;% * (*/ -)@i.)@#</span></code></pre></td></tr></table></div></figure>
 
 <h2 id="references">References</h2>
 
@@ -207,12 +204,13 @@
   
 
 
-<time datetime="2014-10-11T08:00:00-04:00" pubdate data-updated="true">Oct 11<span>th</span>, 2014</time>
+
+<time datetime="2014-10-11T08:00:00-04:00" pubdate data-updated="true">October 11, 2014</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/categories/j/'>J</a>, <a class='category' href='/categories/math/'>Math</a>
+    <a class='category' href='/categories/j/'>j</a>, <a class='category' href='/categories/math/'>math</a>
   
 </span>
 
@@ -246,23 +244,23 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2016/12/24/spring-oauth2/">Spring OAuth 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/11/07/ml-logistic-regression/">Machine Learning: Logistic Regression</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/10/28/ml-linear-regression/">Machine Learning: Linear Regression</a>
+      </li>
+    
+      <li class="post">
         <a href="/2015/04/03/feynman-tot/">Another Notation as a Tool of Thought</a>
       </li>
     
       <li class="post">
         <a href="/2014/11/29/two-series/">Two Series</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/10/13/gc-visualization/">GC Visualization</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/10/12/fft-j/">Fast Fourier Transform in J</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/10/11/dft-j/">Discrete Fourier Transform in J</a>
       </li>
     
   </ul>
@@ -302,44 +300,47 @@
 <section>
   <h1>Categories</h1>
   <ul id="categories">
-    <li class='category'><a href='/categories/activemq/'>ActiveMQ (1)</a></li>
-<li class='category'><a href='/categories/agile/'>Agile (1)</a></li>
-<li class='category'><a href='/categories/art/'>Art (1)</a></li>
-<li class='category'><a href='/categories/book-review/'>Book Review (1)</a></li>
-<li class='category'><a href='/categories/buzz/'>Buzz (2)</a></li>
-<li class='category'><a href='/categories/clojure/'>Clojure (4)</a></li>
-<li class='category'><a href='/categories/clustering/'>Clustering (1)</a></li>
-<li class='category'><a href='/categories/conference/'>Conference (3)</a></li>
-<li class='category'><a href='/categories/craftsmanship/'>Craftsmanship (1)</a></li>
-<li class='category'><a href='/categories/education/'>Education (1)</a></li>
-<li class='category'><a href='/categories/ejabberd/'>Ejabberd (2)</a></li>
-<li class='category'><a href='/categories/entrepreneurship/'>Entrepreneurship (1)</a></li>
-<li class='category'><a href='/categories/erlang/'>Erlang (8)</a></li>
-<li class='category'><a href='/categories/feynman/'>Feynman (1)</a></li>
-<li class='category'><a href='/categories/functional-programming/'>Functional Programming (1)</a></li>
-<li class='category'><a href='/categories/git/'>Git (3)</a></li>
-<li class='category'><a href='/categories/grails/'>Grails (1)</a></li>
-<li class='category'><a href='/categories/groovy/'>Groovy (10)</a></li>
-<li class='category'><a href='/categories/haskell/'>Haskell (1)</a></li>
-<li class='category'><a href='/categories/humor/'>Humor (2)</a></li>
-<li class='category'><a href='/categories/j/'>J (2)</a></li>
-<li class='category'><a href='/categories/java/'>Java (4)</a></li>
-<li class='category'><a href='/categories/lisp/'>Lisp (3)</a></li>
-<li class='category'><a href='/categories/math/'>Math (9)</a></li>
-<li class='category'><a href='/categories/maven/'>Maven (1)</a></li>
-<li class='category'><a href='/categories/mongodb/'>MongoDB (1)</a></li>
-<li class='category'><a href='/categories/nosql/'>NoSQL (1)</a></li>
-<li class='category'><a href='/categories/programming/'>Programming (6)</a></li>
-<li class='category'><a href='/categories/python/'>Python (2)</a></li>
-<li class='category'><a href='/categories/rabbitmq/'>RabbitMQ (4)</a></li>
-<li class='category'><a href='/categories/regex/'>Regex (2)</a></li>
-<li class='category'><a href='/categories/sicp/'>SICP (1)</a></li>
-<li class='category'><a href='/categories/scala/'>Scala (1)</a></li>
-<li class='category'><a href='/categories/solr/'>Solr (1)</a></li>
-<li class='category'><a href='/categories/spring/'>Spring (1)</a></li>
-<li class='category'><a href='/categories/tutorial/'>Tutorial (1)</a></li>
-<li class='category'><a href='/categories/zeromq/'>ZeroMQ (1)</a></li>
-<li class='category'><a href='/categories/zookeeper/'>ZooKeeper (1)</a></li>
+    <li class='category'><a href='/categories/activemq/'>activemq (1)</a></li>
+<li class='category'><a href='/categories/agile/'>agile (1)</a></li>
+<li class='category'><a href='/categories/art/'>art (1)</a></li>
+<li class='category'><a href='/categories/book-review/'>book review (1)</a></li>
+<li class='category'><a href='/categories/buzz/'>buzz (2)</a></li>
+<li class='category'><a href='/categories/clojure/'>clojure (4)</a></li>
+<li class='category'><a href='/categories/clustering/'>clustering (1)</a></li>
+<li class='category'><a href='/categories/conference/'>conference (3)</a></li>
+<li class='category'><a href='/categories/craftsmanship/'>craftsmanship (1)</a></li>
+<li class='category'><a href='/categories/education/'>education (1)</a></li>
+<li class='category'><a href='/categories/ejabberd/'>ejabberd (2)</a></li>
+<li class='category'><a href='/categories/entrepreneurship/'>entrepreneurship (1)</a></li>
+<li class='category'><a href='/categories/erlang/'>erlang (8)</a></li>
+<li class='category'><a href='/categories/feynman/'>feynman (1)</a></li>
+<li class='category'><a href='/categories/functional-programming/'>functional programming (1)</a></li>
+<li class='category'><a href='/categories/git/'>git (3)</a></li>
+<li class='category'><a href='/categories/grails/'>grails (1)</a></li>
+<li class='category'><a href='/categories/groovy/'>groovy (10)</a></li>
+<li class='category'><a href='/categories/haskell/'>haskell (1)</a></li>
+<li class='category'><a href='/categories/humor/'>humor (2)</a></li>
+<li class='category'><a href='/categories/j/'>j (2)</a></li>
+<li class='category'><a href='/categories/java/'>java (4)</a></li>
+<li class='category'><a href='/categories/lisp/'>lisp (3)</a></li>
+<li class='category'><a href='/categories/machine-learning/'>machine learning (2)</a></li>
+<li class='category'><a href='/categories/math/'>math (11)</a></li>
+<li class='category'><a href='/categories/matlab/'>matlab (2)</a></li>
+<li class='category'><a href='/categories/maven/'>maven (1)</a></li>
+<li class='category'><a href='/categories/mongodb/'>mongodb (1)</a></li>
+<li class='category'><a href='/categories/nosql/'>nosql (1)</a></li>
+<li class='category'><a href='/categories/oauth/'>oauth (1)</a></li>
+<li class='category'><a href='/categories/programming/'>programming (6)</a></li>
+<li class='category'><a href='/categories/python/'>python (2)</a></li>
+<li class='category'><a href='/categories/rabbitmq/'>rabbitmq (4)</a></li>
+<li class='category'><a href='/categories/regex/'>regex (2)</a></li>
+<li class='category'><a href='/categories/scala/'>scala (1)</a></li>
+<li class='category'><a href='/categories/sicp/'>sicp (1)</a></li>
+<li class='category'><a href='/categories/solr/'>solr (1)</a></li>
+<li class='category'><a href='/categories/spring/'>spring (2)</a></li>
+<li class='category'><a href='/categories/tutorial/'>tutorial (1)</a></li>
+<li class='category'><a href='/categories/zeromq/'>zeromq (1)</a></li>
+<li class='category'><a href='/categories/zookeeper/'>zookeeper (1)</a></li>
 
   </ul>
 </section>
@@ -351,7 +352,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2009–2015 - Andrey Paramonov -
+  Copyright &copy; 2009–2017 - Andrey Paramonov -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> -
   <span class="credit">Hosted by <a href="http://github.com">GitHub</a></span>
 </p>

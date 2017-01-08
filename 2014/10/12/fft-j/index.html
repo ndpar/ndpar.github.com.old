@@ -81,7 +81,7 @@
   
 </ul>
   
-<form action="http://google.com/search" method="get">
+<form action="https://www.google.com/search" method="get">
   <fieldset role="search">
     <input type="hidden" name="q" value="site:blog.ndpar.com" />
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
@@ -118,7 +118,8 @@
   
 
 
-<time datetime="2014-10-12T08:00:00-04:00" pubdate data-updated="true">Oct 12<span>th</span>, 2014</time>
+
+<time datetime="2014-10-12T08:00:00-04:00" pubdate data-updated="true">October 12, 2014</time>
         
       </p>
     
@@ -131,27 +132,19 @@
 
 <p>Recall the DFT formula from the previous post</p>
 
-<script type="math/tex; mode=display">
-\mathcal{F}_N\mathbf{f}[m] = \sum_{n=0}^{N-1} \mathbf{f}[n] e^{-2\pi i mn/N}, \quad m = 0, \dots , N-1
-</script>
+<script type="math/tex; mode=display">\mathcal{F}_N\mathbf{f}[m] = \sum_{n=0}^{N-1} \mathbf{f}[n] e^{-2\pi i mn/N}, \quad m = 0, \dots , N-1</script>
 
 <p>I use a slightly different notation here to make recursive definition easier to understand.</p>
 
 <p>We assume that <em>N</em> is a power of 2. Using basic arithmetic and properties of complex exponentials, we can derive the formula for the DFT of order <em>2N</em> in terms of two DFTs of order <em>N</em></p>
 
-<script type="math/tex; mode=display">
-\mathcal{F}_{2N}\mathbf{f}[m]=\mathcal{F}_N\mathbf{f}_{even}+e^{-\pi im/N}\mathcal{F}_N\mathbf{f}_{odd}
-</script>
+<script type="math/tex; mode=display">\mathcal{F}_{2N}\mathbf{f}[m]=\mathcal{F}_N\mathbf{f}_{even}+e^{-\pi im/N}\mathcal{F}_N\mathbf{f}_{odd}</script>
 
-<script type="math/tex; mode=display">
-\mathcal{F}_{2N}\mathbf{f}[m+N]=\mathcal{F}_N\mathbf{f}_{even}-e^{-\pi im/N}\mathcal{F}_N\mathbf{f}_{odd}
-</script>
+<script type="math/tex; mode=display">\mathcal{F}_{2N}\mathbf{f}[m+N]=\mathcal{F}_N\mathbf{f}_{even}-e^{-\pi im/N}\mathcal{F}_N\mathbf{f}_{odd}</script>
 
 <p>where $m=0,\dots,N-1$. The base case, when $N=1$, is</p>
 
-<script type="math/tex; mode=display">
-\mathcal{F}_1\mathbf{f}[0] = \mathbf{f}[0]
-</script>
+<script type="math/tex; mode=display">\mathcal{F}_1\mathbf{f}[0] = \mathbf{f}[0]</script>
 
 <p>i.e. the identity function.</p>
 
@@ -161,15 +154,15 @@
 
 <p>Let’s express the FFT algorithm in words. If $N=1$ then the <code>fft</code> function is just the identity function (<code>]</code> in J). Overwise, it’s a function involving a recursive call on an input vector of half the length. Here is the same phrase written in J</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">fft=: something_recursive_here ` ] @. (1 = #)</span></code></pre></td></tr></table></div></figure></notextile></div>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">fft=: something_recursive_here ` ] @. (1 = #)</span></code></pre></td></tr></table></div></figure>
 
 <p>If $N&gt;1$, we split the input vector into two vectors by even and odd indices. We apply FFT recursively to each of these vectors. We multiply the first output vector by 1 and the second one by $e^{-\pi im/N}$. Then, we find the sum and difference of the result vectors, and concatenate them. That should be it.</p>
 
 <p>Let’s start with the split function. To split a vector by even and odd indices in J, we can split it by groups of two elements, stack the groups on top of each other making an $N\times2$ matrix, then transpose it to get $2\times N$ matrix, which gives us the two vectors we need. Here is the implementation of the split function</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">spl=: |:@(_2 ]\ ])</span></code></pre></td></tr></table></div></figure></notextile></div>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">spl=: |:@(_2 ]\ ])</span></code></pre></td></tr></table></div></figure>
 
 <p>and here is an example of applying this function to a range vector</p>
 
@@ -180,15 +173,15 @@
 
 <p>The next step is the function $e^{-\pi im/N}$. We implement it in two steps: first, scalar $\omega=e^{\pi i/N}$, then vector $\boldsymbol\omega=\omega^{-m}$. The implementation is analogous to the one from the previous <a href="/2014/10/11/dft-j/">post</a>, with the difference of $\pi i/N$ instead of $2\pi i/N$, and vector $\boldsymbol\omega$ instead of matrix $\Omega$</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 </pre></td><td class="code"><pre><code class=""><span class="line">omg=: ^@o.@(0j1&amp;%)
-</span><span class="line">omv=: omg ^ -@i.</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span><span class="line">omv=: omg ^ -@i.</span></code></pre></td></tr></table></div></figure>
 
 <p>The new matrix $\Omega$ is build by stacking a unit vector $[1,\dots,1]$ of length <em>N</em> on top of the vector $\boldsymbol\omega$</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">Omg=: 1 ,: omv</span></code></pre></td></tr></table></div></figure></notextile></div>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">Omg=: 1 ,: omv</span></code></pre></td></tr></table></div></figure>
 
 <p>Here is an example of its application to $N=4$</p>
 
@@ -199,14 +192,14 @@
 
 <p>Now we can go back to the <code>fft</code> function and add some code to the <code>something_recursive_here</code> placeholder</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">fft=: final_piece_here@(Omg@#@{. * $:"1)@spl ` ] @. (1 = #)</span></code></pre></td></tr></table></div></figure></notextile></div>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">fft=: final_piece_here@(Omg@#@{. * $:"1)@spl ` ] @. (1 = #)</span></code></pre></td></tr></table></div></figure>
 
 <p><code>$:"1</code> means the <code>fft</code> function is recursively applied to every row of its input matrix (which is the result of the <code>spl</code> function above). <code>Omg@#@{.</code> means: take the first row of the input matrix, get the length of it, and pass it to the <code>Omg</code> function.</p>
 
 <p><code>final_piece_here</code> is then what we described above as “find the sum and difference of the result vectors, and concatenate them”. In J it’s implemented as the fork <code>+/ , -/</code>. Now we have all the pieces in place, and the final program is</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -215,7 +208,7 @@
 </span><span class="line">omg=: ^@o.@(0j1&amp;%)
 </span><span class="line">omv=: omg ^ -@i.
 </span><span class="line">Omg=: 1 ,: omv
-</span><span class="line">fft=: (+/ , -/)@(Omg@#@{. * $:"1)@spl ` ] @. (1 = #)</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span><span class="line">fft=: (+/ , -/)@(Omg@#@{. * $:"1)@spl ` ] @. (1 = #)</span></code></pre></td></tr></table></div></figure>
 
 <h2 id="references">References</h2>
 
@@ -246,12 +239,13 @@
   
 
 
-<time datetime="2014-10-12T08:00:00-04:00" pubdate data-updated="true">Oct 12<span>th</span>, 2014</time>
+
+<time datetime="2014-10-12T08:00:00-04:00" pubdate data-updated="true">October 12, 2014</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/categories/j/'>J</a>, <a class='category' href='/categories/math/'>Math</a>
+    <a class='category' href='/categories/j/'>j</a>, <a class='category' href='/categories/math/'>math</a>
   
 </span>
 
@@ -285,23 +279,23 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2016/12/24/spring-oauth2/">Spring OAuth 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/11/07/ml-logistic-regression/">Machine Learning: Logistic Regression</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/10/28/ml-linear-regression/">Machine Learning: Linear Regression</a>
+      </li>
+    
+      <li class="post">
         <a href="/2015/04/03/feynman-tot/">Another Notation as a Tool of Thought</a>
       </li>
     
       <li class="post">
         <a href="/2014/11/29/two-series/">Two Series</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/10/13/gc-visualization/">GC Visualization</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/10/12/fft-j/">Fast Fourier Transform in J</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/10/11/dft-j/">Discrete Fourier Transform in J</a>
       </li>
     
   </ul>
@@ -341,44 +335,47 @@
 <section>
   <h1>Categories</h1>
   <ul id="categories">
-    <li class='category'><a href='/categories/activemq/'>ActiveMQ (1)</a></li>
-<li class='category'><a href='/categories/agile/'>Agile (1)</a></li>
-<li class='category'><a href='/categories/art/'>Art (1)</a></li>
-<li class='category'><a href='/categories/book-review/'>Book Review (1)</a></li>
-<li class='category'><a href='/categories/buzz/'>Buzz (2)</a></li>
-<li class='category'><a href='/categories/clojure/'>Clojure (4)</a></li>
-<li class='category'><a href='/categories/clustering/'>Clustering (1)</a></li>
-<li class='category'><a href='/categories/conference/'>Conference (3)</a></li>
-<li class='category'><a href='/categories/craftsmanship/'>Craftsmanship (1)</a></li>
-<li class='category'><a href='/categories/education/'>Education (1)</a></li>
-<li class='category'><a href='/categories/ejabberd/'>Ejabberd (2)</a></li>
-<li class='category'><a href='/categories/entrepreneurship/'>Entrepreneurship (1)</a></li>
-<li class='category'><a href='/categories/erlang/'>Erlang (8)</a></li>
-<li class='category'><a href='/categories/feynman/'>Feynman (1)</a></li>
-<li class='category'><a href='/categories/functional-programming/'>Functional Programming (1)</a></li>
-<li class='category'><a href='/categories/git/'>Git (3)</a></li>
-<li class='category'><a href='/categories/grails/'>Grails (1)</a></li>
-<li class='category'><a href='/categories/groovy/'>Groovy (10)</a></li>
-<li class='category'><a href='/categories/haskell/'>Haskell (1)</a></li>
-<li class='category'><a href='/categories/humor/'>Humor (2)</a></li>
-<li class='category'><a href='/categories/j/'>J (2)</a></li>
-<li class='category'><a href='/categories/java/'>Java (4)</a></li>
-<li class='category'><a href='/categories/lisp/'>Lisp (3)</a></li>
-<li class='category'><a href='/categories/math/'>Math (9)</a></li>
-<li class='category'><a href='/categories/maven/'>Maven (1)</a></li>
-<li class='category'><a href='/categories/mongodb/'>MongoDB (1)</a></li>
-<li class='category'><a href='/categories/nosql/'>NoSQL (1)</a></li>
-<li class='category'><a href='/categories/programming/'>Programming (6)</a></li>
-<li class='category'><a href='/categories/python/'>Python (2)</a></li>
-<li class='category'><a href='/categories/rabbitmq/'>RabbitMQ (4)</a></li>
-<li class='category'><a href='/categories/regex/'>Regex (2)</a></li>
-<li class='category'><a href='/categories/sicp/'>SICP (1)</a></li>
-<li class='category'><a href='/categories/scala/'>Scala (1)</a></li>
-<li class='category'><a href='/categories/solr/'>Solr (1)</a></li>
-<li class='category'><a href='/categories/spring/'>Spring (1)</a></li>
-<li class='category'><a href='/categories/tutorial/'>Tutorial (1)</a></li>
-<li class='category'><a href='/categories/zeromq/'>ZeroMQ (1)</a></li>
-<li class='category'><a href='/categories/zookeeper/'>ZooKeeper (1)</a></li>
+    <li class='category'><a href='/categories/activemq/'>activemq (1)</a></li>
+<li class='category'><a href='/categories/agile/'>agile (1)</a></li>
+<li class='category'><a href='/categories/art/'>art (1)</a></li>
+<li class='category'><a href='/categories/book-review/'>book review (1)</a></li>
+<li class='category'><a href='/categories/buzz/'>buzz (2)</a></li>
+<li class='category'><a href='/categories/clojure/'>clojure (4)</a></li>
+<li class='category'><a href='/categories/clustering/'>clustering (1)</a></li>
+<li class='category'><a href='/categories/conference/'>conference (3)</a></li>
+<li class='category'><a href='/categories/craftsmanship/'>craftsmanship (1)</a></li>
+<li class='category'><a href='/categories/education/'>education (1)</a></li>
+<li class='category'><a href='/categories/ejabberd/'>ejabberd (2)</a></li>
+<li class='category'><a href='/categories/entrepreneurship/'>entrepreneurship (1)</a></li>
+<li class='category'><a href='/categories/erlang/'>erlang (8)</a></li>
+<li class='category'><a href='/categories/feynman/'>feynman (1)</a></li>
+<li class='category'><a href='/categories/functional-programming/'>functional programming (1)</a></li>
+<li class='category'><a href='/categories/git/'>git (3)</a></li>
+<li class='category'><a href='/categories/grails/'>grails (1)</a></li>
+<li class='category'><a href='/categories/groovy/'>groovy (10)</a></li>
+<li class='category'><a href='/categories/haskell/'>haskell (1)</a></li>
+<li class='category'><a href='/categories/humor/'>humor (2)</a></li>
+<li class='category'><a href='/categories/j/'>j (2)</a></li>
+<li class='category'><a href='/categories/java/'>java (4)</a></li>
+<li class='category'><a href='/categories/lisp/'>lisp (3)</a></li>
+<li class='category'><a href='/categories/machine-learning/'>machine learning (2)</a></li>
+<li class='category'><a href='/categories/math/'>math (11)</a></li>
+<li class='category'><a href='/categories/matlab/'>matlab (2)</a></li>
+<li class='category'><a href='/categories/maven/'>maven (1)</a></li>
+<li class='category'><a href='/categories/mongodb/'>mongodb (1)</a></li>
+<li class='category'><a href='/categories/nosql/'>nosql (1)</a></li>
+<li class='category'><a href='/categories/oauth/'>oauth (1)</a></li>
+<li class='category'><a href='/categories/programming/'>programming (6)</a></li>
+<li class='category'><a href='/categories/python/'>python (2)</a></li>
+<li class='category'><a href='/categories/rabbitmq/'>rabbitmq (4)</a></li>
+<li class='category'><a href='/categories/regex/'>regex (2)</a></li>
+<li class='category'><a href='/categories/scala/'>scala (1)</a></li>
+<li class='category'><a href='/categories/sicp/'>sicp (1)</a></li>
+<li class='category'><a href='/categories/solr/'>solr (1)</a></li>
+<li class='category'><a href='/categories/spring/'>spring (2)</a></li>
+<li class='category'><a href='/categories/tutorial/'>tutorial (1)</a></li>
+<li class='category'><a href='/categories/zeromq/'>zeromq (1)</a></li>
+<li class='category'><a href='/categories/zookeeper/'>zookeeper (1)</a></li>
 
   </ul>
 </section>
@@ -390,7 +387,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2009–2015 - Andrey Paramonov -
+  Copyright &copy; 2009–2017 - Andrey Paramonov -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> -
   <span class="credit">Hosted by <a href="http://github.com">GitHub</a></span>
 </p>

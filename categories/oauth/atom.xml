@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: oauth | Side Notes]]></title>
+  <link href="http://blog.ndpar.com/categories/oauth/atom.xml" rel="self"/>
+  <link href="http://blog.ndpar.com/"/>
+  <updated>2017-01-08T17:14:02-05:00</updated>
+  <id>http://blog.ndpar.com/</id>
+  <author>
+    <name><![CDATA[Andrey Paramonov]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Spring OAuth 2]]></title>
+    <link href="http://blog.ndpar.com/2016/12/24/spring-oauth2/"/>
+    <updated>2016-12-24T13:11:35-05:00</updated>
+    <id>http://blog.ndpar.com/2016/12/24/spring-oauth2</id>
+    <content type="html"><![CDATA[<p>This post is a quick analysis of the Spring implementation of OAuth 2.0 code
+flow (<a href="https://tools.ietf.org/html/rfc6749#section-4.1">RFC6749 Section 4.1</a>) with the minumum application <a href="https://github.com/ndpar/oauth-demo">code</a>.
+The setup consists of the <a href="https://github.com/ndpar/oauth-demo/blob/master/server/src/main/java/com/ndpar/ServerApplication.java">authorization server</a>, the <a href="https://github.com/ndpar/oauth-demo/blob/master/resource/src/main/java/com/ndpar/ResourceApplication.java">resource server</a>,
+and the <a href="https://github.com/ndpar/oauth-demo/blob/master/client/src/main/java/com/ndpar/ClientApplication.java">client</a>.</p>
+
+<p>The flow starts when a user hits
+<a href="http://localhost:9999/client/resource">localhost:9999/client/resource</a></p>
+
+<p><img class="center" src="/images/posts/spring-oauth-sequence.png"></p>
+
+<!-- More -->
+
+<p><figure class='code'><figcaption><span>1 </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>GET /client/resource HTTP/1.1
+</span><span class='line'>Host: localhost:9999</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Client endpoints are protected by Spring Security, therefore it redirects the
+request to <code>login</code> endpoint</p>
+
+<p><figure class='code'><figcaption><span>2 </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>HTTP/1.1 302
+</span><span class='line'>Set-Cookie: JSESSIONID=67CB7BD60760EDD84BD0884FF9F09651;path=/client;HttpOnly
+</span><span class='line'>X-Content-Type-Options: nosniff
+</span><span class='line'>X-XSS-Protection: 1; mode=block
+</span><span class='line'>Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+</span><span class='line'>Pragma: no-cache
+</span><span class='line'>Expires: 0
+</span><span class='line'>X-Frame-Options: DENY
+</span><span class='line'>Location: http://localhost:9999/client/login
+</span><span class='line'>Content-Length: 0</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Browser tries to load <code>login</code> page</p>
+
+<p><figure class='code'><figcaption><span>3 </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>GET /client/login HTTP/1.1
+</span><span class='line'>Host: localhost:9999
+</span><span class='line'>Cookie: JSESSIONID=67CB7BD60760EDD84BD0884FF9F09651</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Client delegates the authorization to OAuth server</p>
+
+<p><figure class='code'><figcaption><span>4 </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>HTTP/1.1 302
+</span><span class='line'>X-Content-Type-Options: nosniff
+</span><span class='line'>X-XSS-Protection: 1; mode=block
+</span><span class='line'>Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+</span><span class='line'>Pragma: no-cache
+</span><span class='line'>Expires: 0
+</span><span class='line'>X-Frame-Options: DENY
+</span><span class='line'>Location: http://localhost:8080/oauth/authorize?client_id=my-trusted-client&amp;redirect_uri=http://localhost:9999/client/login&amp;response_type=code&amp;state=JUkFF6
+</span><span class='line'>Content-Length: 0</span></code></pre></td></tr></table></div></figure></p>
+
+<p><a href="https://tools.ietf.org/html/rfc6749#section-4.1.1">OAuth flow</a> technically starts here. <code>state</code> is randomly
+generated by Spring. <code>client_id</code> is configured in Client’s application
+<a href="https://github.com/ndpar/oauth-demo/blob/master/client/src/main/resources/application.yml">properties</a>.</p>
+
+<p><figure class='code'><figcaption><span>5 </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>GET /oauth/authorize?client_id=my-trusted-client&amp;redirect_uri=http://localhost:9999/client/login&amp;response_type=code&amp;state=JUkFF6 HTTP/1.1
+</span><span class='line'>Host: localhost:8080</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Since User is not authenticated yet Spring shows basic dialog asking for user
+name and password.</p>
+
+<p><figure class='code'><figcaption><span>6 </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>HTTP/1.1 401
+</span><span class='line'>WWW-Authenticate: Basic realm=”Spring”
+</span><span class='line'>X-Content-Type-Options: nosniff
+</span><span class='line'>X-XSS-Protection: 1; mode=block
+</span><span class='line'>Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+</span><span class='line'>Pragma: no-cache
+</span><span class='line'>Expires: 0
+</span><span class='line'>X-Frame-Options: DENY
+</span><span class='line'>Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+</span><span class='line'>Content-Type: text/html;charset=UTF-8
+</span><span class='line'>Content-Language: en-US
+</span><span class='line'>Content-Length: 344</span></code></pre></td></tr></table></div></figure></p>
+
+<p>User types <code>dave</code>:<code>secret</code>. These are credentials stored in Server <a href="https://github.com/ndpar/oauth-demo/blob/master/server/src/main/resources/data.sql">database</a>.</p>
+
+<p><img class="center" src="/images/posts/oauth-auth.png"></p>
+
+<p><code>Authorization</code> header here contains User credentials.</p>
+
+<p><figure class='code'><figcaption><span>7 </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>GET /oauth/authorize?client_id=my-trusted-client&amp;redirect_uri=http://localhost:9999/client/login&amp;response_type=code&amp;state=JUkFF6 HTTP/1.1
+</span><span class='line'>Host: localhost:8080
+</span><span class='line'>Authorization: Basic ZGF2ZTpzZWNyZXQ=</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Server verifies User credentials and creates session.</p>
+
+<p><figure class='code'><figcaption><span>8 </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>HTTP/1.1 200
+</span><span class='line'>Set-Cookie: JSESSIONID=0517E6F4E263721C8E75A1378D51179F;path=/;HttpOnly
+</span><span class='line'>Cache-Control: no-store
+</span><span class='line'>X-Content-Type-Options: nosniff
+</span><span class='line'>X-XSS-Protection: 1; mode=block
+</span><span class='line'>X-Frame-Options: DENY
+</span><span class='line'>Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+</span><span class='line'>Content-Type: text/html;charset=UTF-8
+</span><span class='line'>Content-Language: en-US
+</span><span class='line'>Content-Length: 573</span></code></pre></td></tr></table></div></figure></p>
+
+<p>The authorization page gives User a choice to authorize or deny Client.</p>
+
+<p><img class="center" src="/images/posts/oauth-approval.png"></p>
+
+<p>User clicks <code>Authorize</code> button.</p>
+
+<p><figure class='code'><figcaption><span>9 </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>POST /oauth/authorize HTTP/1.1
+</span><span class='line'>Host: localhost:8080
+</span><span class='line'>Content-Length: 44
+</span><span class='line'>Authorization: Basic ZGF2ZTpzZWNyZXQ=
+</span><span class='line'>Origin: http://localhost:8080
+</span><span class='line'>Content-Type: application/x-www-form-urlencoded
+</span><span class='line'>Referer: http://localhost:8080/oauth/authorize?client_id=my-trusted-client&amp;redirect_uri=http://localhost:9999/client/login&amp;response_type=code&amp;state=JUkFF6
+</span><span class='line'>Cookie: JSESSIONID=0517E6F4E263721C8E75A1378D51179F&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>Form item: “user_oauth_approval” = “true”
+</span><span class='line'>Form item: “authorize” = “Authorize”</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Server creates a new session, generates a random <code>code</code>, and redirects the
+response to <code>redirect_uri</code> supplied on step 7.</p>
+
+<p><figure class='code'><figcaption><span>10 </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>HTTP/1.1 302
+</span><span class='line'>Set-Cookie: JSESSIONID=6503F28F4068C83EC7BE0F5EC163D06F;path=/;HttpOnly
+</span><span class='line'>Cache-Control: no-store
+</span><span class='line'>X-Content-Type-Options: nosniff
+</span><span class='line'>X-XSS-Protection: 1; mode=block
+</span><span class='line'>X-Frame-Options: DENY
+</span><span class='line'>Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+</span><span class='line'>Location: http://localhost:9999/client/login?code=WEJz0f&amp;state=JUkFF6
+</span><span class='line'>Content-Language: en-US
+</span><span class='line'>Content-Length: 0</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Browser, with Client and Server sessions saved in cookies, gets the redirected Client URI.</p>
+
+<p><figure class='code'><figcaption><span>11 </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>GET /client/login?code=WEJz0f&amp;state=JUkFF6 HTTP/1.1
+</span><span class='line'>Host: localhost:9999
+</span><span class='line'>Referer: http://localhost:8080/oauth/authorize?client_id=my-trusted-client&amp;redirect_uri=http://localhost:9999/client/login&amp;response_type=code&amp;state=JUkFF6
+</span><span class='line'>Cookie: JSESSIONID=67CB7BD60760EDD84BD0884FF9F09651; JSESSIONID=6503F28F4068C83EC7BE0F5EC163D06F</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Spring OAuth Client requests access token implementing
+<a href="https://tools.ietf.org/html/rfc6749#section-4.1.3">RFC6749 Section 4.1.3</a>. Client authenticates itself through
+<code>Authorization</code> header passing credentials configured in Client application
+<a href="https://github.com/ndpar/oauth-demo/blob/master/client/src/main/resources/application.yml">properties</a>.</p>
+
+<p><figure class='code'><figcaption><span>12 </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>POST /oauth/token HTTP/1.1
+</span><span class='line'>Authorization: Basic bXktdHJ1c3RlZC1jbGllbnQ6bXktdHJ1c3RlZC1jbGllbnQtcGFzcw==
+</span><span class='line'>Accept: application/json, application/x-www-form-urlencoded
+</span><span class='line'>Content-Type: application/x-www-form-urlencoded
+</span><span class='line'>Cache-Control: no-cache
+</span><span class='line'>Pragma: no-cache
+</span><span class='line'>User-Agent: Java/1.8.0_112
+</span><span class='line'>Host: localhost:8080
+</span><span class='line'>Connection: keep-alive
+</span><span class='line'>Content-Length: 101&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>Form item: “grant_type” = “authorization_code”
+</span><span class='line'>Form item: “code” = “WEJz0f”
+</span><span class='line'>Form item: “redirect_uri” = “http://localhost:9999/client/login”</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Server verifies Client credentials stored in the <a href="https://github.com/ndpar/oauth-demo/blob/master/server/src/main/resources/data.sql">database</a> and
+exchanges authorization code for access token implementing
+<a href="https://tools.ietf.org/html/rfc6749#section-4.1.4">RFC6749 Section 4.1.4</a>. <code>scope</code> is populated from the
+corresponding database column.</p>
+
+<p><figure class='code'><figcaption><span>13 </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>HTTP/1.1 200
+</span><span class='line'>Cache-Control: no-store
+</span><span class='line'>Pragma: no-cache
+</span><span class='line'>X-Content-Type-Options: nosniff
+</span><span class='line'>X-XSS-Protection: 1; mode=block
+</span><span class='line'>X-Frame-Options: DENY
+</span><span class='line'>Content-Type: application/json;charset=UTF-8&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>{
+</span><span class='line'>  access_token: 16d91f9e-69c5-41a9-bd0f-df8308589784,
+</span><span class='line'>  token_type: bearer,
+</span><span class='line'>  refresh_token: 8a283a19-7524-43d7-95bd-bc3a76260f3d,
+</span><span class='line'>  expires_in: 59,
+</span><span class='line'>  scope: read write trust
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Although it’s not a part of RFC6749, Client sends access token verification
+request to Server. Once again Client authenticates itself through
+<code>Authorization</code> header.</p>
+
+<p><figure class='code'><figcaption><span>14 </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>POST /oauth/check_token HTTP/1.1
+</span><span class='line'>Accept: application/json, application/*+json
+</span><span class='line'>Authorization: Basic bXktdHJ1c3RlZC1jbGllbnQ6bXktdHJ1c3RlZC1jbGllbnQtcGFzcw==
+</span><span class='line'>Content-Type: application/x-www-form-urlencoded
+</span><span class='line'>User-Agent: Java/1.8.0_112
+</span><span class='line'>Host: localhost:8080&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>Form item: “token” = “16d91f9e-69c5-41a9-bd0f-df8308589784”</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Server verifies Client credentials and access token and responds with User/Client metadata.</p>
+
+<p><figure class='code'><figcaption><span>15 </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>HTTP/1.1 200
+</span><span class='line'>X-Content-Type-Options: nosniff
+</span><span class='line'>X-XSS-Protection: 1; mode=block
+</span><span class='line'>Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+</span><span class='line'>Pragma: no-cache
+</span><span class='line'>Expires: 0
+</span><span class='line'>X-Frame-Options: DENY
+</span><span class='line'>Content-Type: application/json;charset=UTF-8&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>{
+</span><span class='line'>  exp: 1481467593
+</span><span class='line'>  user_name: dave
+</span><span class='line'>  authorities: [ROLE_USER]
+</span><span class='line'>  client_id: my-trusted-client
+</span><span class='line'>  scope: [read, write, trust]
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Client redirects User browser to the URL requested initially on step 1. It also
+resets the session.</p>
+
+<p><figure class='code'><figcaption><span>16 </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>HTTP/1.1 302
+</span><span class='line'>Set-Cookie: JSESSIONID=460BEFFA884E6349212F8D2EA50BF776;path=/client;HttpOnly
+</span><span class='line'>X-Content-Type-Options: nosniff
+</span><span class='line'>X-XSS-Protection: 1; mode=block
+</span><span class='line'>Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+</span><span class='line'>Pragma: no-cache
+</span><span class='line'>Expires: 0
+</span><span class='line'>X-Frame-Options: DENY
+</span><span class='line'>Location: http://localhost:9999/client/resource</span></code></pre></td></tr></table></div></figure></p>
+
+<p>This step is the same as step 1 but with valid Client and Server sessions.</p>
+
+<p><figure class='code'><figcaption><span>17 </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>GET /client/resource HTTP/1.1
+</span><span class='line'>Host: localhost:9999
+</span><span class='line'>Referer: http://localhost:8080/oauth/authorize?client_id=my-trusted-client&amp;redirect_uri=http://localhost:9999/client/login&amp;response_type=code&amp;state=JUkFF6
+</span><span class='line'>Cookie: JSESSIONID=460BEFFA884E6349212F8D2EA50BF776; JSESSIONID=6503F28F4068C83EC7BE0F5EC163D06F</span></code></pre></td></tr></table></div></figure></p>
+
+<p>As a part of business logic <a href="https://github.com/ndpar/oauth-demo/blob/master/client/src/main/java/com/ndpar/ClientApplication.java#L38-L41">Client</a> sends a request to Resource
+server suppling bearer token as required by <a href="https://tools.ietf.org/html/rfc6750#section-2">RFC6750 Section 2</a>.</p>
+
+<p><figure class='code'><figcaption><span>18 </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>GET /me HTTP/1.1
+</span><span class='line'>Authorization: bearer 16d91f9e-69c5-41a9-bd0f-df8308589784
+</span><span class='line'>Accept: text/plain, application/json, application/&lt;em>+json, */&lt;/em>
+</span><span class='line'>User-Agent: Java/1.8.0_112
+</span><span class='line'>Host: localhost:8888</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Resource server calls OAuth Server to verify the access token implementing
+<a href="https://tools.ietf.org/html/rfc7662#section-2.1">RFC7662 Section 2.1</a>. Resource authenticates itself through
+<code>Authorization</code> header suppling credentials configured in its application
+<a href="https://github.com/ndpar/oauth-demo/blob/master/resource/src/main/resources/application.yml">properties</a>.</p>
+
+<p><figure class='code'><figcaption><span>19 </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>POST /oauth/check_token HTTP/1.1
+</span><span class='line'>Accept: application/json, application/*+json
+</span><span class='line'>Authorization: Basic bXktcmVzb3VyY2U6bXktcmVzb3VyY2UtcGFzcw==
+</span><span class='line'>Content-Type: application/x-www-form-urlencoded
+</span><span class='line'>User-Agent: Java/1.8.0_112
+</span><span class='line'>Host: localhost:8080&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>Form item: “token” = “16d91f9e-69c5-41a9-bd0f-df8308589784”</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Server verifies Resource credentials and access token and responds with
+User/Client metadata.</p>
+
+<p><figure class='code'><figcaption><span>20 </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>HTTP/1.1 200
+</span><span class='line'>X-Content-Type-Options: nosniff
+</span><span class='line'>X-XSS-Protection: 1; mode=block
+</span><span class='line'>Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+</span><span class='line'>Pragma: no-cache
+</span><span class='line'>Expires: 0
+</span><span class='line'>X-Frame-Options: DENY
+</span><span class='line'>Content-Type: application/json;charset=UTF-8&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>{
+</span><span class='line'>  exp: 1481467593
+</span><span class='line'>  user_name: dave
+</span><span class='line'>  authorities: [ROLE_USER]
+</span><span class='line'>  client_id: my-trusted-client
+</span><span class='line'>  scope: [read, write, trust]
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Since the access token is valid Resource server replies to Client</p>
+
+<p><figure class='code'><figcaption><span>21 </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>HTTP/1.1 200
+</span><span class='line'>Set-Cookie: JSESSIONID=4D7F3BE1EFD37A99D9878A0037A0F8A5;path=/;HttpOnly
+</span><span class='line'>X-Content-Type-Options: nosniff
+</span><span class='line'>X-XSS-Protection: 1; mode=block
+</span><span class='line'>Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+</span><span class='line'>Pragma: no-cache
+</span><span class='line'>Expires: 0
+</span><span class='line'>X-Frame-Options: DENY
+</span><span class='line'>Content-Type: application/json;charset=UTF-8&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>{name:dave}</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Client returns the response to User</p>
+
+<p><figure class='code'><figcaption><span>22 </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>HTTP/1.1 200
+</span><span class='line'>X-Content-Type-Options: nosniff
+</span><span class='line'>X-XSS-Protection: 1; mode=block
+</span><span class='line'>Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+</span><span class='line'>Pragma: no-cache
+</span><span class='line'>Expires: 0
+</span><span class='line'>X-Frame-Options: DENY
+</span><span class='line'>Content-Type: text/html;charset=UTF-8</span></code></pre></td></tr></table></div></figure></p>
+
+<h2 id="specifications">Specifications</h2>
+
+<ul>
+  <li><a href="https://tools.ietf.org/html/rfc6749"><strong>RFC6749</strong></a> The OAuth 2.0 Authorization Framework</li>
+  <li><a href="https://tools.ietf.org/html/rfc6750"><strong>RFC6750</strong></a> The OAuth 2.0 Authorization Framework: Bearer Token Usage</li>
+  <li><a href="https://tools.ietf.org/html/rfc6819"><strong>RFC6819</strong></a> OAuth 2.0 Threat Model and Security Considerations</li>
+  <li><a href="https://tools.ietf.org/html/rfc7009"><strong>RFC7009</strong></a> OAuth 2.0 Token Revocation</li>
+  <li><a href="https://tools.ietf.org/html/rfc7591"><strong>RFC7591</strong></a> OAuth 2.0 Dynamic Client Registration Protocol</li>
+  <li><a href="https://tools.ietf.org/html/rfc7636"><strong>RFC7636</strong></a> PKCE by OAuth Public Clients</li>
+  <li><a href="https://tools.ietf.org/html/rfc7662"><strong>RFC7662</strong></a> OAuth 2.0 Token Introspection</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

@@ -9,7 +9,9 @@
   <meta name="author" content="Andrey Paramonov">
 
   
-  <meta name="description" content="In his seminal paper Kenneth Iverson described a new mathematical notation which soon became A Programming Language. Recently, while reading Surely &hellip;">
+  <meta name="description" content="This post is a quick analysis of the Spring implementation of OAuth 2.0 code
+flow (RFC6749 Section 4.1) with the minumum application code.
+The setup &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,7 +83,7 @@
   
 </ul>
   
-<form action="http://google.com/search" method="get">
+<form action="https://www.google.com/search" method="get">
   <fieldset role="search">
     <input type="hidden" name="q" value="site:blog.ndpar.com" />
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
@@ -105,6 +107,162 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/2016/12/24/spring-oauth2/">Spring OAuth 2</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2016-12-24T13:11:35-05:00" pubdate data-updated="true">December 24, 2016</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This post is a quick analysis of the Spring implementation of OAuth 2.0 code
+flow (<a href="https://tools.ietf.org/html/rfc6749#section-4.1">RFC6749 Section 4.1</a>) with the minumum application <a href="https://github.com/ndpar/oauth-demo">code</a>.
+The setup consists of the <a href="https://github.com/ndpar/oauth-demo/blob/master/server/src/main/java/com/ndpar/ServerApplication.java">authorization server</a>, the <a href="https://github.com/ndpar/oauth-demo/blob/master/resource/src/main/java/com/ndpar/ResourceApplication.java">resource server</a>,
+and the <a href="https://github.com/ndpar/oauth-demo/blob/master/client/src/main/java/com/ndpar/ClientApplication.java">client</a>.</p>
+
+<p>The flow starts when a user hits
+<a href="http://localhost:9999/client/resource">localhost:9999/client/resource</a></p>
+
+<p><img class="center" src="/images/posts/spring-oauth-sequence.png" /></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2016/12/24/spring-oauth2/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2016/11/07/ml-logistic-regression/">Machine Learning: Logistic Regression</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2016-11-07T16:05:31-05:00" pubdate data-updated="true">November 07, 2016</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><em>Logistic regression</em> is a classification case of <a href="/2016/10/28/ml-linear-regression">linear regression</a> whith
+dependent variable $y$ taking binary values.</p>
+
+<p>Problem: Given a training set $\langle x^{(i)}, y^{(i)} \rangle$, $1 \le i \le m$,
+$x \in \mathbb{R}^{n+1}$, $x^{(i)} _ 0 = 0$, $y^{(i)} \in $ {0,1},
+find <em>classification function</em></p>
+
+<script type="math/tex; mode=display">h_\theta(x) = P(y = 1 | x; \theta)</script>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2016/11/07/ml-logistic-regression/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2016/10/28/ml-linear-regression/">Machine Learning: Linear Regression</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2016-10-28T17:05:31-04:00" pubdate data-updated="true">October 28, 2016</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Let $y$ be a dependent variable of a feature vector $x$</p>
+
+<script type="math/tex; mode=display">x =
+\begin{pmatrix}
+1 \\
+x_1 \\
+x_2 \\
+\vdots \\
+x_n \\
+\end{pmatrix}</script>
+
+<p>Problem: Given a training set $\langle x^{(i)}, y^{(i)} \rangle$, $1 \le i \le m$,
+find the value of $y$ on any input vector $x$.</p>
+
+<p>We solve this problem by constructing a <em>hypothesis funciton</em> $h_\theta(x)$
+using one of the methods below.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/2016/10/28/ml-linear-regression/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/2015/04/03/feynman-tot/">Another Notation as a Tool of Thought</a></h1>
     
     
@@ -121,7 +279,8 @@
   
 
 
-<time datetime="2015-04-03T08:00:00-04:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2015</time>
+
+<time datetime="2015-04-03T08:00:00-04:00" pubdate data-updated="true">April 03, 2015</time>
         
       </p>
     
@@ -164,7 +323,8 @@
   
 
 
-<time datetime="2014-11-29T07:00:00-05:00" pubdate data-updated="true">Nov 29<span>th</span>, 2014</time>
+
+<time datetime="2014-11-29T07:00:00-05:00" pubdate data-updated="true">November 29, 2014</time>
         
       </p>
     
@@ -173,9 +333,7 @@
 
   <div class="entry-content"><p>Cliff Pickover <a href="https://twitter.com/pickover/status/538754166261555201">twitted</a> a fun puzzle: Which series is bigger?</p>
 
-<script type="math/tex; mode=display">
-\sum_{n=0}^\infty \frac{1}{2^{n+1}} \quad \text{or} \quad \sum_{n=0}^\infty \frac{n}{2^{n+1}}
-</script>
+<script type="math/tex; mode=display">\sum_{n=0}^\infty \frac{1}{2^{n+1}} \quad \text{or} \quad \sum_{n=0}^\infty \frac{n}{2^{n+1}}</script>
 
 <p>The first one is the famous geometric series which sum is equal to 1. The second one seems to be bigger because 1 &lt; n, except for the 0th term, but that 0th term makes a big difference.</p>
 
@@ -211,7 +369,8 @@
   
 
 
-<time datetime="2014-10-13T08:00:00-04:00" pubdate data-updated="true">Oct 13<span>th</span>, 2014</time>
+
+<time datetime="2014-10-13T08:00:00-04:00" pubdate data-updated="true">October 13, 2014</time>
         
       </p>
     
@@ -264,7 +423,8 @@
   
 
 
-<time datetime="2014-10-12T08:00:00-04:00" pubdate data-updated="true">Oct 12<span>th</span>, 2014</time>
+
+<time datetime="2014-10-12T08:00:00-04:00" pubdate data-updated="true">October 12, 2014</time>
         
       </p>
     
@@ -277,27 +437,19 @@
 
 <p>Recall the DFT formula from the previous post</p>
 
-<script type="math/tex; mode=display">
-\mathcal{F}_N\mathbf{f}[m] = \sum_{n=0}^{N-1} \mathbf{f}[n] e^{-2\pi i mn/N}, \quad m = 0, \dots , N-1
-</script>
+<script type="math/tex; mode=display">\mathcal{F}_N\mathbf{f}[m] = \sum_{n=0}^{N-1} \mathbf{f}[n] e^{-2\pi i mn/N}, \quad m = 0, \dots , N-1</script>
 
 <p>I use a slightly different notation here to make recursive definition easier to understand.</p>
 
 <p>We assume that <em>N</em> is a power of 2. Using basic arithmetic and properties of complex exponentials, we can derive the formula for the DFT of order <em>2N</em> in terms of two DFTs of order <em>N</em></p>
 
-<script type="math/tex; mode=display">
-\mathcal{F}_{2N}\mathbf{f}[m]=\mathcal{F}_N\mathbf{f}_{even}+e^{-\pi im/N}\mathcal{F}_N\mathbf{f}_{odd}
-</script>
+<script type="math/tex; mode=display">\mathcal{F}_{2N}\mathbf{f}[m]=\mathcal{F}_N\mathbf{f}_{even}+e^{-\pi im/N}\mathcal{F}_N\mathbf{f}_{odd}</script>
 
-<script type="math/tex; mode=display">
-\mathcal{F}_{2N}\mathbf{f}[m+N]=\mathcal{F}_N\mathbf{f}_{even}-e^{-\pi im/N}\mathcal{F}_N\mathbf{f}_{odd}
-</script>
+<script type="math/tex; mode=display">\mathcal{F}_{2N}\mathbf{f}[m+N]=\mathcal{F}_N\mathbf{f}_{even}-e^{-\pi im/N}\mathcal{F}_N\mathbf{f}_{odd}</script>
 
 <p>where $m=0,\dots,N-1$. The base case, when $N=1$, is</p>
 
-<script type="math/tex; mode=display">
-\mathcal{F}_1\mathbf{f}[0] = \mathbf{f}[0]
-</script>
+<script type="math/tex; mode=display">\mathcal{F}_1\mathbf{f}[0] = \mathbf{f}[0]</script>
 
 <p>i.e. the identity function.</p>
 
@@ -333,7 +485,8 @@
   
 
 
-<time datetime="2014-10-11T08:00:00-04:00" pubdate data-updated="true">Oct 11<span>th</span>, 2014</time>
+
+<time datetime="2014-10-11T08:00:00-04:00" pubdate data-updated="true">October 11, 2014</time>
         
       </p>
     
@@ -346,17 +499,13 @@
 
 <p>The definition of one-dimensional DFT is pretty simple. It is just a function that maps a given vector <strong>f</strong> of length <em>N</em> to a vector <strong>F</strong> of the same length by the following formula</p>
 
-<script type="math/tex; mode=display">
-\mathbf{F}[m] = \sum_{n=0}^{N-1} \mathbf{f}[n] e^{-2\pi i mn/N}, \quad m = 0, \dots , N-1
-</script>
+<script type="math/tex; mode=display">\mathbf{F}[m] = \sum_{n=0}^{N-1} \mathbf{f}[n] e^{-2\pi i mn/N}, \quad m = 0, \dots , N-1</script>
 
 <p>To implement this formula the only thing we need is basic arithmetic for complex numbers. Not only does J provide such an arithmetic, it has special code for complex exponentiation, which makes the implementation much easier than it would be in other languages.</p>
 
 <p>Before we start coding let’s rewrite the formula in terms of matrix multiplication so that we can utilize this feature of J. Let $\omega$ be the primitive <em>N</em>th root of unity $\omega = e^{2\pi i/N}$, then the DFT formula becomes</p>
 
-<script type="math/tex; mode=display">
-\mathbf{F} = \mathbf{f} \cdot \Omega
-</script>
+<script type="math/tex; mode=display">\mathbf{F} = \mathbf{f} \cdot \Omega</script>
 
 <p>where <strong>f</strong> is an input vector and $\Omega$ is a symmetric matrix $(\omega^{-mn})$ with $m,n=0,\dots,N-1$.</p>
 
@@ -392,7 +541,8 @@
   
 
 
-<time datetime="2013-11-23T07:00:00-05:00" pubdate data-updated="true">Nov 23<span>rd</span>, 2013</time>
+
+<time datetime="2013-11-23T07:00:00-05:00" pubdate data-updated="true">November 23, 2013</time>
         
       </p>
     
@@ -442,7 +592,8 @@ Now when the conference is over I want to take a few minutes to express my appre
   
 
 
-<time datetime="2013-07-28T08:00:00-04:00" pubdate data-updated="true">Jul 28<span>th</span>, 2013</time>
+
+<time datetime="2013-07-28T08:00:00-04:00" pubdate data-updated="true">July 28, 2013</time>
         
       </p>
     
@@ -452,7 +603,7 @@ Now when the conference is over I want to take a few minutes to express my appre
   <div class="entry-content"><p>I’ve recently hit on a nasty bug in Java. It sits in <code>Date</code> class and shows up only at noon!
 I’m going to demonstrate it using Groovy shell, but you can reproduce it in plain Java environment too.</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -480,7 +631,7 @@ I’m going to demonstrate it using Groovy shell, but you can reproduce it in pl
 </span><span class="line">
 </span><span class="line"><span class="k">assert</span> <span class="n">originalDate</span> <span class="o">==</span> <span class="n">parsedDate</span>
 </span><span class="line"><span class="c1">//= null</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>So far so good.</p>
 
@@ -488,7 +639,7 @@ I’m going to demonstrate it using Groovy shell, but you can reproduce it in pl
 
 <p>Now let’s change the example date to one hour earlier</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -504,23 +655,23 @@ I’m going to demonstrate it using Groovy shell, but you can reproduce it in pl
 </span><span class="line">
 </span><span class="line"><span class="n">parsedDate</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="na">toString</span><span class="o">()</span>
 </span><span class="line"><span class="c1">//= Sun Jul 28 00:14:15 EDT 2013</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>Lines 2, 5, and 8 are not identical any more. The String representation of the date is 12 hours off.</p>
 
 <p>To make sure the problem is in <code>toString</code> and not in <code>parse</code>, let’s format the date using formatter</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 </pre></td><td class="code"><pre><code class="groovy"><span class="line"><span class="n">format</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">date</span><span class="o">)</span>
 </span><span class="line"><span class="c1">//= Sun Jul 28 12:14:15 EDT 2013</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>Looks good. The problem is in <code>toString</code> indeed. Or is it?</p>
 
 <p>Let’s parse 13 o’clock date and 12 o’clock date. The difference between them should be 1 hour. In reality</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -536,7 +687,7 @@ I’m going to demonstrate it using Groovy shell, but you can reproduce it in pl
 </span><span class="line">
 </span><span class="line"><span class="o">(</span><span class="n">format</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">date13</span><span class="o">).</span><span class="na">time</span> <span class="o">-</span> <span class="n">format</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">date12</span><span class="o">).</span><span class="na">time</span><span class="o">)</span> <span class="s">/ (1000 * 60 * 60)</span>
 </span><span class="line"><span class="s">/</span><span class="o">/=</span> <span class="mi">13</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>Wow, the problem is actually in <code>parse</code>. Then how come the <code>format</code> returned the correct value? That’s still a mystery to me.</p>
 
@@ -548,149 +699,9 @@ I’m going to demonstrate it using Groovy shell, but you can reproduce it in pl
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2013/07/08/lambdajam-2013/">Lambda Jam 2013</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-07-08T05:00:00-04:00" pubdate data-updated="true">Jul 8<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This is my impressionistic non-canonical irregular Clojuresque-Erlangish notes on <a href="http://lambdajam.com">Lambda Jam</a> conference which took place in Chicago on July 8–10, 2013.
-These notes are pretty long, and I don’t split them on purpose.
-If you read them all, you should become overwhelmed and overloaded with the information.
-Only this way you can feel the same I felt on the last day of the conference :)</p>
-
-<p><img src="http://lambdajam.com/storage/2013/GrandBallroom2_header.jpg.jpeg?__SQUARESPACE_CACHEVERSION=1361043346973" /></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2013/07/08/lambdajam-2013/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2013/06/11/sleeping-barber-in-erlang/">Sleeping Barber in Erlang</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-06-11T20:43:00-04:00" pubdate data-updated="true">Jun 11<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>After working on <a href="http://en.wikipedia.org/wiki/Sleeping_barber_problem"><em>Sleeping Barber</em></a> problem at <a href="http://www.meetup.com/Toronto-Coding-Dojo/events/120577762/">Coding Dojo</a> I decided to implement it in Erlang. Because Erlang is the perfect language for these sorts of problems, many people have alredy solved it in many different ways. I found at least three groups of solutions: 1) direct implementation using message passing between processes, 2) OTP solution using <em>gen_server</em>, and 3) something resembling object-oriented approach.</p>
-
-<p>Strangely enough, I didn’t see any solution based on <a href="https://en.wikipedia.org/wiki/Finite-state_machine">FSM</a>. That is odd because this is the first thing coming to my mind when I hear this problem. To fill the gap, I’m going to solve it using <em>gen_fsm</em>, which is a standard OTP behaviour for FSM.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/2013/06/11/sleeping-barber-in-erlang/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2013/05/26/entrepreneur/">To Be or Not to Be… Entrepreneur</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-26T18:00:00-04:00" pubdate data-updated="true">May 26<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://www.infoq.com/interviews/rod-johnson-entrepreneurialism">Rod Johnson</a>, creator of Spring, programmer that became entrepreneur:</p>
-
-<blockquote>
-  <p>One thing I think that you really need to be careful of as well, particularly if you, like me, are a programmer, is don’t get carried away writing code. Typically in my experience anyone who is a good programmer is pretty passionate about it, love writing code, get addicted to the process of writing code, fell pretty good about their code basis. As soon as you get down that path you are not thinking straight anymore and now you are increasing your emotional investment, you are having lots of fun writing interesting code and you are no longer in a place mentally where you are going to be trying to find some reason that you shouldn’t write that code. That has been a big lesson for me that the quicker I get to coding, the longer it takes me to ask the kind of questions I should ask upfront.</p>
-</blockquote>
-
-<p><a href="http://www.youtube.com/watch?v=MShbP3OpASA">Linus Torvalds</a>, creator of Linux, programmer that still programs:</p>
-
-<blockquote>
-  <p>I’m interested in programming. When business started happening, I didn’t get into this for the business side. I wanted to do programming. When other people started selling Linux, I said “Yes! Now I can avoid caring about that side too.”</p>
-</blockquote>
-
-<blockquote>
-  <p>I never had to deal with single business related thing in Linux ever. Seriously, I had to deal with lot of other things but business related things… I got queries and I just said “I don’t care.”</p>
-</blockquote>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
-      <a class="prev" href="/blog/page/2/">&larr; Older</a>
+      <a class="prev" href="2">&larr; Older</a>
     
     <a href="/archives">Blog Archives</a>
     
@@ -703,23 +714,23 @@ Only this way you can feel the same I felt on the last day of the conference :)<
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2016/12/24/spring-oauth2/">Spring OAuth 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/11/07/ml-logistic-regression/">Machine Learning: Logistic Regression</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/10/28/ml-linear-regression/">Machine Learning: Linear Regression</a>
+      </li>
+    
+      <li class="post">
         <a href="/2015/04/03/feynman-tot/">Another Notation as a Tool of Thought</a>
       </li>
     
       <li class="post">
         <a href="/2014/11/29/two-series/">Two Series</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/10/13/gc-visualization/">GC Visualization</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/10/12/fft-j/">Fast Fourier Transform in J</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/10/11/dft-j/">Discrete Fourier Transform in J</a>
       </li>
     
   </ul>
@@ -729,7 +740,7 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 <section>
   <h1>Recent GitHub Updates</h1>
   <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">Status updating...</li>
   </ul>
   
   <script type="text/javascript">
@@ -759,44 +770,47 @@ Only this way you can feel the same I felt on the last day of the conference :)<
 <section>
   <h1>Categories</h1>
   <ul id="categories">
-    <li class='category'><a href='/categories/activemq/'>ActiveMQ (1)</a></li>
-<li class='category'><a href='/categories/agile/'>Agile (1)</a></li>
-<li class='category'><a href='/categories/art/'>Art (1)</a></li>
-<li class='category'><a href='/categories/book-review/'>Book Review (1)</a></li>
-<li class='category'><a href='/categories/buzz/'>Buzz (2)</a></li>
-<li class='category'><a href='/categories/clojure/'>Clojure (4)</a></li>
-<li class='category'><a href='/categories/clustering/'>Clustering (1)</a></li>
-<li class='category'><a href='/categories/conference/'>Conference (3)</a></li>
-<li class='category'><a href='/categories/craftsmanship/'>Craftsmanship (1)</a></li>
-<li class='category'><a href='/categories/education/'>Education (1)</a></li>
-<li class='category'><a href='/categories/ejabberd/'>Ejabberd (2)</a></li>
-<li class='category'><a href='/categories/entrepreneurship/'>Entrepreneurship (1)</a></li>
-<li class='category'><a href='/categories/erlang/'>Erlang (8)</a></li>
-<li class='category'><a href='/categories/feynman/'>Feynman (1)</a></li>
-<li class='category'><a href='/categories/functional-programming/'>Functional Programming (1)</a></li>
-<li class='category'><a href='/categories/git/'>Git (3)</a></li>
-<li class='category'><a href='/categories/grails/'>Grails (1)</a></li>
-<li class='category'><a href='/categories/groovy/'>Groovy (10)</a></li>
-<li class='category'><a href='/categories/haskell/'>Haskell (1)</a></li>
-<li class='category'><a href='/categories/humor/'>Humor (2)</a></li>
-<li class='category'><a href='/categories/j/'>J (2)</a></li>
-<li class='category'><a href='/categories/java/'>Java (4)</a></li>
-<li class='category'><a href='/categories/lisp/'>Lisp (3)</a></li>
-<li class='category'><a href='/categories/math/'>Math (9)</a></li>
-<li class='category'><a href='/categories/maven/'>Maven (1)</a></li>
-<li class='category'><a href='/categories/mongodb/'>MongoDB (1)</a></li>
-<li class='category'><a href='/categories/nosql/'>NoSQL (1)</a></li>
-<li class='category'><a href='/categories/programming/'>Programming (6)</a></li>
-<li class='category'><a href='/categories/python/'>Python (2)</a></li>
-<li class='category'><a href='/categories/rabbitmq/'>RabbitMQ (4)</a></li>
-<li class='category'><a href='/categories/regex/'>Regex (2)</a></li>
-<li class='category'><a href='/categories/sicp/'>SICP (1)</a></li>
-<li class='category'><a href='/categories/scala/'>Scala (1)</a></li>
-<li class='category'><a href='/categories/solr/'>Solr (1)</a></li>
-<li class='category'><a href='/categories/spring/'>Spring (1)</a></li>
-<li class='category'><a href='/categories/tutorial/'>Tutorial (1)</a></li>
-<li class='category'><a href='/categories/zeromq/'>ZeroMQ (1)</a></li>
-<li class='category'><a href='/categories/zookeeper/'>ZooKeeper (1)</a></li>
+    <li class='category'><a href='/categories/activemq/'>activemq (1)</a></li>
+<li class='category'><a href='/categories/agile/'>agile (1)</a></li>
+<li class='category'><a href='/categories/art/'>art (1)</a></li>
+<li class='category'><a href='/categories/book-review/'>book review (1)</a></li>
+<li class='category'><a href='/categories/buzz/'>buzz (2)</a></li>
+<li class='category'><a href='/categories/clojure/'>clojure (4)</a></li>
+<li class='category'><a href='/categories/clustering/'>clustering (1)</a></li>
+<li class='category'><a href='/categories/conference/'>conference (3)</a></li>
+<li class='category'><a href='/categories/craftsmanship/'>craftsmanship (1)</a></li>
+<li class='category'><a href='/categories/education/'>education (1)</a></li>
+<li class='category'><a href='/categories/ejabberd/'>ejabberd (2)</a></li>
+<li class='category'><a href='/categories/entrepreneurship/'>entrepreneurship (1)</a></li>
+<li class='category'><a href='/categories/erlang/'>erlang (8)</a></li>
+<li class='category'><a href='/categories/feynman/'>feynman (1)</a></li>
+<li class='category'><a href='/categories/functional-programming/'>functional programming (1)</a></li>
+<li class='category'><a href='/categories/git/'>git (3)</a></li>
+<li class='category'><a href='/categories/grails/'>grails (1)</a></li>
+<li class='category'><a href='/categories/groovy/'>groovy (10)</a></li>
+<li class='category'><a href='/categories/haskell/'>haskell (1)</a></li>
+<li class='category'><a href='/categories/humor/'>humor (2)</a></li>
+<li class='category'><a href='/categories/j/'>j (2)</a></li>
+<li class='category'><a href='/categories/java/'>java (4)</a></li>
+<li class='category'><a href='/categories/lisp/'>lisp (3)</a></li>
+<li class='category'><a href='/categories/machine-learning/'>machine learning (2)</a></li>
+<li class='category'><a href='/categories/math/'>math (11)</a></li>
+<li class='category'><a href='/categories/matlab/'>matlab (2)</a></li>
+<li class='category'><a href='/categories/maven/'>maven (1)</a></li>
+<li class='category'><a href='/categories/mongodb/'>mongodb (1)</a></li>
+<li class='category'><a href='/categories/nosql/'>nosql (1)</a></li>
+<li class='category'><a href='/categories/oauth/'>oauth (1)</a></li>
+<li class='category'><a href='/categories/programming/'>programming (6)</a></li>
+<li class='category'><a href='/categories/python/'>python (2)</a></li>
+<li class='category'><a href='/categories/rabbitmq/'>rabbitmq (4)</a></li>
+<li class='category'><a href='/categories/regex/'>regex (2)</a></li>
+<li class='category'><a href='/categories/scala/'>scala (1)</a></li>
+<li class='category'><a href='/categories/sicp/'>sicp (1)</a></li>
+<li class='category'><a href='/categories/solr/'>solr (1)</a></li>
+<li class='category'><a href='/categories/spring/'>spring (2)</a></li>
+<li class='category'><a href='/categories/tutorial/'>tutorial (1)</a></li>
+<li class='category'><a href='/categories/zeromq/'>zeromq (1)</a></li>
+<li class='category'><a href='/categories/zookeeper/'>zookeeper (1)</a></li>
 
   </ul>
 </section>
@@ -807,7 +821,7 @@ Only this way you can feel the same I felt on the last day of the conference :)<
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2009–2015 - Andrey Paramonov -
+  Copyright &copy; 2009–2017 - Andrey Paramonov -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> -
   <span class="credit">Hosted by <a href="http://github.com">GitHub</a></span>
 </p>

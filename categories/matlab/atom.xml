@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: matlab | Side Notes]]></title>
+  <link href="http://blog.ndpar.com/categories/matlab/atom.xml" rel="self"/>
+  <link href="http://blog.ndpar.com/"/>
+  <updated>2017-01-08T17:14:02-05:00</updated>
+  <id>http://blog.ndpar.com/</id>
+  <author>
+    <name><![CDATA[Andrey Paramonov]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Machine Learning: Logistic Regression]]></title>
+    <link href="http://blog.ndpar.com/2016/11/07/ml-logistic-regression/"/>
+    <updated>2016-11-07T16:05:31-05:00</updated>
+    <id>http://blog.ndpar.com/2016/11/07/ml-logistic-regression</id>
+    <content type="html"><![CDATA[<p><em>Logistic regression</em> is a classification case of <a href="/2016/10/28/ml-linear-regression">linear regression</a> whith
+dependent variable $y$ taking binary values.</p>
+
+<p>Problem: Given a training set $\langle x^{(i)}, y^{(i)} \rangle$, $1 \le i \le m$,
+$x \in \mathbb{R}^{n+1}$, $x^{(i)} _ 0 = 0$, $y^{(i)} \in $ {0,1},
+find <em>classification function</em></p>
+
+<script type="math/tex; mode=display">h_\theta(x) = P(y = 1 | x; \theta)</script>
+
+<!-- more -->
+
+<h2 id="gradient-descent">Gradient Descent</h2>
+
+<p>Let’s build function $h_\theta(x)$ as a sigmoid function of $\theta\cdot x$</p>
+
+<script type="math/tex; mode=display">h_\theta(x) = g(\theta\cdot x), \quad
+g(z) = \mathbb{sigmoid}(z) = \frac{1}{1 + e^{-z}}</script>
+
+<p>Sigmoid function has rank infinity, i.e. it operates on scalars, vectors and matrices.</p>
+
+<p><figure class='code'><figcaption><span>sigmoid.m </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='matlab'><span class='line'><span class="k">function</span><span class="w"> </span>g <span class="p">=</span><span class="w"> </span><span class="nf">sigmoid</span><span class="p">(</span>z<span class="p">)</span><span class="w"></span>
+</span><span class='line'><span class="w">    </span><span class="n">g</span> <span class="p">=</span> <span class="mi">1</span> <span class="o">./</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="n">z</span><span class="p">));</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>To find optimal parameter $\theta \in \mathbb{R}^{n+1}$ we are going to use
+optimized gradient descent method which takes as arguments
+cost function $J(\theta)$ and its gradient.
+For logistic regression they are</p>
+
+<script type="math/tex; mode=display">J(\theta) = -\frac{1}{m} \left( y^T \ln h_\theta(X) + (1-y)^T \ln (1-h_\theta(X)) \right) \\
+\nabla J(\theta) = \frac{1}{m} X^T (h_\theta(X) - y)</script>
+
+<p>where $X = (x^{(i)}_j) _{m \times n+1}$ is a matrix of the training examples from
+the <a href="/2016/10/28/ml-linear-regression">previous lecture</a>.</p>
+
+<p>Analogous to linear regression, logistic regression can be regularized too</p>
+
+<script type="math/tex; mode=display">J(\theta) = -\frac{1}{m} \left( y^T \ln h_\theta(X) + (1-y)^T \ln (1-h_\theta(X)) \right) + \frac{\lambda}{2m} \| E\theta \|^2 \\
+\nabla J(\theta) = \frac{1}{m} \left( X^T (h_\theta(X) - y) + \lambda E\theta \right)</script>
+
+<p><figure class='code'><figcaption><span>costFunction.m </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='matlab'><span class='line'><span class="k">function</span><span class="w"> </span>[J, grad] <span class="p">=</span><span class="w"> </span><span class="nf">costFunction</span><span class="p">(</span>theta, X, y, lambda<span class="p">)</span><span class="w"></span>
+</span><span class='line'><span class="w">    </span><span class="n">m</span> <span class="p">=</span> <span class="nb">length</span><span class="p">(</span><span class="n">y</span><span class="p">);</span> <span class="c">% number of training examples</span>
+</span><span class='line'>    <span class="n">h</span> <span class="p">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">X</span> <span class="o">*</span> <span class="n">theta</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">J</span> <span class="p">=</span> <span class="p">(</span><span class="n">y</span>’ <span class="o">*</span> <span class="nb">log</span><span class="p">(</span><span class="n">h</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span>’ <span class="o">*</span> <span class="nb">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">h</span><span class="p">))</span> <span class="o">/</span> <span class="o">-</span><span class="n">m</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">grad</span> <span class="p">=</span> <span class="n">X</span>’ <span class="o">*</span> <span class="p">(</span><span class="n">h</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="n">m</span><span class="p">;</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="c">% Regularization</span>
+</span><span class='line'><span class="n">th</span> <span class="p">=</span> <span class="n">theta</span><span class="p">;</span> <span class="n">th</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">J</span> <span class="p">=</span> <span class="n">J</span> <span class="o">+</span> <span class="n">th</span><span class="o">&#39;</span> <span class="o">*</span> <span class="n">th</span> <span class="o">*</span> <span class="n">lambda</span> <span class="o">/</span> <span class="n">m</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+</span><span class='line'><span class="n">grad</span> <span class="p">=</span> <span class="n">grad</span> <span class="o">+</span> <span class="n">th</span> <span class="o">*</span> <span class="n">lambda</span> <span class="o">/</span> <span class="n">m</span><span class="p">;</span> <span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+</code></pre>
+
+<p>Having computed $\theta$ we can now implement the prediction function</p>
+
+<p><figure class='code'><figcaption><span>predict.m </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='matlab'><span class='line'><span class="k">function</span><span class="w"> </span>p <span class="p">=</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span>theta, X<span class="p">)</span><span class="w"></span>
+</span><span class='line'><span class="w">    </span><span class="n">p</span> <span class="p">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">X</span> <span class="o">*</span> <span class="n">theta</span><span class="p">)</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;=</span> <span class="mf">0.5</span><span class="p">;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>which can be used to classify new examples and check the prediction accuracy
+on the training set</p>
+
+<p><figure class='code'><figcaption><span>accuracy.m </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='matlab'><span class='line'><span class="k">function</span><span class="w"> </span>a <span class="p">=</span><span class="w"> </span><span class="nf">accuracy</span><span class="p">(</span>theta, X, y<span class="p">)</span><span class="w"></span>
+</span><span class='line'><span class="w">    </span><span class="n">p</span> <span class="p">=</span> <span class="n">predict</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">X</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">a</span> <span class="p">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">double</span><span class="p">(</span><span class="n">p</span> <span class="o">==</span> <span class="n">y</span><span class="p">))</span> <span class="o">*</span> <span class="mi">100</span><span class="p">;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h2 id="multi-class-classification">Multi-class Classification</h2>
+
+<p>Logistic regression works for binary $y$.
+Suppose now that $y^{(i)} \in ${$1,…,K$}, where $K &gt; 2$.
+In this case we can use <em>One-vs-All</em> variation of this algorithm.</p>
+
+<p>Step 1. Convert vector $y$ into a binary matrix $Y$</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+y =
+\begin{pmatrix}
+y^{(1)} \\
+y^{(2)} \\
+y^{(3)} \\
+\vdots \\
+y^{(m)} \\
+\end{pmatrix}
+\quad
+\rightarrow
+\quad
+Y =
+\begin{pmatrix}
+y^{(1)}_1 & y^{(1)}_2 & \cdots & y^{(1)}_K \\
+y^{(2)}_1 & y^{(2)}_2 & \cdots & y^{(2)}_K \\
+y^{(3)}_1 & y^{(3)}_2 & \cdots & y^{(3)}_K \\
+\vdots & \vdots & \ddots & \vdots \\
+y^{(m)}_1 & y^{(m)}_2 & \cdots & y^{(m)}_K \\
+\end{pmatrix} %]]&gt;</script>
+
+<p>where $y^{(i)}_k = \delta _{k y^{(i)}}$, i.e. $y^{(i)}_k = 1$ when $y^{(i)} = k$, otherwise $y^{(i)}_k = 0$.</p>
+
+<p>Step 2. Train logistic classifier on every column of matrix $Y$.
+The result will be a matrix $\Theta = (\theta_{jk})_{n+1 \times K}$</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+\Theta =
+\begin{pmatrix}
+\theta_{01} & \theta_{02} & \cdots & \theta_{0K} \\
+\theta_{11} & \theta_{12} & \cdots & \theta_{1K} \\
+\theta_{21} & \theta_{22} & \cdots & \theta_{2K} \\
+\vdots & \vdots & \ddots & \vdots \\
+\theta_{n1} & \theta_{n2} & \cdots & \theta_{nK} \\
+\end{pmatrix} %]]&gt;</script>
+
+<p>Step 3. For any given vector $x$ compute vector $h = x^T \Theta$. Then
+the predicted value $y$ will be</p>
+
+<script type="math/tex; mode=display">y = \{ p \: | \: h_p = \mathbb{max} (h_k), 1 \le k \le K \}</script>
+
+<p>To compute accuracy of the one-vs-all classifier on the training set
+use <code>accuracy.m</code> script from above with modified <code>predict.m</code></p>
+
+<p><figure class='code'><figcaption><span>predict.m </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='matlab'><span class='line'><span class="k">function</span><span class="w"> </span>p <span class="p">=</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span>Theta, X<span class="p">)</span><span class="w"></span>
+</span><span class='line'><span class="w">    </span><span class="n">a</span> <span class="p">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">X</span> <span class="o">*</span> <span class="n">Theta</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">[</span><span class="n">v</span><span class="p">,</span> <span class="n">p</span><span class="p">]</span> <span class="p">=</span> <span class="n">max</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="p">[],</span> <span class="mi">2</span><span class="p">);</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Machine Learning: Linear Regression]]></title>
+    <link href="http://blog.ndpar.com/2016/10/28/ml-linear-regression/"/>
+    <updated>2016-10-28T17:05:31-04:00</updated>
+    <id>http://blog.ndpar.com/2016/10/28/ml-linear-regression</id>
+    <content type="html"><![CDATA[<p>Let $y$ be a dependent variable of a feature vector $x$</p>
+
+<script type="math/tex; mode=display">x =
+\begin{pmatrix}
+1 \\
+x_1 \\
+x_2 \\
+\vdots \\
+x_n \\
+\end{pmatrix}</script>
+
+<p>Problem: Given a training set $\langle x^{(i)}, y^{(i)} \rangle$, $1 \le i \le m$,
+find the value of $y$ on any input vector $x$.</p>
+
+<p>We solve this problem by constructing a <em>hypothesis funciton</em> $h_\theta(x)$
+using one of the methods below.</p>
+
+<!-- more -->
+
+<h2 id="notation">Notation</h2>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+x =
+\begin{pmatrix}
+x_0 \\
+x_1 \\
+x_2 \\
+\vdots \\
+x_n \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 \\
+x_1 \\
+x_2 \\
+\vdots \\
+x_n \\
+\end{pmatrix}
+\quad
+X =
+\begin{pmatrix}
+1 & x^{(1)}_1 & x^{(1)}_2 & \cdots & x^{(1)}_n \\
+1 & x^{(2)}_1 & x^{(2)}_2 & \cdots & x^{(2)}_n \\
+1 & x^{(3)}_1 & x^{(3)}_2 & \cdots & x^{(3)}_n \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+1 & x^{(m)}_1 & x^{(m)}_2 & \cdots & x^{(m)}_n \\
+\end{pmatrix}
+\quad
+y =
+\begin{pmatrix}
+y^{(1)} \\
+y^{(2)} \\
+y^{(3)} \\
+\vdots \\
+y^{(m)} \\
+\end{pmatrix} %]]&gt;</script>
+
+<h2 id="optimization-objective">Optimization Objective</h2>
+
+<p>Step 1. Normalize each feature $(x^{(0)}_j, …, x^{(m)}_j)$, $1 \le j \le n$ by mean $\mu$ and standard deviation $\sigma$</p>
+
+<script type="math/tex; mode=display">x^{(i)}_j \leftarrow \frac{x^{(i)}_j - \mu_j}{\sigma_j}</script>
+
+<p><figure class='code'><figcaption><span>featureNormalize.m </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='matlab'><span class='line'><span class="k">function</span><span class="w"> </span>[X_norm, mu, sigma] <span class="p">=</span><span class="w"> </span><span class="nf">featureNormalize</span><span class="p">(</span>X<span class="p">)</span><span class="w"></span>
+</span><span class='line'><span class="w">    </span><span class="n">mu</span> <span class="p">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">sigma</span> <span class="p">=</span> <span class="n">std</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">X_norm</span> <span class="p">=</span> <span class="p">(</span><span class="n">X</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span> <span class="o">./</span> <span class="n">sigma</span><span class="p">;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Step 2. Minimize the cost function</p>
+
+<script type="math/tex; mode=display">J(\theta) = \frac{1}{2m} \|X\theta - y\|^2 = \frac{1}{2m}(X\theta - y)^T (X\theta - y)</script>
+
+<p>where $\theta = (\theta_0, …, \theta_n)^T$</p>
+
+<p>Step 3. Compute hypothesis function as</p>
+
+<script type="math/tex; mode=display">h_\theta(x) = x \cdot \theta = x^T \theta</script>
+
+<p>where vector $x$ is normalized using the same values of $\mu$ and $\sigma$ as in Step 1.</p>
+
+<h2 id="gradient-descent">Gradient Descent</h2>
+
+<p><em>Gradient descent</em> is the method for finding (global) minimum of cost funtion $J(\theta)$.
+There are few ways to implement this method.</p>
+
+<h3 id="direct-method">Direct method</h3>
+
+<p>Choose small learning rate $\alpha &gt; 0$ and find the fixed point of the function</p>
+
+<script type="math/tex; mode=display">f(\theta) = \theta - \frac{\alpha}{m}X^T (X\theta - y)</script>
+
+<p><figure class='code'><figcaption><span>gradientDescent.m </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='matlab'><span class='line'><span class="k">function</span><span class="w"> </span>[theta] <span class="p">=</span><span class="w"> </span><span class="nf">gradientDescent</span><span class="p">(</span>X, y, theta, alpha, num_iters<span class="p">)</span><span class="w"></span>
+</span><span class='line'><span class="w">    </span><span class="n">m</span> <span class="p">=</span> <span class="nb">length</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">iter</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">num_iters</span>
+</span><span class='line'>        <span class="n">h</span> <span class="p">=</span> <span class="n">X</span> <span class="o">*</span> <span class="n">theta</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">delta</span> <span class="p">=</span> <span class="n">h</span> <span class="o">-</span> <span class="n">y</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">theta</span> <span class="p">=</span> <span class="n">theta</span> <span class="o">-</span> <span class="n">X</span>’ <span class="o">*</span> <span class="n">delta</span> <span class="o">*</span> <span class="n">alpha</span> <span class="o">/</span> <span class="n">m</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h3 id="optimized-method">Optimized method</h3>
+
+<p>Many mathematical software packages already include implementations of gradient
+descent that compute learning rate $\alpha$ automatically.
+These methods accept cost function $J(\theta)$ and its gradient
+$\nabla J(\theta)$ as arguments, which for the linear regression is computed as follows</p>
+
+<script type="math/tex; mode=display">\nabla J(\theta) = \frac{1}{m}X^T (X\theta - y)</script>
+
+<p><figure class='code'><figcaption><span>costFunction.m </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='matlab'><span class='line'><span class="k">function</span><span class="w"> </span>[J, grad] <span class="p">=</span><span class="w"> </span><span class="nf">costFunction</span><span class="p">(</span>theta, X, y<span class="p">)</span><span class="w"></span>
+</span><span class='line'><span class="w">    </span><span class="n">m</span> <span class="p">=</span> <span class="nb">length</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">h</span> <span class="p">=</span> <span class="n">X</span> <span class="o">*</span> <span class="n">theta</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">delta</span> <span class="p">=</span> <span class="n">h</span> <span class="o">-</span> <span class="n">y</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">J</span> <span class="p">=</span> <span class="n">delta</span>’ <span class="o">*</span> <span class="n">delta</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">m</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">grad</span> <span class="p">=</span> <span class="n">X</span>’ <span class="o">*</span> <span class="n">delta</span> <span class="o">/</span> <span class="n">m</span><span class="p">;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p><figure class='code'><figcaption><span>gradientDescent.m </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='matlab'><span class='line'><span class="k">function</span><span class="w"> </span>[theta] <span class="p">=</span><span class="w"> </span><span class="nf">gradientDescent</span><span class="p">(</span>X, y, initial_theta<span class="p">)</span><span class="w"></span>
+</span><span class='line'><span class="w">    </span><span class="n">options</span> <span class="p">=</span> <span class="n">optimset</span><span class="p">(</span>‘<span class="n">GradObj</span>’<span class="p">,</span> ‘<span class="n">on</span>’<span class="p">,</span> ‘<span class="n">MaxIter</span>’<span class="p">,</span> <span class="mi">400</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">[</span><span class="n">theta</span><span class="p">,</span> <span class="n">cost</span><span class="p">]</span> <span class="p">=</span> <span class="n">fminunc</span><span class="p">(@(</span><span class="n">t</span><span class="p">)(</span><span class="n">costFunction</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)),</span> <span class="n">initial_theta</span><span class="p">,</span> <span class="n">options</span><span class="p">);</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h2 id="normal-equation">Normal Equation</h2>
+
+<p>Unlike Gradient Descent this method does not require feature normalization (Step 1) and convergence loop. <em>Normal equation</em> gives the closed-form solution to linear regression</p>
+
+<script type="math/tex; mode=display">\theta = (X^T X)^{-1} X^T y</script>
+
+<p><figure class='code'><figcaption><span>normalEquation.m </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='matlab'><span class='line'><span class="k">function</span><span class="w"> </span>[theta] <span class="p">=</span><span class="w"> </span><span class="nf">normalEquation</span><span class="p">(</span>X, y<span class="p">)</span><span class="w"></span>
+</span><span class='line'><span class="w">    </span><span class="n">theta</span> <span class="p">=</span> <span class="n">pinv</span><span class="p">(</span><span class="n">X</span>’ <span class="o">*</span> <span class="n">X</span><span class="p">)</span> <span class="o">*</span> <span class="n">X</span>’ <span class="o">*</span> <span class="n">y</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h2 id="regularization">Regularization</h2>
+
+<p>In case of overfitting both methods can be tweaked by introducing polynomial
+features and adjusting equations as follows. Let $\lambda &gt; 0$ and E be the
+diagonal matrix</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+E =
+\begin{pmatrix}
+0 & & & & \\
+& 1 & & & \\
+& & 1 & & \\
+& & & \ddots & \\
+& & & & 1 \\
+\end{pmatrix}_{n+1 \times n+1} %]]&gt;</script>
+
+<p>Then the cost function for gradient descent becomes</p>
+
+<script type="math/tex; mode=display">J(\theta) = \frac{1}{2m} \left( \|h_\theta(X) - y\|^2 + \lambda \| E\theta \|^2 \right) \\
+\nabla J(\theta) = \frac{1}{m} \left( X^T (h_\theta(X) - y) + \lambda E\theta \right)</script>
+
+<p>and normal equation</p>
+
+<script type="math/tex; mode=display">\theta = \left( X^T X +\lambda E \right)^{-1} X^T y</script>
+]]></content>
+  </entry>
+  
+</feed>

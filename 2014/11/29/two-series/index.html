@@ -9,7 +9,7 @@
   <meta name="author" content="Andrey Paramonov">
 
   
-  <meta name="description" content="Cliff Pickover twitted a fun puzzle: Which series is bigger? \sum_{n=0}^\infty \frac{1}{2^{n+1}} \quad \text{or} \quad \sum_{n=0}^\infty \frac{n}{2^{ &hellip;">
+  <meta name="description" content="Cliff Pickover twitted a fun puzzle: Which series is bigger? The first one is the famous geometric series which sum is equal to 1. The second one &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,7 +81,7 @@
   
 </ul>
   
-<form action="http://google.com/search" method="get">
+<form action="https://www.google.com/search" method="get">
   <fieldset role="search">
     <input type="hidden" name="q" value="site:blog.ndpar.com" />
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
@@ -118,7 +118,8 @@
   
 
 
-<time datetime="2014-11-29T07:00:00-05:00" pubdate data-updated="true">Nov 29<span>th</span>, 2014</time>
+
+<time datetime="2014-11-29T07:00:00-05:00" pubdate data-updated="true">November 29, 2014</time>
         
       </p>
     
@@ -127,9 +128,7 @@
 
 <div class="entry-content"><p>Cliff Pickover <a href="https://twitter.com/pickover/status/538754166261555201">twitted</a> a fun puzzle: Which series is bigger?</p>
 
-<script type="math/tex; mode=display">
-\sum_{n=0}^\infty \frac{1}{2^{n+1}} \quad \text{or} \quad \sum_{n=0}^\infty \frac{n}{2^{n+1}}
-</script>
+<script type="math/tex; mode=display">\sum_{n=0}^\infty \frac{1}{2^{n+1}} \quad \text{or} \quad \sum_{n=0}^\infty \frac{n}{2^{n+1}}</script>
 
 <p>The first one is the famous geometric series which sum is equal to 1. The second one seems to be bigger because 1 &lt; n, except for the 0th term, but that 0th term makes a big difference.</p>
 
@@ -138,20 +137,16 @@
 <p>First of all, the second series converges. You can prove it by D’Alembert’s theorem</p>
 
 <script type="math/tex; mode=display">% <![CDATA[
-
-\frac{a_{n+1}}{a_n} = \frac{n+1}{2^{n+2}}\cdot\frac{2^{n+1}}{n} = \frac{1}{2}\left(1 + \frac{1}{n}\right) \le \frac{3}{4} < 1, \text{for} \; n \ge 2
- %]]></script>
+\frac{a_{n+1}}{a_n} = \frac{n+1}{2^{n+2}}\cdot\frac{2^{n+1}}{n} = \frac{1}{2}\left(1 + \frac{1}{n}\right) \le \frac{3}{4} < 1, \text{for} \; n \ge 2 %]]></script>
 
 <p>Because the terms are positive, the series converges absolutely, therefore we can rearrange the terms.</p>
 
 <script type="math/tex; mode=display">% <![CDATA[
-
 \begin{align*}
 S & = \sum_{n=0}^\infty \frac{n}{2^{n+1}} = \sum_{n=0}^\infty \left(\frac{1}{2^{n+1}} + \frac{n-1}{2^{n+1}}\right) = \sum_{n=0}^\infty \frac{1}{2^{n+1}} + \sum_{n=0}^\infty \frac{n-1}{2^{n+1}} \\
   & = 1 + \frac{1}{2} \sum_{n=0}^\infty \frac{n-1}{2^n} = 1 + \frac{1}{2} \sum_{n=-1}^\infty \frac{n}{2^{n+1}} = 1 - \frac{1}{2} + \frac{1}{2} \sum_{n=0}^\infty \frac{n}{2^{n+1}} \\
   & = \frac{1}{2} + \frac{1}{2}S \implies S = 1
-\end{align*}
- %]]></script>
+\end{align*} %]]></script>
 
 <p>Both series are equal.</p>
 </div>
@@ -176,12 +171,13 @@ S & = \sum_{n=0}^\infty \frac{n}{2^{n+1}} = \sum_{n=0}^\infty \left(\frac{1}{2^{
   
 
 
-<time datetime="2014-11-29T07:00:00-05:00" pubdate data-updated="true">Nov 29<span>th</span>, 2014</time>
+
+<time datetime="2014-11-29T07:00:00-05:00" pubdate data-updated="true">November 29, 2014</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/categories/math/'>Math</a>
+    <a class='category' href='/categories/math/'>math</a>
   
 </span>
 
@@ -215,23 +211,23 @@ S & = \sum_{n=0}^\infty \frac{n}{2^{n+1}} = \sum_{n=0}^\infty \left(\frac{1}{2^{
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2016/12/24/spring-oauth2/">Spring OAuth 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/11/07/ml-logistic-regression/">Machine Learning: Logistic Regression</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/10/28/ml-linear-regression/">Machine Learning: Linear Regression</a>
+      </li>
+    
+      <li class="post">
         <a href="/2015/04/03/feynman-tot/">Another Notation as a Tool of Thought</a>
       </li>
     
       <li class="post">
         <a href="/2014/11/29/two-series/">Two Series</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/10/13/gc-visualization/">GC Visualization</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/10/12/fft-j/">Fast Fourier Transform in J</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/10/11/dft-j/">Discrete Fourier Transform in J</a>
       </li>
     
   </ul>
@@ -271,44 +267,47 @@ S & = \sum_{n=0}^\infty \frac{n}{2^{n+1}} = \sum_{n=0}^\infty \left(\frac{1}{2^{
 <section>
   <h1>Categories</h1>
   <ul id="categories">
-    <li class='category'><a href='/categories/activemq/'>ActiveMQ (1)</a></li>
-<li class='category'><a href='/categories/agile/'>Agile (1)</a></li>
-<li class='category'><a href='/categories/art/'>Art (1)</a></li>
-<li class='category'><a href='/categories/book-review/'>Book Review (1)</a></li>
-<li class='category'><a href='/categories/buzz/'>Buzz (2)</a></li>
-<li class='category'><a href='/categories/clojure/'>Clojure (4)</a></li>
-<li class='category'><a href='/categories/clustering/'>Clustering (1)</a></li>
-<li class='category'><a href='/categories/conference/'>Conference (3)</a></li>
-<li class='category'><a href='/categories/craftsmanship/'>Craftsmanship (1)</a></li>
-<li class='category'><a href='/categories/education/'>Education (1)</a></li>
-<li class='category'><a href='/categories/ejabberd/'>Ejabberd (2)</a></li>
-<li class='category'><a href='/categories/entrepreneurship/'>Entrepreneurship (1)</a></li>
-<li class='category'><a href='/categories/erlang/'>Erlang (8)</a></li>
-<li class='category'><a href='/categories/feynman/'>Feynman (1)</a></li>
-<li class='category'><a href='/categories/functional-programming/'>Functional Programming (1)</a></li>
-<li class='category'><a href='/categories/git/'>Git (3)</a></li>
-<li class='category'><a href='/categories/grails/'>Grails (1)</a></li>
-<li class='category'><a href='/categories/groovy/'>Groovy (10)</a></li>
-<li class='category'><a href='/categories/haskell/'>Haskell (1)</a></li>
-<li class='category'><a href='/categories/humor/'>Humor (2)</a></li>
-<li class='category'><a href='/categories/j/'>J (2)</a></li>
-<li class='category'><a href='/categories/java/'>Java (4)</a></li>
-<li class='category'><a href='/categories/lisp/'>Lisp (3)</a></li>
-<li class='category'><a href='/categories/math/'>Math (9)</a></li>
-<li class='category'><a href='/categories/maven/'>Maven (1)</a></li>
-<li class='category'><a href='/categories/mongodb/'>MongoDB (1)</a></li>
-<li class='category'><a href='/categories/nosql/'>NoSQL (1)</a></li>
-<li class='category'><a href='/categories/programming/'>Programming (6)</a></li>
-<li class='category'><a href='/categories/python/'>Python (2)</a></li>
-<li class='category'><a href='/categories/rabbitmq/'>RabbitMQ (4)</a></li>
-<li class='category'><a href='/categories/regex/'>Regex (2)</a></li>
-<li class='category'><a href='/categories/sicp/'>SICP (1)</a></li>
-<li class='category'><a href='/categories/scala/'>Scala (1)</a></li>
-<li class='category'><a href='/categories/solr/'>Solr (1)</a></li>
-<li class='category'><a href='/categories/spring/'>Spring (1)</a></li>
-<li class='category'><a href='/categories/tutorial/'>Tutorial (1)</a></li>
-<li class='category'><a href='/categories/zeromq/'>ZeroMQ (1)</a></li>
-<li class='category'><a href='/categories/zookeeper/'>ZooKeeper (1)</a></li>
+    <li class='category'><a href='/categories/activemq/'>activemq (1)</a></li>
+<li class='category'><a href='/categories/agile/'>agile (1)</a></li>
+<li class='category'><a href='/categories/art/'>art (1)</a></li>
+<li class='category'><a href='/categories/book-review/'>book review (1)</a></li>
+<li class='category'><a href='/categories/buzz/'>buzz (2)</a></li>
+<li class='category'><a href='/categories/clojure/'>clojure (4)</a></li>
+<li class='category'><a href='/categories/clustering/'>clustering (1)</a></li>
+<li class='category'><a href='/categories/conference/'>conference (3)</a></li>
+<li class='category'><a href='/categories/craftsmanship/'>craftsmanship (1)</a></li>
+<li class='category'><a href='/categories/education/'>education (1)</a></li>
+<li class='category'><a href='/categories/ejabberd/'>ejabberd (2)</a></li>
+<li class='category'><a href='/categories/entrepreneurship/'>entrepreneurship (1)</a></li>
+<li class='category'><a href='/categories/erlang/'>erlang (8)</a></li>
+<li class='category'><a href='/categories/feynman/'>feynman (1)</a></li>
+<li class='category'><a href='/categories/functional-programming/'>functional programming (1)</a></li>
+<li class='category'><a href='/categories/git/'>git (3)</a></li>
+<li class='category'><a href='/categories/grails/'>grails (1)</a></li>
+<li class='category'><a href='/categories/groovy/'>groovy (10)</a></li>
+<li class='category'><a href='/categories/haskell/'>haskell (1)</a></li>
+<li class='category'><a href='/categories/humor/'>humor (2)</a></li>
+<li class='category'><a href='/categories/j/'>j (2)</a></li>
+<li class='category'><a href='/categories/java/'>java (4)</a></li>
+<li class='category'><a href='/categories/lisp/'>lisp (3)</a></li>
+<li class='category'><a href='/categories/machine-learning/'>machine learning (2)</a></li>
+<li class='category'><a href='/categories/math/'>math (11)</a></li>
+<li class='category'><a href='/categories/matlab/'>matlab (2)</a></li>
+<li class='category'><a href='/categories/maven/'>maven (1)</a></li>
+<li class='category'><a href='/categories/mongodb/'>mongodb (1)</a></li>
+<li class='category'><a href='/categories/nosql/'>nosql (1)</a></li>
+<li class='category'><a href='/categories/oauth/'>oauth (1)</a></li>
+<li class='category'><a href='/categories/programming/'>programming (6)</a></li>
+<li class='category'><a href='/categories/python/'>python (2)</a></li>
+<li class='category'><a href='/categories/rabbitmq/'>rabbitmq (4)</a></li>
+<li class='category'><a href='/categories/regex/'>regex (2)</a></li>
+<li class='category'><a href='/categories/scala/'>scala (1)</a></li>
+<li class='category'><a href='/categories/sicp/'>sicp (1)</a></li>
+<li class='category'><a href='/categories/solr/'>solr (1)</a></li>
+<li class='category'><a href='/categories/spring/'>spring (2)</a></li>
+<li class='category'><a href='/categories/tutorial/'>tutorial (1)</a></li>
+<li class='category'><a href='/categories/zeromq/'>zeromq (1)</a></li>
+<li class='category'><a href='/categories/zookeeper/'>zookeeper (1)</a></li>
 
   </ul>
 </section>
@@ -320,7 +319,7 @@ S & = \sum_{n=0}^\infty \frac{n}{2^{n+1}} = \sum_{n=0}^\infty \left(\frac{1}{2^{
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2009–2015 - Andrey Paramonov -
+  Copyright &copy; 2009–2017 - Andrey Paramonov -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> -
   <span class="credit">Hosted by <a href="http://github.com">GitHub</a></span>
 </p>

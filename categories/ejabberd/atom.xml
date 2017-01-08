@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Ejabberd | Side Notes]]></title>
+  <title><![CDATA[Category: ejabberd | Side Notes]]></title>
   <link href="http://blog.ndpar.com/categories/ejabberd/atom.xml" rel="self"/>
   <link href="http://blog.ndpar.com/"/>
-  <updated>2015-11-06T20:35:32-05:00</updated>
+  <updated>2017-01-08T17:14:02-05:00</updated>
   <id>http://blog.ndpar.com/</id>
   <author>
     <name><![CDATA[Andrey Paramonov]]></name>
@@ -24,8 +24,8 @@
 
 <p>Open <em>/opt/ejabberd/ejabberd/etc/ejabberd/ejabberd.cfg</em> file, find <em>modules</em> section, and add mod_rabbitmq stanza to the list</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>/opt/ejabberd/ejabberd/etc/ejabberd/ejabberd.cfg </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>/opt/ejabberd/ejabberd/etc/ejabberd/ejabberd.cfg </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -37,7 +37,7 @@
 </span><span class='line'>  <span class="p">{</span><span class="n">mod_rabbitmq</span><span class="p">,</span>  <span class="p">[{</span><span class="n">rabbitmq_node</span><span class="p">,</span> <span class="nv">RABBIT_NODE</span><span class="p">}]},</span>
 </span><span class='line'>  <span class="err">…</span>
 </span><span class='line'> <span class="p">]}.</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>You need to replace <em>RABBIT_NODE</em> with the real value, which you can find from the RabbitMQ process information</p>
 
@@ -140,21 +140,21 @@ $ ln -s ejabberd-2.1.12 ejabberd
 
 <p>Open <em>/opt/ejabberd/ejabberd/etc/ejabberd/ejabberd.cfg</em> file and find <em>SERVED HOSTNAMES</em> section. By default Ejabberd is configured for localhost only. Change it to your machine’s DNS name. Here is what I have in my config</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>/opt/ejabberd/ejabberd/etc/ejabberd/ejabberd.cfg </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>/opt/ejabberd/ejabberd/etc/ejabberd/ejabberd.cfg </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class='erlang'><span class='line'><span class="c">%%%’   SERVED HOSTNAMES</span>
 </span><span class='line'><span class="p">{</span><span class="n">hosts</span><span class="p">,</span> <span class="p">[</span><span class="err">“</span><span class="n">jabber</span><span class="p">.</span><span class="n">ndpar</span><span class="p">.</span><span class="n">com</span><span class="err">”</span><span class="p">]}.</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>The second thing we need to do is to configure admin user. Here is mine, registered for the host I just defined</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>/opt/ejabberd/ejabberd/etc/ejabberd/ejabberd.cfg </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>/opt/ejabberd/ejabberd/etc/ejabberd/ejabberd.cfg </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class='erlang'><span class='line'><span class="c">%%%’   ACCESS CONTROL LISTS</span>
 </span><span class='line'><span class="p">{</span><span class="n">acl</span><span class="p">,</span> <span class="n">admin</span><span class="p">,</span> <span class="p">{</span><span class="n">user</span><span class="p">,</span> <span class="err">“</span><span class="n">andrey</span><span class="err">”</span><span class="p">,</span> <span class="err">“</span><span class="n">jabber</span><span class="p">.</span><span class="n">ndpar</span><span class="p">.</span><span class="n">com</span><span class="err">”</span><span class="p">}}.</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Save the config file and start the server</p>
 
@@ -168,12 +168,12 @@ $ ln -s ejabberd-2.1.12 ejabberd
 
 <p>If it wasn’t, you might want to enable debug logs</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>/opt/ejabberd/ejabberd/etc/ejabberd/ejabberd.cfg </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>/opt/ejabberd/ejabberd/etc/ejabberd/ejabberd.cfg </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class='erlang'><span class='line'><span class="c">%%%’   DEBUGGING</span>
 </span><span class='line'><span class="p">{</span><span class="n">loglevel</span><span class="p">,</span> <span class="mi">5</span><span class="p">}.</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>and restart the server to see more details</p>
 
